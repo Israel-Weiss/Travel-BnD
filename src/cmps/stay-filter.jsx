@@ -28,17 +28,18 @@ var pics =
 
 
 export const StayFilter = ({ onSetFilter, onSortBy }) => {
+
     var key = 0
     return (<div className="filter-tab">
-        <div className="filterSection"> 
-        {pics.map(img => {
-            key++
-            return (
-                <div className="filter-category">
-                    <img className="filter-icons" key={key} src={img.pic} />
-                    <p className="filter-icons-text">{img.text}</p>
-                </div>)
-        })}
+        <div className="filterSection">
+            {pics.map(img => {
+                key++
+                return (
+                    <div className="filter-category" onClick={() => onSetFilter(img.text)}>
+                        <img className="filter-icons" key={key} src={img.pic} />
+                        <p className="filter-icons-text">{img.text}</p>
+                    </div>)
+            })}
         </div>
         <div className="filter-btn">
             <img className="filter-btn-img" src={filterIcon} />

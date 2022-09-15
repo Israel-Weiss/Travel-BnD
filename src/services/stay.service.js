@@ -1,3 +1,4 @@
+import { storageService } from "./async-storage.service"
 const gStays = [
   {
     _id: "10006546",
@@ -490,6 +491,14 @@ function getById(stayId) {
   return Promise.resolve(stay)
 }
 
-function query() {
-  return gStays
+function query(tag = null) {
+  let stayToDisplay = []
+  if (tag) {
+    stayToDisplay = gStays.filter(stay => stay.tags.includes(tag))
+    return Promise.resolve(stayToDisplay)
+  }
+  else {
+    storageService._save('stays', gStays)
+    return Promise.resolve(gStays)
+  }
 }
