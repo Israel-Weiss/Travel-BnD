@@ -1,41 +1,36 @@
-import React, { useEffect } from 'react'
-import { connect } from 'react-redux'
+import { useEffect } from 'react'
+import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { StayList } from '../cmps/stays/stay-list'
+import { StayFilter } from '../cmps/stay-filter'
+//import { loadStay, setFilterBy } from '../store/actions/stay.action'
+import { stayService } from '../services/stay.service'
 
 
-import { loadStays, addStay, updateStay, removeStay, addToStayt } from '../store/stay.actions.js'
+export const StayApp = () => {
 
-import { showSuccessMsg } from '../services/event-bus.service.js'
-import { stayService } from '../services/stay.service.js'
+    //const stays = useSelector(state => state.stayModule)
+    //const dispatch = useDispatch()
 
-function _StayApp({ loadStays}) {
+    const [stays, setStays] = useState(null)
 
     useEffect(() => {
-        loadStays()
+        loadStay()
     }, [])
 
+    const loadStay = () => {
+        const stays = stayService.query()
+        setStays(stays)
+    }
+
+    console.log('stays', stays);
+    if (!stays) return
 
     return (
-        <div>
-
-
-        </div>
+        <section>
+            <StayFilter />
+            <StayList stays={stays} />
+        </section>
     )
 }
-
-
-function mapStateToProps(state) {
-    return {
-        stays: state.stayModule.stays
-    }
-}
-
-const mapDispatchToProps = {
-    loadStays,
-    removeStay,
-    addStay,
-    updateStay,
-    addToStayt
-}
-
-
-export const StayApp = connect(mapStateToProps, mapDispatchToProps)(_StayApp)

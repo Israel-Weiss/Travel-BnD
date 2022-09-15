@@ -1,5 +1,4 @@
 
-import { Button } from "@material-ui/core"
 import pic1 from "../assets/imgs/Filter Icons/1.png";
 import pic2 from "../assets/imgs/Filter Icons/2.png";
 import pic3 from "../assets/imgs/Filter Icons/3.png";
@@ -28,7 +27,7 @@ var pics =
     ]
 
 
-export const FilterBy = ({ onSetFilter, onSortBy }) => {
+export const StayFilter = ({ onSetFilter, onSortBy }) => {
     var key = 0
     return (<div className="filter-tab">
         <div className="filterSection"> 
@@ -45,8 +44,6 @@ export const FilterBy = ({ onSetFilter, onSortBy }) => {
             <img className="filter-btn-img" src={filterIcon} />
             <p className="filter-btn-text">Filters</p>
         </div>
-
-
     </div>)
 }
 

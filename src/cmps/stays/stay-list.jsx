@@ -1,35 +1,14 @@
+import { StayPreview } from './stay-preview'
 
-import { RoomCard } from "./stay-preview"
-import axios from "axios";
-import { useState } from 'react'
-import { useEffect } from 'react'
-
-export const CardList = () => {
-
-
-state{
-    stays:service 
-}
-
+export function StayList({ stays }) {
+    
+    if(!stays)return
     return (
-
-
-        <div className="card-container">
-            <RoomCard />
-            <RoomCard />
-            <RoomCard />
-            <RoomCard />
-            <RoomCard />
-            {/* {rooms.map(room => {
-            })} */}
-
+        <div className='card-container'>
+            {stays.map(stay => <StayPreview key={stay._id} stay={stay} />)}
         </div>
     )
 }
-
-
-
-
 
 
 

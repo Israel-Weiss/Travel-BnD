@@ -4,11 +4,14 @@ import icon3 from '../../assets/imgs/room-info/cancellation-Icon.svg'
 
 
 
-export const RoomDatails = () => {
+export const RoomDatails = ({stay}) => {
+if(!stay)return
+const { guests,bedrooms,beds,baths}=stay.capacity
+const{fullname}=stay.host
 
     return (  <div className='room-details'>
-    <h1 className="room-details-title">Entire home hosted by Geoff</h1>
-    <p className='room-details-desc'>10 guests 4 bedrooms 5 beds 3 baths</p>
+    <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
+    <p className='room-details-desc'>{guests} guests {bedrooms} bedrooms {beds} beds {baths} baths</p>
 
     <div className='flex margin-top-30' >
         <img className='room-info-icons' src={icon1} />
