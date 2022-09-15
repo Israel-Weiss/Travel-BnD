@@ -1,0 +1,138 @@
+.cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-right: 88px;
+    padding-left: 88px;
+
+    .card {
+        // padding: 9.5% 10.5%;
+        width: 200px;
+        justify-content: center;
+        background-color: $clr3;
+        color: $clr2;
+        border: 1px solid $clr2;
+        border-radius: 8px;
+        margin: -1px 0 0 -1px;
+        cursor: pointer;
+
+        img.card-image {
+            object-fit: contain;
+            width: 100px;
+            height: 100px;
+            // aspect-ratio: 1.5 / 1;
+            margin: 20px 0;
+        }
+
+        .exitBtn {
+            cursor: pointer;
+            font-size: 20px;
+            background-color: transparent;
+            border: none;
+        }
+
+        .editBtn {
+            cursor: pointer;
+            margin-top: 4px;
+            width: 20px;
+            height: 18px;
+        }
+
+    }
+}
+
+.card-container {
+    padding: 0px 80px 0px 80px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+
+   
+
+    .card {
+    
+        .card-image{
+            width: 270px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            .card-pic {
+                border-radius: 15px;
+                object-fit: cover;
+                aspect-ratio: 1/1;
+            }
+    
+            .btn-left-conatiner {
+                top: 0;
+                bottom: 0;
+                left: 80%;
+                right: 0;
+                margin: auto;
+                position: absolute;
+    
+                width: 30px;
+                height: 30px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                border-radius: 50%;
+                background-color: white;
+                cursor: pointer;
+                .btn-left {
+                    width: 15px;
+                    height: 15px;
+                }
+             
+            }
+    
+            .navigation-manual {
+                top: 80%;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                margin: auto;
+                position: absolute;
+                height: 10px;
+                width: 42px;
+                display: flex;
+    
+              
+                .navigation-button {
+                    width: 6px;
+                    height: 6px;
+                    background-color: $clr2;
+                    border-radius: 50%;
+               
+                }
+    
+                .navigation-button:not(:last-child) {
+                    margin-right: 6px;
+                }
+    
+            }
+
+        }
+    
+        .card-info{
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+
+            .card-info-location{
+                color: $clr5;
+                font-weight: 700;
+            }
+            .card-info-distance{
+                color:$clr4;
+            }
+            .card-info-date,.card-info-price{
+                color: $clr5;
+            }
+        }
+
+
+
+    }
+
+}

@@ -1,40 +1,77 @@
-// Font Sizes
-.fs12 { font-size: rem(12px); }
-.fs14 { font-size: rem(14px); }
-.fs18 { font-size: rem(18px); }
-.fs20 { font-size: rem(20px); }
-.fs24 { font-size: rem(24px); }
-.fs28 { font-size: rem(28px); }
-.fs30 { font-size: rem(30px); }
-
-// flex helpers
-
+// Flex 
 .flex {
-
     display: flex;
-
-    > *.full {
-        flex: 1;
-    }
-    &.column {
-        flex-direction: column;
-    }
-    &.justify-center {
-        justify-content: center;
-    }
-    &.align-center {
-        align-items: center;
-    }
+}
+.align-items{
+    align-items: center;
+}
+.flex-coulmn{
+    display: flex;
+    flex-direction: column;
+}
+.inline-flex {
+    display: inline-flex;
 }
 
-// Media helpers
+// List 
+.clean-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
 
-.square-ratio {
-    @include aspect-ratio(1, 1);
+// Text 
+.vertical-text {
+    writing-mode: tb-rl;
+    transform: rotate(-180deg);  
 }
-.video-ratio {
-    @include aspect-ratio(16, 9);
+
+.tag-text {
+    color: $clr1;
+    text-transform: uppercase;
+    @include type(boldCondensed);
 }
-.portrait-ratio {
-    @include aspect-ratio(9, 16);
+
+// Aspect ratios
+
+.ratio-16-9 { @include aspect-ratio(100, 56); }
+
+.ratio-square { @include aspect-ratio(100, 100); }
+
+.ratio-card { @include aspect-ratio(100, 80); }
+
+.ratio-poster { @include aspect-ratio(100, 150); }
+
+// fonts
+.fontSize-22{
+    font-size: 22px;
+}
+
+.bold{
+    font-weight: 600;
+}
+
+.black{
+    color: $clr5;  
+}
+.gray{
+    color: $clr4;
+}
+
+.text-start{
+    text-align: start;
+}
+
+// margins
+
+.margin-top-30{
+    margin-top: 30px;
+}
+
+.margin-right-20{
+margin-left: 20px;
+}
+
+.margin-buttom-5{
+    margin-bottom: 5px;
 }

@@ -1,48 +1,23 @@
 import React from 'react'
+import { AppHeader } from './cmps/app-header.jsx'
 
-// const { Switch, Route } = ReactRouterDOM
-import { Routes, Route } from 'react-router'
+// import Routes from 'react'
+import { Route, Routes } from 'react-router-dom';
+import { Home } from './pages/home-page'
+import { RoomPreview } from './pages/stay-details'
 
-import routes from './routes'
 
-import { AppHeader } from './cmps/app-header'
-import { AppFooter } from './cmps/app-footer'
-import { AboutUs } from './pages/about-us'
-import { AddStay } from './pages/add-stay'
-import { AdminApp } from './pages/admin-app'
-import { Booking } from './pages/booking'
-import { ChatApp } from './pages/chat-app'
-import { HomePage } from './pages/home-page'
-import { HostApp } from './pages/host-app'
-import { StayApp } from './pages/stay-app'
-import { StayDetails } from './pages/stay-details'
-import { UpdateStay } from './pages/update-stay'
-import { UserDetails } from './pages/user-details'
-
-export class RootCmp extends React.Component {
-
-    render() {
-        return (
-            <div>
-                <AppHeader />
-                <main>
-                    <Routes>
-                        {routes.map(route => <Route key={route.path} exact={true} element={route.component} path={route.path} />)}
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="user/:id" element={<UserDetails />} />
-                        <Route path="/" element={<UserDetails />} />
-                    </Routes>
-                </main>
-                <AppFooter />
-            </div>
-        )
-    }
+function App() {
+  return (
+    <div className="App">
+      <div className='gray-filter'></div>
+      <AppHeader />
+      <Routes>
+        <Route path='/rooms/:id' element={<RoomPreview />} />
+        <Route path='/' element={<Home />} />
+      </Routes>
+    </div>
+  )
 }
 
-
+export default App;
