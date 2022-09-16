@@ -10,8 +10,10 @@ import { PlaceOffer } from '../cmps/stays/stay-details-reserve'
 import { RoomInfo } from '../cmps/stays/stay-details-title'
 import { RoomImages } from '../cmps/stays/stay-details-img'
 import { RoomDatails } from '../cmps/stays/stay-details-secondary'
+
 import { ReserveModal } from '../cmps/modal/modal-reserve'
 
+import { RoomReviews } from '../cmps/stays/stay-details-reviews'
 
 export const StayDetails = () => {
 
@@ -41,6 +43,7 @@ if(!stay)return
 
             <RoomDatails stay={stay} />
             <PlaceOffer stay={stay} />
+            <RoomReviews stay={stay} />
         </div>
     )
 }

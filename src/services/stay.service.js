@@ -42,9 +42,9 @@ const gStays = [
       "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
     },
     loc: {
-      country: "Kissonerga",
+      country: "Cyprus",
       countryCode: "CY",
-      city: "Cyprus",
+      city: "Kissonerga",
       address: "Premier Shukuroglou Cyprus Ltd, Latsia 2234,",
       lat: 34.7935,
       lng: 32.39613
@@ -198,9 +198,9 @@ const gStays = [
       "imgUrl": "https://a0.muscache.com/im/pictures/user/19700169-6b6f-4700-9aa5-42f754932e0e.jpg?im_w=240",
     },
     loc: {
-      country: "Gourri",
+      country: "Cyprus",
       countryCode: "CY",
-      city: "Cyprus",
+      city: "Gourri",
       address: "Elaionon 3",
       lat: 34.95771,
       lng: 33.15795
@@ -278,9 +278,9 @@ const gStays = [
       "imgUrl": "https://a0.muscache.com/im/pictures/user/19700169-6b6f-4700-9aa5-42f754932e0e.jpg?im_w=240",
     },
     loc: {
-      country: "Paphos",
+      country: "Cyprus",
       countryCode: "CY",
-      city: "Cyprus",
+      city: "Paphos",
       address: "Athena Court, Artemidos 7-Flat 109",
       lat: 34.75663,
       lng: 32.41549
