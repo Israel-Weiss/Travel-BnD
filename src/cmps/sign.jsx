@@ -15,7 +15,7 @@ export function SignModal({toggleSignModal}) {
             <li><NavLink className="black text-start bold" to='#' onClick={()=>toggleSignModal('Sign up')}>Sign up</NavLink></li>
             <li><NavLink className="black text-start" to='#'>Log in</NavLink></li>
             <li><NavLink className="black text-start" to='#'></NavLink></li>
-            <li><NavLink className="black text-start" to='#'>Host your home</NavLink></li>
+            <li><NavLink className="black text-start" to='#'>My Trip</NavLink></li>
             <li><NavLink className="black text-start" to='#'>Host an experience</NavLink></li>
             <li><NavLink className="black text-start" to='#'>help</NavLink></li>
         </div>

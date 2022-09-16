@@ -5,6 +5,7 @@ import { Route, Routes } from 'react-router-dom'
 
 import { AppHeader } from './cmps/app-header'
 import { AppFooter } from './cmps/app-footer'
+import { MyTrip } from './pages/my-trip'
 // import { AboutUs } from './pages/about-us'
 // import { AddStay } from './pages/add-stay'
 // import { AdminApp } from './pages/admin-app'
@@ -23,6 +24,7 @@ function App() {
       <AppHeader />
       <Routes>
         <Route path='/rooms/:id' element={<StayDetails />} />
+        <Route path='/my-trip' element={<MyTrip />} />
         <Route path='/' element={<StayApp />} />
         {/* <AppFooter /> */}
       </Routes>

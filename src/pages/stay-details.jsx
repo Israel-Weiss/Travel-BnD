@@ -10,9 +10,10 @@ import { PlaceOffer } from '../cmps/stays/stay-details-reserve'
 import { RoomInfo } from '../cmps/stays/stay-details-title'
 import { RoomImages } from '../cmps/stays/stay-details-img'
 import { RoomDatails } from '../cmps/stays/stay-details-secondary'
+
+import { ReserveModal } from '../cmps/modal/modal-reserve'
+
 import { RoomReviews } from '../cmps/stays/stay-details-reviews'
-
-
 
 export const StayDetails = () => {
 
@@ -26,18 +27,19 @@ export const StayDetails = () => {
     const loadStay = () => {
         const stayId = params.id
         stayService.getById(stayId).then(stay => {
-            console.log("return stay",stay);
+            console.log("return stay", stay);
             setStay(stay)
         })
     }
 
-if(!stay)return
+    if (!stay) return
 
 
     return (
         <div className='room'>
             <RoomInfo stay={stay} />
             <RoomImages stay={stay} />
+    
             <RoomDatails stay={stay} />
             <PlaceOffer stay={stay} />
             <RoomReviews stay={stay} />
