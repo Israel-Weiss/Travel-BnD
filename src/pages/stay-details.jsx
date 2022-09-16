@@ -25,12 +25,12 @@ export const StayDetails = () => {
     const loadStay = () => {
         const stayId = params.id
         stayService.getById(stayId).then(stay => {
-            console.log("return stay", stay);
+            console.log("return stay",stay);
             setStay(stay)
         })
     }
 
-    if (!stay) return
+if(!stay)return
 
 
     return (
@@ -38,6 +38,7 @@ export const StayDetails = () => {
             <RoomInfo stay={stay} />
             <RoomImages stay={stay} />
     
+
             <RoomDatails stay={stay} />
             <PlaceOffer stay={stay} />
         </div>

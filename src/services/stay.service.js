@@ -1,4 +1,5 @@
 import { storageService } from "./async-storage.service"
+
 const gStays = [
   {
     _id: "10006546",
@@ -502,3 +503,4 @@ function query(tag = null) {
     return Promise.resolve(gStays)
   }
 }
+
