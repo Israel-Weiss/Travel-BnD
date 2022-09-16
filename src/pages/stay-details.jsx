@@ -10,6 +10,7 @@ import { PlaceOffer } from '../cmps/stays/stay-details-reserve'
 import { RoomInfo } from '../cmps/stays/stay-details-title'
 import { RoomImages } from '../cmps/stays/stay-details-img'
 import { RoomDatails } from '../cmps/stays/stay-details-secondary'
+import { RoomReviews } from '../cmps/stays/stay-details-reviews'
 
 
 
@@ -39,6 +40,7 @@ if(!stay)return
             <RoomImages stay={stay} />
             <RoomDatails stay={stay} />
             <PlaceOffer stay={stay} />
+            <RoomReviews stay={stay} />
         </div>
     )
 }
