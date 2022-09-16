@@ -110,8 +110,8 @@
     }
 
     .room-details {
+        width: 100%;
         display: flex;
-        flex-direction: column;
         align-items: flex-start;
         margin-top: 30px;
 
@@ -121,7 +121,6 @@
             color: $clr5;
             margin-block-end: 0px;
         }
-
         .room-details-desc {
             width: 120vw;
             font-size: 14px;
@@ -131,6 +130,17 @@
             padding-bottom: 30px;
             border-bottom: 1.8px solid $clr2;
         }
+        .left {
+            width: 70%;
+
+
+            
+        }
+
+        .right {
+            width: 50%;
+        }
+
 
     }
 
@@ -142,10 +152,12 @@
             max-width: 46vw;
             display: flex;
             justify-content: space-between;
+
             .left {
                 display: flex;
                 flex-direction: column;
             }
+
             .right {
                 display: flex;
                 flex-direction: column;

@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import  { useEffect } from "react";
 import vPic from '../../assets/imgs/v.png'
 
 export function ReserveModal({ stay }) {
@@ -7,7 +8,35 @@ export function ReserveModal({ stay }) {
     const [modalFlag, setModalFlag] = useState(false)
     const [reservedFlag, setreservedFlag] = useState(false)
 
-    
+
+    // useEffect(() => {
+    //     const header = document.querySelector('.reserve-modal-container');
+    //     const headerObserver = new IntersectionObserver(onHeaderObserved, {
+    //       rootMargin: "1000px 0px 1000px",
+    //     });
+        
+    //     headerObserver.observe(header);
+        
+    //     function onHeaderObserved(entries) {
+    //       entries.forEach((entry) => {
+    //         header.style.position = entry.isIntersecting ? 'static' : 'fixed';
+
+    //         console.log('helllooo')
+    //       });
+    //     }
+    //   }, [])
+
+
+
+
+
+    const navigateTo=()=>{
+        setreservedFlag(true)
+        setTimeout(()=>{
+            window.location.href = "index.html/#/my-trip";
+        },1000)
+
+    }
      
     const changeModal=()=>{
         document.querySelector('.gray-filter').style.display='block'
@@ -86,7 +115,7 @@ export function ReserveModal({ stay }) {
 
                 <div className="button-section">
                     {!reservedFlag? <section><button onClick={()=>closeModal('Back')}>Back</button>
-                    <button onClick={()=>setreservedFlag(true)}>confirm</button></section>
+                    <button onClick={()=>navigateTo()}>confirm</button></section>
                     :<button onClick={()=>closeModal('Back')}>close</button>}
                 </div>
 

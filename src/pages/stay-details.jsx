@@ -36,8 +36,8 @@ export const StayDetails = () => {
     return (
         <div className='room'>
             <RoomInfo stay={stay} />
-            <ReserveModal stay={stay} />
             <RoomImages stay={stay} />
+    
             <RoomDatails stay={stay} />
             <PlaceOffer stay={stay} />
         </div>

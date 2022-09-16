@@ -1,9 +1,10 @@
 .reserve-modal-container {
 
-    position: fixed;
+    position: static;
     height: 272px;
     width: 370px;
-    left: 67%;
+  
+    // left: 67%;
     padding: 29px 24px 24px 24px;
     background-color: $clr1;
     border: 1px solid $clr2;
