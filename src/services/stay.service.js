@@ -1,5 +1,22 @@
-import { storageService } from "./async-storage.service"
+import pool from '../assets/imgs/house/place-offer/pool.svg'
+import tv from '../assets/imgs/house/place-offer/tv.svg'
+import beach from '../assets/imgs/house/place-offer/beach.svg'
+import dryer from '../assets/imgs/house/place-offer/dryer.svg'
+import fireplace from '../assets/imgs/house/place-offer/fireplace.svg'
+import hottub from '../assets/imgs/house/place-offer/hottub.svg'
+import kitchen from '../assets/imgs/house/place-offer/kitchen.svg'
+import mountain from '../assets/imgs/house/place-offer/mountain.svg'
+import parking from '../assets/imgs/house/place-offer/parking.svg'
+import patio from '../assets/imgs/house/place-offer/patio.svg'
+import pets from '../assets/imgs/house/place-offer/pets.svg'
+import smokeallowed from '../assets/imgs/house/place-offer/smokeallowed.svg'
+import washer from '../assets/imgs/house/place-offer/washer.svg'
+import wifi from '../assets/imgs/house/place-offer/wifi.svg'
+import workspace from '../assets/imgs/house/place-offer/workspace.svg'
+import aircondition from '../assets/imgs/house/place-offer/aircondition.svg'
+import crib from '../assets/imgs/house/place-offer/crib.svg'
 
+import { storageService } from "./async-storage.service"
 const gStays = [
   {
     _id: "10006546",
@@ -8,7 +25,7 @@ const gStays = [
     date: "Oct 10 – 15",
     type: "House",
     price: "715",
-    tags: ["Beachfront"],
+    tags: ["Beach"],
     imgUrls: [
       "https://a0.muscache.com/im/pictures/aa597965-46fe-4458-a9be-0c753417fca3.jpg?im_w=960",
       "https://a0.muscache.com/im/pictures/87b7a29b-69da-4acd-b3fd-5dc2ee259528.jpg?im_w=1200",
@@ -481,7 +498,9 @@ const gStays = [
 
 export const stayService = {
   getById,
-  query
+  query,
+  calcRate,
+  mapIcon
 }
 
 function getById(stayId) {
@@ -504,3 +523,75 @@ function query(tag = null) {
   }
 }
 
+function calcRate(reviews) {
+  var rate = 0
+  reviews.map((review) =>{
+      rate += review.rate
+  })
+  rate = rate / reviews.length
+  return rate.toFixed(2)
+}
+
+function mapIcon(amenities) {
+    
+  var picright = [] 
+  var picleft2 = []
+  let icon = {}
+  amenities.map((amentitie) => {
+      switch(amentitie) {
+          case('Shared pool' || 'Pool' || 'Pool view' || 'Private pool'):
+              icon ={img:pool, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('TV' || 'HDTV'):
+              icon ={img: tv, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Wifi'):
+              icon ={img: wifi, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Kitchen' || 'Cooking basics'):
+              icon ={img: kitchen, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Washer' ): 
+              icon ={img: washer, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Hot tub'):
+              icon ={img: hottub, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Dryer'):
+              icon ={img: dryer, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Free parking on premises' || 'Free street parking'):
+              icon ={img: parking, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Mountain view' || 'River view'):
+              icon ={img: mountain, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Patio or balcony' || 'Private patio or balcony'):
+              icon ={img: patio, text: amentitie} 
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Air conditioning'):
+              icon ={img: aircondition, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Crib'):
+              icon ={img: crib, text: amentitie}
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Beach access – Beachfront' || 'Beach view' || 'Beach access Beachfront' || 'Sea view'):
+              icon ={img: beach, text: amentitie} 
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Pets allowed'):
+              icon ={img: pets, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Indoor fireplace'):
+               icon ={img: fireplace, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Dedicated workspace'):
+              icon ={img: workspace, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+          case('Smoking allowed'):
+              icon ={img: smokeallowed, text: amentitie}  
+              return (picleft2.length < 5)?picleft2.push(icon):picright.push(icon)
+      } 
+  }
+)
+  return icon
+}
