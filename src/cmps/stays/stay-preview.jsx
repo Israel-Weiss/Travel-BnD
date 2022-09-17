@@ -42,7 +42,7 @@ export const StayPreview = ({stay}) => {
                 <p className="card-info-location">{city}, {country}</p>
                 <p className="card-info-distance">{distance} kilometers</p>
                 <p className="card-info-date">{date}</p>
-                <p className="card-info-price">{price}$</p>
+                <p className="card-info-price">${price}</p>
             </div>
         </div>
     )

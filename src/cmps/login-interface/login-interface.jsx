@@ -1,16 +1,20 @@
 
 import { userService } from "../../services/user.service"
+import { setUser,validUser } from "../../store/user.action"
+import { useDispatch, useSelector } from 'react-redux'
 
-export function SignInModal({ closeModal }) {
+
+export function LoginInterface({ closeModal, loginType }) {
+    const dispatch = useDispatch()
+
 
     const onRegister = (ev) => {
+        closeModal('Sign up')
         ev.preventDefault()
         const user = { username: ev.target[0].value, password: ev.target[1].value }
-        userService.register(user)
+       if(loginType==="Register") dispatch(setUser(user))
+       else  dispatch(validUser(user))
     }
-
-
-
 
     return (
         <div className="signUp-modal">
@@ -28,7 +32,7 @@ export function SignInModal({ closeModal }) {
                 <input className="signUp-input" type="password" />
 
                 <p className="text text-start black">We’ll call or text you to confirm your number. Standard message and data rates apply. Privacy Policy</p>
-                <button className="continue-btn">Register</button>
+                <button className="continue-btn">{loginType}</button>
 
             </form>
         </div>

@@ -1,9 +1,9 @@
-import pic1 from '../assets/imgs/anywhere/1.png'
-import pic2 from '../assets/imgs/anywhere/2.webp'
-import pic3 from '../assets/imgs/anywhere/3.webp'
-import pic4 from '../assets/imgs/anywhere/4.webp'
-import pic5 from '../assets/imgs/anywhere/5.webp'
-import pic6 from '../assets/imgs/anywhere/6.webp'
+import pic1 from '../../assets/imgs/anywhere/1.png'
+import pic2 from '../../assets/imgs/anywhere/2.webp'
+import pic3 from '../../assets/imgs/anywhere/3.webp'
+import pic4 from '../../assets/imgs/anywhere/4.webp'
+import pic5 from '../../assets/imgs/anywhere/5.webp'
+import pic6 from '../../assets/imgs/anywhere/6.webp'
 
 var imgs = [{ img: pic1, text: 'I’m flexible' },
 { img: pic2, text: 'Middle East' },
@@ -13,7 +13,7 @@ var imgs = [{ img: pic1, text: 'I’m flexible' },
 { img: pic6, text: 'South America' }
 ]
 
-export function Anywhere() {
+export function SearchModal() {
 
 
     return (
