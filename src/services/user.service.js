@@ -7,5 +7,4 @@ export const userService = {
 
 function register(user) {
     storageService.post('users', user)
-
 }
