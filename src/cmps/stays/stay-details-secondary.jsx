@@ -12,37 +12,41 @@ export const RoomDatails = ({ stay }) => {
 
     return (<div className='room-details'>
 
-<div className="left">
         <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
-     
-        
-                <div className='flex margin-top-30' >
-                    <img className='room-info-icons' src={icon1} />
-                    <div className='margin-right-20'>
-                        <p className='text-start room-info-text bold'>Designed by</p>
-                        <p className=' gray'>Cadaval & Solà-Morales</p>
-                    </div>
-                </div>
+        <p className='room-details-desc'>{guests} guests {bedrooms} bedrooms {beds} beds {baths} baths</p>
 
-                <div className='flex margin-top-30' >
-                    <img className='room-info-icons' src={icon2} />
-                    <div className='margin-right-20'>
-                        <p className='text-start room-info-text bold'>Featured in</p>
-                        <p className=' gray'>The New York Times, January 2014
-                            Wallpaper*, May 2015</p>
-                    </div>
-                </div>
 
-                <div className='flex margin-top-30 ' style={{ paddingBottom: '20px' }} >
-                    <img className='room-info-icons' src={icon3} />
-                    <div className='margin-right-20'>
-                        <p className='text-start room-info-text bold'>Free cancellation for 48 hours.</p>
-                    </div>
+        <div className="left">
+            <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
+
+
+            <div className='flex margin-top-30' >
+                <img className='room-info-icons' src={icon1} />
+                <div className='margin-right-20'>
+                    <p className='text-start room-info-text bold'>Designed by</p>
+                    <p className=' gray'>Cadaval & Solà-Morales</p>
                 </div>
             </div>
 
-            <ReserveModal stay={stay} />
-  
+            <div className='flex margin-top-30' >
+                <img className='room-info-icons' src={icon2} />
+                <div className='margin-right-20'>
+                    <p className='text-start room-info-text bold'>Featured in</p>
+                    <p className=' gray'>The New York Times, January 2014
+                        Wallpaper*, May 2015</p>
+                </div>
+            </div>
+
+            <div className='flex margin-top-30 ' style={{ paddingBottom: '20px' }} >
+                <img className='room-info-icons' src={icon3} />
+                <div className='margin-right-20'>
+                    <p className='text-start room-info-text bold'>Free cancellation for 48 hours.</p>
+                </div>
+            </div>
+        </div>
+
+        <ReserveModal stay={stay} />
+
 
     </div>)
 
