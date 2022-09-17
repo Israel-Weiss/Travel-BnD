@@ -1,37 +1,24 @@
 import { useState } from 'react'
 import  { useEffect } from "react";
 import vPic from '../../assets/imgs/v.png'
+import { orderService } from '../../services/order.service';
+import { useDispatch, useSelector } from 'react-redux'
+import { setOrder } from '../../store/order.action';
+import { storageService } from '../../services/async-storage.service';
+import { setUser } from '../../store/user.action';
 
 export function ReserveModal({ stay }) {
-
+    const dispatch = useDispatch()
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
 
     const [modalFlag, setModalFlag] = useState(false)
     const [reservedFlag, setreservedFlag] = useState(false)
 
 
-    // useEffect(() => {
-    //     const header = document.querySelector('.reserve-modal-container');
-    //     const headerObserver = new IntersectionObserver(onHeaderObserved, {
-    //       rootMargin: "1000px 0px 1000px",
-    //     });
-        
-    //     headerObserver.observe(header);
-        
-    //     function onHeaderObserved(entries) {
-    //       entries.forEach((entry) => {
-    //         header.style.position = entry.isIntersecting ? 'static' : 'fixed';
-
-    //         console.log('helllooo')
-    //       });
-    //     }
-    //   }, [])
-
-
-
-
-
     const navigateTo=()=>{
         setreservedFlag(true)
+        dispatch( setOrder(stay,loggedInUser))
+
         setTimeout(()=>{
             window.location.href = "index.html/#/my-trip";
         },1000)
@@ -39,6 +26,12 @@ export function ReserveModal({ stay }) {
     }
      
     const changeModal=()=>{
+
+        const user = storageService.getLogedInUser()
+        if(!user){var ghostUser ={username:"Ghost",password:"0000"}
+        dispatch( setUser(ghostUser))
+    }
+
         document.querySelector('.gray-filter').style.display='block'
         document.querySelector('.reserve-modal-container').style.display='none'
         setreservedFlag(false)

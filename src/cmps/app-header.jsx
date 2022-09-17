@@ -1,5 +1,7 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { storageService } from "../services/async-storage.service";
 
 import logoPic from "../assets/imgs/logo.png";
 import searchIcon from "../assets/imgs/serachIcon.png"
@@ -12,11 +14,23 @@ import { SignInModal } from "./login-interface/sign-in";
 import { Anywhere } from '../cmps/anywhere'
 import { SubHeader } from "../cmps/sub-header";
 
+
+
 export function AppHeader() {
+    // const loggedInUser = storageService.getLogedInUser()
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
+
+    console.log(loggedInUser, "loggedInUser");
+    var profilePic = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
 
     var [modalFlag, setModalFlag] = useState(false)
     var [signUpM, setSignUpM] = useState(false)
     var [anywhereM, setAnywhereM] = useState(false)
+    var [loginType, setLoginType] = useState(null)
+
+
+
+
 
     const toggleSignModal = (value = null) => {
         if (!value) {
@@ -25,7 +39,14 @@ export function AppHeader() {
         }
         else {
             setModalFlag(false)
-            if (value === "Sign up") setSignUpM(!signUpM)
+            if (value === "Sign up") {
+                setSignUpM(!signUpM)
+                setLoginType("Register")
+            }
+            else if (value === "Sign in") {
+                setSignUpM(!signUpM)
+                setLoginType("Login")
+            }
             document.addEventListener('click', callback)
             function callback(event) {
                 if (event.target.closest('.gray-filter')) {
@@ -52,14 +73,14 @@ export function AppHeader() {
 
         if (className === 'anywhere') {
             var elHeader = document.querySelector('.header-container')
-            if(!anywhereM)elHeader.style.borderBottom="none"
-            else elHeader.style.borderBottom= '1px solid rgb(236,236,236)'
+            if (!anywhereM) elHeader.style.borderBottom = "none"
+            else elHeader.style.borderBottom = '1px solid rgb(236,236,236)'
             setAnywhereM(!anywhereM)
         }
         window.addEventListener("wheel", callback)
         function callback(ev) {
             const direction_1 = ev.deltaY;
-            if (direction_1 > 0){
+            if (direction_1 > 0) {
                 setAnywhereM(false)
                 window.removeEventListener("wheel", callback)
             }
@@ -84,12 +105,14 @@ export function AppHeader() {
                     <img className="world-icon" src={wordIcon} />
                     <div onClick={() => toggleSignModal()} className="user-container">
                         <img className="burger-icon" src={burgerIcon} />
-                        <img className="user-icon" src={userIcon} />
+                        {loggedInUser === 'null' ? <img className="user-icon" src={userIcon} /> :
+                            <img className="user-profile" src={profilePic} />
+                        }
                     </div>
                 </div>
 
                 {modalFlag && <SignModal toggleSignModal={toggleSignModal} />}
-                {signUpM && <SignInModal closeModal={closeModal} />}
+                {signUpM && <SignInModal closeModal={closeModal} loginType={loginType} />}
 
             </header>
             {anywhereM && <section><SubHeader /><Anywhere /></section>}

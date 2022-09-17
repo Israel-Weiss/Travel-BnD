@@ -15,10 +15,8 @@ export const RoomDatails = ({ stay }) => {
         <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
         <p className='room-details-desc'>{guests} guests {bedrooms} bedrooms {beds} beds {baths} baths</p>
 
-
+<div className="flex" style={{width:"100%"}}>
         <div className="left">
-            <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
-
 
             <div className='flex margin-top-30' >
                 <img className='room-info-icons' src={icon1} />
@@ -45,8 +43,9 @@ export const RoomDatails = ({ stay }) => {
             </div>
         </div>
 
-        <ReserveModal stay={stay} />
+       <div className="right"> <ReserveModal stay={stay} /></div>
 
+        </div>
 
     </div>)
 

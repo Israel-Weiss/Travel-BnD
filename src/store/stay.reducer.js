@@ -1,10 +1,7 @@
 
 
 const INITIAL_STATE = {
-    stays: null,
-    filterBy: null,
-    user:null
-    // isLoading: false
+    stays: null
 }
 
 

@@ -37,9 +37,9 @@ const gStays = [
       "Free parking on premises",
     ],
     host: {
-      "_id": "u101",
-      "fullname": "Davit Pok",
-      "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+      _id: "u101",
+      fullname: "Davit Pok",
+      imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
     },
     loc: {
       country: "Cyprus",
@@ -115,9 +115,9 @@ const gStays = [
       "Shared pool",
     ],
     host: {
-      "_id": "u101",
-      "fullname": "Davit Pok",
-      "imgUrl": "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
+      _id: "u101",
+      fullname: "Davit Pok",
+      imgUrl: "https://a0.muscache.com/im/pictures/fab79f25-2e10-4f0f-9711-663cb69dc7d8.jpg?aki_policy=profile_small",
     },
     loc: {
       country: "Turkey",
@@ -193,9 +193,9 @@ const gStays = [
       "Air conditioning",
     ],
     host: {
-      "_id": "u102",
-      "fullname": "Stavros",
-      "imgUrl": "https://a0.muscache.com/im/pictures/user/19700169-6b6f-4700-9aa5-42f754932e0e.jpg?im_w=240",
+      _id: "u102",
+      fullname: "Stavros",
+      imgUrl: "https://a0.muscache.com/im/pictures/user/19700169-6b6f-4700-9aa5-42f754932e0e.jpg?im_w=240",
     },
     loc: {
       country: "Cyprus",
@@ -273,9 +273,9 @@ const gStays = [
       "Beach access – Beachfront",
     ],
     host: {
-      "_id": "u102",
-      "fullname": "Stavros",
-      "imgUrl": "https://a0.muscache.com/im/pictures/user/19700169-6b6f-4700-9aa5-42f754932e0e.jpg?im_w=240",
+      _id: "u102",
+      fullname: "Stavros",
+      imgUrl: "https://a0.muscache.com/im/pictures/user/19700169-6b6f-4700-9aa5-42f754932e0e.jpg?im_w=240",
     },
     loc: {
       country: "Cyprus",
@@ -352,9 +352,9 @@ const gStays = [
       "Beach access Beachfront",
     ],
     host: {
-      "_id": "u103",
-      "fullname": "Maria",
-      "imgUrl": "https://a0.muscache.com/im/pictures/user/f504cbac-365c-415d-abaf-a59c8da8a745.jpg?im_w=240",
+      _id: "u103",
+      fullname: "Maria",
+      imgUrl: "https://a0.muscache.com/im/pictures/user/f504cbac-365c-415d-abaf-a59c8da8a745.jpg?im_w=240",
     },
     loc: {
       country: "United Kingdom",
@@ -430,9 +430,9 @@ const gStays = [
       "Patio or balcony",
     ],
     host: {
-      "_id": "u103",
-      "fullname": "Maria",
-      "imgUrl": "https://a0.muscache.com/im/pictures/user/f504cbac-365c-415d-abaf-a59c8da8a745.jpg?im_w=240",
+      _id: "u103",
+      fullname: "Maria",
+      imgUrl: "https://a0.muscache.com/im/pictures/user/f504cbac-365c-415d-abaf-a59c8da8a745.jpg?im_w=240",
     },
     loc: {
       country: "Romania",
