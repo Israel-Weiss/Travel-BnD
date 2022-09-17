@@ -1,9 +1,9 @@
-import { UtilService } from '../../services/util.service'
+import { stayService } from '../../services/stay.service'
 
 export const RoomReviews = ({stay}) => {
     const reviews =  stay.reviews
 
-    var rate = UtilService.calcRate(reviews)
+    var rate = stayService.calcRate(reviews)
 
     if(!stay)return
     
