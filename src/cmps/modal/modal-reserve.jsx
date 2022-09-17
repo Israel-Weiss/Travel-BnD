@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setOrder } from '../../store/order.action';
 import { storageService } from '../../services/async-storage.service';
 import { setUser } from '../../store/user.action';
+import { MyCal } from '../calendar'
 
 export function ReserveModal({ stay }) {
     const dispatch = useDispatch()
@@ -14,6 +15,11 @@ export function ReserveModal({ stay }) {
     const [modalFlag, setModalFlag] = useState(false)
     const [reservedFlag, setreservedFlag] = useState(false)
 
+    const [isShown, setIsShown] = useState(true)
+
+    const handleClick = event => {
+        setIsShown(current => !current)
+    }
 
     const navigateTo=()=>{
         setreservedFlag(true)
@@ -44,18 +50,15 @@ export function ReserveModal({ stay }) {
         setModalFlag(false)
     }
 
-
-
-
     if (!stay) return
 
     return (
         <section>
-
+            <div className="cal" style={{display: isShown ? 'none' : 'block'}}>{MyCal()}</div>
             <div className="reserve-modal-container">
                 <p className="price">${stay.price} <span>night</span></p>
                 <div className="flex-coulmn">
-                    <button className="checkBtn">
+                    <button className="checkBtn" onClick={handleClick}> 
                         <div className="check-in">
                             <p className="title">CHECK-IN</p>
                             <p className="date">Add date</p>
