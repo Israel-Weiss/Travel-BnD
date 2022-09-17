@@ -5,13 +5,8 @@ import React, { useEffect } from 'react'
 
 export function MyTrip() {
 
-
-    // const orders = useSelector(state => state.orderModule.orders)
-
-
     const [orders, setOrders] = useState(null)
     
-
     useEffect(() => {
         loadOrders()
     }, [])
@@ -22,35 +17,32 @@ export function MyTrip() {
         })
     }
 
-
-    console.log(orders);
-
     if (!orders) return
     return (
         <section className="my-trip-container">
             <h1 className="header">My Trips</h1>
 
-            <div className="category">
-                <div className="category-section"><p>Date</p></div>
-                <div className="category-section"><p>Host</p></div>
-                <div className="category-section"><p>Stay</p></div>
-                <div className="category-section"><p>Dates</p></div>
-                <div className="category-section"><p>Guests</p></div>
-                <div className="category-section"><p>Total</p></div>
-                <div className="category-section"><p>Status</p></div>
-                <div className="category-section"><p>Actions</p></div>
+            <div className="order-list">
+                <div className="order-text"><p>Date</p></div>
+                <div className="order-text"><p>Host</p></div>
+                <div className="order-text"><p>Stay</p></div>
+                <div className="order-text"><p>Dates</p></div>
+                <div className="order-text"><p>Guests</p></div>
+                <div className="order-text"><p>Total</p></div>
+                <div className="order-text"><p>Status</p></div>
+                <div className="order-text"><p>Actions</p></div>
             </div>
 
             {orders.map(order => {
-                return <div className="category">
-                    <div className="category-section"><p>{order.date}</p></div>
-                    <div className="category-section"><p>{order.host}</p></div>
-                    <div className="category-section"><p>{order.stay}</p></div>
-                    <div className="category-section"><p>{order.startDate} - {order.endDate}</p></div>
-                    <div className="category-section"><p>1</p></div>
-                    <div className="category-section"><p>${order.price}</p></div>
-                    <div className="category-section"><p>{order.pending}</p></div>
-                    <div className="category-section"><button className="cancelBtn">Cancel</button></div>
+                return <div className="order-list">
+                    <div className="order-text"><p>{order.date}</p></div>
+                    <div className="order-text"><p>{order.host}</p></div>
+                    <div className="order-text"><p>{order.stay}</p></div>
+                    <div className="order-text"><p>{order.startDate} - {order.endDate}</p></div>
+                    <div className="order-text"><p>1</p></div>
+                    <div className="order-text"><p>${order.price}</p></div>
+                    <div className="order-text"><p>{order.pending}</p></div>
+                    <div className="order-text"><button className="cancelBtn">Cancel</button></div>
                 </div>
             })}
 

@@ -4,7 +4,7 @@ import { setUser,validUser } from "../../store/user.action"
 import { useDispatch, useSelector } from 'react-redux'
 
 
-export function SignInModal({ closeModal, loginType }) {
+export function LoginInterface({ closeModal, loginType }) {
     const dispatch = useDispatch()
 
 
@@ -15,7 +15,6 @@ export function SignInModal({ closeModal, loginType }) {
        if(loginType==="Register") dispatch(setUser(user))
        else  dispatch(validUser(user))
     }
-
 
     return (
         <div className="signUp-modal">

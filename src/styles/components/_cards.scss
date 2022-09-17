@@ -42,17 +42,18 @@
 }
 
 .card-container {
+    width: 100%;
     padding: 0px 80px 0px 80px;
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
+    gap: 24px;
 
    
 
     .card {
-    
+    width: 23%;
         .card-image{
-            width: 270px;
+            width: 100%;
             position: relative;
             display: flex;
             flex-direction: column;
