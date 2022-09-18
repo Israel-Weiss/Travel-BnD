@@ -14,9 +14,7 @@ export const StayPreview = ({stay}) => {
 
     var [idx, setIdx] = useState(0)
 
-    console.log('url',stay)
     if (!stay) return
-
     return (
         <div className="card">
             <div className="card-image">
