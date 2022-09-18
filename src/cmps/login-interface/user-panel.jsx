@@ -23,6 +23,8 @@ export function UserPanel({  toggleModals }) {
                 <li><NavLink className="black text-start" to='#' onClick={() => onLogout()}>Logout</NavLink></li>
             }
             <li><NavLink className="black text-start" to='/my-trip'>My Trip</NavLink></li>
+            <li><NavLink className="black text-start" to='/wishlist'>Wishlist</NavLink></li>
+
         </div>
     )
 }

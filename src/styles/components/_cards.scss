@@ -103,6 +103,17 @@
 
             }
 
+            .heart-icon {
+                position: absolute;
+                width: 25px;
+                height: 25px;
+                right: 0;
+                margin-top: 15px;
+                margin-right: 15px;
+                cursor: pointer;
+
+            }
+
             .navigation-manual {
                 top: 80%;
                 bottom: 0;
@@ -122,6 +133,7 @@
                     border-radius: 50%;
 
                 }
+
 
                 .navigation-button:not(:last-child) {
                     margin-right: 6px;

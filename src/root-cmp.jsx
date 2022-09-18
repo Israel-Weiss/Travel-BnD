@@ -17,7 +17,7 @@ import { MyTrip } from './pages/my-trip'
 // import { HostApp } from './pages/host-app'
 import { StayApp } from './pages/stay-app'
 import { StayDetails } from './pages/stay-details'
-// import { UpdateStay } from './pages/update-stay'
+import {Wishlist} from './pages/wish-list'
 // import { UserDetails } from './pages/user-details'
 
 function App() {
@@ -27,8 +27,8 @@ function App() {
       <AppHeader />
       <Routes>
         <Route path='/rooms/:id' element={<StayDetails />} />
+        <Route path='/wishlist' element={<Wishlist/>} />
         <Route path='/my-trip' element={<MyTrip />} />
-
         <Route path='/' element={<StayApp />} />
         {/* <AppFooter /> */}
       </Routes>

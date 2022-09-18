@@ -56,7 +56,21 @@
             display: block;
         }
 
-        .price {
+        .calendar{
+        background-color:$clr1 ;
+        border-radius: 16px;
+        border: 1px solid;
+        border-color:$clr6;
+        display: inline-block;
+        padding: 24px 24px 6px;
+        position: fixed;
+        bottom: 6%;
+        left: 66.8%;
+        width: 400px; 
+        z-index: 1;
+        min-height: 400px;
+    }
+    .price {
             font-size: 22px;
             color: $clr5;
             font-weight: bold;
@@ -101,7 +115,15 @@
                     font-weight: bold;
                 }
 
-                .date {
+            .date-in {
+
+                text-align: start;
+                margin-top: 4px;
+                font-weight: 400;
+                font-size: 10px;
+                color: $clr4;
+            }
+            .date-out {
 
                     text-align: start;
                     margin-top: 4px;
@@ -238,7 +260,7 @@
         align-items: center;
         gap: 10px;
         @include for-small-layout {
-            flex-direction: row;
+            flex-direction: column;
             align-items: unset;
             gap: 0px;
         }
