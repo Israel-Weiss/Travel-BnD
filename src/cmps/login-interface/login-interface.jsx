@@ -19,12 +19,12 @@ export function LoginInterface({ closeModal, loginType }) {
     return (
         <div className="signUp-modal">
             <div className="title-sector flex"  >
-                <button className="exit-btn" onClick={() => closeModal('Sign up')}>x</button>
                 <p className="title black bold">Log in or sign up</p>
+                <button className="exit-btn" onClick={() => closeModal('Sign up')}>x</button>
             </div>
             <form className="sign-up-layout" onSubmit={(event) => onRegister(event)}>
 
-                <h1 className="header black text-start">Welcome to Airbnb</h1>
+                {/* <h1 className="header black text-start">Welcome to Airbnb</h1> */}
 
                 <h1 className="header black text-start">Username</h1>
                 <input className="signUp-input" type="text" />

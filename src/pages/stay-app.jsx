@@ -7,26 +7,20 @@ import { StayList } from '../cmps/stays/stay-list'
 import { StayFilter } from '../cmps/stay-filter'
 //import { loadStay, setFilterBy } from '../store/actions/stay.action'
 import { stayService } from '../services/stay.service'
-
+import { loadStay,setFilter } from '../store/stay.action'
 
 export const StayApp = () => {
-
-
-
-    const [stays, setStays] = useState(null)
+    const dispatch = useDispatch()
+    // const [stays, setStays] = useState(null)
+const {stays}=  useSelector(state => state.stayModule)
+console.log(stays,"im got it");
 
     useEffect(() => {
-        loadStay()
+        dispatch(loadStay())
     }, [])
 
-    const loadStay = () => {
-
-        const stays = stayService.query().then(stays=>{setStays(stays)})
-        
-    }
-
     const onSetFilter=(tag)=>{
-        stayService.query(tag).then(stays=>{setStays(stays)} )
+        dispatch(setFilter(tag,null))
     }
 
     if (!stays) return

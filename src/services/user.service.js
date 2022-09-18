@@ -15,13 +15,14 @@ function register(user) {
 }
 
 
-function removeUser(userId){
- storageService.remove("users",userId)
+function removeUser(userId) {
+    storageService.remove("users", userId)
 }
 
 function validate(user) {
     return storageService.query('users').then(users => {
-       return users.some((currUser) =>  (currUser.username === user.username) && (currUser.password === user.password) )
+        var filterUser = users.filter((currUser) => (currUser.username === user.username) && (currUser.password === user.password))
+        return filterUser[0]
     })
 }
 

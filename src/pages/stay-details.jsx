@@ -27,7 +27,6 @@ export const StayDetails = () => {
     const loadStay = () => {
         const stayId = params.id
         stayService.getById(stayId).then(stay => {
-            console.log("return stay",stay);
             setStay(stay)
         })
     }

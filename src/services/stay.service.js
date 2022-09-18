@@ -102,7 +102,7 @@ const gStays = [
   },
   {
     _id: "10006547",
-    name: "full moon camping",
+    name: "Full moon camping",
     distance: "718",
     date: "sep 21 – 26",
     type: "House",
@@ -180,7 +180,7 @@ const gStays = [
   },
   {
     _id: "10006548",
-    name: "2 bdr log house /mountains/Queen bed/fireplace",
+    name: "Mountains Queen",
     distance: "357",
     date: "Sep 20 – 25",
     type: "House",
@@ -258,7 +258,7 @@ const gStays = [
   },
   {
     _id: "10006549",
-    name: "Phaedrus Living: Seaview Luxury Flat Limnaria 153",
+    name: "Phaedrus Living",
     distance: "373",
     date: "Nov 12 – 19",
     type: "House",
@@ -337,6 +337,7 @@ const gStays = [
     likedByUsers: ['mini-user']
   },
   {
+    name: "Protaras Holiday ",
     _id: "10006550",
     distance: "3,485",
     date: "Oct 3 – 8",
@@ -416,6 +417,7 @@ const gStays = [
     likedByUsers: ['mini-user']
   },
   {
+    name: "Blue Windmill",
     _id: "10006551",
     distance: "1,739",
     date: "Dec 3 – 9",
@@ -495,7 +497,6 @@ const gStays = [
   }
 ]
 
-
 export const stayService = {
   getById,
   query,
@@ -511,10 +512,19 @@ function getById(stayId) {
   return Promise.resolve(stay)
 }
 
-function query(tag = null) {
+function query(tag = null,text=null) {
   let stayToDisplay = []
   if (tag) {
     stayToDisplay = gStays.filter(stay => stay.tags.includes(tag))
+    return Promise.resolve(stayToDisplay)
+  }
+  else if(text){
+const lowerText = text.toLowerCase()
+    stayToDisplay = gStays.filter(stay => 
+      (stay.name.toLowerCase().includes(lowerText))
+    ||(stay.loc.country.toLowerCase().includes(lowerText)) 
+    ||(stay.loc.city.toLowerCase().includes(lowerText)))
+    console.log(stayToDisplay);
     return Promise.resolve(stayToDisplay)
   }
   else {
@@ -533,9 +543,9 @@ function calcRate(reviews) {
 }
 
 function mapIcon(amenities) {
-    
   var picright = [] 
   var picleft2 = []
+    
   let icon = {}
   amenities.map((amentitie) => {
       switch(amentitie) {
@@ -593,5 +603,6 @@ function mapIcon(amenities) {
       } 
   }
 )
+icon=[picleft2,picright]
   return icon
 }

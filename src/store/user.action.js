@@ -10,6 +10,7 @@ export function setUser(user) {
         }
         else userService.register(user)
             .then(user => {
+                if(!user)return
                 sessionStorage.setItem("logedInUser", JSON.stringify(user))
                 dispatch({ type: 'SET_USER', user: user })
             })
@@ -37,10 +38,11 @@ export function logout(user) {
         return (dispatch, getState) => {
 
             userService.validate(user)
-                .then(validate => {
-                    if (validate) {
-                        sessionStorage.setItem("logedInUser", JSON.stringify(user))
-                        dispatch({ type: 'SET_USER', user: user })
+                .then(validtedUser => {
+                    if (validtedUser) {
+                        console.log(validtedUser,"validtedUser");
+                        sessionStorage.setItem("logedInUser", JSON.stringify(validtedUser))
+                        dispatch({ type: 'SET_USER', user: validtedUser })
                     }
                     else return
                 })
