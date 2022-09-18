@@ -33,7 +33,8 @@ export const orderService = {
 
 function createOrder(stay) {
   const user = storageService.getLogedInUser()
-  console.log("useers", user);
+  if (user) var userId = user._id
+  else userId = "t001"
   var order = {
     date: "16/09/22",
     id: "tyuiis114",
@@ -44,15 +45,16 @@ function createOrder(stay) {
     guests: "1",
     price: stay.price,
     status: "pending",
-    userId: user._id
+    userId:userId
   }
   return storageService.post("orders", order, 'order')
 
 }
 
 function getByLogedInUser() {
-  const user = storageService.getLogedInUser()
- return storageService.query("orders").then(orders => {
+  var user = storageService.getLogedInUser()
+if(!user)var user={_id:"t001"}
+  return storageService.query("orders").then(orders => {
     let orderToDisplay = []
     orders.map(order => {
       if (order.userId === user._id) orderToDisplay.push(order)

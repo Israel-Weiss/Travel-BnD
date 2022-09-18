@@ -36,8 +36,8 @@ export const StayFilter = ({ onSetFilter, onSortBy }) => {
             {pics.map(img => {
                 key++
                 return (
-                    <div className="filter-category" onClick={() => onSetFilter(img.text)}>
-                        <img className="filter-icons" key={key} src={img.pic} />
+                    <div className="filter-category" key={key++} onClick={() => onSetFilter(img.text)}>
+                        <img className="filter-icons"  src={img.pic} />
                         <p className="filter-icons-text">{img.text}</p>
                     </div>)
             })}

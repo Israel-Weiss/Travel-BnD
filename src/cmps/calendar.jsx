@@ -20,7 +20,6 @@ export function MyCal() {
         moveRangeOnFirstSelection={false}
         ranges={state}
       />
-      {console.log(startdate.toString().slice(15))} 
     </div>
   );
 }

@@ -8,10 +8,18 @@ header.header-container {
     align-items: center;
     justify-content: space-between;
     height: 80px;
-    padding-left: 80px;
-    padding-right: 80px;
+
+    padding: 0px 20px 0px 20px;
     border-top: 1px solid $clr2;
     border-bottom: 1px solid $clr2;
+
+    @include for-small-layout { 
+        padding: 0px 42px 0px 42px;
+    }
+
+    @include for-narrow-layout {
+        padding: 0px 80px 0px 80px;
+    }
 
     a {
         display: flex;
@@ -25,16 +33,21 @@ header.header-container {
     }
 
     .header-nav {
-        display: flex;
-        background-color: $clr1;
-        height: 46px;
-        align-items: center;
-        border: 1px solid $clr2;
-        border-radius: 30px;
-        padding-right: 6px;
-        padding-left: 8px;
-        margin: 0px 24px 0px 24px;
-        box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
+       display: none;
+
+        @include for-small-layout {
+            display: flex;
+            background-color: $clr1;
+            height: 46px;
+            align-items: center;
+            border: 1px solid $clr2;
+            border-radius: 30px;
+            padding-right: 6px;
+            padding-left: 8px;
+            margin: 0px 24px 0px 24px;
+            box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
+
+        }
 
 
         a.navlink {

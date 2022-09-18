@@ -1,5 +1,8 @@
 .room {
-    padding: 0px 80px 0px 80px;
+
+    @include for-small-layout {
+        padding: 0px 80px 0px 80px
+    }
 
     .room-info-icons {
         width: 23px;
@@ -14,7 +17,13 @@
         display: flex;
         flex-direction: column;
         align-items: flex-start;
-        margin-top: 20px;
+        margin-top: 10px;
+        padding: 0px 10px 0px 10px;
+
+        @include for-small-layout {
+            padding: 0px;
+            margin-top: 20px;
+        }
 
         .room-info-title {
             font-size: 26px;
@@ -62,23 +71,34 @@
 
     .room-images {
         margin-top: 20px;
-        display: grid;
-        max-height: 335px;
-        grid-template-rows: 163.5px 163.5px;
+        display: flex;
+        overflow-x: hidden;
 
-        grid-template-areas:
-            "a a b c"
-            "a a d e"
-        ;
-        gap: 8px;
+
+
+        @include for-small-layout {
+            display: grid;
+            max-height: 335px;
+            grid-template-rows: 163.5px 163.5px;
+
+            grid-template-areas:
+                "a a b c"
+                "a a d e"
+            ;
+            gap: 8px;
+        }
+
 
         .room-image {
             height: 335px;
         }
 
         .room-image:first-child {
-            border-bottom-left-radius: 12px;
-            border-top-left-radius: 12px;
+            @include for-small-layout {
+                border-bottom-left-radius: 12px;
+                border-top-left-radius: 12px;
+            }
+        
             width: 100%;
             grid-area: a;
         }
@@ -115,6 +135,10 @@
         flex-direction: column;
         align-items: flex-start;
         margin-top: 30px;
+        padding: 0px 10px 0px 10px;
+        @include for-small-layout {
+            padding: 0px;
+            }
 
         .room-details-title {
             font-size: 22px;
@@ -122,8 +146,9 @@
             color: $clr5;
             margin-block-end: 0px;
         }
+
         .room-details-desc {
-            width: 120vw;
+            width: 100%;
             font-size: 14px;
             font-weight: 400;
             color: $clr5;
@@ -131,11 +156,12 @@
             padding-bottom: 30px;
             border-bottom: 1.8px solid $clr2;
         }
+
         .left {
             width: 70%;
 
 
-            
+
         }
 
         .right {
@@ -149,11 +175,18 @@
         padding-top: 20px;
         padding-bottom: 20px;
         border-top: 1px solid $clr2;
-
+        padding: 0px 10px 0px 10px;
+        @include for-small-layout {
+        padding: 0px;
+        }
         .place-offer-list {
-            max-width: 46vw;
+
             display: flex;
             justify-content: space-between;
+            
+            @include for-small-layout {
+                max-width: 46vw;
+            }
 
             .left {
                 display: flex;
@@ -167,6 +200,7 @@
 
         }
     }
+
     .review-container {
         border-top: 1px solid $clr2;
         padding-top: 20px;
@@ -175,14 +209,14 @@
         font-size: 16px;
         display: flex;
         flex-wrap: wrap;
-
+        padding: 8px 8px 15px 8px;
         .fontSize-22 {
             font-size: 22px;
         }
 
         .review-title {
             font-size: 22px bold;
-            color:$clr5;
+            color: $clr5;
             width: 100%;
             padding-bottom: 10px;
         }
@@ -190,33 +224,42 @@
         .review-card {
             width: 50%;
             color: $clr5;
-            padding: 0px 60px 15px 8px;
+            
+            max-height: 150px;
+            gap: 10px;
+            overflow-y: scroll;
+
+            @include for-small-layout {
+                padding: 0px 60px 15px 8px;
+            }
         }
 
-        .user-col{
+        .user-col {
             display: flex;
             flex-direction: column;
-            padding-left:8px;
+            padding-left: 8px;
             line-height: normal;
             padding-top: 5px;
         }
 
         .review-date {
-            color:$clr4;
-            font-size:14px
-
+            color: $clr4;
+            font-size: 14px
         }
+
         .user-pic {
             height: 50px;
             width: 50px;
-            border-radius:50%;
+            border-radius: 50%;
         }
+
         .review-txt {
             font-weight: 400;
             line-height: 20px;
-            padding: 15px 100px 15px 0px
+
+            @include for-small-layout {
+                padding: 15px 100px 15px 0px;
+            }
         }
     }
 }
-
-    

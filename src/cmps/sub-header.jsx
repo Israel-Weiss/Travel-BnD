@@ -1,6 +1,15 @@
 import searchIcon from "../assets/imgs/serachIcon.png"
+import { setFilter } from "../store/stay.action"
+import { useDispatch, useSelector } from 'react-redux'
 
 export function SubHeader() {
+    const dispatch = useDispatch()
+
+const onSearch=(ev)=>{
+const text= ev.target.value
+dispatch(setFilter(null,text))
+}
+
     return (
         <div className="subheader-container">
             <div className="search-bar flex">
@@ -8,7 +17,7 @@ export function SubHeader() {
                 <div className="flex align-items" style={{ height: '100%' }}>
                     <ul>
                         <p className="title">Where</p>
-                        <input type="text" placeholder="search destination" />
+                        <input type="text" placeholder="search destination" onChange={(event)=>onSearch(event)}/>
                     </ul>
 
                     <ul>

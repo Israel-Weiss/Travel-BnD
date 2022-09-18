@@ -2,48 +2,97 @@
 
     width: 100%;
     min-height: calc(100vh - 90px);
+    padding: 20px 10px 0px 10px;
 
-    padding: 20px 80px 0px 80px;
-
+    @include for-small-layout {
+        padding: 20px 80px 0px 80px;
+    }
+    
     h1 {
         color: $clr5;
         font-size: 28px;
         font-weight: bold;
+        
     }
 
     .cancelBtn {
-        cursor: pointer;
         background-color: $clr3;
         border: none;
         color: $clr1;
-        width: 70px;
+        width: 50px;
+        font-size: 12px;
         height: 30px;
         border-radius: 10px;
-
+        cursor: pointer;
+        @include for-small-layout {
+            width: 70px;
+            font-size: 14px;
+        }
     }
 
     .order-list {
-
-        &:nth-child(2) {
-            font-weight: bold;
-            font-size: 18px;
-        }
-
-
         align-items: center;
-        height: 68px;
+        height: 55px;
         border-bottom: 1px solid $clr4;
         color: $clr5;
-        font-size: 14px;
+        font-size: 12px;
         width: 100%;
         display: flex;
 
+
+        @include for-small-layout {
+            font-size: 15px;
+            height: 68px;
+        }
+
+        &:nth-child(2) {
+            font-weight: bold;
+            font-size: 13px;
+
+            @include for-small-layout {
+                font-size: 18px;
+            }
+        }
+
+   
+    
         .order-text {
-            width: 10%;
+            width: 15%;
+
+            @include for-small-layout {
+                width: 10%;
+            
+            }
+
+            &:nth-child(1),  &:nth-child(5){
+                display: none;
+                @include for-small-layout{
+                    display: block;
+                }
+            }
+
+            &:nth-child(2) {
+                width: 20%;
+                @include for-small-layout{
+                    width: 10%;
+                }
+            }
 
             &:nth-child(4) {
-                width: 20%;
+                width: 25%;
+                @include for-small-layout{
+                    width: 20%;
+                }
             }
+
+            &:nth-child(6) {
+                width: 12.5%;
+                @include for-small-layout{
+                    width: 10%;
+                }
+            }
+
+            
 
             &:nth-child(3) {
                 width: 20%;
