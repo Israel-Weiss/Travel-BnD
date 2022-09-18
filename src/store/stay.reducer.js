@@ -6,13 +6,17 @@ const INITIAL_STATE = {
 
 
 export function stayReducer(state = INITIAL_STATE, action) {
+let filterStays=[]
 
     switch (action.type) {
-        case 'SET_TOYS':
+        case 'SET_STAY':{
+        console.log(action.stays,"action.stays");
             return {
                 ...state,
-            stays: action.toys
+            stays: [...action.stays]
             }
+
+        }
 
         case 'REMOVE_TOY':
             return {

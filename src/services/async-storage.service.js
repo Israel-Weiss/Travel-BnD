@@ -33,14 +33,11 @@ function get(entityType, entityId) {
 }
 
 function post(entityType, newEntity, type=null) {
-    console.log('newEntity',newEntity);
     newEntity._id = _makeId()
     return query(entityType)
         .then(entities => {
             entities.push(newEntity)
-            console.log('entities',entities);
             _save(entityType, entities)
-            console.log(newEntity);
             if(type==='order') return entities
             else return  newEntity
         })
@@ -66,7 +63,6 @@ function remove(entityType, entityId) {
 }
 
 function _save(entityType, entities) {
-    console.log("save",entities);
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
 

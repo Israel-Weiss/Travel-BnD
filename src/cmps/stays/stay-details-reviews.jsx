@@ -6,13 +6,13 @@ export const RoomReviews = ({stay}) => {
     var rate = stayService.calcRate(reviews)
 
     if(!stay)return
-    
+    var key=100
     return (
         <section className="review-container flex" >
         <h1 className="review-title fontSize-22 bold"> ★ {rate} · {reviews.length} Reviews </h1>
                 {reviews.map((review) => {
                     return (
-                        <div className="review-card">
+                        <div className="review-card" key={key++}>
                             <div className="review-details flex">
                                 
                                 <img className='user-pic' src={review.by.imgUrl} />

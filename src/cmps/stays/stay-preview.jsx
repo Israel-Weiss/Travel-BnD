@@ -14,7 +14,6 @@ export const StayPreview = ({stay}) => {
 
     var [idx, setIdx] = useState(0)
 
-    console.log('url',stay)
     if (!stay) return
 
     return (

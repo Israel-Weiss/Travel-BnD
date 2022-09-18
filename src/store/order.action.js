@@ -6,7 +6,6 @@ export function setOrder(stay, user) {
         orderService.createOrder(stay,user)
             .then(orders => {
                 
-                console.log(orders);
                 dispatch({ type: 'SET_ORDER', orders: orders })
             })
             .catch(err => {
