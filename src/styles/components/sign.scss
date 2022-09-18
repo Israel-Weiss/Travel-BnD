@@ -14,6 +14,7 @@
 
     @include for-small-layout{
         width: 230px;   
+        
     }
 
     a {
@@ -29,10 +30,7 @@
         }
     }
 
-    li:nth-child(3) {
-        height: 8px;
-        border-bottom: 1px solid $clr2;
-    }
+
 
     li:nth-child(4) {
         margin-top: 8px;
