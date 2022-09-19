@@ -29,6 +29,9 @@
         font-weight: bold;
         border-radius: 10px;
         cursor: pointer;
+        @include for-small-layout {
+            width: 100%;
+        }
     }
 
     .price {
@@ -318,3 +321,4 @@
         }
     }
 }
+

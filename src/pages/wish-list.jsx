@@ -1,15 +1,17 @@
 import React from "react";
 import { useState, useEffect } from 'react'
-import { useSelector } from 'react-redux'
-import { useParams } from 'react-router-dom'
 import { stayService } from "../services/stay.service";
+import { useDispatch, useSelector } from 'react-redux'
+import renameicon from '../assets/imgs/renameicon.svg'
 
-export function Wishlist() {
+
+export function WishList() {
 
     const [stay, setstays] = useState(null)
     const {loggedInUser}= useSelector(state => state.userModule)
-    var counter = 0
+    const [modalFlag, setModalFlag] = useState(false)
 
+    var counter = 0
 
     useEffect(() => {
         loadstays()
@@ -21,10 +23,22 @@ export function Wishlist() {
         })
     }
 
-    console.log(stay)
+    const onRename = (ev) => {
+        closeModal('Save')
+        ev.preventDefault()
+        const wishlistName = document.querySelector('.list-title')
+        wishlistName.innerHTML = ev.target[0].value
+        console.log(ev)
+    }
 
-    const updateMe = () => {
-        console.log('im working')
+    const changeModal = () => {
+        document.querySelector('.wishlist-edit-modal').style.display = 'flex'
+        setModalFlag(true)
+    }
+
+    const closeModal = () => {
+        document.querySelector('.wishlist-edit-modal').style.display = 'none'
+        setModalFlag(false)
     }
 
     if(!stay)return
@@ -39,7 +53,7 @@ return (
             
             <div className="list">
                 <a href="http://localhost:3000/#/">
-                <div className="wish-box" onClick={updateMe()}>
+                <div className="wish-box">
                 {
                 stay.map((stay) =>{
                     
@@ -53,8 +67,24 @@ return (
                 )}
                 </div>
                 </a>
-                <h2 className="list-title">Dummy list</h2>
+                <h2 className="list-title">Dummy list</h2><img className='wishlist-rename-icon' src={renameicon} onClick={() => changeModal()} />
+                    <div className="wishlist-edit-modal" style={{display: modalFlag ? 'flex' : 'none'}}>
+                        <div className="setting-title-sector flex"  >
+                            <p className="setting-title black bold">Settings</p>
+                            <button className="exit-btn" onClick={() => closeModal('Save')}>x</button>
+                        </div>
+                        <form className="rename-layout" onSubmit={(event) => onRename(event)}>
+                
+                            <h1 className="header black text-start">New wishlist name</h1>
+                            <input className="name-input" type="text" />
+                            <p className="text text-start black">Max 20 characters</p>
+
+                            <button className="continue-btn">Save</button>
+
+                        </form>
+                    </div>
             </div>
         </section>
     </section>
-)}
+)
+}

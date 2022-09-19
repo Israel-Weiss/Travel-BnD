@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { stayService } from '../services/stay.service'
 import { Link, useNavigate, useParams } from 'react-router-dom'
+import { loadPage } from '../store/stay.action'
 
 
 //child cmp
@@ -10,17 +11,17 @@ import { PlaceOffer } from '../cmps/stays/stay-details-reserve'
 import { RoomInfo } from '../cmps/stays/stay-details-title'
 import { RoomImages } from '../cmps/stays/stay-details-img'
 import { RoomDatails } from '../cmps/stays/stay-details-secondary'
-
 import { ReserveModal } from '../cmps/modal/modal-reserve'
-
 import { RoomReviews } from '../cmps/stays/stay-details-reviews'
 
 export const StayDetails = () => {
-
+    const dispatch = useDispatch()
     const [stay, setStay] = useState(null)
     const params = useParams()
+    const currentUrl = window.location.href
 
     useEffect(() => {
+        dispatch(loadPage(currentUrl))
         loadStay()
     }, [params.id])
 

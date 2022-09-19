@@ -1,22 +1,28 @@
-
-
 const INITIAL_STATE = {
-    stays: null
+    stays: null,
+    page:"/"
 }
-
 
 export function stayReducer(state = INITIAL_STATE, action) {
 let filterStays=[]
 
     switch (action.type) {
         case 'SET_STAY':{
-        console.log(action.stays,"action.stays");
             return {
                 ...state,
             stays: [...action.stays]
             }
 
         }
+
+        case 'SET_PAGE':{
+                return {
+                    ...state,
+                page: action.page
+                }
+    
+            }
+    
 
         case 'REMOVE_TOY':
             return {
@@ -42,11 +48,9 @@ let filterStays=[]
                 ...state,
                 filterBy: action.filterBy
             }
-
         default:
             return state
     }
-
 }
 
 

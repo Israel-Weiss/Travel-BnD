@@ -23,7 +23,7 @@ export const RoomReviews = ({stay}) => {
                             </div>
 
                             <div className="review-txt">
-                                <span>{review.txt} </span>
+                               {review.txt} 
                             </div>
                             
                         </div>
