@@ -1,0 +1,92 @@
+.room-info-icons {
+    width: 23px;
+    height: 23px;
+}
+
+.room-info-text {
+    color: $clr5;
+}
+
+.room-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 10px;
+    padding: 0px 10px 0px 10px;
+
+    @include for-small-layout {
+        padding: 0px;
+        margin-top: 20px;
+    }
+
+    .room-info-title {
+        font-size: 26px;
+        font-weight: 600;
+        color: $clr5;
+
+        margin-top: 3px;
+
+    }
+
+    .subTitle {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: -10.5px;
+        margin-bottom: 2px;
+
+        .room-info-left {
+            display: flex;
+            align-items: center;
+
+            .starIcon {
+                width: 14px;
+                margin-bottom: 3.5px;
+                margin-right: 3.5px;
+            }
+
+            .room-info-rating {
+                font-size: 14px;
+                font-weight: 600;
+                color: $clr5;
+                margin-right: 8px;
+            }
+
+            .room-reviews-info,
+            .room-location-info {
+                font-size: 14px;
+                font-weight: 600;
+                color: $clr5;
+                margin-right: 8px;
+                text-decoration: underline;
+            }
+        }
+
+        .room-info-right {
+            display: flex;
+            align-items: center;
+
+            .room-info-share {
+                margin-right: 18px;
+            }
+
+            .room-info-share,
+            .room-reviews-save {
+                font-size: 14px;
+                letter-spacing: 0.6px;
+
+                font-weight: 600;
+                color: $clr5;
+                text-decoration: underline;
+            }
+
+            .icons {
+                margin-right: 9px;
+                width: 16px;
+                margin-bottom: 4px;
+            }
+        }
+
+    }
+
+}

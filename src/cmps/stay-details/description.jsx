@@ -1,11 +1,11 @@
 import icon1 from '../../assets/imgs/room-info/designedBy-Icon.svg'
 import icon2 from '../../assets/imgs/room-info/featured-icon.svg'
 import icon3 from '../../assets/imgs/room-info/cancellation-Icon.svg'
-import { ReserveModal } from '../../cmps/modal/modal-reserve'
+import { ReserveModal } from '../modal/modal-reserve'
 
 
 
-export const RoomDatails = ({ stay }) => {
+export const StayDescription = ({ stay }) => {
     var profilePic = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
 
     if (!stay) return

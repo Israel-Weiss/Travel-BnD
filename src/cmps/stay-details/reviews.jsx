@@ -1,6 +1,6 @@
 import { stayService } from '../../services/stay.service'
 
-export const RoomReviews = ({stay}) => {
+export const StayReviews = ({stay}) => {
     const reviews =  stay.reviews
 
     var rate = stayService.calcRate(reviews)

@@ -7,9 +7,14 @@ import renameicon from '../assets/imgs/renameicon.svg'
 
 export function WishList() {
 
+<<<<<<< HEAD
     const [stay, setstays] = useState(null)
     const {loggedInUser}= useSelector(state => state.userModule)
     const [modalFlag, setModalFlag] = useState(false)
+=======
+import { StayList } from '../cmps/stay-list'
+export function Wishlist() {
+>>>>>>> cc292a36589f361a7ed7bc7fd6f0783be26ba682
 
     var counter = 0
 
