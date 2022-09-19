@@ -1,10 +1,7 @@
-
-
 const INITIAL_STATE = {
     stays: null,
     page:"/"
 }
-
 
 export function stayReducer(state = INITIAL_STATE, action) {
 let filterStays=[]
@@ -51,11 +48,9 @@ let filterStays=[]
                 ...state,
                 filterBy: action.filterBy
             }
-
         default:
             return state
     }
-
 }
 
 

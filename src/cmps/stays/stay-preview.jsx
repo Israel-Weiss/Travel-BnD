@@ -31,7 +31,6 @@ export const StayPreview = ({ stay }) => {
 
 
     if (!stay) return
-
     return (
         <div className="card">
             <div className="card-image">

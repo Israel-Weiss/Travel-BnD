@@ -53,20 +53,21 @@ export function ReserveModal({ stay }) {
 
     if (!stay) return
 
+    
     return (
         <section>
-            <div className="cal" style={{ display: isShown ? 'none' : 'block' }}>{MyCal()}</div>
             <div className="reserve-modal-container">
+            <div className="calendar" style={{display: isShown ? 'none' : 'block'}}>{MyCal()}</div>
                 <p className="price">${stay.price} <span>night</span></p>
                 <div className="flex-coulmn">
                     <button className="checkBtn" onClick={handleClick}>
                         <div className="check-in">
                             <p className="title">CHECK-IN</p>
-                            <p className="date">Add date</p>
+                            <p className="date-in">Add date</p>
                         </div>
                         <div className="check-out">
                             <p className="title">CHECKOUT</p>
-                            <p className="date">Add date</p>
+                            <p className="date-out">Add date</p>
                         </div>
                     </button>
                     <div className="select">
@@ -94,7 +95,7 @@ export function ReserveModal({ stay }) {
                     <div className="order-info">
                         <p className="bold-text">Reservation details</p>
                         <p className="bold-text">Trip dates:</p>
-                        <p className="text">21/09/22 - 24/09/22</p>
+                        <p className="text">{document.querySelector('.date-in').innerHTML} - {document.querySelector('.date-out').innerHTML}</p>
                         <div className='text-group'>
                             <p className="bold-text">Guests:</p>
                             <p className="text">{stay.capacity.guests}</p>
