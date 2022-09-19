@@ -1,11 +1,7 @@
 import { stayService } from "../services/stay.service"
 
-<<<<<<< HEAD
 
 export function loadStay(tag = null, text = null) {
-=======
-export function loadStay(tag=null,text=null){
->>>>>>> dfecbed827974239b0d5a99b85e25a260b2eebea
     return (dispatch, getState) => {
         stayService.query().then(stays => {
             console.log(stays, "staysss");

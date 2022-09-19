@@ -97,11 +97,13 @@
 
 .stay-details-layout {
     padding: 0px 20px 0px 20px;
-
     @include for-narrow-layout {
         padding: 0px 112px 0px 112px;
+        border-bottom: 1px solid $clr2;
     }
 }
+
+
 
 .stay-list-layout {
     padding: 0px 20px 0px 20px;
