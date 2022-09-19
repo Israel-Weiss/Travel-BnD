@@ -1,32 +1,19 @@
 import React from 'react'
 import { Route, Routes } from 'react-router-dom'
-
-
-
 import { AppHeader } from './cmps/app-header'
-import { AppFooter } from './cmps/app-footer'
-
+// import { AppFooter } from './cmps/app-footer'
 import { MyTrip } from './pages/my-trip'
-
-
-// import { AboutUs } from './pages/about-us'
-// import { AddStay } from './pages/add-stay'
-// import { AdminApp } from './pages/admin-app'
-// import { Booking } from './pages/booking'
-// import { ChatApp } from './pages/chat-app'
-// import { HostApp } from './pages/host-app'
 import { StayApp } from './pages/stay-app'
 import { StayDetails } from './pages/stay-details'
 import {Wishlist} from './pages/wish-list'
-// import { UserDetails } from './pages/user-details'
 
 function App() {
   return (
     <div className="App">
-      <div className='gray-filter'></div>
+      <div className='dark-screen'></div>
       <AppHeader />
       <Routes>
-        <Route path='/rooms/:id' element={<StayDetails />} />
+        <Route path='/stays/:id' element={<StayDetails />} />
         <Route path='/wishlist' element={<Wishlist/>} />
         <Route path='/my-trip' element={<MyTrip />} />
         <Route path='/' element={<StayApp />} />

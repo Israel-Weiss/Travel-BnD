@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 
 
-import { StayList } from '../cmps/stays/stay-list'
+import { StayList } from '../cmps/stay-list'
 export function Wishlist() {
 
     const {stays}=  useSelector(state => state.stayModule)

@@ -1,11 +1,8 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-
-import { StayList } from '../cmps/stays/stay-list'
+import { StayList } from '../cmps/stay-list'
 import { StayFilter } from '../cmps/stay-filter'
-//import { loadStay, setFilterBy } from '../store/actions/stay.action'
-import { stayService } from '../services/stay.service'
-import { loadStay, setFilter,loadPage } from '../store/stay.action'
+import { loadStay, setFilter, setCurrentUrl } from '../store/stay.action'
 
 export const StayApp = () => {
 
@@ -13,9 +10,8 @@ export const StayApp = () => {
     const currentUrl = window.location.href
     const { stays } = useSelector(state => state.stayModule)
 
-
     useEffect(() => {
-        dispatch(loadPage(currentUrl))
+        dispatch(setCurrentUrl(currentUrl))
         dispatch(loadStay())
     }, [])
 

@@ -1,12 +1,8 @@
 import { useState } from 'react'
-import { useEffect } from "react";
-import vPic from '../../assets/imgs/v.png'
-import { orderService } from '../../services/order.service';
 import { useDispatch, useSelector } from 'react-redux'
-import { setOrder } from '../../store/order.action';
-import { storageService } from '../../services/async-storage.service';
-import { setUser } from '../../store/user.action';
+import { setOrder } from '../../store/order.action'
 import { MyCal } from '../calendar'
+import confirmPic from '../../assets/imgs/v.png'
 
 export function ReserveModal({ stay }) {
     const dispatch = useDispatch()
@@ -32,29 +28,22 @@ export function ReserveModal({ stay }) {
     }
 
     const changeModal = () => {
-
-        // const user = storageService.getLogedInUser()
-        // if (!user) {
-        //     var ghostUser = { username: "Ghost", password: "0000" }
-        //     dispatch(setUser(ghostUser))
-        // }
-
-        document.querySelector('.gray-filter').style.display = 'block'
+        document.querySelector('.dark-screen').style.display = 'block'
         document.querySelector('.reserve-modal-container').style.display = 'none'
         setreservedFlag(false)
         setModalFlag(true)
     }
 
-    const closeModal = (mode) => {
-        document.querySelector('.gray-filter').style.display = 'none'
+    const closeModal = () => {
+        document.querySelector('.dark-screen').style.display = 'none'
         document.querySelector('.reserve-modal-container').style.display = 'flex'
         setModalFlag(false)
     }
 
     if (!stay) return
 
-    
     return (
+        //First Modal
         <section>
             <div className="reserve-modal-container">
             <div className="calendar" style={{display: isShown ? 'none' : 'block'}}>{MyCal()}</div>
@@ -80,14 +69,13 @@ export function ReserveModal({ stay }) {
                 </div>
                 <button className="availability-Btn" onClick={() => changeModal()}>Reserve</button>
             </div>
-
+          {/* Second Modal */}
             {modalFlag && <div className="reserve-modal-confirm-container">
                 {!reservedFlag ? <p className="header">One last step</p> :
                     <section className='align-items flex {'>
-                        <img className='icon' src={vPic} />
+                        <img className='icon' src={confirmPic} />
                         <p className="header">Reserved successfully</p>
                     </section>}
-
                 <p className="text-title">Dear Guest, <br />
                     In order to complete your reservation, please confirm your trip details.</p>
 
@@ -122,7 +110,6 @@ export function ReserveModal({ stay }) {
                 </div>
 
             </div>}
-
 
         </section>
     )

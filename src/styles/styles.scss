@@ -15,10 +15,17 @@
 @import 'components/modals';
 @import 'components/sub-header';
 @import 'components/filterBy';
-@import 'components/room-info';
 @import 'components/sign';
 @import 'components/teaser';
 @import 'components/pager';
 @import 'components/news';
 @import 'components/cards';
 @import 'components/sidebar';
+
+//STAY DETAILS
+@import 'components/stay-details/description.scss';
+@import 'components/stay-details/gallery';
+@import 'components/stay-details/place-offer';
+@import 'components/stay-details/reviews';
+@import 'components/stay-details/title';
+@import 'components/stay-details/stay-details';

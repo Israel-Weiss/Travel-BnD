@@ -1,18 +1,16 @@
-import { useEffect } from 'react'
-import { useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+
+import { useState, useEffect } from 'react'
+import { useDispatch } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { stayService } from '../services/stay.service'
-import { Link, useNavigate, useParams } from 'react-router-dom'
-import { loadPage } from '../store/stay.action'
+import { setCurrentUrl } from '../store/stay.action'
 
-
-//child cmp
-import { PlaceOffer } from '../cmps/stays/stay-details-reserve'
-import { RoomInfo } from '../cmps/stays/stay-details-title'
-import { RoomImages } from '../cmps/stays/stay-details-img'
-import { RoomDatails } from '../cmps/stays/stay-details-secondary'
-import { ReserveModal } from '../cmps/modal/modal-reserve'
-import { RoomReviews } from '../cmps/stays/stay-details-reviews'
+//Child CMP
+import { StayTitle } from '../cmps/stay-details/title'
+import { StayGallery } from '../cmps/stay-details/gallery'
+import { PlaceOffer } from '../cmps/stay-details/place-offer'
+import { StayDescription } from '../cmps/stay-details/description'
+import { StayReviews } from '../cmps/stay-details/reviews'
 
 export const StayDetails = () => {
     const dispatch = useDispatch()
@@ -21,7 +19,7 @@ export const StayDetails = () => {
     const currentUrl = window.location.href
 
     useEffect(() => {
-        dispatch(loadPage(currentUrl))
+        dispatch(setCurrentUrl(currentUrl))
         loadStay()
     }, [params.id])
 
@@ -32,18 +30,16 @@ export const StayDetails = () => {
         })
     }
 
-if(!stay)return
+    if (!stay) return
 
 
     return (
         <div className='room'>
-            <RoomInfo stay={stay} />
-            <RoomImages stay={stay} />
-    
-
-            <RoomDatails stay={stay} />
+            <StayTitle stay={stay} />
+            <StayGallery stay={stay} />
+            <StayDescription stay={stay} />
             <PlaceOffer stay={stay} />
-            <RoomReviews stay={stay} />
+            <StayReviews stay={stay} />
         </div>
     )
 }

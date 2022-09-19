@@ -20,7 +20,7 @@ export function AppHeader() {
     const { page } = useSelector(state => state.stayModule)
     console.log(page);
 
-    if (page.includes("room")) var cmp = "stayDetails"
+    if (page.includes("stays")) var cmp = "stayDetails"
     else cmp = "stayList"
 
     var profilePic = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
@@ -48,12 +48,12 @@ export function AppHeader() {
             }
             document.addEventListener('click', callback)
             function callback(event) {
-                if (event.target.closest('.gray-filter')) {
+                if (event.target.closest('.dark-screen')) {
                     closeModal(value);
                     document.removeEventListener('click', callback)
                 }
             }
-            document.querySelector('.gray-filter').style.display = 'block'
+            document.querySelector('.dark-screen').style.display = 'block'
             document.body.classList.add('modal-open')
         }
     }
@@ -63,7 +63,7 @@ export function AppHeader() {
             case 'Sign up': {
                 setLoginInterface(false)
                 document.body.classList.remove('modal-open')
-                document.querySelector('.gray-filter').style.display = 'none'
+                document.querySelector('.dark-screen').style.display = 'none'
             }
         }
     }
@@ -71,9 +71,9 @@ export function AppHeader() {
     const openModal = (className) => {
 
         if (className === 'anywhere') {
-            document.querySelector('.gray-filter').style.display = 'block'
-            document.querySelector('.gray-filter').style.top = '20%'
-            document.querySelector('.gray-filter').style.height = '80%'
+            document.querySelector('.dark-screen').style.display = 'block'
+            document.querySelector('.dark-screen').style.top = '20%'
+            document.querySelector('.dark-screen').style.height = '80%'
             var elHeader = document.querySelector('.header-container')
             if (!anywhereM) elHeader.style.borderBottom = "none"
 
@@ -84,9 +84,9 @@ export function AppHeader() {
         function callback(ev) {
             const direction_1 = ev.deltaY;
             if (direction_1 > 0) {
-                document.querySelector('.gray-filter').style.display = 'none'
-                document.querySelector('.gray-filter').style.top = '0'
-                document.querySelector('.gray-filter').style.height = '100%'
+                document.querySelector('.dark-screen').style.display = 'none'
+                document.querySelector('.dark-screen').style.top = '0'
+                document.querySelector('.dark-screen').style.height = '100%'
                 setAnywhereM(false)
                 window.removeEventListener("wheel", callback)
             }

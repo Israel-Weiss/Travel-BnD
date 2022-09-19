@@ -1,26 +1,22 @@
 import { stayService } from "../services/stay.service"
 
 
-export function loadStay(tag = null, text = null) {
-    return (dispatch, getState) => {
+export function loadStay(tag = null,text=null) {
+    return (dispatch) => {
         stayService.query().then(stays => {
-            console.log(stays, "staysss");
             dispatch({ type: 'SET_STAY', stays: stays })
         })
-
     }
 }
 
-export function loadPage(page) {
-    return (dispatch, getState) => {
+export function setCurrentUrl(page) {
+    return (dispatch) => {
         dispatch({ type: 'SET_PAGE', page: page })
     }
 }
 
 export function setFilter(tag = null, text = null) {
-
-    return (dispatch, getState) => {
-
+    return (dispatch) => {
         stayService.query(tag, text).then(stays => {
             dispatch({ type: 'SET_STAY', stays: stays })
         })

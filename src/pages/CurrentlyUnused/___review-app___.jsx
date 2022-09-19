@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-import { showErrorMsg, showSuccessMsg, showUserMsg } from '../services/event-bus.service'
+import { showErrorMsg, showSuccessMsg, showUserMsg } from '../../services/event-bus.service'
 
 import { loadReviews, addReview, removeReview } from '../store/review.actions'
 import { loadUsers } from '../store/user.actions'

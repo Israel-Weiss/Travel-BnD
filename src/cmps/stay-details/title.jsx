@@ -3,9 +3,7 @@ import shareIcon from '../../assets/imgs/share-icon.svg'
 import heartIcon from '../../assets/imgs/heart-icon.svg'
 
 
-export const RoomInfo = ({ stay }) => {
-
-
+export const StayTitle = ({ stay }) => {
 
     if (!stay) return
 

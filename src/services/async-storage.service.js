@@ -7,10 +7,18 @@ export const storageService = {
     remove,
     postMany,
     _save,
-    getLogedInUser
+    getLogedInUser,
+    getStays
 }
 
-function query(entityType, delay = 600) {
+
+function getStays() {
+    var entities = JSON.parse(localStorage.getItem("stays"))
+
+    return entities
+}
+
+function query(entityType) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []
 
     // return new Promise((resolve, reject) => {
@@ -23,7 +31,7 @@ function query(entityType, delay = 600) {
 }
 
 
-function getLogedInUser(){
+function getLogedInUser() {
     return JSON.parse(sessionStorage.getItem("logedInUser"))
 }
 
@@ -32,14 +40,14 @@ function get(entityType, entityId) {
         .then(entities => entities.find(entity => entity._id === entityId))
 }
 
-function post(entityType, newEntity, type=null) {
+function post(entityType, newEntity, type = null) {
     newEntity._id = _makeId()
     return query(entityType)
         .then(entities => {
             entities.push(newEntity)
             _save(entityType, entities)
-            if(type==='order') return entities
-            else return  newEntity
+            if (type === 'order') return entities
+            else return newEntity
         })
 }
 

@@ -46,7 +46,7 @@
     padding: 0px 20px 0px 20px;
     display: grid;
     grid-template-columns: 1fr;
-    
+
     gap: 2.5%;
     margin-top: 16px;
 
@@ -60,7 +60,7 @@
     @include for-narrow-layout {
         padding: 0px 80px 0px 80px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 30px 2.5%;
+        gap: 30px 2%;
     }
 
 
@@ -82,14 +82,13 @@
 
             }
 
-            .btn-left-conatiner {
+            .arrow-right-conatiner {
                 top: 0;
                 bottom: 0;
                 left: 80%;
                 right: 0;
                 margin: auto;
                 position: absolute;
-
                 width: 30px;
                 height: 30px;
                 display: flex;
@@ -99,7 +98,7 @@
                 background-color: white;
                 cursor: pointer;
 
-                .btn-left {
+                .arrow-right {
                     width: 15px;
                     height: 15px;
                 }
@@ -151,10 +150,10 @@
             flex-direction: column;
             align-items: flex-start;
 
-.starIcon{
-    width: 12px;
-    margin-right: 5px;
-}
+            .starIcon {
+                width: 12px;
+                margin-right: 5px;
+            }
 
             .card-info-location {
                 color: $clr5;
@@ -180,7 +179,8 @@
                 margin: 0px;
                 font-weight: bold;
                 color: $clr5;
-                span{
+
+                span {
                     font-weight: 200;
 
                 }

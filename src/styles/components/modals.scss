@@ -42,6 +42,11 @@
 
     @include for-small-layout {
         position: static;
+        bottom: 0;
+        right: 0;
+        left: unset;
+        margin-right: 112px;
+        margin-bottom: -180px;
         height: 272px;
         width: 370px;
         align-items: unset;
