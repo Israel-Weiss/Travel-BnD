@@ -16,6 +16,7 @@ export function ReserveModal({ stay }) {
     const [reservedFlag, setreservedFlag] = useState(false)
 
     const [isShown, setIsShown] = useState(true)
+    
 
     const handleClick = event => {
         setIsShown(current => !current)
@@ -24,11 +25,9 @@ export function ReserveModal({ stay }) {
     const navigateTo = () => {
         setreservedFlag(true)
         dispatch(setOrder(stay, loggedInUser))
-
         setTimeout(() => {
             window.location.href = "index.html/#/my-trip";
         }, 1000)
-
     }
 
     const changeModal = () => {

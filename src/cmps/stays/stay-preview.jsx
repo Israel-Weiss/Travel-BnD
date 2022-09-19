@@ -7,23 +7,31 @@ import heartIconRed from '../../assets/imgs/heartIcon-red.png'
 import React from "react";
 import { useState } from 'react'
 import { NavLink, useNavigate } from "react-router-dom";
+import { useSelector } from 'react-redux'
+import { stayService } from '../../services/stay.service'
 
 var pics = [pic1, pic2]
 
 export const StayPreview = ({ stay }) => {
 
+    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
     const { city, country } = stay.loc
     const { distance, date, price } = stay
 
     var [idx, setIdx] = useState(0)
-    var [heartColor, setHeartColor] = useState(false)
+    var [heartColor, setHeartColor] = useState(null)
     var heartPic
-    if(!heartColor)heartPic=heartIcon
+    if(!stay.likedByUsers.includes(loggedInUser))heartPic=heartIcon
     else heartPic=heartIconRed
 
-    const addWashList = () => {
+    const addWishList = () => {
         setHeartColor(!heartColor)
-
+        if(!stay.likedByUsers.includes(loggedInUser)){
+            stay.likedByUsers.push(loggedInUser)
+        }
+        else{
+            stay.likedByUsers.pop()
+        }
     }
 
 
@@ -50,7 +58,7 @@ export const StayPreview = ({ stay }) => {
                     <div className="navigation-button"></div>
                     <div className="navigation-button"></div>
                 </div>
-                <img className='heart-icon' src={heartPic} onClick={() => addWashList()} />
+                <img className='heart-icon' src={heartPic} onClick={() => addWishList   ()} />
 
 
             </div>

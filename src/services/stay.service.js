@@ -501,7 +501,8 @@ export const stayService = {
   getById,
   query,
   calcRate,
-  mapIcon
+  mapIcon,
+  save,
 }
 
 function getById(stayId) {
@@ -531,6 +532,14 @@ const lowerText = text.toLowerCase()
     storageService._save('stays', gStays)
     return Promise.resolve(gStays)
   }
+}
+
+function save(stay, loggedInUser){
+  const idx = gStays.indexOf(stay)
+  console.log(idx)
+  gStays[idx].likedByUsers.push(loggedInUser)
+  console.log(gStays)
+  storageService._save('stays', gStays)
 }
 
 function calcRate(reviews) {
