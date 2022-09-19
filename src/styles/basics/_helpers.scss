@@ -2,17 +2,23 @@
 .flex {
     display: flex;
 }
-.align-items{
+
+.align-items {
     align-items: center;
 }
 
-.justify-content{
-    justify-content:center ;
+.justify-content {
+    justify-content: center;
 }
-.flex-coulmn{
+.space-between{
+    justify-content: space-between;
+}
+
+.flex-coulmn {
     display: flex;
     flex-direction: column;
 }
+
 .inline-flex {
     display: inline-flex;
 }
@@ -27,7 +33,7 @@
 // Text 
 .vertical-text {
     writing-mode: tb-rl;
-    transform: rotate(-180deg);  
+    transform: rotate(-180deg);
 }
 
 .tag-text {
@@ -38,44 +44,87 @@
 
 // Aspect ratios
 
-.ratio-16-9 { @include aspect-ratio(100, 56); }
+.ratio-16-9 {
+    @include aspect-ratio(100, 56);
+}
 
-.ratio-square { @include aspect-ratio(100, 100); }
+.ratio-square {
+    @include aspect-ratio(100, 100);
+}
 
-.ratio-card { @include aspect-ratio(100, 80); }
+.ratio-card {
+    @include aspect-ratio(100, 80);
+}
 
-.ratio-poster { @include aspect-ratio(100, 150); }
+.ratio-poster {
+    @include aspect-ratio(100, 150);
+}
 
 // fonts
-.fontSize-22{
+.fontSize-22 {
     font-size: 22px;
 }
 
-.bold{
+.bold {
     font-weight: 600;
 }
 
-.black{
-    color: $clr5;  
+.black {
+    color: $clr5;
 }
-.gray{
+
+.gray {
     color: $clr4;
 }
 
-.text-start{
+.text-start {
     text-align: start;
 }
 
 // margins
 
-.margin-top-30{
+.margin-top-30 {
     margin-top: 30px;
 }
 
-.margin-right-20{
-margin-left: 20px;
+.margin-right-20 {
+    margin-left: 20px;
 }
 
-.margin-buttom-5{
+.margin-buttom-5 {
     margin-bottom: 5px;
+}
+
+.stay-details-layout {
+    padding: 0px 20px 0px 20px;
+
+    @include for-narrow-layout {
+        padding: 0px 112px 0px 112px;
+    }
+}
+
+.stay-list-layout {
+    padding: 0px 20px 0px 20px;
+
+    @include for-small-layout {
+        padding: 0px 42px 0px 42px;
+    }
+
+    @include for-narrow-layout {
+        padding: 0px 80px 0px 80px;
+    }
+}
+
+.stay-details-margin {
+    @include for-small-layout {
+        margin: 0px 37.5px 0px 37.5px;
+    }
+}
+
+
+
+.stay-list-margin {
+    @include for-small-layout {
+        margin: 0px 24px 0px 24px;
+    }
 }

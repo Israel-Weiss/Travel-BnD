@@ -46,25 +46,27 @@
     padding: 0px 20px 0px 20px;
     display: grid;
     grid-template-columns: 1fr;
+    
     gap: 2.5%;
-    margin-top: 10px;
+    margin-top: 16px;
 
     @include for-small-layout {
         padding: 0px 42px 0px 42px;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 2.5%;
+        gap: 10px 2.5%;
     }
 
 
     @include for-narrow-layout {
         padding: 0px 80px 0px 80px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 2%;
+        gap: 30px 2.5%;
     }
 
 
     .card {
         width: 100%;
+        margin-bottom: 12px;
 
         .card-image {
             width: 100%;
@@ -76,7 +78,8 @@
             .card-pic {
                 border-radius: 15px;
                 object-fit: cover;
-                aspect-ratio: 1/1;
+                aspect-ratio: 1.05265/1;
+
             }
 
             .btn-left-conatiner {
@@ -148,6 +151,11 @@
             flex-direction: column;
             align-items: flex-start;
 
+.starIcon{
+    width: 12px;
+    margin-right: 5px;
+}
+
             .card-info-location {
                 color: $clr5;
                 font-weight: 700;
@@ -157,9 +165,25 @@
                 color: $clr4;
             }
 
-            .card-info-date,
+            .card-info-date {
+                line-height: 12px;
+                color: $clr4;
+            }
+
             .card-info-price {
+                margin-top: 4px;
+                line-height: 38px;
+            }
+
+
+            .card-info-price {
+                margin: 0px;
+                font-weight: bold;
                 color: $clr5;
+                span{
+                    font-weight: 200;
+
+                }
             }
         }
 

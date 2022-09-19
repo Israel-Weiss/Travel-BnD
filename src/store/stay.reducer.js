@@ -1,7 +1,8 @@
 
 
 const INITIAL_STATE = {
-    stays: null
+    stays: null,
+    page:"/"
 }
 
 
@@ -10,13 +11,21 @@ let filterStays=[]
 
     switch (action.type) {
         case 'SET_STAY':{
-        console.log(action.stays,"action.stays");
             return {
                 ...state,
             stays: [...action.stays]
             }
 
         }
+
+        case 'SET_PAGE':{
+                return {
+                    ...state,
+                page: action.page
+                }
+    
+            }
+    
 
         case 'REMOVE_TOY':
             return {

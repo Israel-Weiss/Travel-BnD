@@ -8,18 +8,8 @@ header.header-container {
     align-items: center;
     justify-content: space-between;
     height: 80px;
-
-    padding: 0px 20px 0px 20px;
     border-top: 1px solid $clr2;
     border-bottom: 1px solid $clr2;
-
-    @include for-small-layout { 
-        padding: 0px 42px 0px 42px;
-    }
-
-    @include for-narrow-layout {
-        padding: 0px 80px 0px 80px;
-    }
 
     a {
         display: flex;
@@ -40,11 +30,11 @@ header.header-container {
             background-color: $clr1;
             height: 46px;
             align-items: center;
+            justify-content: space-between;
             border: 1px solid $clr2;
             border-radius: 30px;
             padding-right: 6px;
             padding-left: 8px;
-            margin: 0px 24px 0px 24px;
             box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
 
         }
@@ -97,6 +87,7 @@ header.header-container {
         justify-self: flex-end;
 
         a.user-panel-a {
+            margin-right: 4px;
             white-space: nowrap;
             font-size: 14px;
             padding: 0px 0px 0px 16px;
@@ -109,8 +100,8 @@ header.header-container {
         }
 
         .world-icon {
-            width: 15px;
-            height: 15px;
+            width: 16px;
+            height: 16px;
             margin: 0px 20px 0px 20px;
         }
 
@@ -119,12 +110,12 @@ header.header-container {
             align-items: center;
             border: 2px solid $clr2;
             height: 42px;
-            width: 77.2px;
-            padding-left: 12px;
+            width: 78.2px;
+            padding-left: 11px;
             padding-right: 4px;
             border-radius: 20px;
             cursor: pointer;
-            gap: 13px;
+            gap: 11px;
 
             .burger-icon {
                 width: 16px;
@@ -132,13 +123,13 @@ header.header-container {
             }
 
             .user-icon {
-                
+                opacity: 0.5;
                 width: 30px;
                 height: 30px;
             }
 
             .user-profile {
-                
+            
                 width: 30px;
                 height: 30px;
                 aspect-ratio: 1/1;

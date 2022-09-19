@@ -14,10 +14,10 @@ dispatch(setFilter(null,text))
         <div className="subheader-container">
             <div className="search-bar flex">
 
-                <div className="flex align-items" style={{ height: '100%' }}>
+               
                     <ul>
                         <p className="title">Where</p>
-                        <input type="text" placeholder="search destination" onChange={(event)=>onSearch(event)}/>
+                        <input type="text" placeholder="Search destination" onChange={(event)=>onSearch(event)}/>
                     </ul>
 
                     <ul>
@@ -37,7 +37,7 @@ dispatch(setFilter(null,text))
                         <p className="text">Add guests</p>
                     </ul>
 
-                </div>
+        
 
                 <div className="search-btn">
                     <img className="saerch-icon" src={searchIcon} />
