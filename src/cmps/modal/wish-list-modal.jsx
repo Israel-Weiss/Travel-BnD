@@ -4,9 +4,7 @@ import { wishListService } from '../../services/wish-list.service'
 import { useEffect } from 'react'
 
 
-
 export const WishListModal = ({ stay, closeModal }) => {
-
     var [editMode, setEditMode] = useState(false)
     var [wishlist, setWishlist] = useState(false)
 
@@ -29,8 +27,7 @@ export const WishListModal = ({ stay, closeModal }) => {
     }
 
     const addStay = (listID) => {
-        wishListService.addStayToList(listID,stay)
-
+        wishListService.addStayToList(listID, stay)
     }
 
     return (<div className="wishlist-modal">
@@ -50,23 +47,15 @@ export const WishListModal = ({ stay, closeModal }) => {
                     <img className='wish-list-img' src={list.imgUrls[0]} onClick={() => addStay(list._id)} />
                     <p className='text' style={{ fontSize: "20px" }}>{list.name}</p>
                 </div>
-            })
-            }
-
+            })}
 
         </section> :
-
             <form className="editor" onSubmit={(event) => createWishList(event)}>
                 <input type="text" placeholder='Name' />
                 <button className="createBtn">
                     <p className='text'>Create</p>
                 </button>
             </form>}
-
-
     </div>
-
     )
-
-
 }

@@ -4,7 +4,6 @@ import icon3 from '../../assets/imgs/room-info/cancellation-Icon.svg'
 import { ReserveModal } from '../modal/modal-reserve'
 
 
-
 export const StayDescription = ({ stay }) => {
     var profilePic = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
 
@@ -12,7 +11,8 @@ export const StayDescription = ({ stay }) => {
     const { guests, bedrooms, beds, baths } = stay.capacity
     const { fullname } = stay.host
 
-    return (<div className='room-details'>
+    return (
+    <div className='room-details'>
 
         <div className="title-sector">
             <div className='flex-coulmn'>
@@ -51,9 +51,7 @@ export const StayDescription = ({ stay }) => {
             </div>
 
             <div className="right"> <ReserveModal stay={stay} /></div>
-
         </div>
-
-    </div>)
-
+    </div>
+    )
 }

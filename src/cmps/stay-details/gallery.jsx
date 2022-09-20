@@ -1,5 +1,4 @@
 
-
 export const StayGallery = ({stay}) => {
 
    if(!stay)return
@@ -9,9 +8,6 @@ export const StayGallery = ({stay}) => {
         {stay.imgUrls.map(imgUrl => {
             return <img className='room-image' src={imgUrl} key={key++} />
         })}
-
     </div>
-
     )
-
 }

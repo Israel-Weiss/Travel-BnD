@@ -19,7 +19,6 @@ export function MyCal() {
         loadOrders()
     }, [])
 
-
       useEffect(() => {
         if(state[0].startDate || state[0].endDate)
             putVal();
@@ -30,7 +29,6 @@ export function MyCal() {
             setOrders(orders)
         })
     }
-
 
     const putVal = () => {
         const start = document.querySelector('.date-in')
@@ -49,5 +47,5 @@ export function MyCal() {
             ranges={state}   
         />
     </div>
-    );
+    )
 }
