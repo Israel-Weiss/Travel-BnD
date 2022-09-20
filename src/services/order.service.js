@@ -27,7 +27,8 @@ var gOrders = [
 
 export const orderService = {
   createOrder,
-  getByLogedInUser
+  getByLogedInUser,
+  getByHostName
 }
 
 
@@ -60,5 +61,23 @@ if(!user)var user={_id:"t001"}
       if (order.userId === user._id) orderToDisplay.push(order)
     })
     return orderToDisplay
+  })
+}
+
+function getByHostName() {
+  var user = storageService.getLogedInUser()
+  console.log(user.ishost);
+if(!user)return
+if(!user.ishost)return
+
+  return storageService.query("orders").then(orders => {
+    let orderToDisplay = []
+    orders.map(order => {
+      console.log(order.host.toLowerCase() , " " ,user.fullname.toLowerCase() );
+      if (order.host.toLowerCase() === user.fullname.toLowerCase()) orderToDisplay.push(order)
+    })
+    console.log(orderToDisplay,"sss");
+    if(!orderToDisplay)return null
+    else return orderToDisplay
   })
 }

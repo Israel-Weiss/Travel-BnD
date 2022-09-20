@@ -5,12 +5,9 @@ import { AppHeader } from './cmps/app-header'
 import { MyTrip } from './pages/my-trip'
 import { StayApp } from './pages/stay-app'
 import { StayDetails } from './pages/stay-details'
-<<<<<<< HEAD
-import {WishList} from './pages/wish-list'
-// import { UserDetails } from './pages/user-details'
-=======
-import {Wishlist} from './pages/wish-list'
->>>>>>> cc292a36589f361a7ed7bc7fd6f0783be26ba682
+import { Wishlist } from './pages/wish-list'
+import { Dashboard } from './pages/dashboard'
+import {WishListModal} from './cmps/modal/wish-list-modal'
 
 function App() {
   return (
@@ -18,14 +15,10 @@ function App() {
       <div className='dark-screen'></div>
       <AppHeader />
       <Routes>
-<<<<<<< HEAD
-        <Route path='/rooms/:id' element={<StayDetails />} />
-        <Route path='/wishlist' element={<WishList/>} />
-=======
         <Route path='/stays/:id' element={<StayDetails />} />
-        <Route path='/wishlist' element={<Wishlist/>} />
->>>>>>> cc292a36589f361a7ed7bc7fd6f0783be26ba682
+        <Route path='/wishlist' element={<Wishlist />} />
         <Route path='/my-trip' element={<MyTrip />} />
+        <Route path='/dashboard' element={< Dashboard />} />
         <Route path='/' element={<StayApp />} />
         {/* <AppFooter /> */}
       </Routes>

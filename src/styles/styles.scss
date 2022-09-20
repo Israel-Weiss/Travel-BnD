@@ -21,9 +21,6 @@
 @import 'components/news';
 @import 'components/cards';
 @import 'components/sidebar';
-<<<<<<< HEAD
-@import 'components/wishlist';
-=======
 
 //STAY DETAILS
 @import 'components/stay-details/description.scss';
@@ -32,4 +29,9 @@
 @import 'components/stay-details/reviews';
 @import 'components/stay-details/title';
 @import 'components/stay-details/stay-details';
->>>>>>> cc292a36589f361a7ed7bc7fd6f0783be26ba682
+
+
+//MODALS
+@import 'components/wish-list-modal.scss';
+@import 'components/wishlist.scss';
+

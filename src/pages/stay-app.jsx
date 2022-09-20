@@ -13,7 +13,7 @@ export const StayApp = () => {
     useEffect(() => {
         dispatch(setCurrentUrl(currentUrl))
         dispatch(loadStay())
-    }, [])
+    }, [ currentUrl])
 
     const onSetFilter = (tag) => {
         dispatch(setFilter(tag, null))

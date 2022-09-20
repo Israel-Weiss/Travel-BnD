@@ -8,6 +8,8 @@ import heartIcon from '../assets/imgs/heartIcon.png'
 import heartIconRed from '../assets/imgs/heartIcon-red.png'
 import starIcon from '../assets/imgs/starIcon.svg'
 
+import { WishListModal } from '../cmps/modal/wish-list-modal'
+
 export const StayPreview = ({ stay }) => {
     const loggedInUser = useSelector(state => state.userModule.loggedInUser)
     const { city, country } = stay.loc
@@ -15,9 +17,17 @@ export const StayPreview = ({ stay }) => {
     var heartPic
     var [idx, setIdx] = useState(0)
     var [isLiked, setIsLiked] = useState(false)
+    var [modalFlag, setModalFlag] = useState(false)
+
 
     const addWishList = () => {
-        setIsLiked(!isLiked)
+        setModalFlag(!modalFlag)
+        if (!isLiked) {
+            // document.querySelector('.wishlist-modal').style.display = 'block'
+            document.querySelector('.dark-screen').style.display = 'block'
+        }
+        // setIsLiked(!isLiked)
+
         if (!likedByUsers.includes(loggedInUser))
             likedByUsers.push(loggedInUser)
         else likedByUsers.pop()
@@ -29,6 +39,12 @@ export const StayPreview = ({ stay }) => {
         setIdx(idx)
     }
 
+    const closeModal = () => {
+        setModalFlag(false)
+        document.querySelector('.dark-screen').style.display = 'none'
+    }
+
+
     if (!stay.likedByUsers.includes(loggedInUser)) heartPic = heartIcon
     else heartPic = heartIconRed
     if (!stay) return
@@ -36,6 +52,8 @@ export const StayPreview = ({ stay }) => {
     return (
         <div className="card">
             <div className="card-image">
+                {modalFlag && <WishListModal stay={stay} closeModal={closeModal} />}
+
                 < NavLink to={`stays/${stay._id}`}>
                     <img className='card-pic' src={stay.imgUrls[idx]} />
                 </ NavLink>

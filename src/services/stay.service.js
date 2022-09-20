@@ -68,13 +68,8 @@ function query(tag = null, text = null) {
 
 function calcRate(reviews) {
   var rate = 0
-<<<<<<< HEAD
-  reviews.map((review) =>{
-      rate += getRandomIntInclusive(1,5)
-=======
   reviews.map((review) => {
     rate += getRandomIntInclusive(1, 5)
->>>>>>> cc292a36589f361a7ed7bc7fd6f0783be26ba682
   })
   rate = rate / reviews.length
   return rate.toFixed(2)
