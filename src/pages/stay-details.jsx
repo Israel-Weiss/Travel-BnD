@@ -11,6 +11,7 @@ import { StayGallery } from '../cmps/stay-details/gallery'
 import { PlaceOffer } from '../cmps/stay-details/place-offer'
 import { StayDescription } from '../cmps/stay-details/description'
 import { StayReviews } from '../cmps/stay-details/reviews'
+import { GoogleMap } from '../cmps/map'
 
 export const StayDetails = () => {
     const dispatch = useDispatch()
@@ -40,6 +41,7 @@ export const StayDetails = () => {
             <StayDescription stay={stay} />
             <PlaceOffer stay={stay} />
             <StayReviews stay={stay} />
+            <GoogleMap stay={stay} />
         </div>
     )
 }
