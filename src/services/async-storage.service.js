@@ -8,15 +8,26 @@ export const storageService = {
     postMany,
     _save,
     getLogedInUser,
-    getStays
+    getStays,
+    getUsers,
+    getWishList
 }
 
+function getWishList() {
+    var entities = JSON.parse(localStorage.getItem("wishList"))
+    return entities
+}
 
 function getStays() {
     var entities = JSON.parse(localStorage.getItem("stays"))
-
     return entities
 }
+
+function getUsers(){
+    var entities = JSON.parse(localStorage.getItem("users"))
+    return entities
+}
+
 
 function query(entityType) {
     var entities = JSON.parse(localStorage.getItem(entityType)) || []

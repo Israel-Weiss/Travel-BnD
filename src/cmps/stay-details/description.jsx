@@ -19,7 +19,7 @@ export const StayDescription = ({ stay }) => {
                 <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
                 <p className='room-details-desc'>{guests} guests {bedrooms} bedrooms {beds} beds {baths} baths</p>
             </div>
-            <img className='profile-img' src={profilePic} />
+          <img className='profile-img' src={stay.host.pictureUrl} />
         </div>
 
         <div className="flex" style={{ width: "100%" }}>

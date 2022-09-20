@@ -1,9 +1,17 @@
 import { storageService } from "./async-storage.service"
+import { gUsers } from "../storage/user.data"
+
 
 export const userService = {
     register,
     validate,
     removeUser
+}
+
+createHostUsers()
+function createHostUsers(){
+let users =storageService.getUsers()
+if(!users)storageService._save("users",gUsers)
 }
 
 

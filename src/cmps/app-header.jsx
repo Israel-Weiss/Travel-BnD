@@ -118,7 +118,7 @@ export function AppHeader() {
                     <div onClick={() => toggleModals()} className="user-container">
                         <img className="burger-icon" src={burgerIcon} />
                         {(loggedInUser === 'null' || !loggedInUser) ? <img className="user-icon" src={userIcon} /> :
-                            <img className="user-profile" src={profilePic} />
+                            <img className="user-profile" src={loggedInUser.pictureUrl} />
                         }
                     </div>
                 </div>

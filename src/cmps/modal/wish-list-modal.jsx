@@ -33,6 +33,10 @@ export const WishListModal = ({ stay, closeModal }) => {
 
     }
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 1ee25bbd28f1aa462b4ca6427f09113108525b12
     return (<div className="wishlist-modal">
 
         <div className="header">

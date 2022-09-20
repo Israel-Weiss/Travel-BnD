@@ -25,7 +25,7 @@ export function logout(user) {
     return (dispatch, getState) => {
         //Remove ghost user after logout
         if (user.username === "Ghost") userService.removeUser(user._id)
-        sessionStorage.setItem("logedInUser", null)
+        sessionStorage.removeItem("logedInUser")
         dispatch({ type: 'SET_USER', user: null })
         window.location.href = "index.html/";
 
