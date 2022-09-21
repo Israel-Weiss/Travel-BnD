@@ -47,7 +47,7 @@
     display: grid;
     grid-template-columns: 1fr;
 
-    gap: 2.5%;
+    gap: 10px 2.5%;
     margin-top: 16px;
 
     @include for-small-layout {
@@ -68,6 +68,12 @@
         width: 100%;
         margin-bottom: 12px;
 
+        &:hover {
+            .arrow-right-conatiner {
+                opacity: 1 !important;
+            }
+        }
+
         .card-image {
             width: 100%;
             position: relative;
@@ -75,72 +81,77 @@
             flex-direction: column;
             align-items: center;
 
-            .card-pic {
-                border-radius: 15px;
-                object-fit: cover;
-                aspect-ratio: 1.05265/1;
 
+
+        }
+
+        .card-pic {
+            border-radius: 15px;
+            object-fit: cover;
+            aspect-ratio: 1.05265/1;
+
+        }
+
+        .arrow-right-conatiner {
+            top: 0;
+            bottom: 0;
+            left: 80%;
+            right: 0;
+            margin: auto;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: white;
+            opacity: 0;
+            cursor: pointer;
+
+            transition: opacity .4s;
+
+            .arrow-right {
+                width: 15px;
+                height: 15px;
             }
 
-            .arrow-right-conatiner {
-                top: 0;
-                bottom: 0;
-                left: 80%;
-                right: 0;
-                margin: auto;
-                position: absolute;
-                width: 30px;
-                height: 30px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
+        }
+
+        .heart-icon {
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: 0;
+            margin-top: 15px;
+            margin-right: 15px;
+            cursor: pointer;
+
+        }
+
+        .navigation-manual {
+            top: 80%;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+            position: absolute;
+            height: 10px;
+            width: 42px;
+            display: flex;
+
+
+            .navigation-button {
+                width: 6px;
+                height: 6px;
+                background-color: $clr2;
                 border-radius: 50%;
-                background-color: white;
-                cursor: pointer;
-
-                .arrow-right {
-                    width: 15px;
-                    height: 15px;
-                }
 
             }
 
-            .heart-icon {
-                position: absolute;
-                width: 25px;
-                height: 25px;
-                right: 0;
-                margin-top: 15px;
-                margin-right: 15px;
-                cursor: pointer;
 
-            }
-
-            .navigation-manual {
-                top: 80%;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                margin: auto;
-                position: absolute;
-                height: 10px;
-                width: 42px;
-                display: flex;
-
-
-                .navigation-button {
-                    width: 6px;
-                    height: 6px;
-                    background-color: $clr2;
-                    border-radius: 50%;
-
-                }
-
-
-                .navigation-button:not(:last-child) {
-                    margin-right: 6px;
-                }
-
+            .navigation-button:not(:last-child) {
+                margin-right: 6px;
             }
 
         }

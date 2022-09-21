@@ -18,6 +18,12 @@
   }
 }
 
+@mixin for-first-break-layout {
+  @media (min-width:$first-break) {
+    @content;
+  }
+}
+
 @mixin for-small-layout {
   @media (min-width: $break-normal) {
     @content;
