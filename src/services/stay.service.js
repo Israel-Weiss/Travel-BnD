@@ -39,7 +39,7 @@ return stay
 
 async function query(tag = null, text = null,filterBy) {
   const stays = await httpService.get(BASE_URL, { params: filterBy })
-  console.log(stays);
+  
   let stayToDisplay = []
   stays.map(stay => {
     if (!stay.host) console.log(stay._id);
