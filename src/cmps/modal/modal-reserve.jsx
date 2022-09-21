@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setOrder } from '../../store/order.action'
 import { MyCal } from '../calendar'
 import confirmPic from '../../assets/imgs/v.png'
+import { useEffect } from 'react'
 
 export function ReserveModal({ stay }) {
     const dispatch = useDispatch()
@@ -12,6 +13,7 @@ export function ReserveModal({ stay }) {
     const [reservedFlag, setreservedFlag] = useState(false)
 
     const [isShown, setIsShown] = useState(true)
+
 
     const handleClick = event => {
         setIsShown(current => !current)

@@ -4,14 +4,13 @@ export function setUser(user) {
 
     return (dispatch, getState) => {
         if (!user) {
-            sessionStorage.setItem("logedInUser", null)
+            sessionStorage.setItem("loggedinUser", null)
             dispatch({ type: 'SET_USER', user: null })
             window.location.href = "index.html/";
         }
         else userService.register(user)
             .then(user => {
                 if(!user)return
-                sessionStorage.setItem("logedInUser", JSON.stringify(user))
                 dispatch({ type: 'SET_USER', user: user })
             })
             .catch(err => {
@@ -40,10 +39,10 @@ export function logout(user) {
             userService.validate(user)
                 .then(validtedUser => {
                     if (validtedUser) {
+                        
                         console.log(validtedUser,"validtedUser");
-                        sessionStorage.setItem("logedInUser", JSON.stringify(validtedUser))
                         dispatch({ type: 'SET_USER', user: validtedUser })
-                        if(validtedUser.ishost)window.location.href = "index.html/#/dashboard";
+                        // if(validtedUser.ishost)window.location.href = "index.html/#/dashboard";
 
                     }
                     else return

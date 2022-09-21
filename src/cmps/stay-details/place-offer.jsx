@@ -22,7 +22,7 @@ export const PlaceOffer = ({ stay }) => {
                 <div className="right">
                     {icon[1].map(pic => {
                         return (
-                            <div className='flex margin-buttom-5'key={key++}>
+                            <div className='icon-container'key={key++}>
                                 <img className='room-info-icons' src={pic.img} />
                                 <p className='black margin-right-20'>{pic.text}</p>
                             </div>)

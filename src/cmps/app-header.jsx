@@ -16,8 +16,8 @@ import { SearchModal } from './modal/search-modal'
 import { SubHeader } from "../cmps/sub-header";
 
 export function AppHeader() {
-    var profilePic = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
     const { loggedInUser } = useSelector(state => state.userModule)
+    console.log("user is log by name ", loggedInUser);
     const { page } = useSelector(state => state.stayModule)
     console.log(page);
 
@@ -117,7 +117,7 @@ export function AppHeader() {
                     <div onClick={() => toggleModals()} className="user-container">
                         <img className="burger-icon" src={burgerIcon} />
                         { !loggedInUser ? <img className="user-icon" src={userIcon} /> :
-                            <img className="user-profile" src={loggedInUser.pictureUrl} />
+                            <img className="user-profile" src={loggedInUser.imgUrl} />
                         }
                     </div>
                 </div>

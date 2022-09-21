@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { orderService } from '../services/order.service'
 import { UtilService } from '../services/util.service'
 import { useState } from 'react'
+import { socketService, SOCKET_EVENT_ORDER_ADDED,SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 import React, { useEffect } from 'react'
 
 export function MyTrip() {
@@ -12,6 +13,20 @@ export function MyTrip() {
     useEffect(() => {
         loadOrders()
     }, [loggedInUser])
+
+    useEffect(() => {
+        socketService.on(SOCKET_EVENT_ORDER_ADDED, ((order) =>{
+        setOrders(prev => [...prev, order.ops[0]])}
+        ))
+    }, [])
+
+    useEffect(() => {
+        socketService.on(SOCKET_EVENT_ORDER_UPDATE, ((order) =>{
+            loadOrders()
+    }
+        ))
+    }, [])
+
 
     const loadOrders = () => {
         orderService.getByLogedInUser().then(orders => {

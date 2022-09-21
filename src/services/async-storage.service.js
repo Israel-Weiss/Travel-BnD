@@ -49,7 +49,7 @@ function query(entityType) {
 
 
 function getLogedInUser() {
-    return JSON.parse(sessionStorage.getItem("logedInUser"))
+    return JSON.parse(sessionStorage.getItem("loggedinUser"))
 }
 
 function get(entityType, entityId) {

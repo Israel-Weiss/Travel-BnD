@@ -38,8 +38,7 @@ export const StayDetails = () => {
         <div className='room'>
             <StayTitle stay={stay} />
             <StayGallery stay={stay} />
-            <StayDescription stay={stay} />
-            <PlaceOffer stay={stay} />
+                <StayDescription stay={stay} />
             <StayReviews stay={stay} />
             <GoogleMap stay={stay} />
         </div>

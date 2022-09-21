@@ -11,8 +11,8 @@ export function LoginInterface({ closeModal, loginType }) {
     const onRegister = (ev) => {
         closeModal('Sign up')
         ev.preventDefault()
-        const pictureUrl = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
-        const user = { username: ev.target[0].value, password: ev.target[1].value ,pictureUrl}
+        const imgUrl = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
+        const user = { username: ev.target[0].value, password: ev.target[1].value ,imgUrl,fullname:ev.target[0].value}
        if(loginType==="Register") dispatch(setUser(user))
        else  dispatch(validUser(user))
     }

@@ -3,7 +3,7 @@ import { storageService } from "../services/async-storage.service"
 const INITIAL_STATE = {
     loggedInUser:storageService.getLogedInUser()
 }
-
+console.log(storageService.getLogedInUser(),"tel mee if this work");
 
 export function userReducer(state = INITIAL_STATE, action){
     

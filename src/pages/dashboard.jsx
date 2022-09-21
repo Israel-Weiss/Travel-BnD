@@ -4,6 +4,7 @@ import { orderService } from '../services/order.service'
 import { useState } from 'react'
 import React, { useEffect } from 'react'
 import { LoginInterface } from '../cmps/login-interface/login-interface'
+import { socketService, SOCKET_EVENT_ORDER_ADDED,SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 
 export function Dashboard() {
     const { loggedInUser } = useSelector(state => state.userModule)
@@ -12,6 +13,22 @@ export function Dashboard() {
     useEffect(() => {
         loadOrders()
     }, [loggedInUser])
+
+    useEffect(() => {
+        socketService.on(SOCKET_EVENT_ORDER_ADDED, ((order) =>{
+        setOrders(prev => [...prev, order.ops[0]])}
+        ))
+    }, [])
+
+    useEffect(() => {
+        socketService.on(SOCKET_EVENT_ORDER_UPDATE, ((order) =>{
+            console.log(order,"update socket");
+            loadOrders()
+        // setOrders([...orders])
+    }
+        ))
+    }, [])
+
 
 
     const loadOrders = () => {

@@ -1,5 +1,6 @@
 import { storageService } from "./async-storage.service"
 import { httpService } from './http.service'
+import { socketService, SOCKET_EVENT_ORDER_ADDED ,SOCKET_EVENT_ORDER_UPDATE} from './socket.service.js'
 
 var gOrders = [
   // {
@@ -32,6 +33,20 @@ export const orderService = {
   getByHostName,
   aproveOrder
 }
+
+
+const reviewChannel = new BroadcastChannel('reviewChannel');
+(() => {
+  socketService.on(SOCKET_EVENT_ORDER_ADDED, (order) => {
+    console.log('GOT from socket', order)
+    // store.dispatch(getActionAddReview(review))
+  })
+  socketService.on(SOCKET_EVENT_ORDER_UPDATE, (order) => {
+    console.log('GOT from socket', order)
+    // store.dispatch(getActionAddReview(review))
+  })
+})()
+
 
 const BASE_URL="orders/"
 

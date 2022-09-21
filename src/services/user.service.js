@@ -5,11 +5,13 @@ import { httpService } from './http.service'
 
 export const userService = {
     register,
-    validate,
+    validate: login,
     removeUser
 }
 
+const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
 const BASE_URL = "user/"
+const BASE_URL_AUTH="auth/"
 
 createHostUsers()
 function createHostUsers() {
@@ -17,19 +19,25 @@ function createHostUsers() {
     if (!users) storageService._save("users", gUsers)
 }
 
-async function register(user) {
-    const users = await httpService.get(BASE_URL)
-    if (!users.some((currUser) => currUser.username === user.username))
-        return await httpService.post(BASE_URL, user)
+async function register(cred) {
+    const user = await httpService.post(BASE_URL_AUTH+"signup",cred)
+    console.log("userrrr",user);
+    console.log(user,"return from storage");
+    if(user)return saveLocalUser(user)
 }
 
 function removeUser(userId) {
     storageService.remove("users", userId)
 }
 
-async function validate(user) {
-    const users = await httpService.get(BASE_URL)
-    var filterUser = users.filter((currUser) => (currUser.username === user.username) && (currUser.password === user.password))
-    return filterUser[0]
+async function login(cred) {
+const user = await httpService.post(BASE_URL_AUTH+"login",cred)
+if(user)return saveLocalUser(user)
+
 }
 
+
+function saveLocalUser(user) {
+    sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
+    return user
+}
