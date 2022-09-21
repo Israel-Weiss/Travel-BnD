@@ -32,24 +32,23 @@ export const stayService = {
 const BASE_URL = "stays/"
 
 
-function getById(stayId) {
-  let stay = null
-  let stays = storageService.getStays()
-  stays.map(currStay => {
-    if (currStay._id === stayId) stay = currStay
-  })
-  return Promise.resolve(stay)
+async function getById(stayId) {
+   const stay = await httpService.get(BASE_URL +stayId )
+return stay
+  // let stay = null
+  // let stays =  query(tag = null, text = null,filterBy)
+  // stays.map(currStay => {
+  //   if (currStay._id === stayId) stay = currStay
+  // })
+  // return Promise.resolve(stay)
 }
 
 async function query(tag = null, text = null,filterBy) {
   const stays = await httpService.get(BASE_URL, { params: filterBy })
-
   let stayToDisplay = []
-
   stays.map(stay => {
     if (!stay.host) console.log(stay._id);
   })
-
   if (tag) {
     stayToDisplay = stays.filter(stay => stay.type.includes(tag))
     return Promise.resolve(stayToDisplay)
