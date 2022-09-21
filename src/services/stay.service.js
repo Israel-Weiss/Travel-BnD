@@ -74,7 +74,7 @@ stays.map(stay=>{
 function calcRate(reviews) {
   var rate = 0
   reviews.map((review) => {
-    rate += getRandomIntInclusive(1, 5)
+    rate += review.rate
   })
   rate = rate / reviews.length
   return rate.toFixed(2)

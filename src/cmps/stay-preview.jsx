@@ -54,7 +54,7 @@ export const StayPreview = ({ stay }) => {
             <div className="card-image">
                 {modalFlag && <WishListModal stay={stay} closeModal={closeModal} />}
 
-                < NavLink to={`stays/${stay._id}`}>
+                < NavLink to={`/stays/${stay._id}`}>
                     <img className='card-pic' src={stay.imgUrls[idx]} />
                 </ NavLink>
 
