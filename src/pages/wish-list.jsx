@@ -22,8 +22,6 @@ export function Wishlist() {
 
     if (!wishlist) return
 
-
-
     return (
         <section className="wishlist-container">
             <div className="title-container">

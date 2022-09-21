@@ -14,10 +14,7 @@ var imgs = [{ img: pic1, text: 'I’m flexible' },
 ]
 
 export function SearchModal() {
-
-
     return (
-
         <div className='anywhere-modal'>
             <p className='black bold title text-start'>Search by region</p>
             <div className='imgs-container '>
@@ -31,9 +28,5 @@ export function SearchModal() {
                 })}
             </div>
         </div>
-
-
     )
-
-
 }

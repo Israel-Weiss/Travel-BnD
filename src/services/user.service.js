@@ -14,14 +14,12 @@ let users =storageService.getUsers()
 if(!users)storageService._save("users",gUsers)
 }
 
-
 function register(user) {
     return storageService.query('users')
         .then(users => {
             if (!users.some((currUser) => currUser.username === user.username)) return storageService.post('users', user)
         })
 }
-
 
 function removeUser(userId) {
     storageService.remove("users", userId)

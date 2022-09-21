@@ -1,20 +1,6 @@
-import icon1 from '../../assets/imgs/house/place-offer/1.svg'
-import icon2 from '../../assets/imgs/house/place-offer/2.svg'
-import icon3 from '../../assets/imgs/house/place-offer/3.svg'
-import icon4 from '../../assets/imgs/house/place-offer/4.svg'
-import icon5 from '../../assets/imgs/house/place-offer/5.svg'
-import icon6 from '../../assets/imgs/house/place-offer/6.svg'
-import icon7 from '../../assets/imgs/house/place-offer/7.svg'
-import icon8 from '../../assets/imgs/house/place-offer/8.svg'
-import icon9 from '../../assets/imgs/house/place-offer/9.svg'
-import icon10 from '../../assets/imgs/house/place-offer/10.svg'
-
 import { stayService } from '../../services/stay.service'
 
-
 export const PlaceOffer = ({ stay }) => {
-    var picright = []
-    var picleft2 = []
     const amenities = stay.amenities
     const icon = stayService.mapIcon(amenities)
     var key =200
@@ -42,9 +28,7 @@ export const PlaceOffer = ({ stay }) => {
                             </div>)
                     })}
                 </div>
-
             </div>
-
         </div>
     )
 }

@@ -32,11 +32,8 @@ export const StayTitle = ({ stay }) => {
                         <img className='icons' src={heartIcon} />
                         <p className="room-reviews-save">Save</p>
                     </div>
-
                 </div>
-
             </div>
-
         </div>
     )
 }

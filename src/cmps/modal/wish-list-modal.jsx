@@ -4,9 +4,7 @@ import { wishListService } from '../../services/wish-list.service'
 import { useEffect } from 'react'
 
 
-
 export const WishListModal = ({ stay, closeModal }) => {
-
     var [editMode, setEditMode] = useState(false)
     var [wishlist, setWishlist] = useState(false)
 
@@ -50,12 +48,9 @@ export const WishListModal = ({ stay, closeModal }) => {
                     <img className='wish-list-img' src={list.imgUrls[0]} />
                     <p className='text' style={{ fontSize: "20px" }}>{list.name}</p>
                 </div>
-            })
-            }
-
+            })}
 
         </section> :
-
             <form className="editor" onSubmit={(event) => createWishList(event)}>
                 <input type="text" placeholder='Name' />
          
@@ -64,11 +59,6 @@ export const WishListModal = ({ stay, closeModal }) => {
                     </button>
            
             </form>}
-
-
     </div>
-
     )
-
-
 }

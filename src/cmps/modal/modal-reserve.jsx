@@ -104,15 +104,12 @@ export function ReserveModal({ stay }) {
                     </div>
                 </div>
 
-
                 <div className="button-section">
                     {!reservedFlag ? <section><button onClick={() => closeModal('Back')}>Back</button>
                         <button onClick={() => navigateTo()}>confirm</button></section>
                         : <button onClick={() => closeModal('Back')}>close</button>}
                 </div>
-
             </div>}
-
         </section>
     )
 }
