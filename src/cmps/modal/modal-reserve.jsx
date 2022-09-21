@@ -20,6 +20,7 @@ export function ReserveModal({ stay }) {
     }
 
     const navigateTo = () => {
+        
         setreservedFlag(true)
         const startDate= document.querySelector('.date-in').innerHTML
         const endDate= document.querySelector('.date-out').innerHTML

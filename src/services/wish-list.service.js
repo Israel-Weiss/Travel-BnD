@@ -4,7 +4,8 @@ import { UtilService } from "./util.service"
 export const wishListService = {
     createOrder,
     getByLogedInUser,
-    addStayToList
+    addStayToList,
+    getById
 }
 
 function createOrder(name, stay) {
@@ -47,3 +48,13 @@ function getByLogedInUser() {
       return wishListToDisplay
     })
   }
+
+function getById(listId){
+let lists=storageService.getWishList()
+let list
+lists.map(currList=>{
+    if(currList._id===listId)list=currList
+})
+return Promise.resolve(list)
+
+}

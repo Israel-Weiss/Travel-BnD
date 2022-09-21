@@ -83,8 +83,9 @@
                     object-fit: cover;
                     border-bottom-right-radius: 12px;
                 }
-              
+
             }
+
             .list-title {
                 flex-direction: column;
                 color: #222222;
@@ -171,7 +172,7 @@
     position: absolute;
     top: 63%;
 
-   
+
 
     .wishlist-rename-icon {
         width: 16px;
@@ -180,5 +181,189 @@
         flex-direction: column;
         margin-top: 3.5px;
         margin-left: 10px
+    }
+}
+
+.wishlist-card-container {
+    width: 100%;
+    display: flex;
+
+    @include for-small-layout {
+        padding: 0px 42px 0px 42px;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px 2.5%;
+    }
+
+
+    @include for-narrow-layout {
+        padding: 0px 80px 0px 80px;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 2%;
+    }
+
+
+    .right {
+        width: 40%;
+        .google-map{
+            height: 100vh !important;
+            padding: 0px !important;
+            
+        }
+    }
+
+
+
+
+
+    .left {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+        gap: 40px;
+
+        .list-name {
+            width: 100%;
+            font-size: 32px;
+            font-weight: 500;
+            margin-top:20px;
+            // margin-bottom: 40px;
+            color: $clr5;
+            height: 10px;
+            display: block;
+        }
+
+        .wishlist {
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+
+
+
+            .card {
+                width: 100%;
+                margin-bottom: 12px;
+
+                .card-image {
+                    width: 100%;
+                    position: relative;
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+
+                    .card-pic {
+                        border-radius: 15px;
+                        object-fit: cover;
+                        aspect-ratio: 1.05265/1;
+
+                    }
+
+                    .arrow-right-conatiner {
+                        top: 0;
+                        bottom: 0;
+                        left: 80%;
+                        right: 0;
+                        margin: auto;
+                        position: absolute;
+                        width: 30px;
+                        height: 30px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        background-color: white;
+                        cursor: pointer;
+
+                        .arrow-right {
+                            width: 15px;
+                            height: 15px;
+                        }
+
+                    }
+
+                    .heart-icon {
+                        position: absolute;
+                        width: 25px;
+                        height: 25px;
+                        right: 0;
+                        margin-top: 15px;
+                        margin-right: 15px;
+                        cursor: pointer;
+
+                    }
+
+                    .navigation-manual {
+                        top: 80%;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                        margin: auto;
+                        position: absolute;
+                        height: 10px;
+                        width: 42px;
+                        display: flex;
+
+
+                        .navigation-button {
+                            width: 6px;
+                            height: 6px;
+                            background-color: $clr2;
+                            border-radius: 50%;
+
+                        }
+
+
+                        .navigation-button:not(:last-child) {
+                            margin-right: 6px;
+                        }
+
+                    }
+
+                }
+
+                .card-info {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: flex-start;
+
+                    .starIcon {
+                        width: 12px;
+                        margin-right: 5px;
+                    }
+
+                    .card-info-location {
+                        color: $clr5;
+                        font-weight: 700;
+                    }
+
+                    .card-info-distance {
+                        color: $clr4;
+                    }
+
+                    .card-info-date {
+                        line-height: 12px;
+                        color: $clr4;
+                    }
+
+                    .card-info-price {
+                        margin-top: 4px;
+                        line-height: 38px;
+                    }
+
+
+                    .card-info-price {
+                        margin: 0px;
+                        font-weight: bold;
+                        color: $clr5;
+
+                        span {
+                            font-weight: 200;
+
+                        }
+                    }
+                }
+            }
+        }
+
     }
 }

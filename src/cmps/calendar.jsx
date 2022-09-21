@@ -35,7 +35,7 @@ export function MyCal() {
         const end = document.querySelector('.date-out')
         start.innerHTML = state[0].startDate.toString().slice(0, 15)
         end.innerHTML = state[0].endDate.toString().slice(0, 15)
-    }
+   }
 
     if (!orders) return
 
