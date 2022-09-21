@@ -20,7 +20,9 @@ export function ReserveModal({ stay }) {
     const navigateTo = () => {
         
         setreservedFlag(true)
-        dispatch(setOrder(stay, loggedInUser))
+        const startDate= document.querySelector('.date-in').innerHTML
+        const endDate= document.querySelector('.date-out').innerHTML
+        dispatch(setOrder(stay, loggedInUser,startDate,endDate))
 
         setTimeout(() => {
             window.location.href = "index.html/#/my-trip";

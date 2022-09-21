@@ -24,7 +24,7 @@ export function logout(user) {
 
     return (dispatch, getState) => {
         //Remove ghost user after logout
-        if (user.username === "Ghost") userService.removeUser(user._id)
+        // if (user.username === "Ghost") userService.removeUser(user._id)
         sessionStorage.removeItem("logedInUser")
         dispatch({ type: 'SET_USER', user: null })
         window.location.href = "index.html/";
@@ -43,6 +43,8 @@ export function logout(user) {
                         console.log(validtedUser,"validtedUser");
                         sessionStorage.setItem("logedInUser", JSON.stringify(validtedUser))
                         dispatch({ type: 'SET_USER', user: validtedUser })
+                        if(validtedUser.ishost)window.location.href = "index.html/#/dashboard";
+
                     }
                     else return
                 })

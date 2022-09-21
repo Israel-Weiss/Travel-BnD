@@ -46,6 +46,11 @@ function query(tag = null, text = null) {
   }
   else stays = storageService.getStays()
 
+stays.map(stay=>{
+  if(!stay.host)console.log(stay._id);
+})
+
+
   if (tag) {
     stayToDisplay = stays.filter(stay => stay.type.includes(tag))
     return Promise.resolve(stayToDisplay)

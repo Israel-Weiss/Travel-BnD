@@ -16,6 +16,7 @@ import { SearchModal } from './modal/search-modal'
 import { SubHeader } from "../cmps/sub-header";
 
 export function AppHeader() {
+    var profilePic = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
     const { loggedInUser } = useSelector(state => state.userModule)
     const { page } = useSelector(state => state.stayModule)
     console.log(page);
@@ -23,7 +24,6 @@ export function AppHeader() {
     if (page.includes("stays")) var cmp = "stayDetails"
     else cmp = "stayList"
 
-    var profilePic = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
 
     //Modals flags
     var [userPanel, setUserPanel] = useState(false)
@@ -94,7 +94,6 @@ export function AppHeader() {
     }
 
 
-
     return (
         <div>
 
@@ -117,13 +116,13 @@ export function AppHeader() {
                     <img className="world-icon" src={wordIcon} />
                     <div onClick={() => toggleModals()} className="user-container">
                         <img className="burger-icon" src={burgerIcon} />
-                        {(loggedInUser === 'null' || !loggedInUser) ? <img className="user-icon" src={userIcon} /> :
+                        { !loggedInUser ? <img className="user-icon" src={userIcon} /> :
                             <img className="user-profile" src={loggedInUser.pictureUrl} />
                         }
                     </div>
                 </div>
                 {/* modals */}
-                {userPanel && <UserPanel toggleModals={toggleModals} />}
+                {userPanel && <UserPanel toggleModals={toggleModals} setUserPanel={setUserPanel} />}
                 {loginInterface && <LoginInterface closeModal={closeModal} loginType={loginType} />}
             </header>
             {anywhereM && <section><SubHeader /><SearchModal /></section>}

@@ -28,11 +28,14 @@ var gOrders = [
 export const orderService = {
   createOrder,
   getByLogedInUser,
-  getByHostName
+  getByHostName,
+  aproveOrder
 }
 
 
-function createOrder(stay) {
+function createOrder(stay,startDate,endDate) {
+  console.log(endDate);
+
   const user = storageService.getLogedInUser()
   if (user) var userId = user._id
   else userId = "t001"
@@ -41,12 +44,12 @@ function createOrder(stay) {
     id: "tyuiis114",
     host: stay.host.fullname,
     stay: stay.name,
-    startDate: "05/09/22",
-    endDate: "15/09/22",
+    startDate: startDate,
+    endDate:endDate,
     guests: "1",
     price: stay.price,
     status: "pending",
-    userId:userId
+    userId: userId
   }
   return storageService.post("orders", order, 'order')
 
@@ -54,7 +57,7 @@ function createOrder(stay) {
 
 function getByLogedInUser() {
   var user = storageService.getLogedInUser()
-if(!user)var user={_id:"t001"}
+  if (!user) var user = { _id: "t001" }
   return storageService.query("orders").then(orders => {
     let orderToDisplay = []
     orders.map(order => {
@@ -64,20 +67,35 @@ if(!user)var user={_id:"t001"}
   })
 }
 
+function aproveOrder(orderId,status) {
+  let orders = storageService.getOrders()
+  let currOrder
+  
+  orders.map(order => {
+    if (order._id === orderId) currOrder=order
+  })
+  currOrder.status = status
+
+  console.log(currOrder);
+  return storageService.put("orders", currOrder)
+ 
+
+}
+
 function getByHostName() {
   var user = storageService.getLogedInUser()
   console.log(user.ishost);
-if(!user)return
-if(!user.ishost)return
+  if (!user) return
+  if (!user.ishost) return
 
   return storageService.query("orders").then(orders => {
     let orderToDisplay = []
     orders.map(order => {
-      console.log(order.host.toLowerCase() , " " ,user.fullname.toLowerCase() );
-      if (order.host.toLowerCase() === user.fullname.toLowerCase()) orderToDisplay.push(order)
+      console.log(order.host.toLowerCase(), " ", user.fullname.toLowerCase());
+      if (order.host.toLowerCase() === user.fullname.toLowerCase()&&order.status!="Cancel") orderToDisplay.push(order)
     })
-    console.log(orderToDisplay,"sss");
-    if(!orderToDisplay)return null
+    console.log(orderToDisplay, "sss");
+    if (!orderToDisplay) return null
     else return orderToDisplay
   })
 }
