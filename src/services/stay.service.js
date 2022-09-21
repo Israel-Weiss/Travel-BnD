@@ -1,4 +1,4 @@
-import { gStays } from '../storage/stay'
+// import { gStays } from '../storage/stay'
 
 import pool from '../assets/imgs/house/place-offer/pool.svg'
 import tv from '../assets/imgs/house/place-offer/tv.svg'
@@ -35,16 +35,11 @@ const BASE_URL = "stays/"
 async function getById(stayId) {
    const stay = await httpService.get(BASE_URL +stayId )
 return stay
-  // let stay = null
-  // let stays =  query(tag = null, text = null,filterBy)
-  // stays.map(currStay => {
-  //   if (currStay._id === stayId) stay = currStay
-  // })
-  // return Promise.resolve(stay)
 }
 
 async function query(tag = null, text = null,filterBy) {
   const stays = await httpService.get(BASE_URL, { params: filterBy })
+  console.log(stays);
   let stayToDisplay = []
   stays.map(stay => {
     if (!stay.host) console.log(stay._id);
@@ -63,8 +58,7 @@ async function query(tag = null, text = null,filterBy) {
     return Promise.resolve(stayToDisplay)
   }
   else {
-    storageService._save('stays', stays)
-    if (gStays.length > 100) stayToDisplay = gStays.splice(0, 100)
+    stayToDisplay = stays
     return Promise.resolve(stayToDisplay)
   }
 }
