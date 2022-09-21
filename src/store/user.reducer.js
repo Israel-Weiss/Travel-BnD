@@ -1,5 +1,7 @@
+import { storageService } from "../services/async-storage.service"
+
 const INITIAL_STATE = {
-    loggedInUser:sessionStorage.getItem("logedInUser")
+    loggedInUser:storageService.getLogedInUser()
 }
 
 

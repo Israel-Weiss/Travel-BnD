@@ -29,14 +29,10 @@ export const WishListModal = ({ stay, closeModal }) => {
     }
 
     const addStay = (listID) => {
-        wishListService.addStayToList(listID,stay)
-
+        wishListService.addStayToList(listID, stay)
+        window.location.href = "index.html/#/wishlist";
     }
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 1ee25bbd28f1aa462b4ca6427f09113108525b12
     return (<div className="wishlist-modal">
 
         <div className="header">
@@ -50,8 +46,8 @@ export const WishListModal = ({ stay, closeModal }) => {
                 <p className='text'>Create new wishlist</p>
             </div>
             {wishlist && wishlist.map(list => {
-                return <div className="list" >
-                    <img className='wish-list-img' src={list.imgUrls[0]} onClick={() => addStay(list._id)} />
+                return <div className="list"  onClick={() => addStay(list._id)}>
+                    <img className='wish-list-img' src={list.imgUrls[0]} />
                     <p className='text' style={{ fontSize: "20px" }}>{list.name}</p>
                 </div>
             })
@@ -62,9 +58,11 @@ export const WishListModal = ({ stay, closeModal }) => {
 
             <form className="editor" onSubmit={(event) => createWishList(event)}>
                 <input type="text" placeholder='Name' />
-                <button className="createBtn">
-                    <p className='text'>Create</p>
-                </button>
+         
+                    <button className="createBtn">
+                        <p className='text'>Create</p>
+                    </button>
+           
             </form>}
 
 

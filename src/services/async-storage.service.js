@@ -10,7 +10,8 @@ export const storageService = {
     getLogedInUser,
     getStays,
     getUsers,
-    getWishList
+    getWishList,
+    getOrders
 }
 
 function getWishList() {
@@ -25,6 +26,11 @@ function getStays() {
 
 function getUsers(){
     var entities = JSON.parse(localStorage.getItem("users"))
+    return entities
+}
+
+function getOrders(){
+    var entities = JSON.parse(localStorage.getItem("orders"))
     return entities
 }
 
@@ -68,7 +74,8 @@ function put(entityType, updatedEntity) {
             const idx = entities.findIndex(entity => entity._id === updatedEntity._id)
             entities.splice(idx, 1, updatedEntity)
             _save(entityType, entities)
-            return updatedEntity
+            if(entityType==="orders")return entities
+            else return updatedEntity
         })
 }
 
