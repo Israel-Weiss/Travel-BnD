@@ -18,6 +18,7 @@ export function ReserveModal({ stay }) {
     }
 
     const navigateTo = () => {
+        
         setreservedFlag(true)
         dispatch(setOrder(stay, loggedInUser))
 
