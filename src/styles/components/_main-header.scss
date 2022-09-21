@@ -15,7 +15,12 @@ header.header-container {
         display: flex;
 
         img.logo {
-            width: 150px;
+            width: 100px;
+        }
+        @include for-small-layout {
+            img.logo {
+                width: 150px;
+            }
         }
     }
 

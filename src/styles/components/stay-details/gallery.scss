@@ -8,7 +8,7 @@
         display: grid;
         max-height: 330px;
         grid-template-rows: 161px 161px;
-
+     
         grid-template-areas:
             "a a b c"
             "a a d e"
@@ -17,7 +17,8 @@
     }
 
     .room-image {
-        max-height: 330px;
+        max-height: 165px;
+        aspect-ratio: 1.6969;
         cursor: pointer;
         object-fit: cover;
 
@@ -28,6 +29,8 @@
 
     .room-image:first-child {
         @include for-small-layout {
+            min-height: 330px;
+
             border-bottom-left-radius: 10px;
             border-top-left-radius: 10px;
         }

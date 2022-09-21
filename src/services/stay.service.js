@@ -1,4 +1,4 @@
-import { gStays } from '../storage/stay'
+// import { gStays } from '../storage/stay'
 
 import pool from '../assets/imgs/house/place-offer/pool.svg'
 import tv from '../assets/imgs/house/place-offer/tv.svg'
@@ -19,6 +19,7 @@ import aircondition from '../assets/imgs/house/place-offer/aircondition.svg'
 import crib from '../assets/imgs/house/place-offer/crib.svg'
 
 import { storageService } from "./async-storage.service"
+import { httpService } from './http.service'
 
 export const stayService = {
   getById,
@@ -28,29 +29,21 @@ export const stayService = {
   getRandomIntInclusive
 }
 
-function getById(stayId) {
-  let stay = null
-  let stays = storageService.getStays()
-  stays.map(currStay => {
-    if (currStay._id === stayId) stay = currStay
-  })
-  return Promise.resolve(stay)
+const BASE_URL = "stays/"
+
+
+async function getById(stayId) {
+   const stay = await httpService.get(BASE_URL +stayId )
+return stay
 }
 
-function query(tag = null, text = null) {
-  let stays
+async function query(tag = null, text = null,filterBy) {
+  const stays = await httpService.get(BASE_URL, { params: filterBy })
+  
   let stayToDisplay = []
-  if (!stays) {
-    stays = gStays
-    storageService._save('stays', stays)
-  }
-  else stays = storageService.getStays()
-
-stays.map(stay=>{
-  if(!stay.host)console.log(stay._id);
-})
-
-
+  stays.map(stay => {
+    if (!stay.host) console.log(stay._id);
+  })
   if (tag) {
     stayToDisplay = stays.filter(stay => stay.type.includes(tag))
     return Promise.resolve(stayToDisplay)
@@ -65,8 +58,7 @@ stays.map(stay=>{
     return Promise.resolve(stayToDisplay)
   }
   else {
-    storageService._save('stays', stays)
-    if (gStays.length > 100) stayToDisplay = gStays.splice(0, 100)
+    stayToDisplay = stays
     return Promise.resolve(stayToDisplay)
   }
 }
@@ -150,3 +142,41 @@ function getRandomIntInclusive(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1) + min); // The maximum is inclusive and the minimum is inclusive
 }
+
+
+
+
+
+// function query(tag = null, text = null) {
+//   let stays
+//   let stayToDisplay = []
+//   if (!stays) {
+//     stays = gStays
+//     storageService._save('stays', stays)
+//   }
+//   else stays = storageService.getStays()
+
+//   stays.map(stay => {
+//     if (!stay.host) console.log(stay._id);
+//   })
+
+
+//   if (tag) {
+//     stayToDisplay = stays.filter(stay => stay.type.includes(tag))
+//     return Promise.resolve(stayToDisplay)
+//   }
+//   else if (text) {
+//     const lowerText = text.toLowerCase()
+//     stayToDisplay = stays.filter(stay =>
+//       (stay.name.toLowerCase().includes(lowerText))
+//       || (stay.loc.country.toLowerCase().includes(lowerText))
+//       || (stay.loc.city.toLowerCase().includes(lowerText)))
+//     console.log(stayToDisplay);
+//     return Promise.resolve(stayToDisplay)
+//   }
+//   else {
+//     storageService._save('stays', stays)
+//     if (gStays.length > 100) stayToDisplay = gStays.splice(0, 100)
+//     return Promise.resolve(stayToDisplay)
+//   }
+// }

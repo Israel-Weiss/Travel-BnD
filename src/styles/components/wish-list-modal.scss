@@ -3,8 +3,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    min-width: 568px;
-    // min-height: 350px;
+    
     height: 350px;
     max-height: 500px;
     overflow-y: scroll;
@@ -18,6 +17,14 @@
     z-index: 5;
     border-radius: 15px;
     background-color: $clr1;
+    width: 90%;
+    @include for-small-layout {
+        min-width: 568px;
+        width: 568px;
+        padding: 0px 20px 0px 20px;
+        height: 350px;
+        max-height: 500px;
+    }
 
     .exitBtn {
         padding-left: 16px;
@@ -48,9 +55,10 @@
             font-size: 18px;
             border-radius: 10px;
             border: none;
-            outline:none;
+            outline: none;
             border: 1px solid $clr7;
         }
+
         .createBtn {
             display: flex;
             align-items: center;
@@ -72,8 +80,8 @@
             }
         }
 
-       
-       
+
+
     }
 
 
@@ -106,7 +114,7 @@
         align-items: center;
         margin-top: 20px;
         gap: 10px;
-            padding: 0px 24px 0px 24px;
+        padding: 0px 24px 0px 24px;
 
         img {
             width: 62px;
@@ -117,5 +125,3 @@
     }
 
 }
-
-

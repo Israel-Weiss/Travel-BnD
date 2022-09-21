@@ -1,4 +1,5 @@
 import { storageService } from "./async-storage.service"
+import { httpService } from './http.service'
 
 var gOrders = [
   // {
@@ -32,10 +33,9 @@ export const orderService = {
   aproveOrder
 }
 
+const BASE_URL="orders/"
 
-function createOrder(stay,startDate,endDate) {
-  console.log(endDate);
-
+async function createOrder(stay,startDate,endDate) {
   const user = storageService.getLogedInUser()
   if (user) var userId = user._id
   else userId = "t001"
@@ -51,51 +51,46 @@ function createOrder(stay,startDate,endDate) {
     status: "pending",
     userId: userId
   }
-  return storageService.post("orders", order, 'order')
-
+ return await httpService.post(BASE_URL, order)
 }
 
-function getByLogedInUser() {
+async function getByLogedInUser() {
   var user = storageService.getLogedInUser()
   if (!user) var user = { _id: "t001" }
-  return storageService.query("orders").then(orders => {
-    let orderToDisplay = []
-    orders.map(order => {
-      if (order.userId === user._id) orderToDisplay.push(order)
-    })
-    return orderToDisplay
-  })
-}
 
-function aproveOrder(orderId,status) {
-  let orders = storageService.getOrders()
-  let currOrder
-  
+  const orders = await httpService.get(BASE_URL)
+  let orderToDisplay = []
   orders.map(order => {
-    if (order._id === orderId) currOrder=order
+    if (order.userId === user._id) orderToDisplay.push(order)
   })
-  currOrder.status = status
-
-  console.log(currOrder);
-  return storageService.put("orders", currOrder)
- 
+  return orderToDisplay
 
 }
 
-function getByHostName() {
+async function getByHostName() {
   var user = storageService.getLogedInUser()
   console.log(user.ishost);
   if (!user) return
   if (!user.ishost) return
 
-  return storageService.query("orders").then(orders => {
+  const orders = await httpService.get(BASE_URL)
     let orderToDisplay = []
     orders.map(order => {
       console.log(order.host.toLowerCase(), " ", user.fullname.toLowerCase());
-      if (order.host.toLowerCase() === user.fullname.toLowerCase()&&order.status!="Cancel") orderToDisplay.push(order)
+      if (order.host.toLowerCase() === user.fullname.toLowerCase()) orderToDisplay.push(order)
     })
-    console.log(orderToDisplay, "sss");
     if (!orderToDisplay) return null
     else return orderToDisplay
-  })
 }
+
+async function aproveOrder(orderId,status) {
+  let orders = await httpService.get(BASE_URL)
+  let currOrder
+  orders.map(order => {
+    if (order._id === orderId) currOrder=order
+  })
+  currOrder.status = status
+  console.log("order id",orderId);
+  return await httpService.put(BASE_URL+orderId, currOrder)
+}
+
