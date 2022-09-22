@@ -21,6 +21,7 @@ export const StayDetails = () => {
 
     useEffect(() => {
         dispatch(setCurrentUrl(currentUrl))
+        window.scrollTo(0, 0)
         loadStay()
     }, [params.id])
 

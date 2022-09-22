@@ -26,18 +26,19 @@ export const stayService = {
   query,
   calcRate,
   mapIcon,
-  getRandomIntInclusive
+  getRandomIntInclusive,
+  getLocalZones
 }
 
 const BASE_URL = "stays/"
 
 
 async function getById(stayId) {
-   const stay = await httpService.get(BASE_URL +stayId )
-return stay
+  const stay = await httpService.get(BASE_URL + stayId)
+  return stay
 }
 
-async function query(tag = null, text = null,range=null) {
+async function query(tag = null, text = null, range = null) {
   // console.log("im here");
   const stays = await httpService.get(BASE_URL)
   let stayToDisplay = []
@@ -55,15 +56,38 @@ async function query(tag = null, text = null,range=null) {
     console.log(stayToDisplay);
     return Promise.resolve(stayToDisplay)
   }
-  else if(range){
-    stayToDisplay = stays.filter(stay =>(parseInt(stay.price)>range.start)&&(parseInt(stay.price)<range.end))
+  else if (range) {
+    stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
+    stayToDisplay.sort((a, b) =>
+      parseInt(a.price) - parseInt(b.price)
+    )
     return Promise.resolve(stayToDisplay)
   }
-  else 
+  else
     stayToDisplay = stays
-    return Promise.resolve(stayToDisplay)
-  }
+  return Promise.resolve(stayToDisplay)
+}
 
+async function getLocalZones(text){
+  const lowerText= text.toLowerCase()
+let stays = await query()
+let localZones = []
+
+stays.map(stay=>{
+const {country,city}=stay.loc  
+
+if(country.toLowerCase().includes(lowerText)&&
+(country.charAt(0).toLowerCase()===lowerText.charAt(0))
+&&!localZones.includes(country)&&!localZones.includes(city))localZones.push(country)
+
+if(city.toLowerCase().includes(lowerText)&&
+(city.charAt(0).toLowerCase()===lowerText.charAt(0))
+&&!localZones.includes(country)&&!localZones.includes(city))localZones.push(city)
+
+})
+console.log(localZones ,"localzone");
+return Promise.resolve(localZones)
+}
 
 function calcRate(reviews) {
   var rate = 0
