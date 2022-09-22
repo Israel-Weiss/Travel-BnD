@@ -102,7 +102,10 @@ export function ReserveModal({ stay }) {
                     <div className="order-pic">
                         <div className="card">
                             <img src={stay.imgUrls[0]} />
+                            
+                            {stay.name.length>30?<p className="bold-text">{stay.name.substring(0,30)}</p>:
                             <p className="bold-text">{stay.name}</p>
+                            }
                         </div>
                     </div>
                 </div>

@@ -20,7 +20,9 @@ export const StayPreview = ({ stay }) => {
     var [isLiked, setIsLiked] = useState(false)
     var [modalFlag, setModalFlag] = useState(false)
  
-
+    // useEffect(() => {
+    //  if(stay.likedByUsers.includes(loggedInUser))
+    // }, [])
 
     const addWishList = () => {
         setModalFlag(!modalFlag)
@@ -81,7 +83,7 @@ export const StayPreview = ({ stay }) => {
                     <div className="navigation-button"></div>
                     <div className="navigation-button"></div>
                 </div>
-                <img className='heart-icon' src={heartPic} onClick={() => addWishList()} />
+                 <img className='heart-icon' src={heartPic} onClick={() => addWishList()} />
             </div>
 
             <div className="card-info">

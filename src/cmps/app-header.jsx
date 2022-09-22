@@ -125,7 +125,7 @@ export function AppHeader() {
                 {userPanel && <UserPanel toggleModals={toggleModals} setUserPanel={setUserPanel} />}
                 {loginInterface && <LoginInterface closeModal={closeModal} loginType={loginType} />}
             </header>
-            {anywhereM && <section><SubHeader /><SearchModal /></section>}
+            {anywhereM && <section><SubHeader setAnywhereM={setAnywhereM} /><SearchModal /></section>}
         </div>
     )
 }
