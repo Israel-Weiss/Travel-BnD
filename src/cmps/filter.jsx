@@ -1,38 +1,39 @@
 import React from "react";
 import "rheostat/initialize";
 import Rheostat from "rheostat";
+import { stayService } from "../services/stay.service";
+import { setStay } from '../store/stay.action'
+import { useDispatch, useSelector } from 'react-redux'
 
 import "../styles/components/rheostart.scss";
 // import { getValue } from "@testing-library/user-event/dist/utils";
 
-
-
 const price = [
   {
-    key: "0",
-    displayName: "0",
-    count: 0,
-    min: 3500,
-    max: 9999
+    key: "20",
+    displayName: "20",
+    count: 50,
+    min: 50,
+    max: 100
   },
   {
-    key: "10000",
-    displayName: "10000",
-    count: 0,
-    min: 10000,
-    max: 19999
+    key: "50",
+    displayName: "50",
+    count: 50,
+    min: 70,
+    max: 100
   },
   {
     key: "20000",
     displayName: "20000",
-    count: 0,
+    count: 50,
     min: 20000,
     max: 29999
   },
   {
     key: "30000",
     displayName: "30000",
-    count: 0,
+    count: 50,
     min: 30000,
     max: 39999
   },
@@ -289,119 +290,143 @@ const price = [
     max: 409900
   },
   {
-    key: "650000",
-    displayName: "650000",
+    key: "420000",
+    displayName: "420000",
     count: 0,
-    min: 650007,
-    max: 650007
+    min: 420000,
+    max: 420000
   }
 ]
 
-
-
 const PitComponent = ({ style, children }) => {
-  const count = price.find((val) => String(children) === val.displayName)
-    ?.count
-  const height = Math.round((count / 100000) * 100)
 
-  return (
-    <div className="bars"
-      style={{
-        ...style,
-        background: "#a2a2a2",
-        width: 10,
-        height: height,
-        bottom: 20
-      }}
-    />
-  );
+
+
+
+  for (var i = 1; i < 28; i++) {
+    const height = (stayService.getRandomIntInclusive(1, 8)) * 5
+    return (
+      <div className="bars"
+        style={{
+          ...style,
+          background: "#a2a2a2",
+          width: 10,
+          height: height,
+          bottom: 20
+        }}
+      />
+    );
+
+  }
+
 }
 
-export function PriceFilter(ev) {
+export function PriceFilter(closeModal) {
+  const dispatch = useDispatch()
 
-    var vars =  {
-        min: 0,
-        max: 650000,
-        values: [0, 650000],
-      }
+  const onSetFilter = () => {
+    let elStartRange = document.querySelector('.min-price-num').innerHTML
+    let elEndRange = document.querySelector('.max-price-num').innerHTML
+    const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
+    const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
+    const range = { start: startRange, end: endRange }
+    stayService.query(null, null, range).then(
+      stays =>{ dispatch(setStay(stays))
+        closeModal()
+    }  )
+
+
+  }
+
+  var vars = {
+    min: 0,
+    max: 1500,
+    values: [0, 1500],
+  }
   return (
 
     <div className="App">
       <Rheostat
-        min={vars.min} 
-        max={vars.max} 
+        min={0}
+        max={1500}
         values={vars.values}
         pitComponent={PitComponent}
-         onValuesUpdated={(props) =>{
-                document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
-                document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
-                {console.log(props.values[0], props.values[1])}
-         }}
+        onValuesUpdated={(props) => {
+          document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
+          document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
+          { console.log(props.values[0], props.values[1]) }
+        }}
         pitPoints={[
           0,
-          10000,
-          20000,
-          30000,
-          40000,
-          50000,
-          60000,
-          70000,
-          80000,
-          90000,
-          100000,
-          110000,
-          120000,
-          130000,
-          140000,
-          150000,
-          160000,
-          170000,
-          180000,
-          190000,
-          200000,
-          210000,
-          220000,
-          230000,
-          240000,
-          250000,
-          260000,
-          270000,
-          280000,
-          290000,
-          300000,
-          310000,
-          320000,
-          330000,
-          340000,
-          350000,
-          360000,
-          370000,
-          380000,
-          400000,
-          650000
+          30,
+          50,
+          60,
+          70,
+          80,
+          90,
+          100,
+          150,
+          200,
+          250,
+          280,
+          300,
+          350,
+          370,
+          400,
+          420,
+          460,
+          480,
+          500,
+          520,
+          550,
+          580,
+          600,
+          620,
+          650,
+          680,
+          700,
+          720,
+          760,
+          780,
+          800,
+          820,
+          850,
+          870,
+          900,
+          920,
+          950,
+          970,
+          1000,
+          1500
         ]
-    }  
+        }
+
       />
-        <div className="price-container flex">
-      <div className="min-price-container">
-        <div className="min-price-txt">
+
+      <div className="price-container flex">
+        <div className="min-price-container">
+          <div className="min-price-txt">
             Min price
-        </div>
-        <div className="min-price-num">
+          </div>
+          <div className="min-price-num">
             $ {0}
+          </div>
         </div>
-    </div>
+
         <span className="line-btwn-box">-</span>
-      <div className="max-price-container">
-        <div className="max-price-txt">
+        <div className="max-price-container">
+
+          <div className="max-price-txt">
             Max price
+          </div>
+          <div className="max-price-num">
+            $ {1000}
+          </div>
         </div>
-        <div className="max-price-num">
-            $ {650000}
-        </div>
-   </div>
-   </div>
+
+      </div>
+      <div className="show-homes" onClick={() => onSetFilter()}>Show homes</div>
     </div>
-    
+
   )
 }

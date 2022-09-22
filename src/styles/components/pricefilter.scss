@@ -1,35 +1,41 @@
-.filter-modal{
+.filter-modal {
     max-width: 780px;
     max-height: 700px;
     position: fixed;
     left: 50%;
     top: 0;
+    margin-top: 38px;
     transform: translateX(-50%);
     height: 100%;
     // width: 100%;
     background-color: $clr1;
     z-index: 2;
     border-radius: 0px;
+    justify-content: space-between;
     display: flex;
     flex-direction: column;
     box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
+
     @include for-small-layout {
         top: 6%;
-        width: 65%;
-        height: 90%;
+        width: 55%;
+        height: 70%;
         border-radius: 12px;
     }
-    .title-sector{
+
+
+    .title-sector {
         font-size: 28px;
         color: $clr5;
         width: 100%;
         border-bottom: 1px solid;
-        border-color:$clr6;
+        border-color: $clr6;
 
         @include for-small-layout {
             font-size: 33px;
         }
-        .filter-header{
+
+        .filter-header {
             flex-direction: column;
             font-size: 16px;
             font-weight: 750;
@@ -37,96 +43,119 @@
             margin-top: 20px;
         }
     }
-    .exit-btn{
+
+    .exit-btn {
         border: none;
-            background-color: transparent;
-            flex-direction: column;
-            font-size: 22px;
-            margin-bottom: 10px;
-            margin-left: 2%;
-            position: fixed;
-            margin-top: 10px;
-    }
-    .filter{
-        background-color:$clr1 ;
-        border-radius: 16px;
-        border: none;
-        border-color: $clr4;
-        display: inline-block;
-        align-self: center;
+        background-color: transparent;
+        flex-direction: column;
+        font-size: 22px;
+        margin-bottom: 10px;
+        margin-left: 2%;
         position: fixed;
-        bottom: 40%;
-        width: 90%; 
-        z-index: 1;
-        min-width: fit-content;
-        
+        margin-top: 10px;
     }
-    .bars{
+
+    .bars {
+        margin-left: 25px;
+        width: 80%;
         bottom: 20px;
     }
-    
-}
 
-.price-container{
-    flex-wrap: wrap;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    padding-bottom: 32px;
-    border-bottom: 1px solid;
-    border-color:$clr6;
+    .DefaultBackground_background__horizontal {
+        margin: 0 auto;
+    }
 
-    .line-btwn-box{
-        font-size: 20px;
-        // font-weight: 100;
-        margin-top: 22px;
+    .DefaultHandle_handle__horizontal_2 {
+        margin-left: 25px !important;
+    }
+
+    .price-container {
+        // flex-wrap: wrap;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+        padding-bottom: 32px;
+        border-bottom: 1px solid;
+        border-color: $clr6;
+        padding: 8px 25px 8px 25px;
+
+
+        .line-btwn-box {
+            font-size: 20px;
+            align-self: center;
+            color: $clr5;
+        }
+
+        .min-price-container {
+            height: 60px;
+            width: 48%;
+            display: flex;
+
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid;
+            border-color: $clr4;
+            padding-left: 10px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border-radius: 15px;
+            color: $clr5;
+
+            .min-price-txt {
+                flex-direction: row;
+                color: $clr4
+            }
+
+            .min-price-num {
+                flex-direction: row;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+
+        .max-price-container {
+            height: 60px;
+            width: 48%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            border: 1px solid;
+            border-color: $clr4;
+            padding-left: 10px;
+            margin-top: 12px;
+            margin-bottom: 12px;
+            border-radius: 15px;
+            color: $clr5;
+
+            .max-price-txt {
+                flex-direction: row;
+                color: $clr4
+            }
+
+            .max-price-num {
+                flex-direction: row;
+                font-size: 15px;
+                font-weight: 400;
+            }
+        }
+
+
+    }
+
+    .show-homes {
+
+        width: 40%;
+        margin: 0 auto;
+        margin-top: 25px;
+        margin-bottom: 25px;
+        border-radius: 15px;
+        text-align: center;
+        font-size: 16px;
+        cursor: pointer;
+        font-weight: bold;
+        padding: 20px 90px 20px 90px;
+        background-color: $clr5;
+        color: $clr1;
         align-self: center;
-        color:$clr5;
-    }
-    .min-price-container{
-        height: 60px;
-        width: 48%;
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
-        border: 1px solid;
-        border-color: $clr4;
-        padding-left: 10px;
-        margin-top: 25px;
-        border-radius: 15px;
-        color:$clr5;
-        .min-price-txt{
-            flex-direction: row;
-            color:$clr4
-        }
-        .min-price-num{
-            flex-direction: row;
-            font-size: 15px;
-            font-weight: 400;
-        }
-    }
-    
-
-    .max-price-container{
-        height: 60px;
-        width: 48%;
-        display: flex;
-        flex-direction: column;
-        justify-content:center;
-        border: 1px solid;
-        border-color: $clr4;
-        padding-left: 10px;
-        margin-top: 25px;
-        border-radius: 15px;
-        color:$clr5;
-        .max-price-txt{
-            flex-direction: row;
-            color:$clr4
-        }
-        .max-price-num{
-            flex-direction: row;
-            font-size: 15px;
-            font-weight: 400;
-        }
     }
 }

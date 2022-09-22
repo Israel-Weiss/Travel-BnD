@@ -37,13 +37,11 @@ async function getById(stayId) {
 return stay
 }
 
-async function query(tag = null, text = null,filterBy) {
-  const stays = await httpService.get(BASE_URL, { params: filterBy })
-  
+async function query(tag = null, text = null,range=null) {
+  // console.log("im here");
+  const stays = await httpService.get(BASE_URL)
   let stayToDisplay = []
-  stays.map(stay => {
-    if (!stay.host) console.log(stay._id);
-  })
+
   if (tag) {
     stayToDisplay = stays.filter(stay => stay.type.includes(tag))
     return Promise.resolve(stayToDisplay)
@@ -57,11 +55,15 @@ async function query(tag = null, text = null,filterBy) {
     console.log(stayToDisplay);
     return Promise.resolve(stayToDisplay)
   }
-  else {
+  else if(range){
+    stayToDisplay = stays.filter(stay =>(parseInt(stay.price)>range.start)&&(parseInt(stay.price)<range.end))
+    return Promise.resolve(stayToDisplay)
+  }
+  else 
     stayToDisplay = stays
     return Promise.resolve(stayToDisplay)
   }
-}
+
 
 function calcRate(reviews) {
   var rate = 0

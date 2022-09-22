@@ -20,6 +20,17 @@ export function loadStay() {
     }
 }
 
+export function setStay(stays) {
+    return async (dispatch) => {
+        try {
+            dispatch({ type: 'SET_STAY', stays })
+        } catch (err) {
+            showErrorMsg('Cannot load stays')
+        }
+    }
+}
+
+
 export function setCurrentUrl(page) {
     return (dispatch) => {
         dispatch({ type: 'SET_PAGE', page: page })

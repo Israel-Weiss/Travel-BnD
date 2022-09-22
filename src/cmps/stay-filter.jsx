@@ -11,12 +11,6 @@ export const StayFilter = ({ onSetFilter}) => {
 
     var key = 0
 
-    // const openModal = ()=>  {
-    //     modalFlag = true
-    //     setFilter(true)
-    //     document.querySelector('.dark-screen').style.display = 'block'
-    //     console.log('hello')
-    // }
 
     const dispatch = useDispatch()
 
@@ -27,7 +21,7 @@ export const StayFilter = ({ onSetFilter}) => {
         setModalFlag(false)
     }
 
-    const openApp = event => {
+    const openApp = () => {
         setModalFlag(true)
         setIsShown(current => !current)
         document.querySelector('.dark-screen').style.display = 'block'
@@ -45,8 +39,8 @@ export const StayFilter = ({ onSetFilter}) => {
                     </div>)
             })}
         </div>
-        <div className="filter-btn">
-            <img className="filter-btn-img" src={filterIcon} onClick={() => openApp()}/>
+        <div className="filter-btn" onClick={() => openApp()}>
+            <img className="filter-btn-img" src={filterIcon} />
             <h1 className="filter-btn-text">Filters</h1>
         </div>
         <div className="filter-modal" style={{display: isShown ? 'none' : 'flex'}}>
@@ -59,7 +53,7 @@ export const StayFilter = ({ onSetFilter}) => {
                 <h3 className="avg-price-title">The average nightly price is $216</h3>
             </div>
             
-            {modalFlag && <div className="filter">{PriceFilter()}</div>}
+            {modalFlag && <div className="filter">{PriceFilter(closeModal) }</div>}
         </div>
     </div>
     )}

@@ -3,7 +3,8 @@ import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import { stayService } from '../services/stay.service'
 //img
-import arrowRight from '../assets/imgs/Filter Icons/btn-left.svg'
+import arrowRight from '../assets/imgs/Filter Icons/arowRight.svg'
+import arrowLeft from '../assets/imgs/Filter Icons/arowLeft.svg'
 import heartIcon from '../assets/imgs/heartIcon.png'
 import heartIconRed from '../assets/imgs/heartIcon-red.png'
 import starIcon from '../assets/imgs/starIcon.svg'
@@ -18,6 +19,7 @@ export const StayPreview = ({ stay }) => {
     var [idx, setIdx] = useState(0)
     var [isLiked, setIsLiked] = useState(false)
     var [modalFlag, setModalFlag] = useState(false)
+ 
 
 
     const addWishList = () => {
@@ -33,9 +35,16 @@ export const StayPreview = ({ stay }) => {
         else likedByUsers.pop()
     }
 
-    const moveIndex = () => {
-        if ((idx + 1) >= stay.imgUrls.length) idx = 0
-        else idx++
+    const moveIndex = (operator) => {
+        
+        if (operator === "+") {
+             idx++
+        }
+        else {
+      
+             idx-- 
+        }
+        console.log(idx);
         setIdx(idx)
     }
 
@@ -58,9 +67,13 @@ export const StayPreview = ({ stay }) => {
                     <img className='card-pic' src={stay.imgUrls[idx]} />
                 </ NavLink>
 
-                <div className="arrow-right-conatiner" onClick={() => moveIndex()}>
+
+                {(idx+1)<stay.imgUrls.length&&<div className="arrow-right-conatiner" onClick={() => moveIndex("+")}>
                     <img className="arrow-right" src={arrowRight} />
-                </div>
+                </div>}
+                {idx>0&&<div className="arrow-right-conatiner" style={{ left: '-80%' }} onClick={() => moveIndex("-")}>
+                    <img className="arrow-right" src={arrowLeft} />
+                </div>}
 
                 <div className="navigation-manual">
                     <div className="navigation-button"></div>
