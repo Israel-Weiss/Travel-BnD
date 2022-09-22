@@ -89,7 +89,7 @@ export const StayPreview = ({ stay }) => {
                     <p className="card-info-location">{city}, {country}</p>
                     <div className=" flex ">
                         <img className='starIcon' src={starIcon} />
-                        <p className='black ' style={{ fontSize: '15px', marginTop: "4px" }}>5.0</p>
+                        <p className='black ' style={{ fontSize: '15px', marginTop: "4px" }}>{stayService.calcRate(stay.reviews)}</p>
                     </div>
                 </div>
                 <p className="card-info-distance">{stayService.getRandomIntInclusive(200, 1500)} kilometers</p>

@@ -71,6 +71,7 @@ function calcRate(reviews) {
     rate += review.rate
   })
   rate = rate / reviews.length
+  if(rate < 3.5) rate += 1.5
   return rate.toFixed(2)
 }
 
