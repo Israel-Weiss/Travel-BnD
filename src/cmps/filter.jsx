@@ -10,309 +10,304 @@ import "../styles/components/rheostart.scss";
 
 const price = [
   {
-    key: "20",
-    displayName: "20",
-    count: 50,
-    min: 50,
-    max: 100
+    key: "30",
+    displayName: "30",
+    count: 15,
+    min: 0,
+    max: 30
   },
   {
     key: "50",
     displayName: "50",
-    count: 50,
+    count: 42,
+    min: 30,
+    max: 50
+  },
+  {
+    key: "60",
+    displayName: "60",
+    count: 18,
+    min: 50,
+    max: 60
+  },
+  {
+    key: "70",
+    displayName: "70",
+    count: 13,
+    min: 60,
+    max: 70
+  },
+  {
+    key: "80",
+    displayName: "80",
+    count: 23,
     min: 70,
+    max: 80
+  },
+  {
+    key: "90",
+    displayName: "90",
+    count: 19,
+    min: 80,
+    max: 90
+  },
+  {
+    key: "100",
+    displayName: "100",
+    count: 10,
+    min: 90,
     max: 100
   },
   {
-    key: "20000",
-    displayName: "20000",
-    count: 50,
-    min: 20000,
-    max: 29999
+    key: "150",
+    displayName: "150",
+    count: 40,
+    min: 100,
+    max: 150
   },
   {
-    key: "30000",
-    displayName: "30000",
-    count: 50,
-    min: 30000,
-    max: 39999
+    key: "200",
+    displayName: "200",
+    count: 36,
+    min: 150,
+    max: 200
   },
   {
-    key: "40000",
-    displayName: "40000",
+    key: "250",
+    displayName: "250",
+    count: 19,
+    min: 200,
+    max: 250
+  },
+  {
+    key: "280",
+    displayName: "280",
+    count: 10,
+    min: 250,
+    max: 280
+  },
+  {
+    key: "300",
+    displayName: "300",
+    count: 9,
+    min: 280,
+    max: 300
+  },
+  {
+    key: "350",
+    displayName: "350",
+    count: 11,
+    min: 300,
+    max: 350
+  },
+  {
+    key: "370",
+    displayName: "370",
+    count: 6,
+    min: 350,
+    max: 370
+  },
+  {
+    key: "400",
+    displayName: "400",
+    count: 10,
+    min: 370,
+    max: 400
+  },
+  {
+    key: "420",
+    displayName: "420",
+    count: 2,
+    min: 400,
+    max: 420
+  },
+  {
+    key: "460",
+    displayName: "460",
+    count: 3,
+    min: 420,
+    max: 460
+  },
+  {
+    key: "480",
+    displayName: "480",
+    count: 5,
+    min: 460,
+    max: 480
+  },
+  {
+    key: "500",
+    displayName: "500",
+    count: 2,
+    min: 480,
+    max: 500
+  },
+  {
+    key: "520",
+    displayName: "520",
+    count: 5,
+    min: 500,
+    max: 520
+  },
+  {
+    key: "550",
+    displayName: "550",
+    count: 3,
+    min: 520,
+    max: 550
+  },
+  {
+    key: "580",
+    displayName: "580",
+    count: 3,
+    min: 550,
+    max: 580
+  },
+  {
+    key: "600",
+    displayName: "600",
+    count: 6,
+    min: 580,
+    max: 600
+  },
+  {
+    key: "620",
+    displayName: "620",
     count: 0,
-    min: 40000,
-    max: 49999
+    min: 600,
+    max: 620
   },
   {
-    key: "50000",
-    displayName: "50000",
+    key: "65",
+    displayName: "650",
+    count: 1,
+    min: 620,
+    max: 650
+  },
+  {
+    key: "680",
+    displayName: "680",
+    count: 1,
+    min: 650,
+    max: 680
+  },
+  {
+    key: "700",
+    displayName: "700",
+    count: 2,
+    min: 680,
+    max: 700
+  },
+  {
+    key: "720",
+    displayName: "720",
+    count: 1,
+    min: 700,
+    max: 720
+  },
+  {
+    key: "760",
+    displayName: "760",
+    count: 1,
+    min: 720,
+    max: 760
+  },
+  {
+    key: "780",
+    displayName: "780",
+    count: 1,
+    min: 760,
+    max: 780
+  },
+  {
+    key: "800",
+    displayName: "800",
+    count: 4,
+    min: 780,
+    max: 800
+  },
+  {
+    key: "820",
+    displayName: "820",
     count: 0,
-    min: 50000,
-    max: 59999
+    min: 800,
+    max: 820
   },
   {
-    key: "60000",
-    displayName: "60000",
+    key: "850",
+    displayName: "850",
     count: 0,
-    min: 60030,
-    max: 69999
+    min: 820,
+    max: 850
   },
   {
-    key: "70000",
-    displayName: "70000",
-    count: 4500,
-    min: 70000,
-    max: 79999
+    key: "870",
+    displayName: "870",
+    count: 1,
+    min: 850,
+    max: 870
   },
   {
-    key: "80000",
-    displayName: "80000",
-    count: 2527,
-    min: 80003,
-    max: 89999
-  },
-  {
-    key: "90000",
-    displayName: "90000",
-    count: 4408,
-    min: 90000,
-    max: 99999
-  },
-  {
-    key: "100000",
-    displayName: "100000",
-    count: 4807,
-    min: 100000,
-    max: 109998
-  },
-  {
-    key: "110000",
-    displayName: "110000",
-    count: 67500,
-    min: 110000,
-    max: 119998
-  },
-  {
-    key: "120000",
-    displayName: "120000",
-    count: 543,
-    min: 120010,
-    max: 129999
-  },
-  {
-    key: "130000",
-    displayName: "130000",
-    count: 38600,
-    min: 130490,
-    max: 139999
-  },
-  {
-    key: "140000",
-    displayName: "140000",
-    count: 354,
-    min: 140441,
-    max: 149999
-  },
-  {
-    key: "150000",
-    displayName: "150000",
-    count: 23600,
-    min: 150366,
-    max: 159999
-  },
-  {
-    key: "160000",
-    displayName: "160000",
-    count: 179,
-    min: 160212,
-    max: 169999
-  },
-  {
-    key: "170000",
-    displayName: "170000",
-    count: 23500,
-    min: 170110,
-    max: 179999
-  },
-  {
-    key: "180000",
-    displayName: "180000",
-    count: 6200,
-    min: 180135,
-    max: 189991
-  },
-  {
-    key: "190000",
-    displayName: "190000",
-    count: 30000,
-    min: 190238,
-    max: 199985
-  },
-  {
-    key: "200000",
-    displayName: "200000",
-    count: 14,
-    min: 200007,
-    max: 209999
-  },
-  {
-    key: "210000",
-    displayName: "210000",
-    count: 22000,
-    min: 210900,
-    max: 219900
-  },
-  {
-    key: "220000",
-    displayName: "220000",
-    count: 27,
-    min: 22075,
-    max: 229965
-  },
-  {
-    key: "230000",
-    displayName: "230000",
-    count: 12000,
-    min: 23012,
-    max: 239911
-  },
-  {
-    key: "240000",
-    displayName: "240000",
-    count: 17000,
-    min: 240000,
-    max: 249990
-  },
-  {
-    key: "250000",
-    displayName: "250000",
-    count: 50,
-    min: 250730,
-    max: 259888
-  },
-  {
-    key: "260000",
-    displayName: "260000",
-    count: 3000,
-    min: 267870,
-    max: 269900
-  },
-  {
-    key: "270000",
-    displayName: "270000",
-    count: 50000,
-    min: 272718,
-    max: 279990
-  },
-  {
-    key: "280000",
-    displayName: "280000",
-    count: 800,
-    min: 280923,
-    max: 289900
-  },
-  {
-    key: "290000",
-    displayName: "290000",
-    count: 70,
-    min: 291787,
-    max: 299541
-  },
-  {
-    key: "300000",
-    displayName: "300000",
-    count: 6000,
-    min: 304175,
-    max: 309870
-  },
-  {
-    key: "310000",
-    displayName: "310000",
-    count: 40000,
-    min: 310797,
-    max: 319000
-  },
-  {
-    key: "320000",
-    displayName: "320000",
-    count: 4000,
-    min: 324900,
-    max: 329890
-  },
-  {
-    key: "330000",
-    displayName: "330000",
-    count: 30000,
-    min: 334911,
-    max: 339870
-  },
-  {
-    key: "340000",
-    displayName: "340000",
-    count: 70,
-    min: 343500,
-    max: 349900
-  },
-  {
-    key: "350000",
-    displayName: "350000",
-    count: 20000,
-    min: 350000,
-    max: 355000
-  },
-  {
-    key: "360000",
-    displayName: "360000",
-    count: 10000,
-    min: 369880,
-    max: 369880
-  },
-  {
-    key: "370000",
-    displayName: "370000",
-    count: 2000,
-    min: 379000,
-    max: 379000
-  },
-  {
-    key: "380000",
-    displayName: "380000",
-    count: 20000,
-    min: 385000,
-    max: 389900
-  },
-  {
-    key: "400000",
-    displayName: "400000",
-    count: 20000,
-    min: 409900,
-    max: 409900
-  },
-  {
-    key: "420000",
-    displayName: "420000",
+    key: "900",
+    displayName: "900",
     count: 0,
-    min: 420000,
-    max: 420000
+    min: 870,
+    max: 900
+  },
+  {
+    key: "920",
+    displayName: "920",
+    count: 1,
+    min: 900,
+    max: 920
+  },
+  {
+    key: "950",
+    displayName: "950",
+    count: 2,
+    min: 920,
+    max: 950
+  },
+  {
+    key: "1100",
+    displayName: "970",
+    count: 2,
+    min: 950,
+    max: 970
+  },
+  {
+    key: "1250",
+    displayName: "1000",
+    count: 3,
+    min: 970,
+    max: 1000
+  },
+  {
+    key: "1350",
+    displayName: "1200",
+    count: 12,
+    min: 1000,
+    max: 3600
   }
 ]
 
 const PitComponent = ({ style, children }) => {
 
+  for (var i = 1; i < 27; i++) {
+    const count = price.find((val) => String(children) === val.displayName)
+    ?.count
+    const height = Math.round((count * 2 ))
 
-
-
-  for (var i = 1; i < 28; i++) {
-    const height = (stayService.getRandomIntInclusive(1, 8)) * 5
     return (
       <div className="bars"
         style={{
           ...style,
           background: "#a2a2a2",
-          width: 10,
+          // marginTop: '-16px !important',
+          width: '6px',
           height: height,
-          bottom: 20
+          bottom: 20,
+
         }}
       />
     )
@@ -354,7 +349,6 @@ export function PriceFilter(closeModal) {
         onValuesUpdated={(props) => {
           document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
           document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
-          { console.log(props.values[0], props.values[1]) }
         }}
         pitPoints={[
           0,

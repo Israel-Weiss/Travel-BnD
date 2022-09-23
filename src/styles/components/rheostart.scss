@@ -104,7 +104,9 @@
   .rheostat {
     position: relative;
     overflow: visible;
-  }
+    justify-content: space-between;
+    // gap: 4px !important;
+    }
   @media (min-width: 1128px) {
     .autoAdjustVerticalPosition {
       top: 12px;
