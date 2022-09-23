@@ -315,7 +315,7 @@ const PitComponent = ({ style, children }) => {
           bottom: 20
         }}
       />
-    );
+    )
 
   }
 

@@ -53,14 +53,14 @@
     @include for-small-layout {
         padding: 0px 42px 0px 42px;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px 2.5%;
+        gap: 8px 2.5%;
     }
 
 
     @include for-narrow-layout {
         padding: 0px 80px 0px 80px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-        gap: 30px 2%;
+        gap: 20px 2%;
     }
 
 
@@ -112,7 +112,7 @@
             transition: opacity .4s;
 
             .arrow-right {
-                width: 15px;
+                width: 12px;
                 height: 15px;
             }
 
@@ -172,6 +172,8 @@
             }
 
             .card-info-distance {
+                margin-top: -6px;
+
                 color: $clr4;
             }
 
@@ -181,8 +183,8 @@
             }
 
             .card-info-price {
-                margin-top: 4px;
-                line-height: 38px;
+                margin-top: 6px;
+                line-height: 48px;
             }
 
 

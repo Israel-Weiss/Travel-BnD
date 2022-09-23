@@ -1,28 +1,25 @@
 import React, { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import { useSelector } from 'react-redux'
-import { stayService } from '../services/stay.service'
 //img
 import arrowRight from '../assets/imgs/Filter Icons/arowRight.svg'
 import arrowLeft from '../assets/imgs/Filter Icons/arowLeft.svg'
 import heartIcon from '../assets/imgs/heartIcon.png'
 import heartIconRed from '../assets/imgs/heartIcon-red.png'
 import starIcon from '../assets/imgs/starIcon.svg'
-
+//CMP
+import { stayService } from '../services/stay.service'
 import { WishListModal } from '../cmps/modal/wish-list-modal'
 
 export const StayPreview = ({ stay }) => {
     const loggedInUser = useSelector(state => state.userModule.loggedInUser)
     const { city, country } = stay.loc
-    const { distance, date, price, likedByUsers } = stay
+    const { distance, date, price, likedByUsers,imgUrls } = stay
     var heartPic
     var [idx, setIdx] = useState(0)
     var [isLiked, setIsLiked] = useState(false)
     var [modalFlag, setModalFlag] = useState(false)
  
-    // useEffect(() => {
-    //  if(stay.likedByUsers.includes(loggedInUser))
-    // }, [])
 
     const addWishList = () => {
         setModalFlag(!modalFlag)
@@ -55,22 +52,20 @@ export const StayPreview = ({ stay }) => {
         document.querySelector('.dark-screen').style.display = 'none'
     }
 
-
     if (!stay.likedByUsers.includes(loggedInUser)) heartPic = heartIcon
     else heartPic = heartIconRed
     if (!stay) return
 
     return (
         <div className="card">
-            <div className="card-image">
+            <div className="card-image ">
                 {modalFlag && <WishListModal stay={stay} closeModal={closeModal} />}
 
                 < NavLink to={`/stays/${stay._id}`}>
-                    <img className='card-pic' src={stay.imgUrls[idx]} />
+                    <img className='card-pic ' src={stay.imgUrls[idx]} />
                 </ NavLink>
 
-
-                {(idx+1)<stay.imgUrls.length&&<div className="arrow-right-conatiner" onClick={() => moveIndex("+")}>
+                {(idx+1)<imgUrls.length&&<div className="arrow-right-conatiner" onClick={() => moveIndex("+")}>
                     <img className="arrow-right" src={arrowRight} />
                 </div>}
                 {idx>0&&<div className="arrow-right-conatiner" style={{ left: '-80%' }} onClick={() => moveIndex("-")}>

@@ -16,20 +16,16 @@
 @import 'components/sub-header';
 @import 'components/filterBy';
 @import 'components/sign';
-@import 'components/teaser';
-@import 'components/pager';
-@import 'components/news';
 @import 'components/cards';
-@import 'components/sidebar';
 @import 'components/map';
 @import 'components/rheostart';
 @import 'components/pricefilter';
-
+@import 'components/footer';
 
 //STAY DETAILS
 @import 'components/stay-details/description.scss';
 @import 'components/stay-details/gallery';
-@import 'components/stay-details/place-offer';
+@import 'components/stay-details/amenities';
 @import 'components/stay-details/reviews';
 @import 'components/stay-details/title';
 @import 'components/stay-details/stay-details';

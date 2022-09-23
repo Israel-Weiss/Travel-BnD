@@ -1,6 +1,6 @@
 import { userService } from "../services/user.service";
 
-export function setUser(user) {
+export function register(user) {
 
     return (dispatch, getState) => {
         if (!user) {
@@ -10,7 +10,7 @@ export function setUser(user) {
         }
         else userService.register(user)
             .then(user => {
-                if(!user)return
+                if (!user) return
                 dispatch({ type: 'SET_USER', user: user })
             })
             .catch(err => {
@@ -21,34 +21,25 @@ export function setUser(user) {
 
 export function logout(user) {
 
-    return (dispatch, getState) => {
-        //Remove ghost user after logout
-        // if (user.username === "Ghost") userService.removeUser(user._id)
+    return (dispatch) => {
         sessionStorage.removeItem("loggedinUser")
         dispatch({ type: 'SET_USER', user: null })
         window.location.href = "index.html/";
-
     }
 }
 
-
-    export function validUser(user) {
-
-        return (dispatch, getState) => {
-
-            userService.validate(user)
-                .then(validtedUser => {
-                    if (validtedUser) {
-                        
-                        console.log(validtedUser,"validtedUser");
-                        dispatch({ type: 'SET_USER', user: validtedUser })
-                        // if(validtedUser.ishost)window.location.href = "index.html/#/dashboard";
-
-                    }
-                    else return
-                })
-                .catch(err => {
-                    console.log('err:', err)
-                })
-        }
+export function login(user) {
+    return (dispatch) => {
+        userService.login(user)
+            .then(validtedUser => {
+                if (validtedUser) {
+                    dispatch({ type: 'SET_USER', user: validtedUser })
+                }
+                else return
+            })
+            .catch(err => {
+                console.log('err:', err)
+            })
     }
+}
+

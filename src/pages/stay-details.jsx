@@ -8,7 +8,6 @@ import { setCurrentUrl } from '../store/stay.action'
 //Child CMP
 import { StayTitle } from '../cmps/stay-details/title'
 import { StayGallery } from '../cmps/stay-details/gallery'
-import { PlaceOffer } from '../cmps/stay-details/place-offer'
 import { StayDescription } from '../cmps/stay-details/description'
 import { StayReviews } from '../cmps/stay-details/reviews'
 import { GoogleMap } from '../cmps/map'
@@ -41,6 +40,7 @@ export const StayDetails = () => {
             <StayGallery stay={stay} />
                 <StayDescription stay={stay} />
             <StayReviews stay={stay} />
+            <p className='map-title'>Where you’ll be</p>
             <GoogleMap stay={stay} />
         </div>
     )

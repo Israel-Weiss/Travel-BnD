@@ -14,15 +14,17 @@ var imgs = [{ img: pic1, text: 'I’m flexible' },
 ]
 
 export function SearchModal() {
+    var key=0
     return (
         <div className='anywhere-modal'>
             <p className='black bold title text-start'>Search by region</p>
             <div className='imgs-container '>
                 {imgs.map(img => {
+                    key++
                     return (
-                        <div className='flex-coulmn '>
+                        <div className='flex-coulmn ' key={key}>
                             <img className='modal-img' src={img.img} />
-                            <p className='black bold text-start margin-buttom-5'>{img.text}</p>
+                            <p className='black text-start modal-text'>{img.text}</p>
                         </div>
                     )
                 })}

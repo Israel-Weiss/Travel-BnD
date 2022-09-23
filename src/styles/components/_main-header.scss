@@ -62,6 +62,13 @@ header.header-container {
             font-weight: 400;
             letter-spacing: 0.6;
             color: $clr4;
+            @include for-small-layout {
+                border-right: none;
+                font-weight: 400;
+                letter-spacing: 0.6;
+                color: $clr4;
+            
+            }
         }
 
         .search-icon {

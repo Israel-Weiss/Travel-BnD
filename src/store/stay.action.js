@@ -1,18 +1,13 @@
 import { stayService } from '../services/stay.service'
 import { showErrorMsg } from '../services/event-bus.service.js'
 
-// export function loadStay(tag = null, text = null) {
-//     return (dispatch) => {
-//         stayService.query().then(stays => {
-//             dispatch({ type: 'SET_STAY', stays: stays })
-//         })
-//     }
-// }
 
 export function loadStay() {
-    return async (dispatch) => {
+    return async (dispatch, getState) => {
         try {
-            const stays = await stayService.query()
+            const { filterBy } = getState().stayModule
+            console.log("filter",filterBy);
+            const stays = await stayService.query(filterBy)
             dispatch({ type: 'SET_STAY', stays })
         } catch (err) {
             showErrorMsg('Cannot load stays')
@@ -30,10 +25,9 @@ export function setStay(stays) {
     }
 }
 
-
-export function setCurrentUrl(page) {
+export function setCurrentUrl(currentUrl ) {
     return (dispatch) => {
-        dispatch({ type: 'SET_PAGE', page: page })
+        dispatch({ type: 'SET_CURRENT_URL', currentUrl:currentUrl })
     }
 }
 
@@ -48,12 +42,10 @@ export function setFilter(tag = null, text = null) {
     }
 }
 
-// export function setFilter(tag = null, text = null) {
-//     return (dispatch) => {
-//         stayService.query(tag, text).then(stays => {
-//             dispatch({ type: 'SET_STAY', stays: stays })
-//         })
-//     }
-// }
+export function setFilterBy(filterBy) {
+    return (dispatch) => {
+        dispatch({ type: 'SET_FILTER_BY', filterBy })
+    }
+}
 
 

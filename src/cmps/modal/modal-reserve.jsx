@@ -4,6 +4,10 @@ import { setOrder } from '../../store/order.action'
 import { MyCal } from '../calendar'
 import confirmPic from '../../assets/imgs/v.png'
 import { useEffect } from 'react'
+import { stayService } from '../../services/stay.service'
+import { UtilService } from '../../services/util.service'
+import starIcon from '../../assets/imgs/starIcon.svg'
+import { parse } from 'date-fns'
 
 export function ReserveModal({ stay }) {
     const dispatch = useDispatch()
@@ -11,20 +15,22 @@ export function ReserveModal({ stay }) {
 
     const [modalFlag, setModalFlag] = useState(false)
     const [reservedFlag, setreservedFlag] = useState(false)
-
+    const rate = stayService.calcRate(stay.reviews)
+    const price = stay.price
+    const reviewsCount = stay.reviews.length
     const [isShown, setIsShown] = useState(true)
-
+    const [nightCount, setNightCount] = useState(1)
+    const [startDate, setStartDate] = useState("")
+    const [endDate,  setEndDate] = useState("")
 
     const handleClick = event => {
         setIsShown(current => !current)
     }
 
     const navigateTo = () => {
-        
+
         setreservedFlag(true)
-        const startDate= document.querySelector('.date-in').innerHTML
-        const endDate= document.querySelector('.date-out').innerHTML
-        dispatch(setOrder(stay, loggedInUser,startDate,endDate))
+        dispatch(setOrder(stay, loggedInUser, startDate, endDate))
 
         setTimeout(() => {
             window.location.href = "index.html/#/my-trip";
@@ -51,17 +57,26 @@ export function ReserveModal({ stay }) {
         //First Modal
         <section>
             <div className="reserve-modal-container">
-            <div className="calendar" style={{display: isShown ? 'none' : 'block'}}>{MyCal()}</div>
-                <p className="price">${stay.price} <span>night</span></p>
+                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCal(setNightCount,setStartDate,setEndDate)}</div>
+
+                <div className="space-between align-items flex full-width header">
+                    <p className="price">${price} <span>night</span></p>
+
+                    <div className="flex">
+                        <img className='starIcon' src={starIcon} />
+                        <p className='text-bold'>{rate}· <span>{reviewsCount} reviews</span></p>
+                    </div>
+                </div>
+
                 <div className="flex-coulmn">
                     <button className="checkBtn" onClick={handleClick}>
                         <div className="check-in">
                             <p className="title">CHECK-IN</p>
-                            <p className="date-in">Add date</p>
+                            <p className="date-in">{startDate}</p>
                         </div>
                         <div className="check-out">
                             <p className="title">CHECKOUT</p>
-                            <p className="date-out">Add date</p>
+                            <p className="date-out">{endDate}</p>
                         </div>
                     </button>
                     <div className="select">
@@ -73,8 +88,14 @@ export function ReserveModal({ stay }) {
                     </div>
                 </div>
                 <button className="availability-Btn" onClick={() => changeModal()}>Reserve</button>
+                <p className='text text-center' style={{ fontSize: "14px", color: "#4c4c4c" }}>You won't be charged yet</p>
+
+                <p className='text-price'>${price} x {nightCount} nights <span>${UtilService.calcSum(price, nightCount)}</span></p>
+                <p className='text-price'>Service fee <span>$0</span></p>
+                <p className='text-price'>Total <span>${UtilService.calcSum(price, nightCount)}</span></p>
+
             </div>
-          {/* Second Modal */}
+            {/* Second Modal */}
             {modalFlag && <div className="reserve-modal-confirm-container">
                 {!reservedFlag ? <p className="header">One last step</p> :
                     <section className='align-items flex {'>
@@ -90,21 +111,21 @@ export function ReserveModal({ stay }) {
                         <p className="bold-text">Trip dates:</p>
                         <p className="text">{document.querySelector('.date-in').innerHTML} - {document.querySelector('.date-out').innerHTML}</p>
                         <div className='text-group'>
-                            <p className="bold-text">Guests:</p>
-                            <p className="text">{stay.capacity.guests}</p>
+                            <p className="bold-text">Nights: </p>
+                            <p className="text">{nightCount}</p>
                         </div>
                         <div className='text-group'>
                             <p className="bold-text">Price Details</p>
-                            <p className="text">${stay.price}</p>
+                            <p className="text">${UtilService.calcSum(price, nightCount)}</p>
                         </div>
                     </div>
 
                     <div className="order-pic">
                         <div className="card">
                             <img src={stay.imgUrls[0]} />
-                            
-                            {stay.name.length>30?<p className="bold-text">{stay.name.substring(0,30)}</p>:
-                            <p className="bold-text">{stay.name}</p>
+
+                            {stay.name.length > 30 ? <p className="bold-text">{stay.name.substring(0, 30)}</p> :
+                                <p className="bold-text">{stay.name}</p>
                             }
                         </div>
                     </div>

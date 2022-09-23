@@ -36,7 +36,7 @@
 
         .room-details-desc {
             width: 100%;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             color: $clr5;
             text-align: start;
@@ -60,6 +60,9 @@
 
             &:nth-child(1) {
                 margin-top: 30px;
+            }
+            &:nth-child(3) {
+                margin-bottom: 15px;
             }
         }
    

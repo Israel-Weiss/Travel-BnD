@@ -1,18 +1,18 @@
 import { stayService } from '../../services/stay.service'
 
-export const PlaceOffer = ({ stay }) => {
+export const Amenities = ({ stay }) => {
     const amenities = stay.amenities
     const icon = stayService.mapIcon(amenities)
     var key =200
     return (
-        <div className="place-offer">
+        <div className="amenities-container">
             <h1 className="black fontSize-22 text-start bold">What this place offers</h1>
-            <div className="place-offer-list">
+            <div className="amenities-list">
 
                 <div className="left">
                     {icon[0].map(pic => {
                         return (
-                            <div className='icon-container ' key={key++}>
+                            <div className='aminate   ' key={key++}>
                                 <img className='room-info-icons' src={pic.img} />
                                 <p className='black margin-right-20'>{pic.text}</p>
                             </div>)
@@ -22,7 +22,7 @@ export const PlaceOffer = ({ stay }) => {
                 <div className="right">
                     {icon[1].map(pic => {
                         return (
-                            <div className='icon-container'key={key++}>
+                            <div className='aminate  'key={key++}>
                                 <img className='room-info-icons' src={pic.img} />
                                 <p className='black margin-right-20'>{pic.text}</p>
                             </div>)

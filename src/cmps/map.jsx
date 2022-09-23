@@ -16,7 +16,7 @@ export function GoogleMap({ stay }) {
     }
 
     return (
-        <div className="google-map" style={{ height: '66.50vh', width: '100%' , padding: '20px 20px 20px 20px'}}>
+        <div className="google-map" style={{ height: '75vh', width: '100%' , padding: '20px 0px 20px 0px'}}>
             <GoogleMapReact
                 // onClick={onClick}
                 bootstrapURLKeys={{ key: "AIzaSyBvTjJLgXv_JG78L_VC13fO7vJjnzeBzH8" }}

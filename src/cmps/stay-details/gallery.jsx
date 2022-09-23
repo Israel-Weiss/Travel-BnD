@@ -4,9 +4,9 @@ export const StayGallery = ({stay}) => {
    if(!stay)return
     var key =0
     return (
-        <div className="room-images">
+        <div className="gallery">
         {stay.imgUrls.map(imgUrl => {
-            return <img className='room-image' src={imgUrl} key={key++} />
+            return <img className='gallery-img' src={imgUrl} key={key++} />
         })}
     </div>
     )
