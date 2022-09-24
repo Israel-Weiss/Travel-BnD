@@ -1,14 +1,18 @@
 .gallery {
-    margin-top: 20px;
+    grid-row-start: 1;
+    grid-row-end: 3;
+
     display: flex;
     overflow-x: hidden;
 
     @include for-small-layout {
         overflow-x: unset;
         display: grid;
+        margin-top: 20px;
         max-height: 330px;
         grid-template-rows: 161px 161px;
-     
+        grid-row-start: 2;
+        grid-row-end: 3;
         grid-template-areas:
             "a a b c"
             "a a d e"
@@ -17,11 +21,14 @@
     }
 
     .gallery-img {
-        max-height: 165px;
-        aspect-ratio: 1.6969;
-        cursor: pointer;
-        object-fit: cover;
+        width: 100%;
 
+        @include for-small-layout {
+            max-height: 165px;
+            aspect-ratio: 1.6969;
+            cursor: pointer;
+            object-fit: cover;
+        }
         &:hover {
             filter: brightness(80%);
         }

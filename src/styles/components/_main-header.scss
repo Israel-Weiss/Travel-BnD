@@ -2,8 +2,16 @@ header.header-container {
 
     background-color: $clr1;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
+
+ 
+    @include for-small-layout {
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows: 1fr;
+
+    }
+
 
     align-items: center;
     justify-content: space-between;
@@ -16,10 +24,12 @@ header.header-container {
 
         img.logo {
             width: 100px;
+            height: 30px;
         }
         @include for-small-layout {
             img.logo {
                 width: 150px;
+                height: unset;
             }
         }
     }
@@ -55,6 +65,7 @@ header.header-container {
             color: $clr5;
             text-decoration: none;
             font-family: Helmet;
+            
         }
 
         a.navlink:last-of-type {
@@ -106,12 +117,21 @@ header.header-container {
             color: $clr5;
             text-decoration: none;
             font-family: Helmet;
+            display: none;
+            @include for-small-layout {
+                display: flex;
+
+            }
         }
 
         .world-icon {
             width: 16px;
             height: 16px;
             margin: 0px 20px 0px 20px;
+            display: none;
+            @include for-small-layout {
+            display: block;
+            }
         }
 
         .user-container {

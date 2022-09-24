@@ -13,6 +13,7 @@
     align-items: flex-start;
     margin-top: 10px;
     padding: 0px 10px 0px 10px;
+    width: 100%;
 
     @include for-small-layout {
         padding: 0px;
@@ -20,15 +21,25 @@
     }
 
     .room-info-title {
-        font-size: 26px;
+        font-size: 18px;
         font-weight: 600;
         color: $clr5;
-
+        padding: 0px 70px 0px 10px;
         margin-top: 3px;
+   
+        @include for-small-layout {
+            padding: 0px;
+            font-size: 26px;
 
+        }
     }
 
     .subTitle {
+        @include for-small-layout {
+            padding: 0px;
+        }
+
+        padding: 0px 10px 0px 10px;
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -72,6 +83,11 @@
 
             .room-info-share,
             .room-reviews-save {
+                @include for-small-layout {
+                    display: flex;
+                }
+
+                display: none;
                 font-size: 14px;
                 letter-spacing: 0.6px;
 
@@ -81,6 +97,11 @@
             }
 
             .icons {
+                @include for-small-layout {
+                    display: flex;
+                }
+
+                display: none;
                 margin-right: 9px;
                 width: 16px;
                 margin-bottom: 4px;

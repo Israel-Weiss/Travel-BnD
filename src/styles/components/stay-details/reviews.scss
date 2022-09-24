@@ -5,9 +5,16 @@
     width: 100%;
     font-size: 16px;
     display: flex;
-    flex-wrap: wrap;
-    padding: 45px 8px 0px 8px;
+    padding: 45px 20px 0px 20px;
+    flex-direction: column;
     border-bottom: 1px solid $clr6;
+
+    @include for-small-layout {
+        padding: 45px 8px 0px 8px;
+        flex-wrap: wrap;
+        flex-direction: row;
+
+    }
 
     .fontSize-22 {
         font-size: 22px;
@@ -21,7 +28,7 @@
     }
 
     .review-card {
-        width: 50%;
+        width: 100%;
         color: $clr5;
         margin-bottom: 30px;
         max-height: 200px;
@@ -31,7 +38,7 @@
 
         @include for-small-layout {
             overflow-y: hidden;
-        
+            width: 50%;
             padding: 0px 60px 15px 8px;
         }
     }
@@ -60,12 +67,14 @@
         font-weight: 400;
         line-height: 20px;
         margin-bottom: 20px;
+        margin-top: 15px;
         text-overflow:ellipsis;
-        
+        padding-right: 20px;
       
 
         @include for-small-layout {
-            
+            margin-top: 0px;
+
             padding: 15px 40px 15px 0px;
 
         }

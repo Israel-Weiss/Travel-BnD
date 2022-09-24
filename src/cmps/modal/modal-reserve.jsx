@@ -21,7 +21,7 @@ export function ReserveModal({ stay }) {
     const [isShown, setIsShown] = useState(true)
     const [nightCount, setNightCount] = useState(1)
     const [startDate, setStartDate] = useState("")
-    const [endDate,  setEndDate] = useState("")
+    const [endDate, setEndDate] = useState("")
 
     const handleClick = event => {
         setIsShown(current => !current)
@@ -57,11 +57,13 @@ export function ReserveModal({ stay }) {
         //First Modal
         <section>
             <div className="reserve-modal-container">
-                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCal(setNightCount,setStartDate,setEndDate)}</div>
+                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCal(setNightCount, setStartDate, setEndDate)}</div>
 
                 <div className="space-between align-items flex full-width header">
-                    <p className="price">${price} <span>night</span></p>
-
+                    <div className="flex-column">
+                        <p className="price">${price} <span>night</span></p>
+                        <p className="phone-only">Oct {startDate.substring(0, 2)} - {endDate.substring(0, 2)}</p>
+                    </div>
                     <div className="flex">
                         <img className='starIcon' src={starIcon} />
                         <p className='text-bold'>{rate}· <span>{reviewsCount} reviews</span></p>

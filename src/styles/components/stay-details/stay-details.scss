@@ -2,12 +2,20 @@
     @include for-small-layout {
         padding: 0px 112px 0px 112px
     }
+    display: grid;
+    grid-template-rows: 1fr;
 
     .map-title{
         width: 100%;
         font-size: 22px ;
         font-weight: 600;
         color: $clr5;
-        margin-top: 40px;
+        margin-top: 20px;
+        padding: 0px 20px 0px 20px;
+
+        @include for-small-layout {
+            margin-top: 40px;
+            padding: 0px
+        }
     }
 }
