@@ -6,6 +6,7 @@ import React, { useEffect } from 'react'
 import { LoginInterface } from '../cmps/login-interface/login-interface'
 import { socketService, SOCKET_EVENT_ORDER_ADDED,SOCKET_EVENT_ORDER_UPDATE } from '../services/socket.service.js'
 
+
 export function Dashboard() {
     const { loggedInUser } = useSelector(state => state.userModule)
     const [orders, setOrders] = useState(null)
@@ -59,7 +60,6 @@ export function Dashboard() {
     else return (
         <section className="my-trip-container">
             <h1 className="header">Dashboard</h1>
-
             <div className="balance-conatiner">
                 <p className='title'>Total revenue</p>
 

@@ -10,41 +10,50 @@ import heartIconRed from '../assets/imgs/heartIcon-red.png'
 import starIcon from '../assets/imgs/starIcon.svg'
 
 import { WishListModal } from '../cmps/modal/wish-list-modal'
+import { wishListService } from '../services/wish-list.service'
 
 export const StayPreview = ({ stay }) => {
-    const loggedInUser = useSelector(state => state.userModule.loggedInUser)
+    const { loggedInUser } = useSelector(state => state.userModule)
     const { city, country } = stay.loc
     const { distance, date, price, likedByUsers } = stay
-    var heartPic
+    const [ isLiked, setLiked ] = useState(false)
+    
+    // const { stays } = wishlist
+    var heartPic = heartIcon
     var [idx, setIdx] = useState(0)
-    var [isLiked, setIsLiked] = useState(false)
     var [modalFlag, setModalFlag] = useState(false)
- 
+
     // useEffect(() => {
     //  if(stay.likedByUsers.includes(loggedInUser))
     // }, [])
 
-    const addWishList = () => {
-        setModalFlag(!modalFlag)
-        if (!isLiked) {
-            // document.querySelector('.wishlist-modal').style.display = 'block'
+    const addWishList = (stay) => {
+        if (heartPic !== heartIconRed) {
+            setModalFlag(!modalFlag)
             document.querySelector('.dark-screen').style.display = 'block'
+            likedByUsers.push(loggedInUser._id)
+            heartPic = heartIconRed
         }
-        // setIsLiked(!isLiked)
 
-        if (!likedByUsers.includes(loggedInUser))
-            likedByUsers.push(loggedInUser)
-        else likedByUsers.pop()
-    }
+        else {            
+            heartPic = heartIcon
+            likedByUsers.splice(likedByUsers.indexOf(loggedInUser._id), 1)
+            wishListService.removeStay(stay)
+        }
+
+        console.log(stay)
+        stayService.save(stay)
+        setLiked(!isLiked)
+}
 
     const moveIndex = (operator) => {
-        
+
         if (operator === "+") {
-             idx++
+            idx++
         }
         else {
-      
-             idx-- 
+
+            idx--
         }
         console.log(idx);
         setIdx(idx)
@@ -56,9 +65,13 @@ export const StayPreview = ({ stay }) => {
     }
 
 
-    if (!stay.likedByUsers.includes(loggedInUser)) heartPic = heartIcon
-    else heartPic = heartIconRed
+
     if (!stay) return
+    
+    if(likedByUsers && loggedInUser){
+        if (!likedByUsers.includes(loggedInUser._id)) heartPic = heartIcon
+        else heartPic = heartIconRed
+    }
 
     return (
         <div className="card">
@@ -70,10 +83,10 @@ export const StayPreview = ({ stay }) => {
                 </ NavLink>
 
 
-                {(idx+1)<stay.imgUrls.length&&<div className="arrow-right-conatiner" onClick={() => moveIndex("+")}>
+                {(idx + 1) < stay.imgUrls.length && <div className="arrow-right-conatiner" onClick={() => moveIndex("+")}>
                     <img className="arrow-right" src={arrowRight} />
                 </div>}
-                {idx>0&&<div className="arrow-right-conatiner" style={{ left: '-80%' }} onClick={() => moveIndex("-")}>
+                {idx > 0 && <div className="arrow-right-conatiner" style={{ left: '-80%' }} onClick={() => moveIndex("-")}>
                     <img className="arrow-right" src={arrowLeft} />
                 </div>}
 
@@ -83,7 +96,7 @@ export const StayPreview = ({ stay }) => {
                     <div className="navigation-button"></div>
                     <div className="navigation-button"></div>
                 </div>
-                 <img className='heart-icon' src={heartPic} onClick={() => addWishList()} />
+                <img className='heart-icon' src={heartPic} onClick={() => addWishList(stay)} />
             </div>
 
             <div className="card-info">

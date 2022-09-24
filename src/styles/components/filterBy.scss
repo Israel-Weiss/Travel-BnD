@@ -3,7 +3,6 @@
     justify-content: space-between;
     padding: 0px 42px 0px 42px;
 
-
     @include for-narrow-layout {
         border-top: 0.5px solid $clr2;
         padding: 34px 80px 10px 80px;

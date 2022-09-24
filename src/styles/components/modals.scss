@@ -29,6 +29,19 @@
         font-weight: bold;
         border-radius: 10px;
         cursor: pointer;
+        --mouse-x: 50;
+        --mouse-y: 50;
+        // padding: 20px 30px;
+        // min-width: 300px;
+        background-size: 200% 200%;
+        background-position: calc((100 - var(--mouse-x, 0)) * 1%) calc((100 - var(--mouse-y, 0)) * 1%);
+        background-image: radial-gradient(rgb(255, 116, 116), $clr3);
+        cursor: pointer;
+        border: none;
+        border-radius: 10px;
+        font-size: 36px;
+        font-family: 'Raleway', sans-serif;
+
         @include for-small-layout {
             width: 100%;
         }
@@ -66,19 +79,28 @@
         }
 
         .calendar{
+            
+        border-radius: 0px;
         background-color:$clr1 ;
         border-radius: 16px;
         border: 1px solid;
         border-color:$clr6;
-        display: inline-block;
+        display: inline-table;
+        width: fit-content;
         padding: 24px 24px 0px;
         position: fixed;
-        bottom: 17%;
-        right: 0;
+        bottom: 7%;
+        right: -380px;
+        margin-top:250px;
         margin-right: 482px;
-        width: 400px; 
+        max-width: fit-content; 
         z-index: 1;
         min-height: 380px;
+        box-shadow: -1px 1px 10px -3px $clr4;
+
+        .rdrDefinedRangesWrapper{
+            display: none;
+        }
     }
     .price {
             font-size: 22px;

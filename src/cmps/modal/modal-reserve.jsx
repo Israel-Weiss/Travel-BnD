@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setOrder } from '../../store/order.action'
 import { MyCal } from '../calendar'
+import { MyCalendar } from '../calendar2'
 import confirmPic from '../../assets/imgs/v.png'
 import { useEffect } from 'react'
 
@@ -13,6 +14,19 @@ export function ReserveModal({ stay }) {
     const [reservedFlag, setreservedFlag] = useState(false)
 
     const [isShown, setIsShown] = useState(true)
+
+
+    if (document.querySelector('.availability-Btn')) {
+        const button = document.querySelector('.availability-Btn')
+        button.addEventListener('mousemove', e => {
+            const rect = button.getBoundingClientRect();
+            const x = (e.clientX - rect.left) * 100 / button.clientWidth
+            const y = (e.clientY - rect.top) * 100 / button.clientHeight
+            button.style.setProperty('--mouse-x', x);
+            button.style.setProperty('--mouse-y', y);
+        })
+    }
+
 
 
     const handleClick = event => {
@@ -51,7 +65,7 @@ export function ReserveModal({ stay }) {
         //First Modal
         <section>
             <div className="reserve-modal-container">
-            <div className="calendar" style={{display: isShown ? 'none' : 'block'}}>{MyCal()}</div>
+            <div className="calendar" style={{display: isShown ? 'none' : 'block'}}>{MyCalendar()}</div>
                 <p className="price">${stay.price} <span>night</span></p>
                 <div className="flex-coulmn">
                     <button className="checkBtn" onClick={handleClick}>
