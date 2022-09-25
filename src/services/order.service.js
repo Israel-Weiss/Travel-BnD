@@ -1,6 +1,6 @@
 import { storageService } from "./async-storage.service"
 import { httpService } from './http.service'
-import { socketService, SOCKET_EVENT_ORDER_ADDED ,SOCKET_EVENT_ORDER_UPDATE} from './socket.service.js'
+import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATE } from './socket.service.js'
 
 var gOrders = [
   // {
@@ -48,11 +48,15 @@ const reviewChannel = new BroadcastChannel('reviewChannel');
 })()
 
 
-const BASE_URL="orders/"
+const BASE_URL = "orders/"
 
-async function createOrder(stay,startDate,endDate) {
+async function createOrder(stay, startDate, endDate,nights,stayImg) {
   const user = storageService.getLogedInUser()
-  if (user) var userId = user._id
+  if (user) {
+    var userId = user._id
+    var userImg = user.imgUrl
+    var username = user.fullname
+  }
   else userId = "t001"
   var order = {
     date: "16/09/22",
@@ -60,13 +64,17 @@ async function createOrder(stay,startDate,endDate) {
     host: stay.host.fullname,
     stay: stay.name,
     startDate: startDate,
-    endDate:endDate,
+    endDate: endDate,
     guests: "1",
+    nights:nights,
     price: stay.price,
     status: "pending",
-    userId: userId
+    stayImg:stayImg,
+    userId: userId,
+    userImg: userImg,
+    username: username
   }
- return await httpService.post(BASE_URL, order)
+  return await httpService.post(BASE_URL, order)
 }
 
 async function getByLogedInUser() {
@@ -89,23 +97,23 @@ async function getByHostName() {
   if (!user.ishost) return
 
   const orders = await httpService.get(BASE_URL)
-    let orderToDisplay = []
-    orders.map(order => {
-      console.log(order.host.toLowerCase(), " ", user.fullname.toLowerCase());
-      if (order.host.toLowerCase() === user.fullname.toLowerCase()) orderToDisplay.push(order)
-    })
-    if (!orderToDisplay) return null
-    else return orderToDisplay
+  let orderToDisplay = []
+  orders.map(order => {
+    console.log(order.host.toLowerCase(), " ", user.fullname.toLowerCase());
+    if (order.host.toLowerCase() === user.fullname.toLowerCase()) orderToDisplay.push(order)
+  })
+  if (!orderToDisplay) return null
+  else return orderToDisplay
 }
 
-async function aproveOrder(orderId,status) {
+async function aproveOrder(orderId, status) {
   let orders = await httpService.get(BASE_URL)
   let currOrder
   orders.map(order => {
-    if (order._id === orderId) currOrder=order
+    if (order._id === orderId) currOrder = order
   })
   currOrder.status = status
-  console.log("order id",orderId);
-  return await httpService.put(BASE_URL+orderId, currOrder)
+  console.log("order id", orderId);
+  return await httpService.put(BASE_URL + orderId, currOrder)
 }
 

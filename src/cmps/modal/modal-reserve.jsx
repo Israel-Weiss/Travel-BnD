@@ -28,9 +28,9 @@ export function ReserveModal({ stay }) {
     }
 
     const navigateTo = () => {
-
+        const stayImg = stay.imgUrls[0]
         setreservedFlag(true)
-        dispatch(setOrder(stay, loggedInUser, startDate, endDate))
+        dispatch(setOrder(stay, loggedInUser, startDate, endDate, nightCount, stayImg))
 
         setTimeout(() => {
             window.location.href = "index.html/#/my-trip";

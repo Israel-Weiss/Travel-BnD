@@ -15,11 +15,30 @@
     text-align: center;
 }
 
-// .align-items-space-between{
-//     align-items:;
+.align-self{
+    align-self: center;
+}
 
+.phone--only{
+    display: flex;
+    @include for-small-layout {
+     display: none;
+    }
+}
 
-// }
+.phone--hidden{
+    display: none;
+    @include for-small-layout {
+     display: flex;
+    }
+}
+
+.overflow{
+    text-overflow: ellipsis;
+    overflow:hidden;
+white-space: nowrap;
+}
+
 
 .justify-content {
     justify-content: center;
