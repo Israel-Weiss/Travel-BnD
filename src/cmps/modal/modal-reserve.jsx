@@ -29,9 +29,9 @@ export function ReserveModal({ stay }) {
     }
 
     const navigateTo = () => {
-
+        const stayImg = stay.imgUrls[0]
         setreservedFlag(true)
-        dispatch(setOrder(stay, loggedInUser, startDate, endDate))
+        dispatch(setOrder(stay, loggedInUser, startDate, endDate, nightCount, stayImg))
 
         setTimeout(() => {
             window.location.href = "index.html/#/my-trip";
@@ -58,7 +58,7 @@ export function ReserveModal({ stay }) {
         //First Modal
         <section>
             <div className="reserve-modal-container">
-                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCal(setNightCount, setStartDate, setEndDate)}</div>
+                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCalendar(setNightCount, setStartDate, setEndDate)}</div>
 
                 <div className="space-between align-items flex full-width header">
                     <div className="flex-column">
