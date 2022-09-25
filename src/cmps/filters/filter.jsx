@@ -396,21 +396,21 @@ const PitComponent = ({ style, children }) => {
 }
 
 export function PriceFilter(closeModal) {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const onSetFilter = () => {
-    let elStartRange = document.querySelector('.min-price-num').innerHTML
-    let elEndRange = document.querySelector('.max-price-num').innerHTML
-    const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
-    const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
-    const range = { start: startRange, end: endRange }
-    stayService.query(null, null, range).then(
-      stays =>{ dispatch(setStay(stays))
-        closeModal()
-    }  )
+  // const onSetFilter = () => {
+  //   let elStartRange = document.querySelector('.min-price-num').innerHTML
+  //   let elEndRange = document.querySelector('.max-price-num').innerHTML
+  //   const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
+  //   const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
+  //   const range = { start: startRange, end: endRange }
+  //   stayService.query(null, null, range).then(
+  //     stays =>{ dispatch(setStay(stays))
+  //       closeModal()
+  //   }  )
 
 
-  }
+  // }
 
   var vars = {
     min: 0,
@@ -498,7 +498,7 @@ export function PriceFilter(closeModal) {
         </div>
 
       </div>
-      <div className="show-homes" onClick={() => onSetFilter()}>Show homes</div>
+      {/* <div className="show-homes modal-footer" onClick={() => onSetFilter()}>Show homes</div> */}
     </div>
 
   )

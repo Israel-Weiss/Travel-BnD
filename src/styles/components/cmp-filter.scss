@@ -3,6 +3,7 @@
 
     .stay-type-title {
         margin-bottom: 50px;
+        margin-top: 24px;
     }
 }
 
@@ -139,7 +140,7 @@
 
 .check-boxes-amenteties{
     display: grid;
-    border-bottom: 1px solid silver;
+    border-bottom: 1px solid $clr2;
     grid-template-columns: 1fr 1fr;
     grid-template-rows:  1fr 1fr ;
     max-width: 90%;

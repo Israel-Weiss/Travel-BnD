@@ -6,6 +6,7 @@
     height: 80%;
     .modal-body-container{
         overflow-y: auto;
+        overflow-x: hidden;
     }
     left: 50%;
     top: 0;
@@ -173,21 +174,30 @@
 
     }
 
-    .show-homes {
 
-        width: 40%;
-        margin: 0 auto;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        border-radius: 15px;
-        text-align: center;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-        padding: 20px 90px 20px 90px;
-        background-color: $clr5;
-        color: $clr1;
-        align-self: center;
+    .modal-footer{
+        height:80px;
+        min-height: fit-content;
+        border-top: 1px solid $clr2;
+        .show-homes {
+            height: 48px;
+            width: 196px;
+            margin: 0 auto;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px 20px 10px 20px;
+            background-color: $clr5;
+            color: $clr1;
+            align-self: center;
+            margin-right: 24px;
+        }
     }
+
+    
 }
 

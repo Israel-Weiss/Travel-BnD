@@ -6,16 +6,32 @@ import { useDispatch } from 'react-redux'
 import { CheckboxRadio } from '../cmps/filters/check-box'
 import { StayFilterButtons } from '../cmps/filters/buttons'
 import { CheckboxesRadioEmenteties } from '../cmps/filters/amentities'
+import { stayService } from "../services/stay.service"
+import { setStay } from '../store/stay.action'
 
-export const StayFilter = ({ onSetFilter}) => {
+
+export const StayFilter = ({}) => {
 
     const [isShown, setIsShown] = useState(true)
     const [modalFlag, setModalFlag] = useState(false)
 
     var key = 0
-
-
     const dispatch = useDispatch()
+
+    const onSetFilter = () => {
+        let elStartRange = document.querySelector('.min-price-num').innerHTML
+        let elEndRange = document.querySelector('.max-price-num').innerHTML
+        const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
+        const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
+        const range = { start: startRange, end: endRange }
+        stayService.query(null, null, range).then(
+          stays =>{ dispatch(setStay(stays))
+            closeModal()
+        }  )
+    
+    
+      }
+
 
     const closeModal = () => {
         setIsShown(current => !current)
@@ -87,8 +103,8 @@ export const StayFilter = ({ onSetFilter}) => {
             <CheckboxesRadioEmenteties/>
             </div>
             </div>
-            <div className="modal-footer">
-
+            <div className=" modal-footer">
+            <div className="show-homes" onClick={() => onSetFilter()}>Show homes</div>
             </div>
         </div>
     </div>
