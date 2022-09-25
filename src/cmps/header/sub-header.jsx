@@ -1,9 +1,12 @@
-import searchIcon from "../assets/imgs/serachIcon.png"
-import { setFilter } from "../store/stay.action"
-import { useDispatch, useSelector } from 'react-redux'
-import { useState, useEffect } from 'react'
-import { stayService } from "../services/stay.service"
-import locationIcon from "../assets/imgs/loactionIcon.svg"
+import { setFilter ,setFilterBy,loadStay} from "../../store/stay.action"
+import { useDispatch} from 'react-redux'
+import { useState } from 'react'
+import { stayService } from "../../services/stay.service"
+import { SearchModal } from '../modal/search-modal'
+
+//IMG
+import searchIcon from "../../assets/imgs/serachIcon.png"
+import locationIcon from "../../assets/imgs/loactionIcon.svg"
 
 export function SubHeader({setAnywhereM}) {
     const dispatch = useDispatch()
@@ -11,13 +14,12 @@ export function SubHeader({setAnywhereM}) {
     const [modalFlag, setModalFlag] = useState(false)
     const [locationZone, setLocationZone] = useState(false)
 
-
-
-
     const onSearch = (ev) => {
         ev.preventDefault()
         const text = ev.target[0].value
-        dispatch(setFilter(null, text))
+
+        dispatch(setFilter(null,text))
+  
         setAnywhereM(false)
         document.querySelector('.dark-screen').style.display = 'none'
 
@@ -39,9 +41,8 @@ export function SubHeader({setAnywhereM}) {
      
     }
 
-
     return (
-        <div className="subheader-container">
+        <div className="subheader-container animate__animated animate__zoomIn animate__faster">
             <form className="search-bar flex" onSubmit={(event) => onSearch(event)} >
 
                 <ul>
@@ -78,6 +79,7 @@ export function SubHeader({setAnywhereM}) {
                 })}
 
             </div>}
+            <SearchModal />
         </div>
     )
 }

@@ -30,7 +30,6 @@ export const stayService = {
   getLocalZones,
   save,
 }
-
 const BASE_URL = "stays/"
 
 
@@ -39,35 +38,69 @@ async function getById(stayId) {
   return stay
 }
 
-async function query(tag = null, text = null, range = null) {
-  // console.log("im here");
-  const stays = await httpService.get(BASE_URL)
-  let stayToDisplay = []
+async function query(tag=null,text=null,range=null) {
+  const stays = await httpService.get(BASE_URL )
 
-  if (tag) {
-    stayToDisplay = stays.filter(stay => stay.type.includes(tag))
-    return Promise.resolve(stayToDisplay)
-  }
-  else if (text) {
-    const lowerText = text.toLowerCase()
-    stayToDisplay = stays.filter(stay =>
-      (stay.name.toLowerCase().includes(lowerText))
-      || (stay.loc.country.toLowerCase().includes(lowerText))
-      || (stay.loc.city.toLowerCase().includes(lowerText)))
-    console.log(stayToDisplay);
-    return Promise.resolve(stayToDisplay)
-  }
-  else if (range) {
-    stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
-    stayToDisplay.sort((a, b) =>
-      parseInt(a.price) - parseInt(b.price)
-    )
-    return Promise.resolve(stayToDisplay)
-  }
-  else
-    stayToDisplay = stays
+let stayToDisplay = []
+
+if (tag) {
+  stayToDisplay = stays.filter(stay => stay.type.includes(tag))
   return Promise.resolve(stayToDisplay)
 }
+else if (text) {
+  const lowerText = text.toLowerCase()
+  stayToDisplay = stays.filter(stay =>
+    (stay.name.toLowerCase().includes(lowerText))
+    || (stay.loc.country.toLowerCase().includes(lowerText))
+    || (stay.loc.city.toLowerCase().includes(lowerText)))
+  console.log(stayToDisplay);
+  return Promise.resolve(stayToDisplay)
+}
+else if (range) {
+  console.log("im got range");
+  stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
+  stayToDisplay.sort((a, b) =>
+    parseInt(a.price) - parseInt(b.price)
+  )
+  return Promise.resolve(stayToDisplay)
+}
+else stayToDisplay = stays
+
+  return Promise.resolve(stays)
+}
+
+// async function query(filterBy) {
+//   const stays = await httpService.get(BASE_URL ,{ params: filterBy })
+
+// let stayToDisplay = []
+
+// if (tag) {
+//   stayToDisplay = stays.filter(stay => stay.type.includes(tag))
+//   return Promise.resolve(stayToDisplay)
+// }
+// else if (text) {
+//   const lowerText = text.toLowerCase()
+//   stayToDisplay = stays.filter(stay =>
+//     (stay.name.toLowerCase().includes(lowerText))
+//     || (stay.loc.country.toLowerCase().includes(lowerText))
+//     || (stay.loc.city.toLowerCase().includes(lowerText)))
+//   console.log(stayToDisplay);
+//   return Promise.resolve(stayToDisplay)
+// }
+// else if (range) {
+//   stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
+//   stayToDisplay.sort((a, b) =>
+//     parseInt(a.price) - parseInt(b.price)
+//   )
+//   return Promise.resolve(stayToDisplay)
+// }
+// else stayToDisplay = stays
+
+
+
+
+//   return Promise.resolve(stays)
+// }
 
 async function getLocalZones(text){
   const lowerText= text.toLowerCase()
@@ -178,6 +211,25 @@ function save(stay) {
       return httpService.post(`stays/${stay._id}`, stay)
   }
 }
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

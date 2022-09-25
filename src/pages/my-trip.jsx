@@ -58,7 +58,7 @@ export function MyTrip() {
 
             {orders.map(order => {
                 const { startDate, endDate } = order
-                const dates = "["+startDate.substring(8, 10) + "-" + endDate.substring(8, 10)+ "]"+ "-" + UtilService.stringToDate( endDate.substring(4,7)) + "-"+ endDate.substring(11, 15)
+                const dates = "["+startDate.substring(0,2) + "-" + endDate.substring(0,2) + "]" + "/" + endDate.substring(3) 
                 return <div className="order-list">
                     <div className="order-text"><p>{order.date}</p></div>
                     <div className="order-text"><p>{order.host}</p></div>

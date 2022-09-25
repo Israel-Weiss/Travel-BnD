@@ -7,13 +7,22 @@
     margin-top: 48px;
     padding: 0px 10px 0px 10px;
     justify-content: space-betweens;
+    margin-top: 12px;
 
     @include for-small-layout {
         padding: 0px;
+        margin-top: 50px;
+
     }
 
     .title-sector {
-        width: 80%;
+        @include for-small-layout {
+            width: 80%;
+            padding: 0px;
+        }
+
+        padding: 0px 10px 0px 10px;
+        width: 100%;
         display: flex;
         justify-content: space-between;
         border-bottom: 1.8px solid $clr2;
@@ -32,11 +41,16 @@
             font-weight: 600;
             color: $clr5;
             margin-block-end: 0px;
+            padding-right: 20px;
+
+            @include for-small-layout {
+                padding: 0px;
+            }
         }
 
         .room-details-desc {
             width: 100%;
-            font-size: 18px;
+            font-size: 16px;
             font-weight: 400;
             color: $clr5;
             text-align: start;
@@ -49,20 +63,29 @@
 
 
 
-        .icon-container {
-            width: 100%;
-            display: flex;
-            margin-top: 15px;
+    .icon-container {
+        width: 100%;
+        display: flex;
+        margin-top: 15px;
+        padding: 0px 10px 10px 10px;
 
-            .room-info-icons {
-                margin-top: 4px;
-            }
-
-            &:nth-child(1) {
-                margin-top: 30px;
-            }
+        @include for-small-layout {
+            padding: 0px;
         }
-   
+
+        .room-info-icons {
+            margin-top: 4px;
+        }
+
+        &:nth-child(1) {
+            margin-top: 30px;
+        }
+
+        &:nth-child(3) {
+            margin-bottom: 15px;
+        }
+    }
+
     .right {}
 
 }

@@ -1,8 +1,11 @@
 import { filterIcons } from "../storage/icon-storage"
 import filterIcon from "../assets/imgs/Filter Icons/filterIcon.svg"
 import React, { useState } from 'react'
-import {PriceFilter} from './filter'
+import {PriceFilter} from './filters/filter'
 import { useDispatch } from 'react-redux'
+import { CheckboxRadio } from '../cmps/filters/check-box'
+import { StayFilterButtons } from '../cmps/filters/buttons'
+import { CheckboxesRadioEmenteties } from '../cmps/filters/amentities'
 
 export const StayFilter = ({ onSetFilter}) => {
 
@@ -44,16 +47,49 @@ export const StayFilter = ({ onSetFilter}) => {
             <h1 className="filter-btn-text">Filters</h1>
         </div>
         <div className="filter-modal" style={{display: isShown ? 'none' : 'flex'}}>
-            <div className="title-sector"  >
+        <div className="title-sector"  >
                 <button className="exit-btn" onClick={() => closeModal()}>x</button>   
                 <h1 className="filter-header">Filters</h1>
             </div>
+            <div className="modal-body-container">
             <div className="filter-modal-titles flex">
                 <h3 className="second-title">Price range</h3>
                 <h3 className="avg-price-title">The average nightly price is $216</h3>
             </div>
             
-            {modalFlag && <div className="filter">{PriceFilter(closeModal) }</div>}
+            {modalFlag &&
+                <div className="filter-price-contianer">
+                    {PriceFilter(closeModal) }
+            </div>
+            }
+            <div className="stay-type-filter">
+                <h3 className="stay-type-title">
+                    Type of place
+                </h3>
+                <div className="check-box-filter"><CheckboxRadio index={0}/></div>
+            </div>
+
+            <div className="rooms-beds-filter">
+                <h3 className="room-bed-title">
+                    Rooms and beds
+                </h3>
+                <span className="bedrooms">Bedrooms</span>
+                <StayFilterButtons/>
+                <span className="beds">Beds</span>
+                <StayFilterButtons/>
+                <span className="bathrooms">Bathrooms</span>
+                <StayFilterButtons/>
+            </div>
+            
+            <div className="Property-type-filter">
+            <h3 className="Property-type-filter-title">Amentities
+</h3>
+            <CheckboxesRadioEmenteties/>
+            </div>
+            </div>
+            <div className="modal-footer">
+
+            </div>
         </div>
     </div>
     )}

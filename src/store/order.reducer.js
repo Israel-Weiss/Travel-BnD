@@ -1,9 +1,6 @@
-
-
 const INITIAL_STATE = {
-    orders: JSON.parse(localStorage.getItem("orders"))
+    orders: null
 }
-
 
 export function orderReducer(state = INITIAL_STATE, action) {
 

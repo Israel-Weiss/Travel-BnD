@@ -2,11 +2,10 @@ import { stayService } from '../../services/stay.service'
 
 export const StayReviews = ({ stay }) => {
     const reviews = stay.reviews
-
     var rate = stayService.calcRate(reviews)
 
     if (!stay) return
-    var key = 100
+    var key = 0
     return (
         <section className="review-container flex" >
             <h1 className="review-title fontSize-22 bold"> ★ {rate} · {reviews.length} Reviews </h1>

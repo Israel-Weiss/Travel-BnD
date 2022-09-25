@@ -2,8 +2,8 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { StayList } from '../cmps/stay-list'
 import { StayFilter } from '../cmps/stay-filter'
-import { loadStay, setFilter, setCurrentUrl } from '../store/stay.action'
-
+import { loadStay, setFilter, setCurrentUrl,  } from '../store/stay.action'
+import { AppFooter } from '../cmps/app-footer'
 export const StayApp = () => {
 
     const dispatch = useDispatch()
@@ -13,17 +13,25 @@ export const StayApp = () => {
     useEffect(() => {
         dispatch(setCurrentUrl(currentUrl))
         dispatch(loadStay())
-    }, [ currentUrl])
+    }, [currentUrl])
 
     const onSetFilter = (tag) => {
         dispatch(setFilter(tag, null))
     }
+
+
+    // const onChangeFilter = (filterBy) => {
+    //     dispatch(setFilterBy(filterBy))
+    //     dispatch(loadStay())
+    // }
+
 
     if (!stays) return
     return (
         <section>
             <StayFilter onSetFilter={onSetFilter} />
             <StayList stays={stays} />
+            < AppFooter/>
         </section>
     )
 }

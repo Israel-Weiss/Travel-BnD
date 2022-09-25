@@ -6,6 +6,7 @@ import App from './root-cmp'
 import { store } from './store'
 import { HashRouter as Router } from 'react-router-dom'
 import './styles/styles.scss'
+import 'animate.css';
 const root = ReactDOM.createRoot(document.getElementById('root'))
 
 root.render(

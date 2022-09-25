@@ -1,23 +1,30 @@
 .filter-modal {
     max-width: 780px;
-    max-height: 700px;
-    position: fixed;
+    max-height: 80%;
+    align-content: center;
+    position: absolute;
+    height: 80%;
+    .modal-body-container{
+        overflow-y: auto;
+    }
     left: 50%;
     top: 0;
     margin-top: 38px;
     transform: translateX(-50%);
-    height: 100%;
-    // width: 80%;
     background-color: $clr1;
     z-index: 2;
     border-radius: 0px;
-    justify-content: space-between;
-    gap:2px;
     display: flex;
     flex-direction: column;
     box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
     .filter-price-contianer{
-        border: 1px solid $clr4;
+        margin-top: 100px;
+    }
+    .modal-footer{
+        min-height: 20px;
+    }
+    .stay-type-title{
+        color:$clr5;
     }
 
     .App{
@@ -28,6 +35,7 @@
             border: 1px ;
             padding-left:2px ;
             padding-right:2px;
+            bottom:8px;
         }
     }
 
@@ -35,19 +43,20 @@
     @include for-small-layout {
         top: 6%;
         width: 55%;
-        height: 70%;
+        // height: 70%;
         border-radius: 12px;
     }
     .handleContainer_1{
-        width: 80%;
-        left:10%
+        width: 67%;
+        left:55px;
     }
     .rheostat_1{
         width: 80%;
         left:10%;
     }
     .DefaultBackground_background__horizontal {
-        width:80%
+        width: 67%;
+        left: -29px;
     }
     .title-sector {
         font-size: 28px;
