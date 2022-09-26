@@ -17,6 +17,7 @@ import wifi from '../assets/imgs/house/place-offer/wifi.svg'
 import workspace from '../assets/imgs/house/place-offer/workspace.svg'
 import aircondition from '../assets/imgs/house/place-offer/aircondition.svg'
 import crib from '../assets/imgs/house/place-offer/crib.svg'
+import { socketService, SOCKET_EVENT_STAY_ADDED} from './socket.service.js'
 
 import { storageService } from "./async-storage.service"
 import { httpService } from './http.service'
@@ -28,46 +29,86 @@ export const stayService = {
   mapIcon,
   getRandomIntInclusive,
   getLocalZones,
-  save,
+  createStay
 }
 const BASE_URL = "stays/"
 
+const host =
+{
+  fullname: "Richard",
+  location: "New York, New York, United States",
+  about: "I am pretty much your average early/mid career working professional in NYC.",
+  pictureUrl: "https://res.cloudinary.com/dv2tdbhtp/image/upload/v1663674459/hostmale1_l30u7i.jpg",
+  isSuperhost: true,
+  id: "34607505"
+}
+
+// const stayChannel = new BroadcastChannel('stayChannel');
+// (() => {
+//   socketService.on(SOCKET_EVENT_STAY_ADDED, (stay) => {
+//     console.log('GOT from socket', stay)
+//   })
+// })()
 
 async function getById(stayId) {
   const stay = await httpService.get(BASE_URL + stayId)
   return stay
 }
 
-async function query(tag=null,text=null,range=null) {
-  const stays = await httpService.get(BASE_URL )
+async function query(tag = null, text = null, range = null) {
+  const stays = await httpService.get(BASE_URL)
 
-let stayToDisplay = []
+  let stayToDisplay = []
 
-if (tag) {
-  stayToDisplay = stays.filter(stay => stay.type.includes(tag))
-  return Promise.resolve(stayToDisplay)
-}
-else if (text) {
-  const lowerText = text.toLowerCase()
-  stayToDisplay = stays.filter(stay =>
-    (stay.name.toLowerCase().includes(lowerText))
-    || (stay.loc.country.toLowerCase().includes(lowerText))
-    || (stay.loc.city.toLowerCase().includes(lowerText)))
-  console.log(stayToDisplay);
-  return Promise.resolve(stayToDisplay)
-}
-else if (range) {
-  console.log("im got range");
-  stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
-  stayToDisplay.sort((a, b) =>
-    parseInt(a.price) - parseInt(b.price)
-  )
-  return Promise.resolve(stayToDisplay)
-}
-else stayToDisplay = stays
+  if (tag) {
+    stayToDisplay = stays.filter(stay => stay.type.includes(tag))
+    return Promise.resolve(stayToDisplay)
+  }
+  else if (text) {
+    const lowerText = text.toLowerCase()
+    stayToDisplay = stays.filter(stay =>
+      (stay.name.toLowerCase().includes(lowerText))
+      || (stay.loc.country.toLowerCase().includes(lowerText))
+      || (stay.loc.city.toLowerCase().includes(lowerText)))
+    console.log(stayToDisplay);
+    return Promise.resolve(stayToDisplay)
+  }
+  else if (range) {
+    console.log("im got range");
+    stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
+    stayToDisplay.sort((a, b) =>
+      parseInt(a.price) - parseInt(b.price)
+    )
+    return Promise.resolve(stayToDisplay)
+  }
+  else stayToDisplay = stays
 
   return Promise.resolve(stays)
 }
+
+async function createStay(stayForm) {
+const user =storageService.getLogedInUser()
+  const stay = {
+    name: stayForm.capcity.name,
+    type: "OMG!",
+    imgUrls: stayForm.imgUrls,
+    price: stayForm.capcity.price,
+    summery: "bla bla bla",
+    capacity: stayForm.capcity.guests,
+    bathrooms: stayForm.capcity.bathrooms,
+    bedrooms: stayForm.capcity.bedrooms,
+    loc: stayForm.loc,
+    amenities: stayForm.amenities,
+    reviews: [],
+    likedByUsers: [],
+    host: user
+  }
+  console.log(stay);
+  const stays = await httpService.post(BASE_URL, stay)
+  window.location.href = "index.html/#/";
+
+}
+
 
 // async function query(filterBy) {
 //   const stays = await httpService.get(BASE_URL ,{ params: filterBy })
@@ -102,35 +143,38 @@ else stayToDisplay = stays
 //   return Promise.resolve(stays)
 // }
 
-async function getLocalZones(text){
-  const lowerText= text.toLowerCase()
-let stays = await query()
-let localZones = []
+async function getLocalZones(text) {
+  const lowerText = text.toLowerCase()
+  let stays = await query()
+  let localZones = []
 
-stays.map(stay=>{
-const {country,city}=stay.loc  
+  stays.map(stay => {
+    const { country, city } = stay.loc
 
-if(country.toLowerCase().includes(lowerText)&&
-(country.charAt(0).toLowerCase()===lowerText.charAt(0))
-&&!localZones.includes(country)&&!localZones.includes(city))localZones.push(country)
+    if (country.toLowerCase().includes(lowerText) &&
+      (country.charAt(0).toLowerCase() === lowerText.charAt(0))
+      && !localZones.includes(country) && !localZones.includes(city)) localZones.push(country)
 
-if(city.toLowerCase().includes(lowerText)&&
-(city.charAt(0).toLowerCase()===lowerText.charAt(0))
-&&!localZones.includes(country)&&!localZones.includes(city))localZones.push(city)
+    if (city.toLowerCase().includes(lowerText) &&
+      (city.charAt(0).toLowerCase() === lowerText.charAt(0))
+      && !localZones.includes(country) && !localZones.includes(city)) localZones.push(city)
 
-})
-console.log(localZones ,"localzone");
-return Promise.resolve(localZones)
+  })
+  console.log(localZones, "localzone");
+  return Promise.resolve(localZones)
 }
 
 function calcRate(reviews) {
   var rate = 0
-  reviews.map((review) => {
-    rate += review.rate
-  })
-  rate = rate / reviews.length
-  if(rate < 3.5) rate += 1.5
-  return rate.toFixed(2)
+  if (reviews.length<1) return "3.0"
+  else {
+    reviews.map((review) => {
+      rate += review.rate
+    })
+    rate = rate / reviews.length
+    if (rate < 3.5) rate += 1.5
+    return rate.toFixed(2)
+  }
 }
 
 function mapIcon(amenities) {
@@ -213,7 +257,7 @@ function save(stay) {
 }
 
 
-  
+
 
 
 

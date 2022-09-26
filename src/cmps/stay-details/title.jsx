@@ -8,7 +8,7 @@ import { stayService } from '../../services/stay.service'
 export const StayTitle = ({ stay }) => {
 
     if (!stay) return
-
+console.log(stay.reviews,"stay.reviews");
     return (
         <div className="room-info">
             <h1 className="room-info-title">{stay.name}</h1>

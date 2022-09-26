@@ -4,6 +4,8 @@ import { storageService } from './async-storage.service'
 
 export const SOCKET_EVENT_ORDER_ADDED = 'order-added'
 export const SOCKET_EVENT_ORDER_UPDATE = 'order-update'
+export const SOCKET_EVENT_STAY_ADDED = 'stay-added'
+
 
 const SOCKET_EMIT_LOGIN = 'set-user-socket'
 const SOCKET_EMIT_LOGOUT = 'unset-user-socket'
