@@ -1,37 +1,64 @@
 .filter-modal {
     max-width: 780px;
-    max-height: 700px;
-    position: fixed;
+    max-height: 80%;
+    align-content: center;
+    position: absolute;
+    height: 80%;
+    .modal-body-container{
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
     left: 50%;
     top: 0;
     margin-top: 38px;
     transform: translateX(-50%);
-    height: 100%;
-    // width: 100%;
     background-color: $clr1;
     z-index: 2;
     border-radius: 0px;
-    justify-content: space-between;
-    gap:2px;
     display: flex;
     flex-direction: column;
     box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
-
-    .bars{
-        margin:-5px ;
-        margin-left: 25px;
-        border: 1px ;
-        padding-left:2px ;
-        padding-right:2px;
+    .filter-price-contianer{
+        margin-top: 100px;
     }
+    .modal-footer{
+        min-height: 20px;
+    }
+    .stay-type-title{
+        color:$clr5;
+    }
+
+    .App{
+        .bars{
+            display:grid;
+            margin:-5px ;
+            margin-left: 10%;
+            border: 1px ;
+            padding-left:2px ;
+            padding-right:2px;
+            bottom:8px;
+        }
+    }
+
+    
     @include for-small-layout {
         top: 6%;
         width: 55%;
-        height: 70%;
+        // height: 70%;
         border-radius: 12px;
     }
-
-
+    .handleContainer_1{
+        width: 67%;
+        left:55px;
+    }
+    .rheostat_1{
+        width: 80%;
+        left:10%;
+    }
+    .DefaultBackground_background__horizontal {
+        width: 67%;
+        left: -29px;
+    }
     .title-sector {
         font-size: 28px;
         color: $clr5;
@@ -70,7 +97,8 @@
     }
 
     .DefaultHandle_handle__horizontal_2 {
-        margin-left: 25px !important;
+        // margin-right: 10px !important;
+        align-self: center;
     }
 
     .price-container {
@@ -146,21 +174,30 @@
 
     }
 
-    .show-homes {
 
-        width: 40%;
-        margin: 0 auto;
-        margin-top: 25px;
-        margin-bottom: 25px;
-        border-radius: 15px;
-        text-align: center;
-        font-size: 16px;
-        cursor: pointer;
-        font-weight: bold;
-        padding: 20px 90px 20px 90px;
-        background-color: $clr5;
-        color: $clr1;
-        align-self: center;
+    .modal-footer{
+        height:80px;
+        min-height: fit-content;
+        border-top: 1px solid $clr2;
+        .show-homes {
+            height: 48px;
+            width: 196px;
+            margin: 0 auto;
+            margin-top: 16px;
+            margin-bottom: 16px;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+            cursor: pointer;
+            font-weight: bold;
+            padding: 10px 20px 10px 20px;
+            background-color: $clr5;
+            color: $clr1;
+            align-self: center;
+            margin-right: 24px;
+        }
     }
+
+    
 }
 

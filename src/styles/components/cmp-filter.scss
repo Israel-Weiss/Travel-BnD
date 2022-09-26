@@ -1,0 +1,203 @@
+.stay-type-filter {
+    margin-left: 24px;
+
+    .stay-type-title {
+        margin-bottom: 50px;
+        margin-top: 24px;
+    }
+}
+
+.check-boxes {
+    display: flex;
+    flex-wrap: wrap;
+    border-bottom: 1px solid $clr2;
+
+    .sc-gsnTZi {
+        color: $clr5;
+        display: flex;
+        font-size: 20px;
+        width: 45%;
+        height: 40px;
+        padding-left: 5px;
+        align-self: center;
+        text-align: baseline;
+        margin-bottom: 20px;
+
+        .hJkjgx {
+            position: flex;
+            align-self: baseline;
+            width: 22px;
+            height: 22px;
+        }
+    }
+}
+
+
+.room-bed-title {
+    margin-top: 32px;
+    font-size: 24px;
+    color: $clr5;
+    margin-left: 24px;
+}
+
+.bathrooms {
+    color: $clr5;
+    margin-left: 28px;
+    font-size: 16px;
+    margin-bottom: 16px;
+}
+
+.bedrooms {
+    color: $clr5;
+    margin-left: 28px;
+    font-size: 16px;
+    margin-bottom: 16px;
+
+}
+
+.beds {
+    color: $clr5;
+    margin-left: 28px;
+    font-size: 16px;
+    margin-bottom: 16px;
+
+}
+
+.button-row {
+    // justify-content: space-between;
+    margin-top: 14px;
+    margin-left: 24px;
+    display: flex;
+    gap: 10px;
+    margin-bottom: 14px;
+
+    .button-nums {
+        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
+        height: 38px;
+        width: 60px;
+        border: 0.5px solid $clr7 ;
+        outline: none;
+        margin: 0px;
+        position: flex;
+        transition-property: -ms-transform, -webkit-transform, transform, background-color, border-color;
+        transition-duration: 0.15s;
+        transition-timing-function: ease-in-out;
+        padding: 10px 20px;
+        border-radius: 30px;
+        min-width: 59px;
+        font-size: 14px;
+        line-height: 16px;
+        background-color: rgb(255, 255, 255);
+        color: black;
+        font-weight: 500;
+
+    }
+
+    .button-nums:hover {
+        border: 1px solid $clr4;
+    }
+
+    .button-nums-any {
+        cursor: pointer;
+        text-align: center;
+        margin-top: 20px;
+        height: 38px;
+        width: 72px;
+        border-radius: 12px;
+        border: 1px solid rgb(34, 34, 34);
+        outline: none;
+        margin: 0px;
+        position: flex;
+        transition-property: -ms-transform, -webkit-transform, transform, background-color, border-color;
+        transition-duration: 0.15s;
+        transition-timing-function: ease-in-out;
+        padding: 10px 20px;
+        border-radius: 30px;
+        min-width: 59px;
+        font-size: 14px;
+        line-height: 16px;
+        background-color: rgb(34, 34, 34);
+        color: white;
+        font-weight: 500;
+    }
+
+}
+
+.Property-type-filter-title{
+    margin-left: 24px;
+    margin-bottom: 40px;
+    color: $clr5;
+    width: 100%;
+    font-size: 22px;
+    font-weight: 550;
+    padding-top:20px;
+    border-top:1px solid $clr2;
+    margin-top: 20px;
+
+}
+
+.check-boxes-amenteties{
+    display: grid;
+    border-bottom: 1px solid $clr2;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:  1fr 1fr ;
+    max-width: 90%;
+
+        .sc-hKMtZM {
+            color: $clr5;
+            font-size: 15px;
+            height: 30px;
+            padding-left: 14px;
+            margin-bottom: 20px;
+            grid-template-rows: 2 / 5;
+
+            .Pghmy{
+                display: flex;
+                align-self: baseline;
+                width: 10px;
+                height: 10px;
+            }
+        
+            .sc-dkzDqf {
+                color: $clr5;
+                font-size: 15px;
+                width: 20px;
+                height: 20px;
+                padding-left: 5px;
+                margin-bottom: 20px;
+                .hyfqEE{
+                    display: flex;
+                    align-self: baseline;
+                    width: 10px;
+                    height: 10px;
+                }
+        }
+
+    }
+    
+    
+    
+    .essentials {
+        width: 100%;
+        color: $clr5;
+        font-size: larger;
+        margin-bottom: 11px;
+        font-weight: 450;
+        margin-left: 24px;
+        grid-column: 1 / 3
+
+    }
+    
+    .features {
+        width: 100%;
+        color: $clr5;
+        font-size: larger;
+        margin-bottom: 11px;
+        font-weight: 450;
+        margin-left: 24px;
+        grid-column: 1 / 3
+    }
+}
+

@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { setOrder } from '../../store/order.action'
 import { MyCal } from '../calendar'
+import { MyCalendar } from '../calendar2'
 import confirmPic from '../../assets/imgs/v.png'
 import { useEffect } from 'react'
 import { stayService } from '../../services/stay.service'
@@ -57,7 +58,7 @@ export function ReserveModal({ stay }) {
         //First Modal
         <section>
             <div className="reserve-modal-container">
-                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCal(setNightCount, setStartDate, setEndDate)}</div>
+                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCalendar(setNightCount, setStartDate, setEndDate)}</div>
 
                 <div className="space-between align-items flex full-width header">
                     <div className="flex-column">

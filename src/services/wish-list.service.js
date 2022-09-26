@@ -5,7 +5,8 @@ export const wishListService = {
     createOrder,
     getByLogedInUser,
     addStayToList,
-    getById
+    getById,
+    removeStay,
 }
 
 function createOrder(name, stay) {
@@ -45,9 +46,26 @@ function getByLogedInUser() {
       wishLists.map(wishList => {
         if (wishList.likedByUser === user._id) wishListToDisplay.push(wishList)
       })
-      return wishListToDisplay
+      return  wishListToDisplay
     })
   }
+
+  async function removeStay(stay){
+    return Promise.resolve(storageService.query("wishList").then(wishLists => {
+        console.log(stay)
+    console.log(wishLists)
+    if(wishLists.length === 1) wishLists[0].stays.splice(wishLists[0].stays.indexOf(stay), 1)
+    
+    else wishLists.map((list) => {
+        if(list.stays.includes(stay)){
+            list.stays.splice(list.stays.indexOf(stay), 1)
+        }
+    })
+    console.log(wishLists)
+    return storageService.put('wishList',wishLists)
+  }))
+}
+  
 
 function getById(listId){
 let lists=storageService.getWishList()

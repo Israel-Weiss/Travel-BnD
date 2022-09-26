@@ -1,11 +1,11 @@
 import React from "react";
 import "rheostat/initialize";
 import Rheostat from "rheostat";
-import { stayService } from "../services/stay.service";
-import { setStay } from '../store/stay.action'
+import { stayService } from "../../services/stay.service"
+import { setStay } from '../../store/stay.action'
 import { useDispatch, useSelector } from 'react-redux'
 
-import "../styles/components/rheostart.scss";
+import "../../styles/components/rheostart.scss";
 // import { getValue } from "@testing-library/user-event/dist/utils";
 
 const price = [
@@ -17,24 +17,52 @@ const price = [
     max: 30
   },
   {
+    key: "40",
+    displayName: "40",
+    count: 10,
+    min: 30,
+    max: 40
+  },
+  {
+    key: "45",
+    displayName: "45",
+    count: 20,
+    min: 40,
+    max: 45
+  },
+  {
     key: "50",
     displayName: "50",
-    count: 42,
-    min: 30,
+    count: 12,
+    min: 45,
     max: 50
+  },
+  {
+    key: "55",
+    displayName: "55",
+    count: 18,
+    min: 50,
+    max: 55
   },
   {
     key: "60",
     displayName: "60",
     count: 18,
-    min: 50,
+    min: 55,
     max: 60
+  },
+  {
+    key: "65",
+    displayName: "65",
+    count: 13,
+    min: 60,
+    max: 65
   },
   {
     key: "70",
     displayName: "70",
     count: 13,
-    min: 60,
+    min: 65,
     max: 70
   },
   {
@@ -59,24 +87,66 @@ const price = [
     max: 100
   },
   {
+    key: "110",
+    displayName: "110",
+    count: 40,
+    min: 100,
+    max: 110
+  },
+  {
+    key: "120",
+    displayName: "120",
+    count: 40,
+    min: 110,
+    max: 120
+  },
+  {
+    key: "130",
+    displayName: "130",
+    count: 40,
+    min: 120,
+    max: 130
+  },
+  {
     key: "150",
     displayName: "150",
     count: 40,
-    min: 100,
+    min: 130,
     max: 150
+  },
+  {
+    key: "165",
+    displayName: "165",
+    count: 36,
+    min: 150,
+    max: 165
+  },
+  {
+    key: "180",
+    displayName: "180",
+    count: 36,
+    min: 165,
+    max: 180
   },
   {
     key: "200",
     displayName: "200",
     count: 36,
-    min: 150,
+    min: 180,
     max: 200
+  },
+  {
+    key: "220",
+    displayName: "220",
+    count: 36,
+    min: 200,
+    max: 220
   },
   {
     key: "250",
     displayName: "250",
     count: 19,
-    min: 200,
+    min: 220,
     max: 250
   },
   {
@@ -94,10 +164,17 @@ const price = [
     max: 300
   },
   {
+    key: "320",
+    displayName: "320",
+    count: 11,
+    min: 300,
+    max: 320
+  },
+  {
     key: "350",
     displayName: "350",
     count: 11,
-    min: 300,
+    min: 320,
     max: 350
   },
   {
@@ -303,10 +380,12 @@ const PitComponent = ({ style, children }) => {
         style={{
           ...style,
           background: "#a2a2a2",
-          // marginTop: '-16px !important',
-          width: '6px',
+          width: '1px',
           height: height,
-          bottom: 20,
+          bottom: 8,
+          marginRight:'10px',
+          border:'0.2px solid $clr7'
+
 
         }}
       />
@@ -317,21 +396,21 @@ const PitComponent = ({ style, children }) => {
 }
 
 export function PriceFilter(closeModal) {
-  const dispatch = useDispatch()
+  // const dispatch = useDispatch()
 
-  const onSetFilter = () => {
-    let elStartRange = document.querySelector('.min-price-num').innerHTML
-    let elEndRange = document.querySelector('.max-price-num').innerHTML
-    const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
-    const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
-    const range = { start: startRange, end: endRange }
-    stayService.query(null, null, range).then(
-      stays =>{ dispatch(setStay(stays))
-        closeModal()
-    }  )
+  // const onSetFilter = () => {
+  //   let elStartRange = document.querySelector('.min-price-num').innerHTML
+  //   let elEndRange = document.querySelector('.max-price-num').innerHTML
+  //   const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
+  //   const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
+  //   const range = { start: startRange, end: endRange }
+  //   stayService.query(null, null, range).then(
+  //     stays =>{ dispatch(setStay(stays))
+  //       closeModal()
+  //   }  )
 
 
-  }
+  // }
 
   var vars = {
     min: 0,
@@ -419,7 +498,7 @@ export function PriceFilter(closeModal) {
         </div>
 
       </div>
-      <div className="show-homes" onClick={() => onSetFilter()}>Show homes</div>
+      {/* <div className="show-homes modal-footer" onClick={() => onSetFilter()}>Show homes</div> */}
     </div>
 
   )

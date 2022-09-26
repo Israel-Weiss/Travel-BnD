@@ -8,6 +8,7 @@ import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATE } fr
 import { Chartline } from './chart-line'
 import doneIcon from '../assets/imgs/done.svg'
 import cancelIcon from '../assets/imgs/cancel.svg'
+import { LinesChart } from '../cmps/dashboard/multi-line'
 
 export function Dashboard() {
     const { loggedInUser } = useSelector(state => state.userModule)
@@ -89,8 +90,8 @@ export function Dashboard() {
                     </div>
                 </div>
 
-                <div className='chart'><Chartline height={300} width={670} /></div>
-                <div className='chart-phone'><Chartline height={300} width={300} /></div>
+                <div className='chart'><LinesChart height={300} width={670} /></div>
+                <div className='chart-phone'><LinesChart height={300} width={300} /></div>
             </div>
 
             <div className='order-container'>
