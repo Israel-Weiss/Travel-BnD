@@ -1,0 +1,287 @@
+.add-stay-container {
+    background-color: $clr1;
+    height: calc(100vh - 80px);
+
+    select,
+    input {
+        width: 100%;
+        height: 40px;
+        border: unset;
+        border: 1px solid $clr7;
+        padding-left: 10px;
+        border-radius: 4px;
+
+    }
+}
+
+.grid-two-column {
+    grid-template-areas: " b b c " !important;
+}
+
+.next-btn {
+    margin-top: auto !important;
+    align-self: flex-end;
+    width: 100%;
+    height: 40px;
+    border: unset;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 10px;
+    border-radius: 4px;
+    background-color: #d70565;
+    color: $clr1  !important;
+    cursor: pointer;
+}
+
+.header {
+    height: 50px;
+    width: 100%;
+    background-color: $clr1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: $clr5;
+
+    p {
+        padding-left: 80px;
+        margin-top: auto;
+    }
+
+    .prograss-line {
+        justify-self: flex-end;
+        height: 8px;
+        background-color: #d70565;
+        margin-top: auto;
+
+        &:nth-of-type(1) {
+            border-bottom-right-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+    }
+}
+
+.go-back {
+    cursor: pointer;
+    margin-left: -8px;
+    margin-top: -30px;
+    margin-bottom: -10px;
+}
+
+.upload-iamge {
+    margin-top: 30px;
+}
+
+.become-host {
+    width: 100%;
+    min-height: calc(100vh - 130px);
+    display: grid;
+    grid-template-areas: "b ";
+    grid-template-columns: 1fr;
+
+    @include for-small-layout {
+        grid-template-areas: "a b c";
+        grid-template-columns: 1fr 0.7fr 0.3fr;
+    }
+
+    .form-section {
+        grid-area: b;
+    }
+
+    .background {
+        width: 100%;
+        grid-area: c;
+        background-color: #f8f8f8;
+    }
+
+
+}
+
+// STEP ONE
+
+.step-one {
+    padding: 40px 20px 40px 20px;
+    width: 100%;
+    min-height: calc(100vh - 130px);
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: column;
+
+    @include for-small-layout {
+        padding-right: 20%;
+    }
+
+    .title {
+        color: $clr5;
+        font-size: 16px;
+        font-weight: 600;
+        margin-bottom: 10px;
+
+        &:last-of-type {
+            margin-top: 10px;
+        }
+    }
+
+    .operator-btn {
+        cursor: pointer;
+        border-radius: 50%;
+        width: 20px;
+        height: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: $clr0;
+        align-self: center;
+        border: unset;
+        background-color: transparent;
+        border: 1px solid $clr0;
+        line-height: 0px;
+        text-align: center;
+    }
+
+
+    .guests-section {
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        margin-top: 20px;
+
+        gap: 20px;
+
+        :nth-of-type(odd) {
+            color: $clr5;
+            font-size: 14px;
+
+            :not(:first-child) {
+                margin-left: 10px;
+            }
+        }
+
+        :nth-of-type(even) {
+            color: $clr5;
+            font-size: 14px;
+        }
+
+    }
+}
+
+// STEP ONE
+.step-two {
+    padding: 40px 20px 40px 20px;
+    width: 100%;
+    min-height: calc(100vh - 130px);
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include for-small-layout {
+        padding-right: 20%;
+    }
+
+    .title {
+        color: $clr5;
+        font-size: 16px;
+        font-weight: 600;
+    }
+
+    .sub-title {
+        color: $clr5;
+        font-size: 14px;
+        font-weight: 400;
+
+    }
+}
+
+
+//STEP THREE
+.step-three {
+
+    padding: 40px 20px 40px 20px;
+    width: 100%;
+    min-height: calc(100vh - 130px);
+    max-height: calc(100vh - 130px);
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include for-small-layout {
+        padding-right: 20%;
+    }
+
+    .amenitie-list {
+
+        max-height: calc(100vh - 350px);
+        overflow-y: auto;
+        overflow-x: hidden;
+
+    }
+
+
+
+    .checkbox {
+        height: 15px;
+        display: flex;
+        flex-flow: row-reverse;
+        width: unset;
+        justify-content: flex-start;
+    }
+}
+
+//STEP FOUR
+
+.step-four {
+    padding: 40px 20px 40px 20px;
+    width: 100%;
+    min-height:250px;
+    font-family: Montserrat;
+    display: flex;
+    flex-direction: column;
+
+    @include for-small-layout {
+        padding-left: 20%;
+        min-height: calc(100vh - 130px);
+    }
+
+        .img-container-grid {
+            display: grid;
+            width: 100%;
+            height:  calc(100vh - 320px);
+            grid-template-areas:
+                "a b "
+                "c d "
+                "e e";
+            grid-template-columns: 0.5fr 0.5fr;
+            grid-template-rows: 0.33fr 0.33fr 0.33fr;
+            grid-gap: 10px 10px;
+
+            @include for-small-layout {
+                grid-template-areas:
+                    "a b c"
+                    "a d e";
+                grid-template-columns: 1fr 20% 20%;
+                grid-template-rows: 50% 50%;
+            }
+
+            .grid-area-a {
+                min-height:100% !important;
+                @include for-small-layout {
+                    grid-area: a;
+                    height:100% !important;
+                     object-fit: cover;
+                }
+         
+            }
+
+            .upload-img {
+                min-height: 100% !important;
+                @include for-small-layout {
+                    min-height: 100% !important;
+                width: 100%!important;
+                object-fit: cover;
+                }
+            }
+        }
+}

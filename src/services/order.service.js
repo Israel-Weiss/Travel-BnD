@@ -1,31 +1,8 @@
 import { storageService } from "./async-storage.service"
 import { httpService } from './http.service'
-import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATE } from './socket.service.js'
+import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATE,SOCKET_EVENT_STAY_ADDED } from './socket.service.js'
 
-var gOrders = [
-  // {
-  //   "_id": "o1225",
-  //   "hostId": "u102",
-  //   "createdAt": 9898989,
-  //   "buyer": {
-  //     "_id": "u101",
-  //     "fullname": "User 1"
-  //   },
-  //   "totalPrice": 160,
-  //   "startDate": "2025/10/15",
-  //   "endDate": "2025/10/17",
-  //   "guests": {
-  //     "adults": 2,
-  //     "kids": 1
-  //   },
-  //   "stay": {
-  //     "_id": "h102",
-  //     "name": "House Of Uncle My",
-  //     "price": 80.00
-  //   },
-  //   "status": "pending"
-  // }
-]
+
 
 export const orderService = {
   createOrder,
@@ -45,6 +22,10 @@ const reviewChannel = new BroadcastChannel('reviewChannel');
     console.log('GOT from socket', order)
     // store.dispatch(getActionAddReview(review))
   })
+  socketService.on(SOCKET_EVENT_STAY_ADDED, (stay) => {
+    console.log('GOT from socket', stay)
+  })
+
 })()
 
 

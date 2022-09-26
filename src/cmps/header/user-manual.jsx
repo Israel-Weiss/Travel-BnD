@@ -11,7 +11,7 @@ export function UserManual({loginModal,loggedInUser}) {
 
     return (
         <div className="user-panel-nav">
-        <NavLink className="user-panel-a" to='#'>Become a Host</NavLink>
+        <NavLink className="user-panel-a" to='/new-stay'>Become a Host</NavLink>
         <img className="world-icon" src={wordIcon} />
         <div onClick={() => setUserPanel(!userPanel)} className="user-container">
             <img className="burger-icon" src={burgerIcon} />
