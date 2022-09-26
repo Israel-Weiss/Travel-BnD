@@ -12,6 +12,12 @@ import { setStay } from '../store/stay.action'
 
 export const StayFilter = ({}) => {
 
+    const staysLength = 360
+
+    stayService.query().then(stays => {
+        staysLength = stays.length
+    })
+
     const [isShown, setIsShown] = useState(true)
     const [modalFlag, setModalFlag] = useState(false)
 
@@ -31,6 +37,8 @@ export const StayFilter = ({}) => {
     
     
       }
+
+    
 
 
     const closeModal = () => {
@@ -74,8 +82,8 @@ export const StayFilter = ({}) => {
             </div>
             
             {modalFlag &&
-                <div className="filter-price-contianer">
-                    {PriceFilter(closeModal) }
+                <div className="filter-price-contianer" >
+                    {PriceFilter(closeModal)}
             </div>
             }
             <div className="stay-type-filter">
@@ -104,7 +112,7 @@ export const StayFilter = ({}) => {
             </div>
             </div>
             <div className=" modal-footer">
-            <div className="show-homes" onClick={() => onSetFilter()}>Show homes</div>
+            <div className="show-homes" onClick={() => onSetFilter()}>Show {staysLength} homes</div>
             </div>
         </div>
     </div>

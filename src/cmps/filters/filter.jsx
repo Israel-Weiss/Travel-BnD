@@ -368,6 +368,19 @@ const price = [
   }
 ]
 
+const showStayLength = () => {
+  let elStartRange = document.querySelector('.min-price-num').innerHTML
+  let elEndRange = document.querySelector('.max-price-num').innerHTML
+  const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
+  const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
+  const range = { start: startRange, end: endRange } 
+  stayService.query(null, null, range).then(stays =>{
+    document.querySelector('.show-homes').innerHTML = `Show ${stays.length} homes`
+  })
+
+  
+}
+
 const PitComponent = ({ style, children }) => {
 
   for (var i = 1; i < 27; i++) {
@@ -428,6 +441,7 @@ export function PriceFilter(closeModal) {
         onValuesUpdated={(props) => {
           document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
           document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
+          showStayLength()
         }}
         pitPoints={[
           0,
@@ -493,7 +507,7 @@ export function PriceFilter(closeModal) {
             Max price
           </div>
           <div className="max-price-num">
-            $ {1000}
+            $ {1500}
           </div>
         </div>
 
