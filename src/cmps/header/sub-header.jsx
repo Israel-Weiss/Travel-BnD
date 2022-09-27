@@ -1,5 +1,5 @@
-import { setFilter ,setFilterBy,loadStay} from "../../store/stay.action"
-import { useDispatch} from 'react-redux'
+import { setFilter, setFilterBy, loadStay } from "../../store/stay.action"
+import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { stayService } from "../../services/stay.service"
 import { SearchModal } from '../modal/search-modal'
@@ -8,7 +8,7 @@ import { SearchModal } from '../modal/search-modal'
 import searchIcon from "../../assets/imgs/serachIcon.png"
 import locationIcon from "../../assets/imgs/loactionIcon.svg"
 
-export function SubHeader({setAnywhereM}) {
+export function SubHeader({ setAnywhereM }) {
     const dispatch = useDispatch()
 
     const [modalFlag, setModalFlag] = useState(false)
@@ -16,10 +16,12 @@ export function SubHeader({setAnywhereM}) {
 
     const onSearch = (ev) => {
         ev.preventDefault()
-        const text = ev.target[0].value
+        // const text = ev.target[0].value
+        var filterBy = {}
+        filterBy.text = ev.target[0].value
+        dispatch(setFilterBy(filterBy))
+        dispatch(loadStay())
 
-        dispatch(setFilter(null,text))
-  
         setAnywhereM(false)
         document.querySelector('.dark-screen').style.display = 'none'
 
@@ -38,7 +40,7 @@ export function SubHeader({setAnywhereM}) {
         document.querySelector(".search-bar-input").value = value
         setModalFlag(false)
         document.querySelector(".anywhere-modal").style.display = "block"
-     
+
     }
 
     return (

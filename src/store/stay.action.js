@@ -5,8 +5,9 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 export function loadStay() {
     return async (dispatch, getState) => {
         try {
+            console.log("im here");
             const { filterBy } = getState().stayModule
-            console.log("filter",filterBy);
+            console.log("step2",filterBy);
             const stays = await stayService.query(filterBy)
             dispatch({ type: 'SET_STAY', stays })
         } catch (err) {
@@ -44,18 +45,7 @@ export function setCurrentUrl(currentUrl ) {
     }
 }
 
-export function setFilter(tag = null, text = null) {
-    return async (dispatch) => {
-        try {
-            const filterMode=true
-            const stays = await stayService.query(tag, text)
-            dispatch({ type: 'SET_STAY', stays })
-            dispatch({ type: 'SET_FILTER_BY',  filterMode})
-        } catch (err) {
-            showErrorMsg('Cannot load stays')
-        }
-    }
-}
+
 
 export function resetFilter(filterBy){
     return (dispatch) => {
@@ -71,4 +61,27 @@ export function setFilterBy(filterBy) {
     }
 }
 
+
+
+
+
+
+
+
+
+
+
+
+// export function setFilter(tag = null, text = null) {
+//     return async (dispatch) => {
+//         try {
+//             const filterMode=true
+//             const stays = await stayService.query(tag, text)
+//             dispatch({ type: 'SET_STAY', stays })
+//             dispatch({ type: 'SET_FILTER_BY',  filterMode})
+//         } catch (err) {
+//             showErrorMsg('Cannot load stays')
+//         }
+//     }
+// }
 

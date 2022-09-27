@@ -4,6 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     
+
     height: 350px;
     max-height: 500px;
     overflow-y: scroll;
@@ -20,6 +21,7 @@
     background-color: $clr1;
     width: 90%;
     @include for-small-layout {
+    
         min-width: 568px;
         width: 568px;
         padding: 0px 20px 0px 20px;
@@ -90,6 +92,7 @@
 
     .header {
         display: flex;
+        flex-direction: row;
         align-items: center;
         justify-content: space-between;
         padding-right: 45%;
@@ -99,6 +102,7 @@
     }
 
     .title {
+      margin-top: unset;
         font-size: 18px;
         color: $clr5;
         font-weight: bold;

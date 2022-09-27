@@ -7,42 +7,73 @@ import { CheckboxRadio } from '../cmps/filters/check-box'
 import { StayFilterButtons } from '../cmps/filters/buttons'
 import { CheckboxesRadioEmenteties } from '../cmps/filters/amentities'
 import { stayService } from "../services/stay.service"
-import { setStay } from '../store/stay.action'
-
+import { setStay, setFilterBy, loadStay, resetFilter } from '../store/stay.action'
+import { UtilService } from "../services/util.service"
+import { getRandomId } from "@syncfusion/ej2-base"
 
 export const StayFilter = ({ filterBy, stays }) => {
 
-    const staysLength = 360
-
-    stayService.query().then(stays => {
-        staysLength = stays.length
-    })
-
     const [isShown, setIsShown] = useState(true)
     const [modalFlag, setModalFlag] = useState(false)
+    const [staysLength, setStayLength] = useState(360)
+    const [localFilterBy, setLocalFilterBy] = useState(null)
+    const [range, setRange] = useState({ start: 0, end: 1500 })
 
+    var localFilterByy
     var key = 0
     const dispatch = useDispatch()
 
-    const onSetFilter = () => {
+    const filterByTag = (tag) => {
+        var filterBy = {}
+        filterBy.type = tag
+        dispatch(setFilterBy(filterBy))
+        dispatch(loadStay())
+        dispatch(resetFilter())
+    }
+
+    const onSetFilter = (ev, priceRange) => {
+
+        ev.preventDefault()
+        var filterBy = {}
+        var amenteties = []
+        //SET RANGE FILTER 
         let elStartRange = document.querySelector('.min-price-num').innerHTML
         let elEndRange = document.querySelector('.max-price-num').innerHTML
         const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
         const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
         const range = { start: startRange, end: endRange }
-        stayService.query(null, null, range).then(
-            stays => {
-                dispatch(setStay(stays))
-                closeModal()
-            })
+        filterBy.range = { start: range.start, end: range.end }
+        const roomType = document.querySelectorAll('.sc-bczRLJ')
 
+        for (var i = 0; i < roomType.length; i++) {
+            if (roomType[1].checked) filterBy = { ...filterBy, roomType: roomType[1].nextSibling.data }
+        }
+        //SET CAPACITY TYPE FILTER 
+        const capacity = document.querySelectorAll(".button-black")
+        for (var i = 0; i < capacity.length; i++) {
+            if (capacity[i].firstChild.data !== "Any" && i === 0) filterBy = { ...filterBy, capacity: parseInt(capacity[i].firstChild.data) }
+            else if (capacity[i].firstChild.data !== "Any" && i === 1) filterBy = { ...filterBy, bedrooms: parseInt(capacity[i].firstChild.data) }
+            else if (capacity[i].firstChild.data !== "Any" && i === 2) filterBy = { ...filterBy, bathrooms: parseInt(capacity[i].firstChild.data) }
+        }
+        //SET AMENITIES TYPE FILTER 
+        const elAmenties = document.querySelectorAll(".sc-dkzDqf")
+        for (var i = 0; i < elAmenties.length; i++) {
+            if (elAmenties[i].checked) amenteties.push(elAmenties[i].nextSibling.data)
+        }
+        if (amenteties.length > 0) filterBy.amenteties = amenteties
 
+        dispatch(setFilterBy(filterBy))
+        dispatch(loadStay())
+        closeModal()
     }
 
-    
+    const aplayFilter = () => {
+        console.log(localFilterBy, localFilterBy);
+        closeModal()
+        dispatch(setFilterBy(localFilterByy))
+        // dispatch(loadStay())
 
-
-
+    }
 
     const closeModal = () => {
         setIsShown(current => !current)
@@ -62,50 +93,54 @@ export const StayFilter = ({ filterBy, stays }) => {
     return (<div className={!filterBy ? "filter-tab" : "sticky-filter filter-tab "}>
 
 
+        {/* //amentities Filter */}
 
         {!filterBy && <div className="filterSection">
             {filterIcons.map(img => {
                 key++
                 return (
-                    <div className="filter-category" key={key++} onClick={() => onSetFilter(img.text)}>
+                    <div className="filter-category" key={key++} onClick={() => filterByTag(img.text)}>
                         <img className="filter-icons" src={img.pic} />
                         <p className="filter-icons-text">{img.text}</p>
                     </div>)
             })}
         </div>}
 
-        <div className={filterBy?"flex half-width align-items bold":"flex"} style={{fontSize:"14px"}}>
-            {filterBy&&<p className="black">{stays.length} homes</p>}
+        {/* //Big Filter */}
+
+        <div className={filterBy ? "flex half-width align-items bold" : "flex"} style={{ fontSize: "14px" }}>
+            {filterBy && <p className="black">{stays.length} homes</p>}
             <div className="filter-btn" onClick={() => openApp()}>
                 <img className="filter-btn-img" src={filterIcon} />
                 <h1 className="filter-btn-text">Filters</h1>
             </div>
         </div>
 
-        
 
-        <div className="filter-modal" style={{ display: isShown ? 'none' : 'flex' }}>
+        <form className="filter-modal" style={{ display: isShown ? 'none' : 'flex' }}
+            onSubmit={(event) => onSetFilter(event)}>
+
             <div className="title-sector"  >
                 <button className="exit-btn" onClick={() => closeModal()}>x</button>
                 <h1 className="filter-header">Filters</h1>
             </div>
             <div className="modal-body-container">
-            <div className="filter-modal-titles flex">
-                <h3 className="second-title">Price range</h3>
-                <h3 className="avg-price-title">The average nightly price is $216</h3>
-            </div>
-            
-            {modalFlag &&
-                <div className="filter-price-contianer" >
-                    {PriceFilter(closeModal)}
-            </div>
-            }
-            <div className="stay-type-filter">
-                <h3 className="stay-type-title">
-                    Type of place
-                </h3>
-                <div className="check-box-filter"><CheckboxRadio index={0}/></div>
-            </div>
+                <div className="filter-modal-titles flex">
+                    <h3 className="second-title">Price range</h3>
+                    <h3 className="avg-price-title">The average nightly price is $216</h3>
+                </div>
+
+                {modalFlag &&
+                    <div className="filter-price-contianer" >
+                        {PriceFilter(closeModal, onSetFilter, setRange)}
+                    </div>
+                }
+                <div className="stay-type-filter">
+                    <h3 className="stay-type-title">
+                        Type of place
+                    </h3>
+                    <div className="check-box-filter"><CheckboxRadio index={0} /></div>
+                </div>
 
                 <div className="rooms-beds-filter">
                     <h3 className="room-bed-title">
@@ -126,9 +161,10 @@ export const StayFilter = ({ filterBy, stays }) => {
                 </div>
             </div>
             <div className=" modal-footer">
-            <div className="show-homes" onClick={() => onSetFilter()}>Show {staysLength} homes</div>
+                <button className="show-homes go-right">Show {staysLength} homes</button>
             </div>
-        </div>
+        </form>
+
     </div>
     )
 }

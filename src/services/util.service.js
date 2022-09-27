@@ -2,7 +2,8 @@ export const UtilService = {
     makeId,
     stringToDate,
     calcSum,
-    numberToDate
+    numberToDate,
+    getRandomInt
 }
 
 function makeId(length = 10) {
@@ -73,3 +74,8 @@ if (mm < 10) mm = '0' + mm
 const formattedToday = dd + '/' + mm + '/' + yyyy
 return formattedToday
 }
+function getRandomInt(min, max) {
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
+  }

@@ -2,7 +2,7 @@ import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { StayList } from '../cmps/stay-list'
 import { StayFilter } from '../cmps/stay-filter'
-import { loadStay, setFilter, setCurrentUrl,resetFilter } from '../store/stay.action'
+import { loadStay, setFilterBy, setCurrentUrl,resetFilter } from '../store/stay.action'
 import { AppFooter } from '../cmps/app-footer'
 import { socketService, SOCKET_EVENT_STAY_ADDED } from '../services/socket.service.js'
 import { useState } from 'react'
@@ -13,6 +13,8 @@ export const StayApp = () => {
     const currentUrl = window.location.href
     const { stays } = useSelector(state => state.stayModule)
     const { filterBy } = useSelector(state => state.stayModule)
+
+    console.log("filter by by by ",filterBy);
     // const [explorerMode, setExplorerMode] = useState(false)
 
     useEffect(() => {
@@ -32,14 +34,11 @@ export const StayApp = () => {
         dispatch(resetFilter(null))
     }, [])
 
-    const onSetFilter = (tag) => {
-        dispatch(setFilter(tag, null))
+    const onSetFilter = (filterBy) => {
+        dispatch(setFilterBy(filterBy))
+        dispatch(loadStay())
     }
 
-    // const onChangeFilter = (filterBy) => {
-    //     dispatch(setFilterBy(filterBy))
-    //     dispatch(loadStay())
-    // }
 
 
     if (!stays) return

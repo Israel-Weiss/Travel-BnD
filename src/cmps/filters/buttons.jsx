@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { cloudinaryService } from '../../services/cloudinary.service';
-export function StayFilterButtons() {
+export function StayFilterButtons({onSetFilter}) {
 
     const [isActive, setIsActive] = useState(false);
     const [prevSelectedButton, setPrevButton] = useState(null)
@@ -19,7 +19,7 @@ const handleClick = (ev) => {
     ev.target.classList.add('button-black')
     setPrevButton(ev.target)
     setIsActive(current => !current)
-
+    // onSetFilter()
 }
 
 const label = [1,2,3,4,5,6,7,8]
@@ -31,15 +31,15 @@ return (
   
   <div className='button-row'>
 
-    <button className='button-nums any button-black'
+    <div className='button-nums any button-black'
       onClick={handleClick}
     >
       Any
-    </button>
+    </div>
 
     {label.map((i) => {
       
-      return <button className='button-nums'
+      return <div className='button-nums'
       style={{
           backgroundColor:'white' ,
           color:'black',
@@ -47,7 +47,7 @@ return (
     onClick={handleClick}
   >
     {i}
-  </button>
+  </div>
 
     })}
 </div>
