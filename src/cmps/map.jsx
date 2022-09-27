@@ -8,10 +8,12 @@ const AnyReactComponent = ({ text }) => <div className='outer-layer'><div classN
 export function GoogleMap({ stay ,filterBy}) {  
     if(!filterBy)var styleTag= {width:"100%",height:"75vh", padding: '20px 0px 20px 0px'}  
     else var styleTag={}
+    console.log(stay,"map stay");
     const lng = parseFloat(stay.loc.lat)
     const lat = parseFloat(stay.loc.lng)
     const [coordinates, setCoordinates] = useState({ lat: lat, lng: lng })
-    const zoom = 16
+    var zoom = 16
+    if(filterBy)zoom=4
     const mapIcon = <FaHome/>
     const onClick = ({ x, y, lat, lng, event }) => {
         setCoordinates({lat, lng})

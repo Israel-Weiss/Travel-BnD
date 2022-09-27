@@ -10,6 +10,7 @@ const checkboxesList = [
     checkboxesList.map(checkbox => ({
       name: checkbox,
       checked: false,
+      value:checkbox
     }));
   export function useCheckboxes(defaultCheckboxes) {
     const [checkboxes, setCheckboxes] = useState(
@@ -17,6 +18,10 @@ const checkboxesList = [
     );
     function setCheckbox(index, checked) {
       const newCheckboxes = [...checkboxes];
+      newCheckboxes.map(box=>{
+       box.checked=false
+       
+      })
       newCheckboxes[index].checked = checked;
       setCheckboxes(newCheckboxes);
     }

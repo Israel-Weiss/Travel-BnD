@@ -24,7 +24,7 @@ export function stayReducer(state = INITIAL_STATE, action) {
         }
 
         case 'SET_FILTER_BY':
-         return { ...state, filterBy: { ...action.filterMode } }
+         return { ...state, filterBy: { ...action.filterBy} }
 
          case 'RESET-FILTER':
             return { ...state, filterBy:null }

@@ -17,7 +17,7 @@ import wifi from '../assets/imgs/house/place-offer/wifi.svg'
 import workspace from '../assets/imgs/house/place-offer/workspace.svg'
 import aircondition from '../assets/imgs/house/place-offer/aircondition.svg'
 import crib from '../assets/imgs/house/place-offer/crib.svg'
-import { socketService, SOCKET_EVENT_STAY_ADDED} from './socket.service.js'
+import { socketService, SOCKET_EVENT_STAY_ADDED } from './socket.service.js'
 
 import { storageService } from "./async-storage.service"
 import { httpService } from './http.service'
@@ -51,43 +51,19 @@ async function getById(stayId) {
 }
 
 async function edit(stay) {
-  const currStay = await httpService.put(BASE_URL + stay._id,stay)
+  const currStay = await httpService.put(BASE_URL + stay._id, stay)
   return currStay
 }
 
-async function query(tag = null, text = null, range = null) {
-  const stays = await httpService.get(BASE_URL)
+async function query(filterBy) {
+  const stays = await httpService.get(BASE_URL, { params: filterBy })
 
-  let stayToDisplay = []
-
-  if (tag) {
-    stayToDisplay = stays.filter(stay => stay.type.includes(tag))
-    return Promise.resolve(stayToDisplay)
-  }
-  else if (text) {
-    const lowerText = text.toLowerCase()
-    stayToDisplay = stays.filter(stay =>
-      (stay.name.toLowerCase().includes(lowerText))
-      || (stay.loc.country.toLowerCase().includes(lowerText))
-      || (stay.loc.city.toLowerCase().includes(lowerText)))
-    console.log(stayToDisplay);
-    return Promise.resolve(stayToDisplay)
-  }
-  else if (range) {
-    console.log("im got range");
-    stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
-    stayToDisplay.sort((a, b) =>
-      parseInt(a.price) - parseInt(b.price)
-    )
-    return Promise.resolve(stayToDisplay)
-  }
-  else stayToDisplay = stays
 
   return Promise.resolve(stays)
 }
 
 async function createStay(stayForm) {
-const user =storageService.getLogedInUser()
+  const user = storageService.getLogedInUser()
   const stay = {
     name: stayForm.capcity.name,
     type: "OMG!",
@@ -108,40 +84,6 @@ const user =storageService.getLogedInUser()
   window.location.href = "index.html/#/";
 
 }
-
-
-// async function query(filterBy) {
-//   const stays = await httpService.get(BASE_URL ,{ params: filterBy })
-
-// let stayToDisplay = []
-
-// if (tag) {
-//   stayToDisplay = stays.filter(stay => stay.type.includes(tag))
-//   return Promise.resolve(stayToDisplay)
-// }
-// else if (text) {
-//   const lowerText = text.toLowerCase()
-//   stayToDisplay = stays.filter(stay =>
-//     (stay.name.toLowerCase().includes(lowerText))
-//     || (stay.loc.country.toLowerCase().includes(lowerText))
-//     || (stay.loc.city.toLowerCase().includes(lowerText)))
-//   console.log(stayToDisplay);
-//   return Promise.resolve(stayToDisplay)
-// }
-// else if (range) {
-//   stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
-//   stayToDisplay.sort((a, b) =>
-//     parseInt(a.price) - parseInt(b.price)
-//   )
-//   return Promise.resolve(stayToDisplay)
-// }
-// else stayToDisplay = stays
-
-
-
-
-//   return Promise.resolve(stays)
-// }
 
 async function getLocalZones(text) {
   const lowerText = text.toLowerCase()
@@ -166,7 +108,7 @@ async function getLocalZones(text) {
 
 function calcRate(reviews) {
   var rate = 0
-  if (reviews.length<1) return "3.0"
+  if (reviews.length < 1) return "3.0"
   else {
     reviews.map((review) => {
       rate += review.rate
@@ -250,9 +192,9 @@ function getRandomIntInclusive(min, max) {
 
 function save(stay) {
   if (stay._id) {
-      return httpService.put(`stays/${stay._id}`, stay)
+    return httpService.put(`stays/${stay._id}`, stay)
   } else {
-      return httpService.post(`stays/${stay._id}`, stay)
+    return httpService.post(`stays/${stay._id}`, stay)
   }
 }
 
@@ -261,6 +203,30 @@ function save(stay) {
 
 
 
+  // let stayToDisplay = []
+
+  // if (tag) {
+  //   stayToDisplay = stays.filter(stay => stay.type.includes(tag))
+  //   return Promise.resolve(stayToDisplay)
+  // }
+  // else if (text) {
+  //   const lowerText = text.toLowerCase()
+  //   stayToDisplay = stays.filter(stay =>
+  //     (stay.name.toLowerCase().includes(lowerText))
+  //     || (stay.loc.country.toLowerCase().includes(lowerText))
+  //     || (stay.loc.city.toLowerCase().includes(lowerText)))
+  //   console.log(stayToDisplay);
+  //   return Promise.resolve(stayToDisplay)
+  // }
+  // else if (range) {
+  //   console.log("im got range");
+  //   stayToDisplay = stays.filter(stay => (parseInt(stay.price) > range.start) && (parseInt(stay.price) < range.end))
+  //   stayToDisplay.sort((a, b) =>
+  //     parseInt(a.price) - parseInt(b.price)
+  //   )
+  //   return Promise.resolve(stayToDisplay)
+  // }
+  // else stayToDisplay = stays
 
 
 
