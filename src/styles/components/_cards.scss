@@ -1,44 +1,27 @@
-.cards-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    padding-right: 88px;
-    padding-left: 88px;
+.explorer {
+    grid-template-columns: 1fr 1fr !important;
+    width: 50% !important;
+    padding: 0px 20px 0px 20px !important;
+    position: absolute !important;
+    top:150px !important;
+}
 
-    .card {
-        // padding: 9.5% 10.5%;
-        width: 200px;
-        justify-content: center;
-        background-color: $clr3;
-        color: $clr2;
-        border: 1px solid $clr2;
-        border-radius: 8px;
-        margin: -1px 0 0 -1px;
-        cursor: pointer;
+.google-map-explorer {
+    width: 50% !important;
+    position: fixed;
+    top: 80px;
+    height: calc(100vh - 80px) !important;
+    min-height: calc(100vh - 90px) !important;
+    right: 0;
+    z-index: 4;
 
-        img.card-image {
-            object-fit: contain;
-            width: 100px;
-            height: 100px;
-            // aspect-ratio: 1.5 / 1;
-            margin: 20px 0;
-        }
+}
 
-        .exitBtn {
-            cursor: pointer;
-            font-size: 20px;
-            background-color: transparent;
-            border: none;
-        }
-
-        .editBtn {
-            cursor: pointer;
-            margin-top: 4px;
-            width: 20px;
-            height: 18px;
-        }
-
-    }
+.google-map {
+    height: '75vh'!important;
+    width: '100%'!important;
+    padding: '20px 0px 20px 0px'!important;
+    top: unset!important;
 }
 
 .card-container {
@@ -46,7 +29,6 @@
     padding: 0px 20px 0px 20px;
     display: grid;
     grid-template-columns: 1fr;
-
     gap: 10px 2.5%;
     margin-top: 16px;
 
@@ -80,16 +62,12 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-
-
-
         }
 
         .card-pic {
             border-radius: 15px;
             object-fit: cover;
             aspect-ratio: 1.05265/1;
-
         }
 
         .arrow-right-conatiner {
@@ -108,7 +86,6 @@
             background-color: white;
             opacity: 0;
             cursor: pointer;
-
             transition: opacity .4s;
 
             .arrow-right {

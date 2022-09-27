@@ -5,7 +5,9 @@ import { FaHome } from 'react-icons/fa';
 
 const AnyReactComponent = ({ text }) => <div className='outer-layer'><div className="map-icon">{text}</div> </div>
 
-export function GoogleMap({ stay }) {    
+export function GoogleMap({ stay ,filterBy}) {  
+    if(!filterBy)var styleTag= {width:"100%",height:"75vh", padding: '20px 0px 20px 0px'}  
+    else var styleTag={}
     const lng = parseFloat(stay.loc.lat)
     const lat = parseFloat(stay.loc.lng)
     const [coordinates, setCoordinates] = useState({ lat: lat, lng: lng })
@@ -16,7 +18,7 @@ export function GoogleMap({ stay }) {
     }
 
     return (
-        <div className="google-map" style={{ height: '75vh', width: '100%' , padding: '20px 0px 20px 0px'}}>
+        <div className={!filterBy?"google-map":"google-map-explorer"} style={styleTag} >
             <GoogleMapReact
                 // onClick={onClick}
                 bootstrapURLKeys={{ key: "AIzaSyBvTjJLgXv_JG78L_VC13fO7vJjnzeBzH8" }}

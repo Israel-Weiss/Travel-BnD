@@ -3,47 +3,67 @@
     display: flex;
 }
 
+.flex-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .align-items {
     align-items: center;
 }
 
-.full-width{
+.full-width {
     width: 100%;
 }
 
-.text-center{
+.position-fixed {
+    position: fixed;
+    z-index: 10;
+}
+
+.text-center {
     text-align: center;
 }
 
-.align-self{
+.align-self {
     align-self: center;
 }
 
-.phone--only{
+.phone--only {
     display: flex;
+
     @include for-small-layout {
-     display: none;
+        display: none;
     }
 }
 
-.phone--hidden{
+.phone--hidden {
     display: none;
+
     @include for-small-layout {
-     display: flex;
+        display: flex;
     }
 }
 
-.overflow{
+.half-width {
+    width: 50% !important;
+    padding-right: 20px;
+}
+
+
+
+.overflow {
     text-overflow: ellipsis;
-    overflow:hidden;
-white-space: nowrap;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 
 .justify-content {
     justify-content: center;
 }
-.space-between{
+
+.space-between {
     justify-content: space-between;
 }
 
@@ -130,16 +150,18 @@ white-space: nowrap;
 
 .stay-details-layout {
     padding: 0px 20px 0px 20px;
+
     @include for-narrow-layout {
         padding: 0px 112px 0px 112px;
         border-bottom: 1px solid $clr2;
     }
+
     // @include for-first-break-layout  {
     //     padding: 0px 60px 0px 60px;
     //     border-bottom: 1px solid $clr2;
     // }
 
-    
+
 }
 
 

@@ -60,11 +60,13 @@ export function ReserveModal({ stay }) {
             <div className="reserve-modal-container">
                 <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCalendar(setNightCount, setStartDate, setEndDate)}</div>
 
-                <div className="space-between align-items flex full-width header">
+                <div className="space-between align-items flex full-width header"style={{display:"flex"}}>
+
                     <div className="flex-column">
                         <p className="price">${price} <span>night</span></p>
                         <p className="phone-only">Oct {startDate.substring(0, 2)} - {endDate.substring(0, 2)}</p>
                     </div>
+                    
                     <div className="flex">
                         <img className='starIcon' src={starIcon} />
                         <p className='text-bold'>{rate}· <span>{reviewsCount} reviews</span></p>

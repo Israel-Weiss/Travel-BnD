@@ -29,7 +29,8 @@ export const stayService = {
   mapIcon,
   getRandomIntInclusive,
   getLocalZones,
-  createStay
+  createStay,
+  edit
 }
 const BASE_URL = "stays/"
 
@@ -43,16 +44,15 @@ const host =
   id: "34607505"
 }
 
-// const stayChannel = new BroadcastChannel('stayChannel');
-// (() => {
-//   socketService.on(SOCKET_EVENT_STAY_ADDED, (stay) => {
-//     console.log('GOT from socket', stay)
-//   })
-// })()
 
 async function getById(stayId) {
   const stay = await httpService.get(BASE_URL + stayId)
   return stay
+}
+
+async function edit(stay) {
+  const currStay = await httpService.put(BASE_URL + stay._id,stay)
+  return currStay
 }
 
 async function query(tag = null, text = null, range = null) {

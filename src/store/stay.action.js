@@ -15,6 +15,19 @@ export function loadStay() {
     }
 }
 
+
+export function addReviews(stay) {
+    return async (dispatch, getState) => {
+        try {
+            const updatedStay = await stayService.edit(stay)
+            console.log(updatedStay,"updatedStay");
+            dispatch({ type: 'UPDATE_STAY', updatedStay })
+        } catch (err) {
+            showErrorMsg('Cannot load stays')
+        }
+    }
+}
+
 export function setStay(stays) {
     return async (dispatch) => {
         try {
@@ -34,13 +47,23 @@ export function setCurrentUrl(currentUrl ) {
 export function setFilter(tag = null, text = null) {
     return async (dispatch) => {
         try {
+            const filterMode=true
             const stays = await stayService.query(tag, text)
             dispatch({ type: 'SET_STAY', stays })
+            dispatch({ type: 'SET_FILTER_BY',  filterMode})
         } catch (err) {
             showErrorMsg('Cannot load stays')
         }
     }
 }
+
+export function resetFilter(filterBy){
+    return (dispatch) => {
+        dispatch({ type: 'RESET-FILTER',filterBy })
+    }
+}
+
+
 
 export function setFilterBy(filterBy) {
     return (dispatch) => {

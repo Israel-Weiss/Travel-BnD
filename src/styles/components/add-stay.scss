@@ -82,22 +82,17 @@
         grid-template-areas: "a b c";
         grid-template-columns: 1fr 0.7fr 0.3fr;
     }
-
     .form-section {
         grid-area: b;
     }
-
     .background {
         width: 100%;
         grid-area: c;
         background-color: #f8f8f8;
     }
-
-
 }
 
 // STEP ONE
-
 .step-one {
     padding: 40px 20px 40px 20px;
     width: 100%;
@@ -109,18 +104,15 @@
     @include for-small-layout {
         padding-right: 20%;
     }
-
     .title {
         color: $clr5;
         font-size: 16px;
         font-weight: 600;
         margin-bottom: 10px;
-
         &:last-of-type {
             margin-top: 10px;
         }
     }
-
     .operator-btn {
         cursor: pointer;
         border-radius: 50%;
@@ -137,18 +129,13 @@
         line-height: 0px;
         text-align: center;
     }
-
-
     .guests-section {
         width: 100%;
-
         display: flex;
         flex-direction: column;
         justify-content: space-between;
         margin-top: 20px;
-
         gap: 20px;
-
         :nth-of-type(odd) {
             color: $clr5;
             font-size: 14px;
@@ -157,7 +144,6 @@
                 margin-left: 10px;
             }
         }
-
         :nth-of-type(even) {
             color: $clr5;
             font-size: 14px;
@@ -175,29 +161,22 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-
     @include for-small-layout {
         padding-right: 20%;
     }
-
     .title {
         color: $clr5;
         font-size: 16px;
         font-weight: 600;
     }
-
     .sub-title {
         color: $clr5;
         font-size: 14px;
         font-weight: 400;
-
     }
 }
-
-
 //STEP THREE
 .step-three {
-
     padding: 40px 20px 40px 20px;
     width: 100%;
     min-height: calc(100vh - 130px);
@@ -206,21 +185,14 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-
     @include for-small-layout {
         padding-right: 20%;
     }
-
     .amenitie-list {
-
         max-height: calc(100vh - 350px);
         overflow-y: auto;
         overflow-x: hidden;
-
     }
-
-
-
     .checkbox {
         height: 15px;
         display: flex;
@@ -229,9 +201,7 @@
         justify-content: flex-start;
     }
 }
-
 //STEP FOUR
-
 .step-four {
     padding: 40px 20px 40px 20px;
     width: 100%;
@@ -239,12 +209,10 @@
     font-family: Montserrat;
     display: flex;
     flex-direction: column;
-
     @include for-small-layout {
         padding-left: 20%;
         min-height: calc(100vh - 130px);
     }
-
         .img-container-grid {
             display: grid;
             width: 100%;
@@ -256,7 +224,6 @@
             grid-template-columns: 0.5fr 0.5fr;
             grid-template-rows: 0.33fr 0.33fr 0.33fr;
             grid-gap: 10px 10px;
-
             @include for-small-layout {
                 grid-template-areas:
                     "a b c"
@@ -264,7 +231,6 @@
                 grid-template-columns: 1fr 20% 20%;
                 grid-template-rows: 50% 50%;
             }
-
             .grid-area-a {
                 min-height:100% !important;
                 @include for-small-layout {
@@ -272,9 +238,7 @@
                     height:100% !important;
                      object-fit: cover;
                 }
-         
             }
-
             .upload-img {
                 min-height: 100% !important;
                 @include for-small-layout {

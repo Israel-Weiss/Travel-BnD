@@ -1,4 +1,4 @@
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 //pics
@@ -11,12 +11,16 @@ import { UserManual } from "./user-manual";
 
 export function AppHeader() {
     const { loggedInUser } = useSelector(state => state.userModule)
-    const {  currentUrl } = useSelector(state => state.stayModule)
+    const { currentUrl } = useSelector(state => state.stayModule)
+    const { filterBy } = useSelector(state => state.stayModule)
     var currentCmp
+    var explorerMode
     var [anywhereM, setAnywhereM] = useState(false)
 
-    currentUrl.includes("stays")?currentCmp = "stayDetails":currentCmp  = "stayList"
-    
+    currentUrl.includes("stays") ? currentCmp = "stayDetails" : currentCmp = "stayList"
+    filterBy ? explorerMode = { position: "fixed", zIndex: "10", padding:"0px 15px 0px 15px", width:"100%" } : explorerMode = { position: "unset", zIndex: "unset" }
+
+
     const openModal = (className) => {
 
         if (className === 'anywhere') {
@@ -44,10 +48,12 @@ export function AppHeader() {
 
     return (
         <div>
-            <header className={currentCmp !== "stayDetails" ? 'stay-list-layout header-container ' : 'stay-details-layout header-container '}>
-                <NavLink to='/'><img className="logo" src={logoPic} /></NavLink>
-                <NavBar openModal={openModal} currentCmp ={currentCmp }/>
-                <UserManual  loggedInUser={loggedInUser} />
+            <header className={currentCmp !== "stayDetails" ? 'stay-list-layout header-container ' : 'stay-details-layout header-container '} style={explorerMode}>
+
+                <NavLink to='/#'><img className="logo" src={logoPic}onClick={()=>{window.location.href = "index.html/#"}} /></NavLink>
+                <NavBar openModal={openModal} currentCmp={currentCmp} />
+                <UserManual loggedInUser={loggedInUser} />
+
             </header>
             {anywhereM && <section><SubHeader setAnywhereM={setAnywhereM} /></section>}
         </div>

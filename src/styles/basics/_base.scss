@@ -43,7 +43,7 @@ body.modal-open {
     height: 100%;
     // top:20%;
     width: 100%; 
-    z-index: 1;
+    z-index: 9;
     background-color: $clr4;
     opacity: 0.5;
     filter: grayscale(1);

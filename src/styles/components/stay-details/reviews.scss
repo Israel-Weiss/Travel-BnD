@@ -16,6 +16,29 @@
 
     }
 
+    textarea {
+        width: 42%;
+        margin-bottom: 20px;
+        font-size: 20px;
+        padding: 10px 10px 10px 10px;
+    }
+
+    .add-review-btn {
+        background-color: $clr0;
+        color: $clr1;
+        border: none;
+        font-weight: 600;
+        border-radius: 5px;
+        max-height: 30px;
+        min-width: 100px;
+        cursor: pointer;
+    }
+
+    .review-header {
+        width: 42%;
+        display: flex;
+    }
+
     .fontSize-22 {
         font-size: 22px;
     }
@@ -68,9 +91,9 @@
         line-height: 20px;
         margin-bottom: 20px;
         margin-top: 15px;
-        text-overflow:ellipsis;
+        text-overflow: ellipsis;
         padding-right: 20px;
-      
+
 
         @include for-small-layout {
             margin-top: 0px;

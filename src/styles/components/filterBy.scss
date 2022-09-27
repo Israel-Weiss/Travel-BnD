@@ -1,8 +1,27 @@
+.sticky-filter {
+    width: 50% !important;
+    padding: 0px 20px 0px 20px !important;
+    height: 90px !important;
+    position: fixed !important;
+    top: 80px !important;
+    z-index: 3 !important;
+    display: flex !important;
+    align-items: center !important;
+    background-color: $clr1  !important;
+    margin-top: 0px !important;
+    border-bottom: 1px solid $clr2;
+}
+
+
+
 .filter-tab {
     display: flex;
     justify-content: space-between;
     padding: 0px 42px 0px 42px;
+width: 100% !important;
 
+
+    
     @include for-narrow-layout {
         border-top: 0.5px solid $clr2;
         padding: 34px 80px 10px 80px;
@@ -11,12 +30,11 @@
     }
 
     .filterSection {
+        width: 100% !important;
         background-color: $clr1;
         display: flex;
         align-items: flex-start;
-        overflow-x: hidden;
-        // gap: 40px;
-
+        overflow-x: auto;
         .filter-category {
             cursor: pointer;
             opacity: 0.8;
@@ -25,31 +43,24 @@
             flex-direction: column;
             align-items: center;
             margin-right: 40px;
-
             &:hover {
                 opacity: 1;
                 border-bottom: 2px solid $clr5;
             }
-
             .filter-icons {
                 width: 24px;
                 height: 24px;
                 margin-bottom: 7px;
             }
-
             .filter-icons-text {
                 font-size: 12px;
                 font-weight: 600;
                 letter-spacing: 0.2px;
                 color: $clr5;
                 font-family: Helmet;
-
             }
         }
-
-
     }
-
     .filter-btn {
         display: flex;
         justify-content: center;
@@ -60,7 +71,7 @@
         border: 1.4px solid $clr2;
         border-radius: 15px;
         padding: 0px 16px 0px 16px;
-        
+        margin-left: auto;
         .filter-btn-text {
             color: $clr5;
             font-size: 12px;
@@ -69,35 +80,26 @@
             font-family: Helmet;
             font-weight: 600;
         }
-
         .filter-btn-img {
             width: 15px;
             height: 15px;
         }
     }
-
-
     .filter-modal-titles {
         display: flex;
         flex-wrap: wrap;
         flex-direction: column;
-
         .second-title {
             color: $clr5;
             font-size: 20px;
             font-weight: 750;
             margin-left: 24px;
-
             display: flex;
             flex-direction: column;
         }
-
-
-
         .avg-price-title {
             font-size: 16px;
             margin-left: 24px;
-            ;
             padding-bottom: 20px;
             color: $clr4;
             display: flex;

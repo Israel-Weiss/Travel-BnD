@@ -10,16 +10,18 @@
     align-items: center;
     justify-content: space-between;
     padding: 0px 20px 0px 20px;
-z-index: 100;
+    z-index: 100;
     .header {
+        flex-direction: row;
+        justify-content: space-between;
         margin-bottom: 20px;
+      
     }
 
     .starIcon {
         @include for-small-layout {
             display: flex;
         }
-
         display: none;
         margin-left: 5px;
         width: 12px;
@@ -27,14 +29,11 @@ z-index: 100;
         align-self: center;
         margin-right: 5px;
     }
-
     .text {
         color: $clr5;
-
         @include for-small-layout {
             display: inline-block;
         }
-
         display: none;
     }
 
@@ -42,6 +41,7 @@ z-index: 100;
         @include for-small-layout {
             display: inline-block;
             font-size: 15px;
+
             span {
                 float: right;
             }
@@ -70,20 +70,20 @@ z-index: 100;
         }
 
     }
-
-
     .text-bold {
         color: $clr5;
         font-weight: bold;
         font-size: 14px;
-
+ 
         @include for-small-layout {
             display: flex;
+            padding-left: 0px;
+           
+
+
         }
 
         display: none;
-
-
         span {
             color: rgb(114, 114, 114);
             font-weight: 500;
@@ -91,24 +91,23 @@ z-index: 100;
             vertical-align: baseline;
         }
     }
-
     .checkBtn {
         display: none;
     }
-
     select {
         display: none;
     }
-    .phone-only{
+    .phone-only {
         color: $clr5;
-        text-decoration: underline ;
+        text-decoration: underline;
         text-decoration-color: $clr5;
         font-weight: 600;
+        padding-left: 0px;
         @include for-small-layout {
             display: none;
         }
-        
     }
+
     .availability-Btn {
         border: none;
         width: 140px;
@@ -122,41 +121,31 @@ z-index: 100;
         cursor: pointer;
         border: none;
         border-radius: 10px;
-        // padding-left: 25.5px;
-
         display: inline-block;
         align-items: center;
-
-
-
-
-
-
-
         @include for-small-layout {
             width: 100%;
         }
     }
-
-    
     .price {
         font-size: 22px;
         color: $clr5;
         font-weight: bold;
         margin-top: 12px;
         margin-bottom: -7px;
-        span{
+        padding-left: 0px !important;
+
+     
+        span {
             font-size: 14px;
             font-weight: 400;
         }
         @include for-small-layout {
             margin-top: 0px;
             margin-bottom: 0px;
-            
+           
         }
-     
     }
-
     @include for-small-layout {
         position: sticky;
         top: 150px;
@@ -175,11 +164,9 @@ z-index: 100;
         flex-direction: column;
         z-index: 2;
         box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
-
         select {
             display: block;
         }
-
         .calendar {
             background-color: $clr1 ;
             border-radius: 16px;
@@ -332,6 +319,8 @@ z-index: 100;
 
         @include for-small-layout {
             font-size: 33px;
+        }
+        p{
         }
     }
 
