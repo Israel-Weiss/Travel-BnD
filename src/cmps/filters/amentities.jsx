@@ -42,7 +42,7 @@ export function useCheckboxesEssentials(defaultCheckboxes) {
 }
 
 const getDefaultCheckboxesFeateures = () =>
-checkboxesListEssentials.map(checkbox => ({
+checkboxesListFeateures.map(checkbox => ({
         name: checkbox,
         checked: false,
     }));

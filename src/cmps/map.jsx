@@ -17,6 +17,9 @@ export function GoogleMap({ stay ,filterBy}) {
         setCoordinates({lat, lng})
     }
 
+    console.log('current URL 👉️', window.location.href);
+
+
     return (
         <div className={!filterBy?"google-map":"google-map-explorer"} style={styleTag} >
             <GoogleMapReact

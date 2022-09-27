@@ -168,21 +168,24 @@
             display: block;
         }
         .calendar {
+            box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
             background-color: $clr1 ;
             border-radius: 16px;
             border: 1px solid;
             border-color: $clr6;
-            display: inline-block;
+            display: fixed;
             padding: 24px 24px 0px;
-            position: fixed;
+            position: relative;
             bottom: 17%;
             right: 0;
             margin-right: 482px;
-            width: 400px;
+            width: fit-content;
             z-index: 1;
             min-height: 380px;
         }
-
+        .rdrDefinedRangesWrapper{
+            display: none;
+        }
         .price {
             font-size: 22px;
             color: $clr5;
