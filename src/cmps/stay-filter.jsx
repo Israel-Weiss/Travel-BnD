@@ -12,6 +12,12 @@ import { setStay } from '../store/stay.action'
 
 export const StayFilter = ({ filterBy, stays }) => {
 
+    const staysLength = 360
+
+    stayService.query().then(stays => {
+        staysLength = stays.length
+    })
+
     const [isShown, setIsShown] = useState(true)
     const [modalFlag, setModalFlag] = useState(false)
 
@@ -32,6 +38,10 @@ export const StayFilter = ({ filterBy, stays }) => {
 
 
     }
+
+    
+
+
 
 
     const closeModal = () => {
@@ -80,22 +90,22 @@ export const StayFilter = ({ filterBy, stays }) => {
                 <h1 className="filter-header">Filters</h1>
             </div>
             <div className="modal-body-container">
-                <div className="filter-modal-titles flex">
-                    <h3 className="second-title">Price range</h3>
-                    <h3 className="avg-price-title">The average nightly price is $216</h3>
-                </div>
-
-                {modalFlag &&
-                    <div className="filter-price-contianer">
-                        {PriceFilter(closeModal)}
-                    </div>
-                }
-                <div className="stay-type-filter">
-                    <h3 className="stay-type-title">
-                        Type of place
-                    </h3>
-                    <div className="check-box-filter"><CheckboxRadio index={0} /></div>
-                </div>
+            <div className="filter-modal-titles flex">
+                <h3 className="second-title">Price range</h3>
+                <h3 className="avg-price-title">The average nightly price is $216</h3>
+            </div>
+            
+            {modalFlag &&
+                <div className="filter-price-contianer" >
+                    {PriceFilter(closeModal)}
+            </div>
+            }
+            <div className="stay-type-filter">
+                <h3 className="stay-type-title">
+                    Type of place
+                </h3>
+                <div className="check-box-filter"><CheckboxRadio index={0}/></div>
+            </div>
 
                 <div className="rooms-beds-filter">
                     <h3 className="room-bed-title">
@@ -116,7 +126,7 @@ export const StayFilter = ({ filterBy, stays }) => {
                 </div>
             </div>
             <div className=" modal-footer">
-                <div className="show-homes" onClick={() => onSetFilter()}>Show homes</div>
+            <div className="show-homes" onClick={() => onSetFilter()}>Show {staysLength} homes</div>
             </div>
         </div>
     </div>
