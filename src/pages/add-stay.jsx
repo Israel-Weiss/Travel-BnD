@@ -6,6 +6,7 @@ import { StepThree } from './steps/step-three'
 import { StepFour } from './steps/step-four'
 import { ImgUploader } from '../cmps/img-uploader'
 import { stayService } from '../services/stay.service.js'
+import logoGif from "../assets/imgs/logo-gif.gif"
 
 export const AddStay = () => {
 
@@ -21,10 +22,10 @@ export const AddStay = () => {
     const prograssWidth = width.toString() + "%"
     const remainWidth = (100 - width).toString() + "%"
 
-    const createStay=(form)=>{
-        console.log(stayForm,"step 3");
+    const createStay = (form) => {
+        console.log(stayForm, "step 3");
         stayService.createStay(form)
-      
+
 
 
     }
@@ -40,11 +41,15 @@ export const AddStay = () => {
 
             <div className={step === 4 ? " become-host grid-two-column" : "become-host"}>
 
+               { step!==4&&<div className="gif-container">
+                    <img className='logo-gif' src={logoGif} />
+                </div>}
+
                 <div className="form-section">
-                    {step === 1 && <StepOne setStep={setStep} setStayForm={setStayForm} stayForm={stayForm}/>}
-                    {step === 2 && <StepTwo setStep={setStep} setStayForm={setStayForm} stayForm={stayForm}/>}
-                    {step === 3 && <StepThree setStep={setStep} setStayForm={setStayForm} stayForm={stayForm}/>}
-                    {step === 4 && <StepFour setStep={setStep} setStayForm={setStayForm} stayForm={stayForm} createStay={createStay}/>}
+                    {step === 1 && <StepOne setStep={setStep} setStayForm={setStayForm} stayForm={stayForm} />}
+                    {step === 2 && <StepTwo setStep={setStep} setStayForm={setStayForm} stayForm={stayForm} />}
+                    {step === 3 && <StepThree setStep={setStep} setStayForm={setStayForm} stayForm={stayForm} />}
+                    {step === 4 && <StepFour setStep={setStep} setStayForm={setStayForm} stayForm={stayForm} createStay={createStay} />}
                 </div>
 
                 <div className="background">

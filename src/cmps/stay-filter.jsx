@@ -1,6 +1,6 @@
 import { filterIcons } from "../storage/icon-storage"
 import filterIcon from "../assets/imgs/Filter Icons/filterIcon.svg"
-import React, { useState } from 'react'
+import React, { useState, useRef } from 'react'
 import { PriceFilter } from './filters/filter'
 import { useDispatch } from 'react-redux'
 import { CheckboxRadio } from '../cmps/filters/check-box'
@@ -10,16 +10,19 @@ import { stayService } from "../services/stay.service"
 import { setStay, setFilterBy, loadStay, resetFilter } from '../store/stay.action'
 import { UtilService } from "../services/util.service"
 import { getRandomId } from "@syncfusion/ej2-base"
+import debounce from "lodash.debounce";
+import _ from 'lodash'
+
 
 export const StayFilter = ({ filterBy, stays }) => {
 
     const [isShown, setIsShown] = useState(true)
     const [modalFlag, setModalFlag] = useState(false)
     const [staysLength, setStayLength] = useState(360)
-    const [localFilterBy, setLocalFilterBy] = useState(null)
+    const filterRef = useRef(0)
+
     const [range, setRange] = useState({ start: 0, end: 1500 })
 
-    var localFilterByy
     var key = 0
     const dispatch = useDispatch()
 
@@ -31,9 +34,9 @@ export const StayFilter = ({ filterBy, stays }) => {
         dispatch(resetFilter())
     }
 
-    const onSetFilter = (ev, priceRange) => {
+    const onSetFilter = (ev) => {
+        if (ev) ev.preventDefault()
 
-        ev.preventDefault()
         var filterBy = {}
         var amenteties = []
         //SET RANGE FILTER 
@@ -43,11 +46,12 @@ export const StayFilter = ({ filterBy, stays }) => {
         const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
         const range = { start: startRange, end: endRange }
         filterBy.range = { start: range.start, end: range.end }
-        const roomType = document.querySelectorAll('.sc-bczRLJ')
 
+        const roomType = document.querySelectorAll('.sc-bczRLJ')
         for (var i = 0; i < roomType.length; i++) {
             if (roomType[1].checked) filterBy = { ...filterBy, roomType: roomType[1].nextSibling.data }
         }
+
         //SET CAPACITY TYPE FILTER 
         const capacity = document.querySelectorAll(".button-black")
         for (var i = 0; i < capacity.length; i++) {
@@ -62,16 +66,18 @@ export const StayFilter = ({ filterBy, stays }) => {
         }
         if (amenteties.length > 0) filterBy.amenteties = amenteties
 
-        dispatch(setFilterBy(filterBy))
-        dispatch(loadStay())
-        closeModal()
+        stayService.query(filterBy).then(stays => {
+            document.querySelector(".show-homes").innerText = `Show ${stays.length} homes`
+        })
+        filterRef.current=filterBy
     }
 
-    const aplayFilter = () => {
-        console.log(localFilterBy, localFilterBy);
+    const aplayFilter = (ev) => {
+        console.log(filterRef);
+        ev.preventDefault()
+        dispatch(setFilterBy(filterRef.current))
+        dispatch(loadStay())
         closeModal()
-        dispatch(setFilterBy(localFilterByy))
-        // dispatch(loadStay())
 
     }
 
@@ -116,9 +122,8 @@ export const StayFilter = ({ filterBy, stays }) => {
             </div>
         </div>
 
-
-        <form className="filter-modal" style={{ display: isShown ? 'none' : 'flex' }}
-            onSubmit={(event) => onSetFilter(event)}>
+        {/* onSubmit={(event) => onSetFilter(event)} */}
+        <form className="filter-modal" style={{ display: isShown ? 'none' : 'flex' }}>
 
             <div className="title-sector"  >
                 <button className="exit-btn" onClick={() => closeModal()}>x</button>
@@ -139,7 +144,7 @@ export const StayFilter = ({ filterBy, stays }) => {
                     <h3 className="stay-type-title">
                         Type of place
                     </h3>
-                    <div className="check-box-filter"><CheckboxRadio index={0} /></div>
+                    <div className="check-box-filter"><CheckboxRadio index={0} onSetFilter={onSetFilter} /></div>
                 </div>
 
                 <div className="rooms-beds-filter">
@@ -147,11 +152,11 @@ export const StayFilter = ({ filterBy, stays }) => {
                         Rooms and beds
                     </h3>
                     <span className="bedrooms">Bedrooms</span>
-                    <StayFilterButtons />
+                    <StayFilterButtons onSetFilter={onSetFilter} />
                     <span className="beds">Beds</span>
-                    <StayFilterButtons />
+                    <StayFilterButtons onSetFilter={onSetFilter} />
                     <span className="bathrooms">Bathrooms</span>
-                    <StayFilterButtons />
+                    <StayFilterButtons onSetFilter={onSetFilter} />
                 </div>
 
                 <div className="Property-type-filter">
@@ -161,7 +166,7 @@ export const StayFilter = ({ filterBy, stays }) => {
                 </div>
             </div>
             <div className=" modal-footer">
-                <button className="show-homes go-right">Show {staysLength} homes</button>
+                <button onClick={(event)=>aplayFilter(event)} className="show-homes go-right">Show {staysLength} homes</button>
             </div>
         </form>
 

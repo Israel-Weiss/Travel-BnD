@@ -4,8 +4,9 @@ import Rheostat from "rheostat";
 import { stayService } from "../../services/stay.service"
 import { setStay } from '../../store/stay.action'
 import { useDispatch, useSelector } from 'react-redux'
-
 import "../../styles/components/rheostart.scss";
+import  debounce  from "lodash.debounce";
+import _ from 'lodash'
 // import { getValue } from "@testing-library/user-event/dist/utils";
 
 const price = [
@@ -374,14 +375,7 @@ const showStayLength = (setRange) => {
   let elEndRange = document.querySelector('.max-price-num').innerHTML
   const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
   const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
-  const range = { start: startRange, end: endRange } 
-  // stayService.query(null, null, range).then(stays =>{
-  //   document.querySelector('.show-homes').innerHTML = `Show ${stays.length} homes`
-  // })
-  // setRange(range)
-  // onSetFilter()
-
-  
+  const range = { start: startRange, end: endRange }   
 }
 
 const PitComponent = ({ style, children }) => {
@@ -412,22 +406,6 @@ const PitComponent = ({ style, children }) => {
 }
 
 export function PriceFilter(setRange,onSetFilter) {
-  // const dispatch = useDispatch()
-
-  // const onSetFilter = () => {
-  //   let elStartRange = document.querySelector('.min-price-num').innerHTML
-  //   let elEndRange = document.querySelector('.max-price-num').innerHTML
-  //   const startRange = parseInt(elStartRange.substring(2, elStartRange.length))
-  //   const endRange = parseInt(elEndRange.substring(2, elEndRange.length))
-  //   const range = { start: startRange, end: endRange }
-  //   stayService.query(null, null, range).then(
-  //     stays =>{ dispatch(setStay(stays))
-  //       closeModal()
-  //   }  )
-
-
-  // }
-
   var vars = {
     min: 0,
     max: 1500,
@@ -444,9 +422,19 @@ export function PriceFilter(setRange,onSetFilter) {
         onValuesUpdated={(props) => {
           document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
           document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
-          // onSetFilter( {start:props.values[0],end:props.values[1]})
-        // setRange({start:props.values[0],end:props.values[1]})
+        //   const debouncedFilter = _.debounce(onSetFilter, 1000)
+        //   debouncedFilter()
+
+        //   // onSetFilter( {start:props.values[0],end:props.values[1]})
+        // // setRange({start:props.values[0],end:props.values[1]})
         }}
+        onChange={(props) => {
+          document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
+          document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
+         onSetFilter()
+         
+        }}
+
         pitPoints={[
           0,
           30,
