@@ -36,7 +36,7 @@ export function WishlistList() {
                 </div>
             </div>
             <div className='right'>
-                <GoogleMap className="google-map" stay={(list.stays[0])}/>
+                <GoogleMap className="google-map" stays={(list.stays)}/>
             </div>
         </div>
     )

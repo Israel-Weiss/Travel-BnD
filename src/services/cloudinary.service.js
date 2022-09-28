@@ -21,7 +21,7 @@ async function uploadImg(ev) {
         const { url } = await res.json()
         document.body.append(elImg);
         elImg.src = url;
-        return (console.log(url))
+        
     } catch (err) {
         console.error('ERROR!', err)
     }

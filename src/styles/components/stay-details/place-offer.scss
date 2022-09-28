@@ -1,0 +1,42 @@
+.place-offer {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    border-top: 1px solid $clr2;
+    padding: 0px 10px 0px 10px;
+    width: 100%;
+
+    @include for-small-layout {
+        padding: 45px 0px 35px 0px;
+    }
+
+
+    .place-offer-list {
+
+        display: flex;
+        justify-content: space-between;
+        margin-top: 22px;
+
+        @include for-small-layout {
+            // max-width: 47.3%;
+        }
+
+        .icon-container {
+            display: flex;
+            margin-bottom: 14px;
+
+        }
+
+        .left {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .right {
+            width: 50%;
+            display: flex;
+            flex-direction: column;
+        }
+
+    }
+}

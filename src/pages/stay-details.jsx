@@ -61,10 +61,10 @@ export const StayDetails = () => {
         <div className='room'>
             <StayTitle stay={stay} />
             <StayGallery stay={stay} />
-                <StayDescription stay={stay} />
+            <StayDescription stay={stay} />
             <StayReviews stay={stay} onAddReview={onAddReview} />
             <p className='map-title'>Where you’ll be</p>
-            <GoogleMap stay={stay} />
+            <GoogleMap stays={[stay]} />
         </div>
     )
 }

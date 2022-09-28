@@ -45,7 +45,7 @@ export const StayApp = () => {
     return (
         <section>
             <div className="flex-column">
-                {filterBy && <GoogleMap stay={stays[0]} filterBy={filterBy} />}
+                {filterBy && <GoogleMap stays={stays} />}
                 <StayFilter onSetFilter={onSetFilter} filterBy={filterBy} stays={stays} />
 
                 <StayList stays={stays} filterBy={filterBy} />
