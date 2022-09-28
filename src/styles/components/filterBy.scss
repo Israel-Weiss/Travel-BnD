@@ -34,7 +34,8 @@ width: 100% !important;
         background-color: $clr1;
         display: flex;
         align-items: flex-start;
-        overflow-x: auto;
+        overflow-x: hidden;
+        overflow-y: hidden;
         .filter-category {
             cursor: pointer;
             opacity: 0.8;

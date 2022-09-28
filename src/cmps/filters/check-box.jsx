@@ -12,7 +12,7 @@ const checkboxesList = [
       checked: false,
       value:checkbox
     }));
-  export function useCheckboxes(defaultCheckboxes) {
+  export function useCheckboxes(defaultCheckboxes,onSetFilter) {
     const [checkboxes, setCheckboxes] = useState(
       defaultCheckboxes || getDefaultCheckboxes(),
     );
@@ -23,9 +23,12 @@ const checkboxesList = [
        
       })
       newCheckboxes[index].checked = checked;
+      
       setCheckboxes(newCheckboxes);
+     
     }
     return {
+      
       setCheckbox,
       checkboxes,
     };
@@ -57,10 +60,12 @@ const checkboxesList = [
       </>
     );
   }
-  export function CheckboxRadio() {
+  export function CheckboxRadio({onSetFilter}) {
     const checkboxes = useCheckboxes();
+
+    console.log("im working");
     return (
-      <div className='check-boxes'>
+      <div className='check-boxes' onChange={()=>onSetFilter()}>
         <Checkboxes {...checkboxes} />
         {/* <span>
           Value:

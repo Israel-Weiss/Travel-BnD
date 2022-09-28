@@ -21,7 +21,7 @@ html {
 body {
     margin: 0;
     background-color: white;
-    height: 150vh;
+    height: 100vh;
     font-family: Helmet;
 
     @include for-normal-layout {
@@ -152,4 +152,11 @@ mark {
 
 .go-right{
     float: right;
+}
+
+.loading-gif{
+width: 100%;
+height: calc(100vh - 80px);
+object-fit: cover;
+
 }

@@ -12,7 +12,7 @@ const icons =
 export const StayDescription = ({ stay }) => {
 
     if (!stay) return
-    const { bathrooms, bedrooms, capacity } = stay
+    const { bathrooms, bedrooms, guests } = stay.capacity
     const { fullname,pictureUrl } = stay.host
     const {imgUrl}=stay.host
     var key = 0
@@ -24,7 +24,7 @@ export const StayDescription = ({ stay }) => {
                 <div className="title-sector">
                     <div className='flex-coulmn'>
                         <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
-                        <p className='room-details-desc'>{capacity} guests {capacity} bedrooms {bedrooms} beds {bathrooms} baths</p>
+                        <p className='room-details-desc'>{guests } guests {bedrooms} bedrooms {bathrooms} beds {bathrooms} baths</p>
                     </div>
                     <img className='profile-img' src={pictureUrl?pictureUrl:imgUrl} />
                 </div>

@@ -19,7 +19,7 @@ const handleClick = (ev) => {
     ev.target.classList.add('button-black')
     setPrevButton(ev.target)
     setIsActive(current => !current)
-    // onSetFilter()
+    onSetFilter()
 }
 
 const label = [1,2,3,4,5,6,7,8]

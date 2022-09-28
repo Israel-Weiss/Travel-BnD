@@ -1,3 +1,4 @@
+
 export const StepOne = ({ setStep, setStayForm, stayForm }) => {
 
     const labels = [{ name: "Guesst", className: "guests-count" },
@@ -30,11 +31,10 @@ export const StepOne = ({ setStep, setStayForm, stayForm }) => {
 
     return (
         <form className="step-one" onSubmit={(event) => setForm(event)}>
-
             <p className="title">Stay name</p>
             <input type="text" value="Or Golan" placeholder="Or Golan" />
             <p className="title">Price per night</p>
-            <input type="text" value="400" placeholder="400"/>
+            <input type="text" value="400" placeholder="400" />
 
             <p className="title">Room info</p>
             <div className="guests-section">

@@ -77,10 +77,6 @@ export const StepThree = ({ setStep, setStayForm, stayForm }) => {
         <form className="step-three" onSubmit={(event) => setForm(event)}>
                 <img className='go-back' src={goBackIcon} style={{ width: "45px" }} onClick={()=> setStep(2)} />
             <p className="title black bold">What amenities do you offer?</p>
-
-
-
-
             <form className="amenitie-list">
                 {amenities.map(amenitie => {
                     return (<div className="checklist flex" key={{ amenitie }}>
