@@ -3,6 +3,7 @@ import { useState } from 'react'
 import { useSelector } from 'react-redux'
 //pics
 import logoPic from "../../assets/imgs/logo.png";
+import logoMobilePic from "../../assets/imgs/logo-mobile.png";
 //cmp
 import { SubHeader } from "../header/sub-header";
 import { NavBar } from "./nav-bar";
@@ -18,7 +19,7 @@ export function AppHeader() {
     var [anywhereM, setAnywhereM] = useState(false)
 
     currentUrl.includes("stays") ? currentCmp = "stayDetails" : currentCmp = "stayList"
-    filterBy ? explorerMode = { position: "fixed", zIndex: "1", padding:"0px 15px 0px 15px", width:"100%" } : explorerMode = { position: "unset", zIndex: "unset" }
+    filterBy ? explorerMode = { position: "fixed", zIndex: "1", padding: "0px 15px 0px 15px", width: "100%" } : explorerMode = { position: "unset", zIndex: "unset" }
 
 
     const openModal = (className) => {
@@ -50,7 +51,10 @@ export function AppHeader() {
         <div>
             <header className={currentCmp !== "stayDetails" ? 'stay-list-layout header-container ' : 'stay-details-layout header-container '} style={explorerMode}>
 
-                <NavLink to='/#'><img className="logo" src={logoPic}onClick={()=>{window.location.href = "index.html/#"}} /></NavLink>
+                {/* <NavLink to='/#'><img className="logo-for-mobile" src={logoMobilePic} onClick={() => { window.location.href = "index.html/#" }} /></NavLink> */}
+                <NavLink to='/#'><div className="logo"  onClick={() => { window.location.href = "index.html/#" }} ></div>
+
+                </NavLink>
                 <NavBar openModal={openModal} currentCmp={currentCmp} />
                 <UserManual loggedInUser={loggedInUser} />
 

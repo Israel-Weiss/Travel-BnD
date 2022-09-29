@@ -96,10 +96,7 @@ export const StayFilter = ({ filterBy, stays }) => {
     if (!stays) return
 
     return (<div className={!filterBy ? "filter-tab" : "sticky-filter filter-tab "}>
-
-
         {/* //amentities Filter */}
-
         {!filterBy && <div className="filterSection">
             {filterIcons.map(img => {
                 key++
@@ -110,9 +107,7 @@ export const StayFilter = ({ filterBy, stays }) => {
                     </div>)
             })}
         </div>}
-
         {/* //Big Filter */}
-
         <div className={filterBy ? "flex half-width align-items bold" : "flex"} style={{ fontSize: "14px" }}>
             {filterBy && <p className="black">{stays.length} homes</p>}
             <div className="filter-btn" onClick={() => openApp()}>
@@ -120,12 +115,11 @@ export const StayFilter = ({ filterBy, stays }) => {
                 <h1 className="filter-btn-text" >Filters</h1 >
             </div>
         </div>
-
         {/* onSubmit={(event) => onSetFilter(event)} */}
         <form className="animate__animated animate__fadeInUpBig animate__fast filter-modal " style={{ display: isShown ? 'none' : 'flex' }}>
 
             <div className="title-sector"  >
-                <button className="exit-btn"  onClick={() => closeModal()}>x</button>
+                <div className="exit-btn"  onClick={() => closeModal()}>x</div>
                 <h1 className="filter-header">Filters</h1>
             </div>
             <div className="modal-body-container">

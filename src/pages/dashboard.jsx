@@ -60,7 +60,7 @@ export function Dashboard() {
     }
 
 
-    if (!orders) return <LoginInterface />
+    if (!orders) return 
     else return (
 
         <section className="my-trip-container">

@@ -6,7 +6,7 @@ export const StayGallery = ({stay}) => {
     return (
         <div className="gallery">
         {stay.imgUrls.map(imgUrl => {
-            return <img className='gallery-img' src={imgUrl} key={key++} />
+         return <img className='gallery-img' src={imgUrl} key={key++} />
         })}
     </div>
     )

@@ -1,11 +1,11 @@
 .sign-modal {
     position: absolute;
     top: 70px;
-    left: 77%;
+    left:0;
     display: flex;
     flex-direction: column;
     padding: 8px 0px 8px 0px;
-    width: 85px;
+    width: 100%;
     border: 1px solid $clr2;
     border-radius: 8px;
     background-color: white;
@@ -14,7 +14,8 @@
 
     @include for-small-layout{
         width: 230px;   
-        
+        left: 77%;
+
     }
 
     a {
@@ -23,8 +24,14 @@
     }
 
     li {
-        text-align: start;
-
+        text-align: center;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        @include for-small-layout{
+            display: unset;
+            min-height:unset
+        }
         &:hover {
             background-color: $clr2;
         }

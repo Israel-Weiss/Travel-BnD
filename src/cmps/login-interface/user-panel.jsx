@@ -1,8 +1,8 @@
 
-import { NavLink} from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux'
 import { logout } from '../../store/user.action'
-import {  useState } from 'react'
+import { useState } from 'react'
 import { LoginInterface } from "../login-interface/login-interface";
 
 export function UserPanel({ setUserPanel }) {
@@ -33,11 +33,12 @@ export function UserPanel({ setUserPanel }) {
                     </section> :
                     <li><NavLink className="black text-start" to='#' onClick={() => onLogout()}>Logout</NavLink></li>
                 }
+                {loggedInUser && <li><NavLink className="black text-start" to='/new-stay' onClick={() => setUserPanel(false)}>Become Host</NavLink></li>}
                 <li><NavLink className="black text-start" to='/my-trip' onClick={() => setUserPanel(false)}>My Trip</NavLink></li>
-                <li><NavLink className="black text-start" to='/dashboard' onClick={() => setUserPanel(false)}>Dashboard</NavLink></li>
+                {loggedInUser && <li><NavLink className="black text-start" to='/dashboard' onClick={() => setUserPanel(false)}>Dashboard</NavLink></li>}
                 <li><NavLink className="black text-start" to='/wishlist' onClick={() => setUserPanel(false)}>Wishlist</NavLink></li>
             </div>
-            {loginModalFlag && <LoginInterface loginType={loginType} setLoginModalFlag={setLoginModalFlag}  setUserPanel={()=>setUserPanel()} />}
+            {loginModalFlag && <LoginInterface loginType={loginType} setLoginModalFlag={setLoginModalFlag} setUserPanel={() => setUserPanel()} />}
         </section>
     )
 }

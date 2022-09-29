@@ -1,7 +1,7 @@
 header.header-container {
 
     background-color: $clr1;
-    display: grid;
+    display: flex;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     align-items: center;
@@ -14,30 +14,60 @@ header.header-container {
     @include for-small-layout {
         // position: fixed !important;
         // z-index: 1;
+        display: grid;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr;
     }
-//LOGO
+
+    //LOGO
     a {
         display: flex;
-        img.logo {
-            width: 100px;
-            height: 30px;
-        }
-        @include for-small-layout {
-            img.logo {
-                width: 150px;
-                height: unset;
+
+        .logo {
+            background-image: url(../../assets/imgs/logo-mobile.png);
+            width: 50px;
+            height: 35px;
+            display: block;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            @include for-small-layout {
+                    width: 150px;
+                    height: 60px;
+                    display: block;
+                    background-image: url(../../assets/imgs/logo.png);
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    background-size: contain;
             }
+
+
         }
+
+        .logo-for-mobile {
+            display: block;
+            width: 40px;
+            height: 40px;
+
+            @include for-small-layout {
+                display: none;
+            }
+
+        }
+
+
+
     }
-// SEARCH NAV 
+
+
+
+    // SEARCH NAV 
     .header-nav {
-       display: none;
+        display: none;
 
         @include for-small-layout {
             display: flex;
-            
+
             background-color: $clr1;
             height: 46px;
             align-items: center;
@@ -63,7 +93,7 @@ header.header-container {
             color: $clr5;
             text-decoration: none;
             font-family: Helmet;
-            
+
         }
 
         a.navlink:last-of-type {
@@ -71,12 +101,13 @@ header.header-container {
             font-weight: 400;
             letter-spacing: 0.6;
             color: $clr4;
+
             @include for-small-layout {
                 border-right: none;
                 font-weight: 400;
                 letter-spacing: 0.6;
                 color: $clr4;
-            
+
             }
         }
 
@@ -86,6 +117,7 @@ header.header-container {
             align-items: center;
             justify-content: center;
             min-width: 32px;
+            width: 32px;
             height: 32px;
             border-radius: 50%;
             cursor: pointer;
@@ -98,7 +130,8 @@ header.header-container {
         }
 
     }
-// USER PANEL
+
+    // USER PANEL
     .user-panel-nav {
         display: flex;
         align-items: center;
@@ -115,7 +148,8 @@ header.header-container {
             color: $clr5;
             text-decoration: none;
             font-family: Helmet;
-            display: none;
+            // display: none;
+
             @include for-small-layout {
                 display: flex;
 
@@ -127,8 +161,9 @@ header.header-container {
             height: 16px;
             margin: 0px 20px 0px 20px;
             display: none;
+
             @include for-small-layout {
-            display: block;
+                display: block;
             }
         }
 
@@ -156,7 +191,7 @@ header.header-container {
             }
 
             .user-profile {
-            
+
                 width: 30px;
                 height: 30px;
                 aspect-ratio: 1/1;
@@ -169,5 +204,3 @@ header.header-container {
 
 
 }
-
-
