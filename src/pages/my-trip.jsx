@@ -52,7 +52,7 @@ export function MyTrip() {
 
             <div className='my-orders-container'>
 
-                {orders.map(order => {
+                {orders.reverse().map(order => {
                     const { startDate, endDate } = order
                     const dates = "[" + startDate.substring(0, 2) + "-" + endDate.substring(0, 2) + "]" + "/" + endDate.substring(3)
                     return <div className="order " >
