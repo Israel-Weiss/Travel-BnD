@@ -173,12 +173,11 @@
             border-radius: 16px;
             border: 1px solid;
             border-color: $clr6;
-            display: fixed;
             padding: 24px 24px 0px;
-            position: relative;
-            bottom: 17%;
+            position: absolute;;
+            bottom: 2%;
             right: 0;
-            margin-right: 482px;
+            margin-right: 370px;
             width: fit-content;
             z-index: 1;
             min-height: 380px;

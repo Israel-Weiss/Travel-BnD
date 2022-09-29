@@ -20,6 +20,7 @@ export function GoogleMap({ stays }) {
     let mapIcon = <FaHome/>
     
     if(url.includes('wishlist')){
+        styleTag={width:"100%",height:"90vh", padding: '0px'}  
         coordinates = []
         zoom = 1
         mapIcon = <FaHeart/>
@@ -33,8 +34,8 @@ export function GoogleMap({ stays }) {
         // Filter view mode 
 
     else if(!url.includes('stays')){
-        styleTag= {width:"50%", padding: '20px 0px 20px 0px',position: 'fixed',
-        top: '80px',height: 'calc(100vh - 80px)',minHeight: 'calc(100vh - 90px)',right: '0',zIndex: '4'}
+        styleTag= {width:"50%",position: 'fixed',
+        top: '80px',height: 'calc(100vh - 80px)',minHeight: 'calc(100vh - 90px)',right: '0',zIndex: '2'}
         coordinates = []
         zoom = 1
         stays.map((stay) => {

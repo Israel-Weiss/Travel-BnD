@@ -52,17 +52,26 @@ function getByLogedInUser() {
 
   async function removeStay(stay){
     return Promise.resolve(storageService.query("wishList").then(wishLists => {
-        console.log(stay)
-    console.log(wishLists)
-    if(wishLists.length === 1) wishLists[0].stays.splice(wishLists[0].stays.indexOf(stay), 1)
-    
-    else wishLists.map((list) => {
-        if(list.stays.includes(stay)){
-            list.stays.splice(list.stays.indexOf(stay), 1)
-        }
+    if(wishLists.length === 1) {
+        wishLists[0].stays.map((stayList, i) => {
+            if(stayList._id === stay._id) wishLists[0].stays.splice(i, 1)
+            i++
     })
-    console.log(wishLists)
-    return storageService.put('wishList',wishLists)
+    return storageService._save('wishList',wishLists)
+}
+    else {
+        wishLists.map((list, wishlistIndex) => {
+            var stays = list.stays
+            stays.map((stayList, stayIndex) => {
+                if(stayList._id === stay._id){
+                    wishLists[wishlistIndex].stays.splice(stayIndex,1)
+                }
+                stayIndex++
+            })
+        wishlistIndex++
+    })
+}    
+    return storageService._save('wishList',wishLists)
   }))
 }
   
