@@ -58,7 +58,7 @@ export function ReserveModal({ stay }) {
         //First Modal
         <section>
             <div className="reserve-modal-container">
-                <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCalendar(setNightCount, setStartDate, setEndDate)}</div>
+            <div className="calendar" style={{ display: isShown ? 'none' : 'block' }}>{MyCal(setNightCount,setStartDate,setEndDate)}</div>
 
                 <div className="space-between align-items flex full-width header"style={{display:"flex"}}>
 
@@ -114,7 +114,7 @@ export function ReserveModal({ stay }) {
                     <div className="order-info">
                         <p className="bold-text">Reservation details</p>
                         <p className="bold-text">Trip dates:</p>
-                        <p className="text">{document.querySelector('.date-in').innerHTML} - {document.querySelector('.date-out').innerHTML}</p>
+                        <p className="text">{document.querySelector('.date-in').innerHTML} <br />   {document.querySelector('.date-out').innerHTML}</p>
                         <div className='text-group'>
                             <p className="bold-text">Nights: </p>
                             <p className="text">{nightCount}</p>

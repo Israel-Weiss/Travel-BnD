@@ -108,7 +108,7 @@ export const StayPreview = ({ stay }) => {
                     </div>
                 </div>
                 <p className="card-info-distance">{stayService.getRandomIntInclusive(200, 1500)} kilometers</p>
-                <p className="card-info-date">Oct {stayService.getRandomIntInclusive(1, 9)}-{stayService.getRandomIntInclusive(10, 30)}</p>
+                <p className="card-info-date">Oct {stayService.getRandomIntInclusive(1, 9)} ‒ {stayService.getRandomIntInclusive(10, 30)}</p>
                 <p className="card-info-price">${price} <span>night</span></p>
             </div>
         </div>

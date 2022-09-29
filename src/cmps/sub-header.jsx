@@ -4,15 +4,14 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useState, useEffect } from 'react'
 import { stayService } from "../services/stay.service"
 import locationIcon from "../assets/imgs/loactionIcon.svg"
+import { useDispatch, useSelector } from 'react-redux'
 
 export function SubHeader({setAnywhereM}) {
     const dispatch = useDispatch()
-
+    const {currentUrl} = useSelector(state => state.stayModule)
     const [modalFlag, setModalFlag] = useState(false)
     const [locationZone, setLocationZone] = useState(false)
-
-
-
+    const { stays } = useSelector(state => state.stayModule)
 
     const onSearch = (ev) => {
         ev.preventDefault()
@@ -29,7 +28,19 @@ export function SubHeader({setAnywhereM}) {
         if (text === "") document.querySelector(".anywhere-modal").style.display = "block"
         else document.querySelector(".anywhere-modal").style.display = "none"
         setModalFlag(true)
-        stayService.getLocalZones(text).then(zones => setLocationZone(zones))
+        const lowerText = text.toLowerCase()
+
+        let localZones = []
+        stays.map(stay => {
+          const { country, city } = stay.loc
+          if (country.toLowerCase().includes(lowerText) &&
+            (country.charAt(0).toLowerCase() === lowerText.charAt(0))
+            && !localZones.includes(country) && !localZones.includes(city)) localZones.push(country)
+          if (city.toLowerCase().includes(lowerText) &&
+            (city.charAt(0).toLowerCase() === lowerText.charAt(0))
+            && !localZones.includes(country) && !localZones.includes(city)) localZones.push(city)
+        })
+        setLocationZone(localZones)
     }
 
     const setValue = (value) => {

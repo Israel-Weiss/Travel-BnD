@@ -5,12 +5,15 @@ header.header-container {
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr;
     align-items: center;
+
     justify-content: space-between;
     height: 80px;
     border-top: 1px solid $clr2;
     border-bottom: 1px solid $clr2;
 
     @include for-small-layout {
+        // position: fixed !important;
+        // z-index: 1;
         grid-template-columns: 1fr 1fr 1fr;
         grid-template-rows: 1fr;
     }
@@ -34,6 +37,7 @@ header.header-container {
 
         @include for-small-layout {
             display: flex;
+            
             background-color: $clr1;
             height: 46px;
             align-items: center;
@@ -101,7 +105,7 @@ header.header-container {
         justify-self: flex-end;
 
         a.user-panel-a {
-            margin-right: 4px;
+            margin-right: 50px;
             white-space: nowrap;
             font-size: 14px;
             padding: 0px 0px 0px 16px;
@@ -134,7 +138,7 @@ header.header-container {
             border: 2px solid $clr2;
             height: 42px;
             width: 78.2px;
-            padding-left: 11px;
+            padding-left: 13px;
             padding-right: 4px;
             border-radius: 20px;
             cursor: pointer;
@@ -146,7 +150,7 @@ header.header-container {
             }
 
             .user-icon {
-                opacity: 0.5;
+                opacity: 0.55;
                 width: 30px;
                 height: 30px;
             }

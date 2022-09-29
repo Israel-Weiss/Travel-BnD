@@ -33,8 +33,8 @@ export function GoogleMap({ stays }) {
         // Filter view mode 
 
     else if(!url.includes('stays')){
-        styleTag= {width:"50%", padding: '20px 0px 20px 0px',position: 'fixed',
-        top: '80px',height: 'calc(100vh - 80px)',minHeight: 'calc(100vh - 90px)',right: '0',zIndex: '4'}
+        styleTag= {width:"50%", padding: '20px 20px 0px 0px',position: 'fixed',
+        top: '80px',height: 'calc(100vh - 80px)',minHeight: '100vh',right: '0',zIndex: '0'}
         coordinates = []
         zoom = 1
         stays.map((stay) => {

@@ -5,7 +5,7 @@ import { showErrorMsg } from '../services/event-bus.service.js'
 export function loadStay() {
     return async (dispatch, getState) => {
         try {
-            console.log("im here");
+     
             const { filterBy } = getState().stayModule
             console.log("step2",filterBy);
             const stays = await stayService.query(filterBy)

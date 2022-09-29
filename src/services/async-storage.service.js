@@ -11,7 +11,9 @@ export const storageService = {
     getStays,
     getUsers,
     getWishList,
-    getOrders
+    getOrders,
+    save,
+    getFilterFromStorage
 }
 
 function getWishList() {
@@ -50,6 +52,10 @@ function query(entityType) {
 
 function getLogedInUser() {
     return JSON.parse(sessionStorage.getItem("loggedinUser"))
+}
+
+function getFilterFromStorage() {
+    return JSON.parse(sessionStorage.getItem("filterBy"))
 }
 
 function get(entityType, entityId) {
@@ -91,6 +97,13 @@ function remove(entityType, entityId) {
 function _save(entityType, entities) {
     localStorage.setItem(entityType, JSON.stringify(entities))
 }
+
+function save(entityType, entities) {
+    sessionStorage.setItem(entityType, JSON.stringify(entities))
+}
+
+
+
 
 function _makeId(length = 5) {
     var text = ''

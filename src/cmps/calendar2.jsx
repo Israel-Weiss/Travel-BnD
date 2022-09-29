@@ -1,57 +1,66 @@
-import React from 'react'
-import { addDays } from 'date-fns'
-import { useState, useEffect } from 'react'
-import { DateRangePicker } from 'react-date-range'
+import React, { useEffect, useRef, useState } from "react"
+import { DateRange } from "react-date-range"
 import { orderService } from '../services/order.service'
+import "react-date-range/dist/styles.css"
+import "react-date-range/dist/theme/default.css"
+import { UtilService } from "../services/util.service"
 
-export function MyCalendar(){
-
-    const [orders, setOrders] = useState(null)
-    const [state, setState] = useState([
-          {
-    startDate: new Date(),
-    endDate: new Date(),
-    key: 'selection'
-  }
-])
-
-useEffect(() => {
-    loadOrders()
-}, [])
+export function MyCal(setNightCount, setStartDate, setEndDate) {
+  const [orders, setOrders] = useState(null)
+  const [state, setState] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(),
+      key: "selection"
+    }
+  ])
 
   useEffect(() => {
-    if(state[0].startDate || state[0].endDate)
-        putVal();
+    loadOrders()
+  }, [])
+
+  useEffect(() => {
+    if (state[0].startDate || state[0].endDate)
+      putVal();
   })
 
-const loadOrders = () => {
+  const loadOrders = () => {
     orderService.getByLogedInUser().then(orders => {
-        setOrders(orders)
+      setOrders(orders)
     })
-}
+  }
 
-const putVal = () => {
+  const putVal = () => {
     const start = document.querySelector('.date-in')
     const end = document.querySelector('.date-out')
-    start.innerHTML = state[0].startDate.toString().slice(0, 15)
-    end.innerHTML = state[0].endDate.toString().slice(0, 15)
-}
 
-// const onSelectedRange = () => {
-//     if(state[0].endDate === state[0].startDate && state[0].startDate !== "" && state[0].endDate !== "") return
-//     document.querySelector('.calendar').style.display = 'none'
-//     console.log('hello')
-// }
+    const night = (((state[0].endDate.getTime() - state[0].startDate.getTime()) / (1000 * 36000 * 24)) * 10) + 1
+    setNightCount(night)
 
-return(
+    
+    if (state[0].startDate) {
+      setStartDate(UtilService.numberToDate(state[0].startDate))
+      setEndDate(UtilService.numberToDate(state[0].endDate))
+    }
+    // start.innerHTML = UtilService.numberToDate(state[0].startDate.getTime())
+    // end.innerHTML = UtilService.numberToDate(state[0].endDate.getTime())
+    // elNights.innerText = night
+  }
 
-<DateRangePicker
-  onChange={item => setState([item.selection])}
-  showSelectionPreview={true}
-  moveRangeOnFirstSelection={false}
-  months={2}
-  ranges={state}
-  direction="horizontal"
-/>
-)
+  function handleSelect(ranges) {
+    console.log(ranges)
+  }
+
+  if (!orders) return
+
+  return (
+    <div className="App" style={{ position: "fixed" }}>
+      <DateRange
+        onChange={(item) => setState([item.selection])}
+        moveRangeOnFirstSelection={false}
+        ranges={state}
+
+      />
+    </div>
+  )
 }

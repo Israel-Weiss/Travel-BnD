@@ -14,10 +14,9 @@ export const AddStay = () => {
     const [stayForm, setStayForm] = useState({ capcity: null, loc: null, amenities: [], imgUrls: [] })
 
     useEffect(() => {
-        // setStayForm({...stayForm,capcity:"uuu"})
-        // setStayForm({...stayForm,loc:"ggg"})
         setStep(1)
     }, [])
+    
     const width = (step * 100) / 4
     const prograssWidth = width.toString() + "%"
     const remainWidth = (100 - width).toString() + "%"
@@ -25,9 +24,6 @@ export const AddStay = () => {
     const createStay = (form) => {
         console.log(stayForm, "step 3");
         stayService.createStay(form)
-
-
-
     }
     return (
         <section className="add-stay-container">
@@ -54,12 +50,7 @@ export const AddStay = () => {
 
                 <div className="background">
                 </div>
-
-
             </div>
-
-
-
         </section>
     )
 } 

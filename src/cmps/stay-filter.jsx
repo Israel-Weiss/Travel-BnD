@@ -73,7 +73,6 @@ export const StayFilter = ({ filterBy, stays }) => {
     }
 
     const aplayFilter = (ev) => {
-        console.log(filterRef);
         ev.preventDefault()
         dispatch(setFilterBy(filterRef.current))
         dispatch(loadStay())
@@ -118,20 +117,20 @@ export const StayFilter = ({ filterBy, stays }) => {
             {filterBy && <p className="black">{stays.length} homes</p>}
             <div className="filter-btn" onClick={() => openApp()}>
                 <img className="filter-btn-img" src={filterIcon} />
-                <h1 className="filter-btn-text">Filters</h1>
+                <h1 className="filter-btn-text" >Filters</h1 >
             </div>
         </div>
 
         {/* onSubmit={(event) => onSetFilter(event)} */}
-        <form className="filter-modal" style={{ display: isShown ? 'none' : 'flex' }}>
+        <form className="animate__animated animate__fadeInUpBig animate__fast filter-modal " style={{ display: isShown ? 'none' : 'flex' }}>
 
             <div className="title-sector"  >
-                <button className="exit-btn" onClick={() => closeModal()}>x</button>
+                <button className="exit-btn"  onClick={() => closeModal()}>x</button>
                 <h1 className="filter-header">Filters</h1>
             </div>
             <div className="modal-body-container">
                 <div className="filter-modal-titles flex">
-                    <h3 className="second-title">Price range</h3>
+                    <h3 className="second-title" style={{margin:"20px 24px 5px 24px "}}>Price range</h3>
                     <h3 className="avg-price-title">The average nightly price is $216</h3>
                 </div>
 

@@ -5,36 +5,41 @@ import { StayFilter } from '../cmps/stay-filter'
 import { loadStay, setFilterBy, setCurrentUrl, resetFilter } from '../store/stay.action'
 import { AppFooter } from '../cmps/app-footer'
 import { socketService, SOCKET_EVENT_STAY_ADDED } from '../services/socket.service.js'
-import { useState } from 'react'
 import { GoogleMap } from '../cmps/map'
-import loadingGif from '../assets/imgs/loading.gif'
+import { storageService } from '../services/async-storage.service'
+ 
 export const StayApp = () => {
-
+    const loadingGif = "https://res.cloudinary.com/dlnmbz1bt/image/upload/v1664367311/loading_ckzbbd.gif"
     const dispatch = useDispatch()
     const currentUrl = window.location.href
     const { stays } = useSelector(state => state.stayModule)
-    const { filterBy } = useSelector(state => state.stayModule)
-    const [isLoading, SetIsLoading] = useState(true)
+    const{ filterBy } = useSelector(state => state.stayModule)
 
     useEffect(() => {
-        setTimeout(()=>{ SetIsLoading(false)}, 2000)
-
         dispatch(setCurrentUrl(currentUrl))
-        dispatch(loadStay())
+        const filterBy = storageService.getFilterFromStorage()
+        //In case search was done from stay details 
+        if (filterBy) {
+            dispatch(setFilterBy(filterBy))
+            dispatch(loadStay())
+            sessionStorage.removeItem('filterBy');
+        }
+        else dispatch(loadStay())
     }, [currentUrl])
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_STAY_ADDED, ((stay) => {
             console.log(stay, "git form socket");
             dispatch(loadStay())
-        
-
         }
         ))
     }, [])
 
     useEffect(() => {
-        dispatch(resetFilter(null))
+        // Remove filter from state only on type filtering
+        if(filterBy){
+        if(filterBy.type)dispatch(resetFilter(null))
+        }
     }, [])
 
     const onSetFilter = (filterBy) => {
@@ -42,21 +47,18 @@ export const StayApp = () => {
         dispatch(loadStay())
     }
 
-
-
-    if (!stays) return
     return (
         <section>
-           { isLoading? <img className='loading-gif' src={loadingGif} />:
-           <div className="flex-column">
-                {filterBy && <GoogleMap stays={stays} />}
-                <StayFilter onSetFilter={onSetFilter} filterBy={filterBy} stays={stays} />
+            {!stays ? <img className='loading-gif' src={loadingGif} /> :
+                <div className="flex-column">
+                    {filterBy && <GoogleMap stays={stays} />}
+                    <StayFilter onSetFilter={onSetFilter} filterBy={filterBy} stays={stays} />
 
-                <StayList stays={stays} filterBy={filterBy} />
+                    <StayList stays={stays} filterBy={filterBy} />
 
-            </div>}
+                </div>}
 
-            < AppFooter />
+            {!filterBy && < AppFooter />}
         </section>
     )
 }
