@@ -20,11 +20,14 @@ export const StayPreview = ({ stay }) => {
     // const { stays } = wishlist
     var heartPic = heartIcon
     const { distance, date, price, likedByUsers,imgUrls } = stay
-    var heartPic
     var [idx, setIdx] = useState(0)
     var [modalFlag, setModalFlag] = useState(false)
 
- 
+    if(likedByUsers && loggedInUser){
+        if (!likedByUsers.includes(loggedInUser._id)) heartPic = heartIcon  
+
+        else heartPic = heartIconRed
+    }
 
     const addWishList = (stay) => {
         if (heartPic !== heartIconRed) {
@@ -36,12 +39,13 @@ export const StayPreview = ({ stay }) => {
 
         else {            
             heartPic = heartIcon
+            console.log(likedByUsers,'h',likedByUsers.indexOf(loggedInUser._id))
             likedByUsers.splice(likedByUsers.indexOf(loggedInUser._id), 1)
             wishListService.removeStay(stay)
         }
 
         console.log(stay)
-        stayService.save(stay)
+        stayService.edit(stay)
         setLiked(!isLiked)
 }
 
@@ -64,14 +68,11 @@ export const StayPreview = ({ stay }) => {
     }
 
 
-    if (!stay.likedByUsers.includes(loggedInUser)) heartPic = heartIcon
-    else heartPic = heartIconRed
+    
     if (!stay) return
     
-    if(likedByUsers && loggedInUser){
-        if (!likedByUsers.includes(loggedInUser._id)) heartPic = heartIcon
-        else heartPic = heartIconRed
-    }
+   
+
 
     return (
         <div className="card">
