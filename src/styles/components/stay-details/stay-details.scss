@@ -1,21 +1,23 @@
 .room {
-    // @include for-small-layout {
-    //     padding: 0px 112px 0px 112px
-    // }
 
     @include for-wide-layout {
         padding: 0px 30px 0px 30px
-
     }
-      @include for-narrow-layout {
+
+    @include for-narrow-layout {
         padding: 0px 112px 0px 112px
     }
+
+    max-width: 100%;
+
+    
+
     display: grid;
     grid-template-rows: 1fr;
 
-    .map-title{
+    .map-title {
         width: 100%;
-        font-size: 22px ;
+        font-size: 22px;
         font-weight: 600;
         color: $clr5;
         margin-top: 20px;

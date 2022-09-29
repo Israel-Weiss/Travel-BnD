@@ -1,10 +1,15 @@
 .filter-modal {
-    min-width: 780px;
-    min-height: 88%;
-    // align-content: center;
+    min-width: 100%;
+    min-height: 100%;
     position: fixed;
     height: 80%;
+    top: 0px;
+    @include for-small-layout {
+        min-width: 780px;
+        min-height: 88%;
+        top: 40px;
 
+    }
     .modal-body-container {
         overflow-y: auto;
         overflow-x: hidden;
@@ -13,7 +18,6 @@
     left: 0;
     right: 0;
     margin: 0 auto;
-    top: 40px;
     transform: translateX(-50%);
     background-color: $clr1;
     z-index: 11 !important;
@@ -92,6 +96,7 @@
     }
 
     .exit-btn {
+        cursor: pointer;
         border: none;
         background-color: transparent;
         flex-direction: column;

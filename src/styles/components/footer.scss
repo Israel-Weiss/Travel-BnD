@@ -6,10 +6,14 @@ height: 47px;
 border-top: 1px solid $clr2;
 background-color: $clr1;
 padding: 0px 80px 0px 80px;
-display: flex;
+display: none;
 align-items: center;
 p{
     color:#505050;
     font-size: 14px;
+}
+
+@include for-small-layout {
+display: flex;
 }
 }
