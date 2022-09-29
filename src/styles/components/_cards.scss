@@ -10,8 +10,8 @@
     width: 50% !important;
     position: fixed;
     top: 80px;
-    height: calc(100vh - 80px) !important;
-    min-height: calc(100vh - 90px) !important;
+    // height: calc(100vh - 80px) !important;
+    // min-height: calc(100vh - 90px) !important;
     right: 0;
     z-index: 1;
 
@@ -25,6 +25,8 @@
 // }
 
 .card-container {
+    position: unset;
+    top: 200px;
     width: 100%;
     padding: 0px 20px 0px 20px;
     display: grid;
@@ -33,14 +35,14 @@
     margin-top: 16px;
 
     @include for-small-layout {
-        padding: 0px 42px 0px 42px;
+        padding: 22px 42px 0px 42px;
         grid-template-columns: 1fr 1fr 1fr;
         gap: 8px 2.5%;
     }
 
 
     @include for-narrow-layout {
-        padding: 0px 80px 0px 80px;
+        padding: 6px 80px 0px 80px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 20px 2%;
     }
@@ -65,7 +67,7 @@
         }
 
         .card-pic {
-            border-radius: 15px;
+            border-radius: 12px;
             object-fit: cover;
             aspect-ratio: 1.05265/1;
         }
@@ -107,7 +109,7 @@
         }
 
         .navigation-manual {
-            top: 80%;
+            top: 85%;
             bottom: 0;
             left: 0;
             right: 0;
@@ -146,22 +148,26 @@
             .card-info-location {
                 color: $clr5;
                 font-weight: 700;
+                font-size: 14px;
             }
 
             .card-info-distance {
                 margin-top: -6px;
-
+                font-size: 14.5px;
                 color: $clr4;
             }
 
             .card-info-date {
                 line-height: 12px;
+                font-size: 14.5px;
                 color: $clr4;
             }
 
             .card-info-price {
                 margin-top: 6px;
                 line-height: 48px;
+                font-size: 15px;
+                
             }
 
 

@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import { useState } from 'react'
 import { stayService } from "../../services/stay.service"
 import { SearchModal } from '../modal/search-modal'
+import { useSelector } from 'react-redux'
+import { storageService } from "../../services/async-storage.service"
 
 //IMG
 import searchIcon from "../../assets/imgs/serachIcon.png"
@@ -10,18 +12,23 @@ import locationIcon from "../../assets/imgs/loactionIcon.svg"
 
 export function SubHeader({ setAnywhereM }) {
     const dispatch = useDispatch()
+    const { stays } = useSelector(state => state.stayModule)
+    const { currentUrl } = useSelector(state => state.stayModule)
 
     const [modalFlag, setModalFlag] = useState(false)
     const [locationZone, setLocationZone] = useState(false)
 
     const onSearch = (ev) => {
         ev.preventDefault()
-        // const text = ev.target[0].value
         var filterBy = {}
         filterBy.text = ev.target[0].value
+        if (currentUrl.includes("stays")) {
+            window.location.href = "index.html/#";
+            storageService.save("filterBy", filterBy)
+        }
+
         dispatch(setFilterBy(filterBy))
         dispatch(loadStay())
-
         setAnywhereM(false)
         document.querySelector('.dark-screen').style.display = 'none'
 
@@ -33,7 +40,23 @@ export function SubHeader({ setAnywhereM }) {
         if (text === "") document.querySelector(".anywhere-modal").style.display = "block"
         else document.querySelector(".anywhere-modal").style.display = "none"
         setModalFlag(true)
-        stayService.getLocalZones(text).then(zones => setLocationZone(zones))
+        stayService.getLocalZones(text)
+        // .then(zones => setLocationZone(zones))
+
+        const lowerText = text.toLowerCase()
+
+        let localZones = []
+        stays.map(stay => {
+            const { country, city } = stay.loc
+            if (country.toLowerCase().includes(lowerText) &&
+                (country.charAt(0).toLowerCase() === lowerText.charAt(0))
+                && !localZones.includes(country) && !localZones.includes(city)) localZones.push(country)
+            if (city.toLowerCase().includes(lowerText) &&
+                (city.charAt(0).toLowerCase() === lowerText.charAt(0))
+                && !localZones.includes(country) && !localZones.includes(city)) localZones.push(city)
+        })
+        setLocationZone(localZones)
+
     }
 
     const setValue = (value) => {

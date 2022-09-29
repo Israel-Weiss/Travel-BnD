@@ -57,6 +57,7 @@ async function edit(stay) {
 
 async function query(filterBy) {
   const stays = await httpService.get(BASE_URL, { params: filterBy })
+  console.log("im got a called twice");
 
 
   return Promise.resolve(stays)
@@ -88,24 +89,29 @@ async function createStay(stayForm) {
 }
 
 async function getLocalZones(text) {
-  const lowerText = text.toLowerCase()
-  let stays = await query()
-  let localZones = []
 
-  stays.map(stay => {
-    const { country, city } = stay.loc
+const localZones= await httpService.get(BASE_URL + "placelist",{ params: text })
 
-    if (country.toLowerCase().includes(lowerText) &&
-      (country.charAt(0).toLowerCase() === lowerText.charAt(0))
-      && !localZones.includes(country) && !localZones.includes(city)) localZones.push(country)
 
-    if (city.toLowerCase().includes(lowerText) &&
-      (city.charAt(0).toLowerCase() === lowerText.charAt(0))
-      && !localZones.includes(country) && !localZones.includes(city)) localZones.push(city)
 
-  })
-  console.log(localZones, "localzone");
-  return Promise.resolve(localZones)
+  // const lowerText = text.toLowerCase()
+  // let stays = await query()
+  // let localZones = []
+
+  // stays.map(stay => {
+  //   const { country, city } = stay.loc
+
+  //   if (country.toLowerCase().includes(lowerText) &&
+  //     (country.charAt(0).toLowerCase() === lowerText.charAt(0))
+  //     && !localZones.includes(country) && !localZones.includes(city)) localZones.push(country)
+
+  //   if (city.toLowerCase().includes(lowerText) &&
+  //     (city.charAt(0).toLowerCase() === lowerText.charAt(0))
+  //     && !localZones.includes(country) && !localZones.includes(city)) localZones.push(city)
+
+  // })
+  // console.log(localZones, "localzone");
+  // return Promise.resolve(localZones)
 }
 
 function calcRate(reviews) {

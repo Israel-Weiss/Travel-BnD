@@ -1,5 +1,13 @@
 .room {
-    @include for-small-layout {
+    // @include for-small-layout {
+    //     padding: 0px 112px 0px 112px
+    // }
+
+    @include for-wide-layout {
+        padding: 0px 30px 0px 30px
+
+    }
+      @include for-narrow-layout {
         padding: 0px 112px 0px 112px
     }
     display: grid;

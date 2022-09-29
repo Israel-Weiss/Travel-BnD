@@ -18,7 +18,7 @@ export function AppHeader() {
     var [anywhereM, setAnywhereM] = useState(false)
 
     currentUrl.includes("stays") ? currentCmp = "stayDetails" : currentCmp = "stayList"
-    filterBy ? explorerMode = { position: "fixed", zIndex: "10", padding:"0px 15px 0px 15px", width:"100%" } : explorerMode = { position: "unset", zIndex: "unset" }
+    filterBy ? explorerMode = { position: "fixed", zIndex: "1", padding:"0px 15px 0px 15px", width:"100%" } : explorerMode = { position: "unset", zIndex: "unset" }
 
 
     const openModal = (className) => {

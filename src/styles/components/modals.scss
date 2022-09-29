@@ -11,17 +11,19 @@
     justify-content: space-between;
     padding: 0px 20px 0px 20px;
     z-index: 100;
+
     .header {
         flex-direction: row;
         justify-content: space-between;
         margin-bottom: 20px;
-      
+
     }
 
     .starIcon {
         @include for-small-layout {
             display: flex;
         }
+
         display: none;
         margin-left: 5px;
         width: 12px;
@@ -29,11 +31,14 @@
         align-self: center;
         margin-right: 5px;
     }
+
     .text {
         color: $clr5;
+
         @include for-small-layout {
             display: inline-block;
         }
+
         display: none;
     }
 
@@ -70,20 +75,22 @@
         }
 
     }
+
     .text-bold {
         color: $clr5;
         font-weight: bold;
         font-size: 14px;
- 
+
         @include for-small-layout {
             display: flex;
             padding-left: 0px;
-           
+
 
 
         }
 
         display: none;
+
         span {
             color: rgb(114, 114, 114);
             font-weight: 500;
@@ -91,18 +98,22 @@
             vertical-align: baseline;
         }
     }
+
     .checkBtn {
         display: none;
     }
+
     select {
         display: none;
     }
+
     .phone-only {
         color: $clr5;
         text-decoration: underline;
         text-decoration-color: $clr5;
         font-weight: 600;
         padding-left: 0px;
+
         @include for-small-layout {
             display: none;
         }
@@ -123,10 +134,12 @@
         border-radius: 10px;
         display: inline-block;
         align-items: center;
+
         @include for-small-layout {
             width: 100%;
         }
     }
+
     .price {
         font-size: 22px;
         color: $clr5;
@@ -135,17 +148,19 @@
         margin-bottom: -7px;
         padding-left: 0px !important;
 
-     
+
         span {
             font-size: 14px;
             font-weight: 400;
         }
+
         @include for-small-layout {
             margin-top: 0px;
             margin-bottom: 0px;
-           
+
         }
     }
+
     @include for-small-layout {
         position: sticky;
         top: 150px;
@@ -164,27 +179,30 @@
         flex-direction: column;
         z-index: 2;
         box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
+
         select {
             display: block;
         }
         .calendar {
-            box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
             background-color: $clr1 ;
             border-radius: 16px;
             border: 1px solid;
             border-color: $clr6;
+            display: inline-block;
             padding: 24px 24px 0px;
-            position: absolute;;
-            bottom: 2%;
+            position: fixed;
+            bottom: 17%;
             right: 0;
-            margin-right: 370px;
-            width: fit-content;
+            margin-right: 482px;
+            width: 400px;
             z-index: 1;
             min-height: 380px;
         }
-        .rdrDefinedRangesWrapper{
+
+        .rdrDefinedRangesWrapper {
             display: none;
         }
+
         .price {
             font-size: 22px;
             color: $clr5;
@@ -295,6 +313,9 @@
     left: 50%;
     top: 0;
     transform: translateX(-50%);
+    // left:0;
+    // right: 0;
+    // margin: 0 auto;
     height: 100%;
     width: 100%;
     padding: 20px 20px 20px 20px;
@@ -305,12 +326,21 @@
     flex-direction: column;
     box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
 
+
+    // @include for-narrow-layout {
+    //     top: 6%;
+    //     width: 65%;
+    //     height: 90%;
+    //     border-radius: 25px;
+    //     padding: 30px 95px 30px 95px;
+    // }
+
     @include for-small-layout {
         top: 6%;
         width: 65%;
         height: 90%;
         border-radius: 25px;
-        padding: 30px 95px 30px 95px;
+        padding: 30px 50px 30px 50px;
 
     }
 
@@ -321,8 +351,6 @@
 
         @include for-small-layout {
             font-size: 33px;
-        }
-        p{
         }
     }
 
@@ -370,6 +398,7 @@
 
         @include for-small-layout {
             padding: 15px 15px 25px 15px;
+            max-height: 270px;
         }
 
         img {
@@ -410,8 +439,10 @@
     }
 
     .bold-text {
-
-        font-size: 22px;
+        max-height: 50px;
+        overflow-y: hidden;
+        text-overflow: ellipsis;
+        font-size: 16px;
         font-weight: bold;
         color: $clr5;
     }
@@ -427,6 +458,7 @@
             cursor: pointer;
             font-family: Helmet;
             width: 100px;
+            width: 30%;
             height: 40px;
             border: none;
             border-radius: 12px;

@@ -422,15 +422,11 @@ export function PriceFilter(setRange,onSetFilter) {
         onValuesUpdated={(props) => {
           document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
           document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
-        //   const debouncedFilter = _.debounce(onSetFilter, 1000)
-        //   debouncedFilter()
-
-        //   // onSetFilter( {start:props.values[0],end:props.values[1]})
-        // // setRange({start:props.values[0],end:props.values[1]})
         }}
         onChange={(props) => {
-          document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
-          document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
+          // document.querySelector('.min-price-num').innerHTML = '$ ' + props.values[0]
+          // document.querySelector('.max-price-num').innerHTML = '$ ' + props.values[1]
+          
          onSetFilter()
          
         }}

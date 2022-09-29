@@ -1,3 +1,6 @@
+import { setFilterBy,loadStay} from '../../store/stay.action'
+import { useDispatch } from 'react-redux'
+
 import pic1 from '../../assets/imgs/anywhere/1.png'
 import pic2 from '../../assets/imgs/anywhere/2.webp'
 import pic3 from '../../assets/imgs/anywhere/3.webp'
@@ -13,7 +16,23 @@ var imgs = [{ img: pic1, text: 'I’m flexible' },
 { img: pic6, text: 'South America' }
 ]
 
-export function SearchModal() {
+
+export function SearchModal( {setAnywhereM}) {
+
+    const onSetFilter =(region)=>{
+        var filterBy = {}
+        if(region !=="I’m flexible") filterBy.region = region
+        else filterBy={}
+        document.querySelector('.dark-screen').style.display = 'none'
+        document.querySelector('.dark-screen').style.top = '0'
+        document.querySelector('.dark-screen').style.height = '100%'
+
+        dispatch(setFilterBy(filterBy))
+        dispatch(loadStay())
+    }
+    
+    const dispatch = useDispatch()
+
     var key=0
     return (
         <div className='anywhere-modal'>
@@ -23,7 +42,7 @@ export function SearchModal() {
                     key++
                     return (
                         <div className='flex-coulmn ' key={key}>
-                            <img className='modal-img' src={img.img} />
+                            <img className='modal-img' src={img.img} onClick={()=>onSetFilter(img.text)} />
                             <p className='black text-start modal-text'>{img.text}</p>
                         </div>
                     )
