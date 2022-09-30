@@ -107,7 +107,7 @@ export function Dashboard() {
                     <div className="title "><p className='last-type'>ACTION</p></div>
                 </div>
 
-                {orders.map(order => {
+                {orders.reverse().map(order => {
                     const { startDate, endDate } = order
                     const dates = startDate.substring(9, 11) + "-" + endDate
                     return <div className="order-list">
@@ -129,7 +129,7 @@ export function Dashboard() {
                         {order.status === "Aprove" && <div><img className='order-icon' src={doneIcon} /><p>Paid</p></div>}
                         {order.status === "Cancel" && <div><img className='order-icon' src={cancelIcon} /><p>Canceled</p></div>}
                         <div className="order-text">
-                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order._id, "Aprove")}>Aprove</button>}
+                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order._id, "Aprove")}>Approve</button>}
                             {order.status === "Aprove" && <button className="cancelBtn" style={{ backgroundColor: "#f0f2f5", color: "black" }} onClick={() => updateOrder(order._id, "Cancel")}>Cancel</button>}
                         </div>
                     </div>

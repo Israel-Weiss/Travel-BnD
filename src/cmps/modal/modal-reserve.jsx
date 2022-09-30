@@ -52,6 +52,22 @@ export function ReserveModal({ stay }) {
         setModalFlag(false)
     }
 
+    const button = document.querySelector('.availability-Btn')
+    if(button){
+    button.addEventListener('mousemove', e => {
+      const rect = button.getBoundingClientRect();
+      const x = (e.clientX - rect.left) * 150 / button.clientWidth
+      const y = (e.clientY - rect.top) * 100 / button.clientHeight
+
+
+      button.style.setProperty('--x', x);
+
+      button.style.setProperty('--y', y,"!important");
+    })
+}
+
+
+
     if (!stay) return
 
     return (
@@ -92,7 +108,7 @@ export function ReserveModal({ stay }) {
                         <div className="arrow" ></div>
                     </div>
                 </div>
-                <button className="availability-Btn" onClick={() => changeModal()}>Reserve</button>
+                <button className="availability-Btn" onClick={() => changeModal()}> <span>Reserve</span> </button>
                 <p className='text text-center' style={{ fontSize: "14px", color: "#4c4c4c" }}>You won't be charged yet</p>
 
                 <p className='text-price'>${price} x {nightCount} nights <span>${UtilService.calcSum(price, nightCount)}</span></p>
