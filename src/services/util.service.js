@@ -3,8 +3,30 @@ export const UtilService = {
     stringToDate,
     calcSum,
     numberToDate,
-    getRandomInt
+    getRandomInt,
+    getDistance
 }
+
+
+function getDistance(latUser, lngUser, latPlace, lngPlace) {
+    var R = 6371
+    var dLat = toRad(latPlace-latUser)
+    var dLon = toRad(lngPlace-lngUser)
+    var latUser = toRad(latUser)
+    var latPlace = toRad(latPlace)
+
+    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
+      Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(latUser) * Math.cos(latPlace)
+    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
+    var d = R * c
+    return d
+  
+}
+
+function toRad(Value) 
+    {
+        return Value * Math.PI / 180;
+    }
 
 function makeId(length = 10) {
     var text = ''

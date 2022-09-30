@@ -39,12 +39,10 @@ export const StayPreview = ({ stay }) => {
 
         else {            
             heartPic = heartIcon
-            console.log(likedByUsers,'h',likedByUsers.indexOf(loggedInUser._id))
             likedByUsers.splice(likedByUsers.indexOf(loggedInUser._id), 1)
             wishListService.removeStay(stay)
         }
 
-        console.log(stay)
         stayService.edit(stay)
         setLiked(!isLiked)
 }
@@ -58,7 +56,6 @@ export const StayPreview = ({ stay }) => {
 
             idx--
         }
-        console.log(idx);
         setIdx(idx)
     }
 
@@ -70,11 +67,9 @@ export const StayPreview = ({ stay }) => {
 
     
     if (!stay) return
-    
-   
-
 
     return (
+        
         <div className="card">
             <div className="card-image ">
                 {modalFlag && <WishListModal stay={stay} closeModal={closeModal} />}
