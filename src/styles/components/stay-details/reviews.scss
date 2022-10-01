@@ -24,6 +24,9 @@
     }
 
     .add-review-btn {
+        width: 42%;
+        height: 40px;
+        margin-bottom: 2px;
         background-color: $clr0;
         color: $clr1;
         border: none;
@@ -54,15 +57,15 @@
         width: 100%;
         color: $clr5;
         margin-bottom: 30px;
-        max-height: 200px;
         gap: 10px;
-        overflow-y: scroll;
         text-overflow: ellipsis;
+        // max-height: 200px;
+        // overflow-y: scroll;
 
         @include for-small-layout {
-            overflow-y: hidden;
             width: 50%;
             padding: 0px 60px 15px 8px;
+            // overflow-y: hidden;
         }
     }
 
@@ -87,9 +90,9 @@
     }
 
     .review-txt {
+        display: inline-block;
         font-weight: 400;
-        line-height: 20px;
-        margin-bottom: 20px;
+        line-height:  1.2em;
         margin-top: 15px;
         text-overflow: ellipsis;
         padding-right: 20px;
@@ -98,8 +101,64 @@
         @include for-small-layout {
             margin-top: 0px;
 
-            padding: 15px 40px 15px 0px;
+            padding: 15px 40px 0px 0px;
 
         }
     }
+}
+
+.truncate {
+    /* hide text if it more than N lines  */
+    overflow: hidden;
+    /* for set '...' in absolute position */
+    position: relative;
+    /* use this value to count block height */
+    line-height: 1.2em;
+    /* max-height = line-height (1.2) * lines max number (3) */
+    max-height: 4.5em;
+    /* fix problem when last visible word doesn't adjoin right side  */
+    text-align: justify;
+    /* place for '...' */
+    margin-right: -1em;
+    padding-right: 1em;
+}
+
+/* create the ... */
+.truncate:before {
+    /* points in the end */
+    content: '...';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of block */
+    right: 0;
+    bottom: 0;
+}
+
+/* hide ... if we have text, which is less than or equal to max lines 
+    */
+.truncate:after {
+    /* points in the end */
+    content: '';
+    /* absolute position */
+    position: absolute;
+    /* set position to right bottom corner of text */
+    right: 0;
+    /* set width and height */
+    width: 1em;
+    height: 1em;
+    margin-top: 0.2em;
+    /* bg color = bg color under block */
+    background: white;
+}
+
+.txtcol a {
+    // color: blue;
+    cursor: pointer;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.txtcol a {
+    // color: blue;
+    cursor: pointer;
 }

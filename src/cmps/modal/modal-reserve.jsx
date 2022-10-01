@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setOrder } from '../../store/order.action'
 import { MyCal } from '../calendar'
 import confirmPic from '../../assets/imgs/v.png'
+import arrowDown from '../../assets/imgs/open-down.svg'
 import { stayService } from '../../services/stay.service'
 import { UtilService } from '../../services/util.service'
 import starIcon from '../../assets/imgs/starIcon.svg'
@@ -22,8 +23,11 @@ export function ReserveModal({ stay }) {
     const [nightCount, setNightCount] = useState(1)
     const [startDate, setStartDate] = useState("")
     const [endDate, setEndDate] = useState("")
-
-
+    const labels = [{ className: "adults", text: "Adults", subtext: "Age 13+" },
+    { className: "children", text: "Children", subtext: "Ages 2–12" },
+    { className: "infants", text: "Infants", subtext: "Under 2" },
+    { className: "pets", text: "Pets", subtext: "Bringing a service animal?" }]
+    var key = 0;
 
     const handleClick = event => {
         setIsShown(current => !current)
@@ -31,6 +35,7 @@ export function ReserveModal({ stay }) {
 
     const navigateTo = () => {
         const stayImg = stay.imgUrls[0]
+    
         setreservedFlag(true)
         dispatch(setOrder(stay, loggedInUser, startDate, endDate, nightCount, stayImg))
 
@@ -139,50 +144,27 @@ export function ReserveModal({ stay }) {
                     </button>
                     <div className="select" onClick={() => toggleModal()}>
 
-                        <p className='guests-count'>GUESTS <br /> <span>1 guests</span></p>
-
-
-
-
-
-
-
-                        {/* <select> */}
-                        {/* <option value="Adults">Adults</option>
-                            <option value="Children">Children</option> */}
-                        {/* </select> */}
-                        {/* <div className="arrow" ></div> */}
+                        <div className='flex full-width space-between' ><p className=' guests-count'>GUESTS <br /> <span>1 guests</span></p>
+                            <img src={arrowDown} style={{ width: "15px" }} />
+                        </div>
                     </div>
+
                     <div className="select-modal">
-                        <div className="flex  select-modal-label">
-                            <p className='bold Montserrat'>Adults <br /> <span className='unbold'>Age 13+</span></p>
-                            <div className="flex align-items">
-                                <div className="operator low-opacity" onClick={(event) => changeValue("adults", event)}>−</div>
-                                <div className="operator adults">1</div>
-                                <div className="operator" onClick={(event) => changeValue("adults", event)}>+</div>
+                        {labels.map(label => {
+                            key++
+                            return <div className="flex  select-modal-label " key={key}>
+                                <p className='bold Montserrat'>{label.text} <br /> <span className={(key===4)?"unbold underline":"unbold"} >{label.subtext}</span></p>
+                                <div className="flex align-items">
+                                    <div className="operator " onClick={(event) => changeValue(label.className, event)}>−</div>
+                                    <div className={"operator "+label.className}>{(key===1)?1:0}</div>
+                                    <div className="operator" onClick={(event) => changeValue(label.className, event)}>+</div>
+                                </div>
                             </div>
-                        </div>
-                        <div className="flex  select-modal-label">
-                            <p className='bold Montserrat'>Children <br /> <span className='unbold'>Ages 2–12</span></p>
-                            <div className="flex align-items">
-                                <div className="operator low-opacity" onClick={(event) => changeValue("children", event)}>−</div>
-                                <div className="operator children">0</div>
-                                <div className="operator" onClick={(event) => changeValue("children", event)}>+</div>
-                            </div>
-                        </div>
-                        <div className="flex  select-modal-label" style={{ marginBottom: "20px" }}>
-                            <p className='bold Montserrat'>Pets <br /> <span className='unbold'>Bringing a service animal?</span></p>
-                            <div className="flex align-items">
-                                <div className="operator low-opacity" onClick={(event) => changeValue("pets", event)} >−</div>
-                                <div className="operator pets">0</div>
-                                <div className="operator" onClick={(event) => changeValue("pets", event)}>+</div>
-                            </div>
-                        </div>
+                        })}
                         <p className='terms-of-use'>This place has a maximum of 2 guests, not including infants. If you're bringing more than 2 pets, please let your host know.</p>
-
                     </div>
-
                 </div>
+                
                 <button className="availability-Btn" onClick={() => changeModal()}> <span>Reserve</span> </button>
                 <p className='text text-center' style={{ fontSize: "14px", color: "#4c4c4c" }}>You won't be charged yet</p>
 

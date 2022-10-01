@@ -53,7 +53,7 @@ export function AppHeader() {
                 <NavBar openModal={openModal} currentCmp={currentCmp} />
                 <UserManual loggedInUser={loggedInUser} />
             </header>
-            {anywhereM && <section><SubHeader setAnywhereM={setAnywhereM} /></section>}
+            {anywhereM && <section><SubHeader setAnywhereM={setAnywhereM} closeModal={closeModal}/></section>}
         </div>
 
     )

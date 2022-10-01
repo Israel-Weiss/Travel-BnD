@@ -26,16 +26,16 @@
     min-height: 80px;
 
 
+    @include for-small-layout {
+        padding: 0px 42px 0px 42px;
+
+    }
 
     @include for-narrow-layout {
-        // position: fixed;
-        // top: 80px;
-        // z-index: 1;
         background-color: $clr1;
         border-top: 0.5px solid $clr2;
         padding: 0px 80px 0px 80px;
         grid-template-columns: 1fr 1fr 1fr 1fr;
-
     }
 
     .filterSection {

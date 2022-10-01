@@ -17,6 +17,7 @@ export function GoogleMap({ stays }) {
     let coordinates = [{ lat: lat, lng: lng }]
     let coordinate
     var zoom = 18
+    let key=0
     let mapIcon = <FaHome/>
     
     if(url.includes('wishlist')){
@@ -34,7 +35,7 @@ export function GoogleMap({ stays }) {
         // Filter view mode 
 
     else if(!url.includes('stays')){
-        styleTag= {width:"50%", padding: '20px 20px 0px 0px',position: 'fixed',
+        styleTag= {width:"50%", padding: '0px 0px 0px 0px',position: 'fixed',
         top: '80px',height: 'calc(100vh - 80px)',minHeight: '100vh',right: '0',zIndex: '0'}
         coordinates = []
         zoom = 1
@@ -55,8 +56,10 @@ export function GoogleMap({ stays }) {
                 defaultZoom={zoom}                
             >
                 {coordinates.map((coordinate) => {
+                    key++
                     return(
                     <AnyReactComponent
+                    key={key}
                     lat={coordinate.lat}
                     lng={coordinate.lng}
                     text={mapIcon}

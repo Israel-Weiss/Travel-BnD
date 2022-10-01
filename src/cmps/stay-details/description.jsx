@@ -1,5 +1,6 @@
 import { ReserveModal } from '../modal/modal-reserve'
 import { Amenities } from './amenities'
+import {AirCover} from './airCover.jsx'
 //IMG
 import icon1 from '../../assets/imgs/room-info/designedBy-Icon.svg'
 import icon2 from '../../assets/imgs/room-info/featured-icon.svg'
@@ -42,6 +43,7 @@ export const StayDescription = ({ stay }) => {
                             </div>
                         </div>})}
                 </div>
+                <AirCover/>
                 <Amenities stay={stay} />
             </div>
             <div className="right"> <ReserveModal stay={stay} /></div>

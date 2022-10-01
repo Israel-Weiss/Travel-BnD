@@ -1,0 +1,36 @@
+.aircover {
+    width: 88%;
+    padding: 30px 10px 30px 10px;
+    border-top: 1px solid $clr2;
+    color: $clr5;
+    @include for-small-layout {
+        padding: 30px 0px 30px 0px;
+    }
+
+    :nth-child(1) {
+        width: 130px;
+        height: 30px;
+        object-fit: contain;
+       
+    }
+
+    :nth-child(2) {
+        width: 100%;
+        max-width: unset;
+        font-size: 16px;
+        margin-top: 10px;
+    }
+
+    :nth-child(3) {
+        width: 100%;
+        max-width: unset;
+        font-size: 15.5px;
+        font-weight: bold;
+        text-decoration: underline;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+
+
+}
