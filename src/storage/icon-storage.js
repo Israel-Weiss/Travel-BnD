@@ -16,7 +16,7 @@ export var filterIcons =
     { pic: pic3, text: 'Amazing pools' },
     { pic: pic4, text: 'Islands' },
     { pic: pic5, text: 'National parks' },
-    { pic: pic6, text: 'Amzing views' },
+    { pic: pic6, text: 'Amazing views' },
     { pic: pic7, text: 'Design' },
     { pic: pic8, text: 'Camping' },
     { pic: pic9, text: 'Cabins' },

@@ -1,3 +1,4 @@
+import { map } from "lodash";
 import { storageService } from "./async-storage.service"
 import { httpService } from './http.service'
 import { socketService, SOCKET_EVENT_ORDER_ADDED, SOCKET_EVENT_ORDER_UPDATE,SOCKET_EVENT_STAY_ADDED } from './socket.service.js'
@@ -8,7 +9,10 @@ export const orderService = {
   createOrder,
   getByLogedInUser,
   getByHostName,
-  aproveOrder
+  aproveOrder,
+  calcRevenues,
+  getLastMonth,
+  getLastYear
 }
 
 
@@ -48,6 +52,7 @@ async function createOrder(stay, startDate, endDate,nights,stayImg) {
     endDate: endDate,
     guests: "1",
     nights:nights,
+    expenses: stay.expenses,
     price: stay.price,
     status: "pending",
     stayImg:stayImg,
@@ -98,3 +103,120 @@ async function aproveOrder(orderId, status) {
   return await httpService.put(BASE_URL + orderId, currOrder)
 }
 
+function getLastMonth(orders){
+  var currMonth = new Date().getMonth().toString()
+  var monthRevenue = 0
+  if(currMonth < 10) currMonth = '0' + currMonth
+
+  orders.map((order) =>{
+    if(order.endDate.substring(3,5) === currMonth && order.status === "Aprove"){
+      monthRevenue += (order.price - order.expenses) * order.nights
+  }})
+  return monthRevenue
+}
+
+function getLastYear(orders){
+  const currentYear = new Date().getFullYear().toString()
+  var YearRevenue = 0
+  console.log(currentYear)
+  orders.map((order) =>{
+    if(order.endDate.substring(6,10) === currentYear && order.status === "Aprove"){
+      YearRevenue += (order.price - order.expenses) * order.nights
+  }}) 
+  return YearRevenue
+}
+
+function calcRevenues(orders){
+  const currentYear = new Date().getFullYear().toString()
+  const lastYear = (new Date().getFullYear() - 1).toString()
+  const currentYearRevenues = [0,0,0,0,0,0,0,0,0,0,0,0]
+  const lastYearRevenues = [0,0,0,0,0,0,0,0,0,0,0,0]
+  const data = []
+
+  orders.map((order) => {
+    if(order.endDate.substring(6,10) === currentYear && order.status === "Aprove"){
+      switch(order.endDate.substring(3,5)){
+        case('01'):
+        currentYearRevenues[0] += (order.price - order.expenses) * order.nights
+        break;
+        case('02'):
+        currentYearRevenues[1] += (order.price - order.expenses) * order.nights
+        break;
+        case('03'):
+        currentYearRevenues[2] += (order.price - order.expenses) * order.nights
+        break;
+        case('04'):
+        currentYearRevenues[3] += (order.price - order.expenses) * order.nights
+        break;
+        case('05'):
+        currentYearRevenues[4] += (order.price - order.expenses) * order.nights
+        break;
+        case('06'):
+        currentYearRevenues[5] += (order.price - order.expenses) * order.nights
+        break;
+        case('07'):
+        currentYearRevenues[6] += (order.price - order.expenses) * order.nights
+        break;
+        case('08'):
+        currentYearRevenues[7] += (order.price - order.expenses) * order.nights
+        break;
+        case('09'):
+        currentYearRevenues[8] += (order.price - order.expenses) * order.nights
+        break;
+        case('10'):
+        currentYearRevenues[9] += (order.price - order.expenses) * order.nights
+        break;
+        case('11'):
+        currentYearRevenues[10] += (order.price - order.expenses) * order.nights
+        break;
+        case('12'):
+        currentYearRevenues[11] += (order.price - order.expenses) * order.nights
+        break;
+      }
+    }
+    else if(order.endDate.substring(6,10) === lastYear && order.status === "Aprove"){
+      switch(order.endDate.substring(3,5)){
+        case('01'):
+        lastYearRevenues[0] += (order.price - order.expenses) * order.nights
+        break
+        case('02'):
+        lastYearRevenues[1] += (order.price - order.expenses) * order.nights
+        break
+        case('03'):
+        lastYearRevenues[2] += (order.price - order.expenses) * order.nights
+        break
+        case('04'):
+        lastYearRevenues[3] += (order.price - order.expenses) * order.nights
+        break
+        case('05'):
+        lastYearRevenues[4] += (order.price - order.expenses) * order.nights
+        break
+        case('06'):
+        lastYearRevenues[5] += (order.price - order.expenses) * order.nights
+        break
+        case('07'):
+        lastYearRevenues[6] += (order.price - order.expenses) * order.nights
+        break
+        case('08'):
+        lastYearRevenues[7] += (order.price - order.expenses) * order.nights
+        break
+        case('09'):
+        lastYearRevenues[8] += (order.price - order.expenses) * order.nights
+        break
+        case('10'):
+        lastYearRevenues[9] += (order.price - order.expenses) * order.nights
+        break
+        case('11'):
+        lastYearRevenues[10] += (order.price - order.expenses) * order.nights
+        break
+        case('12'):
+        lastYearRevenues[11] += (order.price - order.expenses) * order.nights
+        break
+      }
+    }
+
+  })
+  data.push(currentYearRevenues)
+  data.push(lastYearRevenues)
+  return data
+}

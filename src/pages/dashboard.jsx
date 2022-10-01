@@ -53,7 +53,7 @@ export function Dashboard() {
     const getTotalPrice = () => {
         let totalPrice = 0
         orders.map(order => {
-            if (order.status === "Aprove") totalPrice += (order.price * order.nights)
+            if (order.status === "Aprove") totalPrice += (((order.price - order.expenses) * order.nights))
         })
         console.log(totalPrice);
         return totalPrice
@@ -73,15 +73,15 @@ export function Dashboard() {
 
                         <div className="balance-sector">
                             <p className="info">This month</p>
-                            <p className="info">${getTotalPrice()}</p>
+                            <p className="info">${orderService.getLastMonth(orders).toFixed(0)}</p>
                         </div>
                         <div className="balance-sector">
                             <p className="info">This year</p>
-                            <p className="info">${getTotalPrice()}</p>
+                            <p className="info">${orderService.getLastYear(orders).toFixed(0)}</p>
                         </div>
                         <div className="balance-sector">
                             <p className="info">Total income</p>
-                            <p className="info">${getTotalPrice()}</p>
+                            <p className="info">${getTotalPrice().toFixed(0)}</p>
                         </div>
                     </div>
 
@@ -90,8 +90,8 @@ export function Dashboard() {
                     </div>
                 </div>
 
-                <div className='chart'><LinesChart height={300} width={670} /></div>
-                <div className='chart-phone'><LinesChart height={300} width={300} /></div>
+                <div className='chart'><LinesChart orders={orders} height={300} width={670}  /></div>
+                <div className='chart-phone'><LinesChart orders={orders} height={300} width={300} /></div>
             </div>
 
             <div className='order-container'>
@@ -129,7 +129,7 @@ export function Dashboard() {
                         {order.status === "Aprove" && <div><img className='order-icon' src={doneIcon} /><p>Paid</p></div>}
                         {order.status === "Cancel" && <div><img className='order-icon' src={cancelIcon} /><p>Canceled</p></div>}
                         <div className="order-text">
-                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order._id, "Aprove")}>Approve</button>}
+                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order._id, "Aprove")}>Aprove</button>}
                             {order.status === "Aprove" && <button className="cancelBtn" style={{ backgroundColor: "#f0f2f5", color: "black" }} onClick={() => updateOrder(order._id, "Cancel")}>Cancel</button>}
                         </div>
                     </div>
