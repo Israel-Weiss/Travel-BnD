@@ -60,7 +60,7 @@ export function Dashboard() {
     }
 
 
-    if (!orders) return 
+    if (!orders) return
     else return (
 
         <section className="my-trip-container">
@@ -73,15 +73,15 @@ export function Dashboard() {
 
                         <div className="balance-sector">
                             <p className="info">This month</p>
-                            <p className="info">${getTotalPrice()}</p>
+                            <p className="info">${getTotalPrice().toFixed(0)}</p>
                         </div>
                         <div className="balance-sector">
                             <p className="info">This year</p>
-                            <p className="info">${getTotalPrice()}</p>
+                            <p className="info">${getTotalPrice().toFixed(0)}</p>
                         </div>
                         <div className="balance-sector">
                             <p className="info">Total income</p>
-                            <p className="info">${getTotalPrice()}</p>
+                            <p className="info">${getTotalPrice().toFixed(0)}</p>
                         </div>
                     </div>
 
@@ -123,8 +123,8 @@ export function Dashboard() {
                             <p className="date-phone">{order.startDate}</p>
                         </div>
                         <div className='pok'><p>1</p></div>
-                        <div ><p>{order.nights}</p></div>
-                        <div className='total-price'><p>${order.price * order.nights}</p></div>
+                        <div ><p>{order.nights.toFixed(0)}</p></div>
+                        <div className='total-price'><p>${(order.price * order.nights).toFixed(0)}</p></div>
                         {order.status === "pending" && <div><p>Pending</p></div>}
                         {order.status === "Aprove" && <div><img className='order-icon' src={doneIcon} /><p>Paid</p></div>}
                         {order.status === "Cancel" && <div><img className='order-icon' src={cancelIcon} /><p>Canceled</p></div>}
