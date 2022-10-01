@@ -31,6 +31,7 @@ export function Wishlist() {
             </div>
             <section className="wish-list">
                 {wishlist.map(list => {
+                    if(list.stays.length !== 0)
                     return <div className="flex-coulmn list ">
                         < NavLink to={`/wishlist/${list._id}`}>
                             <div className="wish-box">

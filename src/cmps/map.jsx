@@ -12,20 +12,21 @@ export function GoogleMap({ stays }) {
 
     const url = window.location.href
     var styleTag={width:"100%",height:"60vh", padding: '20px 0px 20px 0px'}  
-    let lng = parseFloat(stays[0].loc.lat)
-    let lat = parseFloat(stays[0].loc.lng)
+    let lng = parseFloat(stays[0].loc.lng)
+    let lat = parseFloat(stays[0].loc.lat)
     let coordinates = [{ lat: lat, lng: lng }]
     let coordinate
     var zoom = 18
     let mapIcon = <FaHome/>
     
     if(url.includes('wishlist')){
+        styleTag={width:"100%",height:"90vh", padding: '0px'}  
         coordinates = []
         zoom = 1
         mapIcon = <FaHeart/>
         stays.map((stay) => {
-            lng = parseFloat(stay.loc.lat)
-            lat = parseFloat(stay.loc.lng)
+            lng = parseFloat(stay.loc.lng)
+            lat = parseFloat(stay.loc.lat)
             coordinate = { lat: lat, lng: lng }
             coordinates.push(coordinate)
     })}
@@ -38,8 +39,8 @@ export function GoogleMap({ stays }) {
         coordinates = []
         zoom = 1
         stays.map((stay) => {
-            lng = parseFloat(stay.loc.lat)
-            lat = parseFloat(stay.loc.lng)
+            lng = parseFloat(stay.loc.lng)
+            lat = parseFloat(stay.loc.lat)
             coordinate = { lat: lat, lng: lng }
             coordinates.push(coordinate)
         })
