@@ -8,20 +8,7 @@ export const UtilService = {
 }
 
 
-function getDistance(latUser, lngUser, latPlace, lngPlace) {
-    var R = 6371
-    var dLat = toRad(latPlace-latUser)
-    var dLon = toRad(lngPlace-lngUser)
-    var latUser = toRad(latUser)
-    var latPlace = toRad(latPlace)
 
-    var a = Math.sin(dLat/2) * Math.sin(dLat/2) +
-      Math.sin(dLon/2) * Math.sin(dLon/2) * Math.cos(latUser) * Math.cos(latPlace)
-    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-    var d = R * c
-    return d
-  
-}
 
 function toRad(Value) 
     {
