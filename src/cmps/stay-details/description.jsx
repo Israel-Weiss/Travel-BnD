@@ -23,8 +23,8 @@ export const StayDescription = ({ stay }) => {
 
                 <div className="title-sector">
                     <div className='flex-coulmn'>
-                        <h1 className="room-details-title">Entire home hosted by {fullname}</h1>
-                        <p className='room-details-desc'>{guests } guests {bedrooms} bedrooms {bathrooms} beds {bathrooms} baths</p>
+                        <h1 className="room-details-title  Montserrat">Entire home hosted by {fullname}</h1>
+                        <p className='room-details-desc '>{guests } guests {bedrooms} bedrooms {bathrooms} beds {bathrooms} baths</p>
                     </div>
                     <img className='profile-img' src={pictureUrl?pictureUrl:imgUrl} />
                 </div>
@@ -37,8 +37,8 @@ export const StayDescription = ({ stay }) => {
                         return <div className='icon-container' key={key}>
                             <img className='room-info-icons' src={icon.img} />
                             <div className='margin-right-20'>
-                                <p className='text-start room-info-text bold' style={style}>{icon.title}</p>
-                                {icon.desc && <p className=' gray'>{icon.desc}</p>}
+                                <p className='text-start room-info-text bold  Montserrat' style={style}>{icon.title}</p>
+                                {icon.desc && <p className=' gray' style={{fontSize:"14px"}}>{icon.desc}</p>}
                             </div>
                         </div>})}
                 </div>

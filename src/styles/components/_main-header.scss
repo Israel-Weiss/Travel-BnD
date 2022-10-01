@@ -1,3 +1,14 @@
+.dark-screen-header{
+    position: fixed;
+    height: 100%;
+    width: 100%; 
+    z-index: 1;
+    background-color: $clr4;
+    opacity: 0.5;
+    filter: grayscale(1);
+    display: none;
+}
+
 header.header-container {
 
     background-color: $clr1;
@@ -76,7 +87,8 @@ header.header-container {
             border-radius: 30px;
             padding-right: 6px;
             padding-left: 8px;
-            box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
+            // box-shadow: 0 1px 2px rgb(232,232,232), 0 1px 2px rgb(232,232,232);
+            box-shadow: -1px 1px 7px -3px rgba(117, 117, 117, 0.79);
         }
 
 

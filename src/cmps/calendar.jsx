@@ -6,11 +6,14 @@ import "react-date-range/dist/theme/default.css"
 import { UtilService } from "../services/util.service"
 
 export function MyCal(setNightCount, setStartDate, setEndDate) {
+  var startDate = new Date()
+  var day = 60 * 60 * 24 * 1000;
+  var endDate = new Date(startDate.getTime() + day)
   const [orders, setOrders] = useState(null)
   const [state, setState] = useState([
     {
-      startDate: new Date(),
-      endDate: new Date(),
+      startDate: startDate,
+      endDate: endDate,
       key: "selection"
     }
   ])
@@ -37,14 +40,12 @@ export function MyCal(setNightCount, setStartDate, setEndDate) {
     const night = (((state[0].endDate.getTime() - state[0].startDate.getTime()) / (1000 * 36000 * 24)) * 10) + 1
     setNightCount(night)
 
-    
+
     if (state[0].startDate) {
       setStartDate(UtilService.numberToDate(state[0].startDate))
       setEndDate(UtilService.numberToDate(state[0].endDate))
     }
-    // start.innerHTML = UtilService.numberToDate(state[0].startDate.getTime())
-    // end.innerHTML = UtilService.numberToDate(state[0].endDate.getTime())
-    // elNights.innerText = night
+
   }
 
   function handleSelect(ranges) {
@@ -57,7 +58,7 @@ export function MyCal(setNightCount, setStartDate, setEndDate) {
     <div className="App" style={{ position: "fixed" }}>
       <DateRange
         onChange={(item) => setState([item.selection])}
-        moveRangeOnFirstSelection={false}
+        moveRangeOnFirstSelection={true}
         ranges={state}
 
       />

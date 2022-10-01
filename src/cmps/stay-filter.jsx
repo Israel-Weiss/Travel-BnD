@@ -7,10 +7,10 @@ import { CheckboxRadio } from '../cmps/filters/check-box'
 import { StayFilterButtons } from '../cmps/filters/buttons'
 import { CheckboxesRadioEmenteties } from '../cmps/filters/amentities'
 import { stayService } from "../services/stay.service"
-import { setStay, setFilterBy, loadStay, resetFilter } from '../store/stay.action'
-import { UtilService } from "../services/util.service"
-import { getRandomId } from "@syncfusion/ej2-base"
-import debounce from "lodash.debounce";
+import {  setFilterBy, loadStay, resetFilter } from '../store/stay.action'
+import $ from 'jquery'
+
+
 import _ from 'lodash'
 
 
@@ -69,7 +69,7 @@ export const StayFilter = ({ filterBy, stays }) => {
         stayService.query(filterBy).then(stays => {
             document.querySelector(".show-homes").innerText = `Show ${stays.length} homes`
         })
-        filterRef.current=filterBy
+        filterRef.current = filterBy
     }
 
     const aplayFilter = (ev) => {
@@ -82,20 +82,25 @@ export const StayFilter = ({ filterBy, stays }) => {
 
     const closeModal = () => {
         setIsShown(current => !current)
-        document.querySelector('.dark-screen').style.display = 'none'
-        document.querySelector('.filter-modal').style.display = 'none'
+        $('.dark-screen-filter-modal').css({"display":"none"})
+        $('.filter-modal').css({"display":"none"})
+        document.body.classList.remove("hide-scrol-bar")
         setModalFlag(false)
+
     }
 
     const openApp = () => {
         setModalFlag(true)
         setIsShown(current => !current)
-        document.querySelector('.dark-screen').style.display = 'block'
-        document.querySelector('.filter-modal').style.display = 'flex'
+        document.body.classList.add("hide-scrol-bar")
+        $('.dark-screen-filter-modal').css({"display":"block"})
+        $('.filter-modal').css({"display":"flex"}) 
     }
     if (!stays) return
 
     return (<div className={!filterBy ? "filter-tab" : "sticky-filter filter-tab "}>
+        <div className='dark-screen-filter-modal' onClick={() => closeModal()}></div>
+
         {/* //amentities Filter */}
         {!filterBy && <div className="filterSection">
             {filterIcons.map(img => {
@@ -112,19 +117,19 @@ export const StayFilter = ({ filterBy, stays }) => {
             {filterBy && <p className="black">{stays.length} homes</p>}
             <div className="filter-btn" onClick={() => openApp()}>
                 <img className="filter-btn-img" src={filterIcon} />
-                <h1 className="filter-btn-text" >Filters</h1 >
+                <h1 className="filter-btn-text " >Filters</h1 >
             </div>
         </div>
         {/* onSubmit={(event) => onSetFilter(event)} */}
         <form className="animate__animated animate__fadeInUpBig animate__fast filter-modal " style={{ display: isShown ? 'none' : 'flex' }}>
 
             <div className="title-sector"  >
-                <div className="exit-btn"  onClick={() => closeModal()}>x</div>
+                <div className="exit-btn" onClick={() => closeModal()}>x</div>
                 <h1 className="filter-header">Filters</h1>
             </div>
             <div className="modal-body-container">
                 <div className="filter-modal-titles flex">
-                    <h3 className="second-title" style={{margin:"20px 24px 5px 24px "}}>Price range</h3>
+                    <h3 className="second-title" style={{ margin: "20px 24px 5px 24px " }}>Price range</h3>
                     <h3 className="avg-price-title">The average nightly price is $216</h3>
                 </div>
 
@@ -159,7 +164,7 @@ export const StayFilter = ({ filterBy, stays }) => {
                 </div>
             </div>
             <div className=" modal-footer">
-                <button onClick={(event)=>aplayFilter(event)} className="show-homes go-right">Show {staysLength} homes</button>
+                <button onClick={(event) => aplayFilter(event)} className="show-homes go-right">Show {staysLength} homes</button>
             </div>
         </form>
 

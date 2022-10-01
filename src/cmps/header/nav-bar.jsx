@@ -7,12 +7,12 @@ export function NavBar({openModal, currentCmp }) {
         <div className={currentCmp  !== "stayDetails" ? 'stay-list-margin header-nav ' : 'stay-details-margin header-nav '}>
         {currentCmp !== "stayDetails" ?
             <section className="flex">
-                <NavLink className="navlink" to='#' onClick={() => openModal('anywhere')}>Anywhere</NavLink>
-                <NavLink className="navlink" to='#' onClick={() => openModal('anywhere')}>Any week</NavLink>
-                <NavLink className="navlink" to='#' onClick={() => openModal('anywhere')}>Add guests</NavLink>
+                <NavLink className="navlink" to='#' onClick={() => openModal()}>Anywhere</NavLink>
+                <NavLink className="navlink" to='#' onClick={() => openModal()}>Any week</NavLink>
+                <NavLink className="navlink" to='#' onClick={() => openModal()}>Add guests</NavLink>
             </section> :
-            <NavLink className=" navlink " to='#' onClick={() => openModal('anywhere')}>Start your search</NavLink>}
-        <div className="search-icon"><img className="search-icon-img" src={searchIcon} onClick={() => openModal('anywhere')} /></div>
+            <NavLink className=" navlink " to='#' onClick={() => openModal()}>Start your search</NavLink>}
+        <div className="search-icon"><img className="search-icon-img" src={searchIcon} onClick={() => openModal()} /></div>
     </div>
     )
 }

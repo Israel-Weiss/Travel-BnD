@@ -14,11 +14,11 @@ export const StayReviews = ({ stay, onAddReview}) => {
     if (!stay) return
     var key = 0
     return (
-        <section className="review-container flex" >
+        <section className="review-container flex Montserrat" >
 
             <form style={{ width: "100%" }} onSubmit={(event) => onAddReview(event)}>
                 <div className="review-header">
-                    <h1 className="review-title fontSize-22 bold"> ★ {rate} · {stay.reviews.length} Reviews </h1>
+                    <h1 className="review-title fontSize-22 bold"> ★ {rate} · {stay.reviews.length} reviews </h1>
                     {loggedInUser && <button className='add-review-btn' >Add review</button>}
                 </div>
                 {loggedInUser && <textarea name="" id="" cols="30" rows="7"></textarea>}

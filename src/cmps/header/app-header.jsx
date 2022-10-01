@@ -1,9 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
-//pics
-import logoPic from "../../assets/imgs/logo.png";
-import logoMobilePic from "../../assets/imgs/logo-mobile.png";
+import $ from 'jquery'
 //cmp
 import { SubHeader } from "../header/sub-header";
 import { NavBar } from "./nav-bar";
@@ -22,45 +20,42 @@ export function AppHeader() {
     filterBy ? explorerMode = { position: "fixed", zIndex: "1", padding: "0px 15px 0px 15px", width: "100%" } : explorerMode = { position: "unset", zIndex: "unset" }
 
 
-    const openModal = (className) => {
+    const openModal = () => {
+        let darkScreen = $('.dark-screen-header')
+        let elHeader = $('.header-container')
 
-        if (className === 'anywhere') {
-            document.querySelector('.dark-screen').style.display = 'block'
-            document.querySelector('.dark-screen').style.top = '20%'
-            document.querySelector('.dark-screen').style.height = '80%'
-            var elHeader = document.querySelector('.header-container')
-            if (!anywhereM) elHeader.style.borderBottom = "none"
+        darkScreen && darkScreen.css({ "display": "block", "top": "20%", "height": "80%" })
+        !anywhereM ? elHeader.css({ "border-bottom": "none" }) : elHeader.css({ "border-bottom": "1px solid rgb(236,236,236)" })
+        setAnywhereM(!anywhereM)
 
-            else elHeader.style.borderBottom = '1px solid rgb(236,236,236)'
-            setAnywhereM(!anywhereM)
-        }
         window.addEventListener("wheel", callback)
         function callback(ev) {
             const direction_1 = ev.deltaY;
             if (direction_1 > 0) {
-                document.querySelector('.dark-screen').style.display = 'none'
-                document.querySelector('.dark-screen').style.top = '0'
-                document.querySelector('.dark-screen').style.height = '100%'
-                setAnywhereM(false)
+                closeModal()
                 window.removeEventListener("wheel", callback)
             }
         }
+        if(anywhereM)closeModal()
+    }
+
+    const closeModal = () => {
+        let darkScreen = $('.dark-screen-header')
+        darkScreen.css({ "display": "none", "top": "0", "height": "100%" })
+        setAnywhereM(false)
     }
 
     return (
         <div>
+            <div className='dark-screen-header' onClick={() => closeModal()}></div>
             <header className={currentCmp !== "stayDetails" ? 'stay-list-layout header-container ' : 'stay-details-layout header-container '} style={explorerMode}>
-
-                {/* <NavLink to='/#'><img className="logo-for-mobile" src={logoMobilePic} onClick={() => { window.location.href = "index.html/#" }} /></NavLink> */}
-                <NavLink to='/#'><div className="logo"  onClick={() => { window.location.href = "index.html/#" }} ></div>
-
-                </NavLink>
+                <NavLink to='/#'><div className="logo" onClick={() => { window.location.href = "/#" }} ></div></NavLink>
                 <NavBar openModal={openModal} currentCmp={currentCmp} />
                 <UserManual loggedInUser={loggedInUser} />
-
             </header>
             {anywhereM && <section><SubHeader setAnywhereM={setAnywhereM} /></section>}
         </div>
+
     )
 }
 

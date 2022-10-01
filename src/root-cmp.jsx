@@ -14,7 +14,7 @@ import { AddStay } from './pages/add-stay'
 function App() {
   return (
     <div className="App">
-      <div className='dark-screen'></div>
+   
       <AppHeader />
       <Routes>
         <Route path='/stays/:id' element={<StayDetails />} />
@@ -24,7 +24,6 @@ function App() {
         <Route path='/my-trip' element={<MyTrip />} />
         <Route path='/dashboard' element={< Dashboard />} />
         <Route path='/' element={<StayApp />} />
-        {/* <AppFooter /> */}
       </Routes>
     </div>
   )

@@ -1,3 +1,16 @@
+.dark-screen-reserve-modal {
+    position: fixed;
+    min-height: 100%;
+    min-width: 100%;
+    z-index: 1;
+    background-color: $clr4;
+    opacity: 0.5;
+    filter: grayscale(1);
+    display: none;
+    left: 0;
+    top: 0;
+}
+
 .reserve-modal-container {
     position: fixed;
     width: 100%;
@@ -105,6 +118,100 @@
 
     select {
         display: none;
+
+
+    }
+
+    .select {
+        color: $clr5;
+        padding: 15px 10px 15px 10px;
+        cursor: pointer;
+
+        // font-size: 10px;
+        p {
+            font-weight: 600;
+        }
+
+        &:nth-child(2) {
+            font-size: 10px;
+        }
+
+        span {
+            font-weight: 400;
+            opacity: 0.8;
+            font-size: 12px
+        }
+    }
+
+    .select-modal {
+        background-color: $clr1;
+        width: 88%;
+        color: black;
+        padding: 0px 15px 0px 15px;
+        border: 1px solid $clr2;
+        box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        margin-top: 100px;
+        border-radius: 6px;
+        display: none;
+
+        .select-modal-label {
+            margin-top: 20px;
+            width: 100%;
+            align-items: center;
+            justify-content: space-between;
+            font-size: 15.5px;
+
+            .unbold {
+                font-family: Helmet;
+                font-weight: 400;
+                font-size: 14px;
+                color: $clr5;
+                opacity: 0.9;
+
+            }
+
+            .operator {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
+                opacity: 0.6;
+                font-size: 22px;
+                width: 32px;
+                height: 32px;
+                border-radius: 50%;
+                border: 1px solid $clr5;
+                cursor: pointer;
+
+                &:hover {
+                    opacity: 1;
+                }
+
+                &:nth-of-type(2) {
+                    border: none;
+                    opacity: 1;
+                    font-size: 16px;
+                    cursor: unset;
+                }
+
+            }
+
+        }
+
+        .terms-of-use {
+            font-weight: 400;
+            font-size: 12px;
+            opacity: 0.9;
+            font-family: Helmet;
+            margin-bottom: 20px;
+
+
+        }
+
     }
 
     .phone-only {
@@ -149,6 +256,7 @@
         border: none;
         border-radius: 10px;
         font-size: 14px;
+
         @include for-small-layout {
             width: 100%;
         }
@@ -184,7 +292,7 @@
         height: unset;
         width: 370px;
         align-items: unset;
-        padding: 29px 24px 24px 24px;
+        padding: 15px 24px 24px 24px;
         background-color: $clr1;
         border: 1px solid $clr2;
         border-radius: 10px;
@@ -196,6 +304,8 @@
 
         select {
             display: block;
+            position: relative;
+
         }
 
         .calendar {
@@ -239,8 +349,8 @@
             display: flex;
             align-items: center;
             border: 1px solid rgb(176, 176, 176);
-            border-top-left-radius: 10px;
-            border-top-right-radius: 10px;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
 
             .check-in {
                 border-right: 1px solid rgb(176, 176, 176);
@@ -290,8 +400,8 @@
             height: 55px;
             border: 1px solid rgb(176, 176, 176);
             border-top: none;
-            border-bottom-left-radius: 10px;
-            border-bottom-right-radius: 10px;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
 
             select {
                 height: 70%;

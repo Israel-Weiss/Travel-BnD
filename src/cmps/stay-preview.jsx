@@ -11,6 +11,7 @@ import starIcon from '../assets/imgs/starIcon.svg'
 import { stayService } from '../services/stay.service'
 import { WishListModal } from '../cmps/modal/wish-list-modal'
 import { wishListService } from '../services/wish-list.service'
+import { UtilService } from '../services/util.service'
 
 export const StayPreview = ({ stay }) => {
     const { loggedInUser } = useSelector(state => state.userModule)
@@ -80,7 +81,7 @@ export const StayPreview = ({ stay }) => {
                 {modalFlag && <WishListModal stay={stay} closeModal={closeModal} />}
 
                 < NavLink to={`/stays/${stay._id}`}>
-                    <img className='card-pic ' src={stay.imgUrls[idx]} />
+                    <img className='card-pic' src={stay.imgUrls[idx]} />
                 </ NavLink>
 
 
@@ -108,9 +109,9 @@ export const StayPreview = ({ stay }) => {
                         <p className='black ' style={{ fontSize: '15px', marginTop: "4px" }}>{stayService.calcRate(stay.reviews)}</p>
                     </div>
                 </div>
-                <p className="card-info-distance">{stayService.getRandomIntInclusive(200, 1500)} kilometers</p>
+                <p className="card-info-distance">{UtilService.getDistance(stay.loc.lng,stay.loc.lng)} kilometers</p>
                 <p className="card-info-date">Oct {stayService.getRandomIntInclusive(1, 9)} ‒ {stayService.getRandomIntInclusive(10, 30)}</p>
-                <p className="card-info-price">${price} <span>night</span></p>
+                <p className="card-info-price ">${price} <span>night</span></p>
             </div>
         </div>
     )

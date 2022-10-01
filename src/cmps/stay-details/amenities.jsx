@@ -6,7 +6,7 @@ export const Amenities = ({ stay }) => {
     var key =200
     return (
         <div className="amenities-container">
-            <h1 className="black fontSize-22 text-start bold">What this place offers</h1>
+            <h1 className="black fontSize-22 text-start bold Montserrat">What this place offers</h1>
             <div className="amenities-list">
 
                 <div className="left">
@@ -14,7 +14,7 @@ export const Amenities = ({ stay }) => {
                         return (
                             <div className='aminate   ' key={key++}>
                                 <img className='room-info-icons' src={pic.img} />
-                                <p className='black margin-right-20'>{pic.text}</p>
+                                <p className='black margin-right-20 Montserrat'>{pic.text}</p>
                             </div>)
                     })}
                 </div>

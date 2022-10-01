@@ -23,7 +23,9 @@ body {
     background-color: white;
     height: 100vh;
     font-family: Helmet;
-
+    &.hide-scrol-bar{
+        overflow: hidden;
+    }  
     @include for-normal-layout {
         &.sidebar-open {
             overflow: hidden;
@@ -41,7 +43,6 @@ body.modal-open {
 .dark-screen{
     position: fixed;
     height: 100%;
-    // top:20%;
     width: 100%; 
     z-index: 1;
     background-color: $clr4;

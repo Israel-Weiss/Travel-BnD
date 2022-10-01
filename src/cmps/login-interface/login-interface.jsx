@@ -1,34 +1,23 @@
 
-import { userService } from "../../services/user.service"
 import { register, login } from "../../store/user.action"
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 
-export function LoginInterface({ setLoginModalFlag, loginType, setUserPanel }) {
+
+export function LoginInterface({  loginType,closeModal }) {
     const dispatch = useDispatch()
 
-
     const onRegister = (ev) => {
-        document.querySelector('.dark-screen').style.display = 'none'
-        document.querySelector(".sign-modal").style.opacity = "1"
-        setUserPanel(false)
-        setLoginModalFlag(false)
+        closeModal()
         ev.preventDefault()
-
         const imgUrl = "https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlciUyMHByb2ZpbGV8ZW58MHx8MHx8&w=1000&q=80"
-        const user = { username: ev.target[0].value, password: ev.target[1].value, imgUrl, fullname: ev.target[0].value }
-        
+        const user = { username: ev.target[0].value, password: ev.target[1].value, imgUrl, fullname: ev.target[0].value } 
         loginType === "Register" ? dispatch(register(user)) : dispatch(login(user))
     }
 
-    const closeModal = () => {
-        setLoginModalFlag(false)
-        document.querySelector(".sign-modal").style.opacity = "1"
-        document.querySelector('.dark-screen').style.display = 'none'
-    }
 
     return (
-        <div className="signUp-modal">
+        <div className="signUp-modal Montserrat">
             <div className="title-sector flex"  >
                 <p className="title black bold">Log in or sign up</p>
                 <button className="exit-btn" onClick={() => closeModal()}>x</button>

@@ -71,21 +71,21 @@ export function SubHeader({ setAnywhereM }) {
             <form className="search-bar flex" onSubmit={(event) => onSearch(event)} >
 
                 <ul>
-                    <p className="title">Where</p>
+                    <p className="title Montserrat" style={{fontSize:"12px"}}>Where</p>
                     <input className="search-bar-input" type="text" placeholder="Search destination" onChange={(event) => onType(event)} />
                 </ul>
                 <ul>
                     <div className="border-right">
-                        <p className="title">Check in</p>
+                        <p className="title ">Check in</p>
                         <p className="text">Add dates</p>
                     </div>
                 </ul>
                 <ul>
-                    <p className="title">Check out</p>
+                    <p className="title ">Check out</p>
                     <p className="text">Add dates</p>
                 </ul>
                 <ul>
-                    <p className="title">Who</p>
+                    <p className="title ">Who</p>
                     <p className="text">Add guests</p>
                 </ul>
 

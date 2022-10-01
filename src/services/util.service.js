@@ -3,7 +3,8 @@ export const UtilService = {
     stringToDate,
     calcSum,
     numberToDate,
-    getRandomInt
+    getRandomInt,
+    getDistance
 }
 
 function makeId(length = 10) {
@@ -51,7 +52,7 @@ function stringToDate(str) {
 }
 
 function calcSum(price, night) {
-    let sum =price * night
+    let sum = price * night
     let string
     let totalPrice
     if (sum > 1000) {
@@ -62,20 +63,35 @@ function calcSum(price, night) {
     else return sum
 }
 
-function numberToDate(date){
+function numberToDate(date) {
     const today = date
-const yyyy = today.getFullYear()
-let mm = today.getMonth() + 1
-let dd = today.getDate()
+    const yyyy = today.getFullYear()
+    let mm = today.getMonth() + 1
+    let dd = today.getDate()
 
-if (dd < 10) dd = '0' + dd
-if (mm < 10) mm = '0' + mm
+    if (dd < 10) dd = '0' + dd
+    if (mm < 10) mm = '0' + mm
 
-const formattedToday = dd + '/' + mm + '/' + yyyy
-return formattedToday
+    const formattedToday = dd + '/' + mm + '/' + yyyy
+    return formattedToday
 }
 function getRandomInt(min, max) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min) + min); // The maximum is exclusive and the minimum is inclusive
-  }
+}
+
+function getDistance(latPlace, lngPlace) {
+    var userLat = JSON.parse(sessionStorage.getItem("location")).lat
+    var userLng = JSON.parse(sessionStorage.getItem("location")).lng
+
+    var gps1 = new window.google.maps.LatLng(latPlace, lngPlace)
+    var gps2 = new window.google.maps.LatLng(userLat, userLng)
+    var miles = (window.google.maps.geometry.spherical.computeDistanceBetween(gps1, gps2) / 1000)
+    var kilometers = (miles * 1.6).toFixed(0)
+    if (kilometers > 1000 && kilometers < 9999) kilometers = kilometers.toString().charAt(0) + "," + kilometers.toString().substring(1)
+    else if(kilometers>9999)kilometers= kilometers.toString().substring(0,2) + "," +kilometers.toString().substring(2)
+    return kilometers
+}
+
+

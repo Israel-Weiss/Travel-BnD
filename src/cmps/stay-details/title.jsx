@@ -11,7 +11,7 @@ export const StayTitle = ({ stay }) => {
 console.log(stay.reviews,"stay.reviews");
     return (
         <div className="room-info">
-            <h1 className="room-info-title">{stay.name}</h1>
+            <h1 className="room-info-title Montserrat">{stay.name}</h1>
 
             <div className="subTitle">
 
@@ -27,7 +27,7 @@ console.log(stay.reviews,"stay.reviews");
 
                     <div className="align-items flex ">
                         <img className='icons' src={shareIcon} />
-                        <p className="room-info-share">Share</p>
+                        <p className="room-info-share ">Share</p>
                     </div>
 
                     <div className="align-items flex ">

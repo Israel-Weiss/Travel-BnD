@@ -34,6 +34,10 @@ export const stayService = {
 }
 const BASE_URL = "stays/"
 
+
+
+
+
 const host =
 {
   fullname: "Richard",
