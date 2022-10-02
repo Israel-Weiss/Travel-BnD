@@ -243,38 +243,39 @@
 
 
 
-.music-player {
-    width: 65%;
+.order-piechart-container {
+    width: 39%;
     min-height: 160px;
-    background-color: #d70565;
+    max-height:250px;
     border-radius: 20px;
-    box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
-    text-align: center;
     padding-top: 8px;
-    margin-bottom: 20px;
+    margin-top: 50px;
+    float: left;
     display: none;
-
     @include for-small-layout {
         display: flex;
     }
-
+    .pieChart{
+        height: 100%;
+    }
 }
 
 .balance-conatiner {
-    width: 100%;
-    height: 160px;
-
+    width: 55%;
+    height: 335px;
+    float: right;
     border-radius: 20px;
     box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
     text-align: center;
     padding-top: 8px;
+    margin-right: 25px;
     margin-bottom: 20px;
-    background-color: #d70565;
-
+    display: none;
     @include for-small-layout {
-        width: 65%;
+        display: block;
         background-color: $clr1;
     }
+    
 
     .title {
         @include for-small-layout {
@@ -294,8 +295,7 @@
         display: flex;
         width: 100%;
         justify-content: space-between;
-        padding: 0px 40px 0px 40px;
-
+        padding: 0px 50px 0px 40px;
         .info {
             @include for-small-layout {
                 color: $clr5;
@@ -304,6 +304,11 @@
             color: $clr1;
             font-size: 16px;
             font-weight: bold;
+            text-align: center;
+            .stock-icon{
+                font-size: large;
+                vertical-align: sub;
+            }
         }
     }
 

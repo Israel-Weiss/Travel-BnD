@@ -37,7 +37,7 @@ export function MyCal(setNightCount, setStartDate, setEndDate) {
     const start = document.querySelector('.date-in')
     const end = document.querySelector('.date-out')
 
-    const night = (((state[0].endDate.getTime() - state[0].startDate.getTime()) / (1000 * 36000 * 24)) * 10) + 1
+    const night = (((state[0].endDate.getTime() - state[0].startDate.getTime()) / (1000 * 36000 * 24)) * 10) 
     setNightCount(night)
 
 

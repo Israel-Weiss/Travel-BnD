@@ -9,11 +9,15 @@ import { Chartline } from './chart-line'
 import doneIcon from '../assets/imgs/done.svg'
 import cancelIcon from '../assets/imgs/cancel.svg'
 import { LinesChart } from '../cmps/dashboard/multi-line'
-
+import { OrderChart } from '../cmps/dashboard/pieChart'
+import { FcBullish } from 'react-icons/fc'
+import { FcBearish } from 'react-icons/fc'
+ 
 export function Dashboard() {
     const { loggedInUser } = useSelector(state => state.userModule)
     const [orders, setOrders] = useState(null)
-
+    var growthIcon = <FcBullish/>
+    
     useEffect(() => {
         loadOrders()
     }, [loggedInUser])
@@ -53,31 +57,57 @@ export function Dashboard() {
     const getTotalPrice = () => {
         let totalPrice = 0
         orders.map(order => {
-            if (order.status === "Aprove") totalPrice += (order.price * order.nights)
+            if (order.status === "Aprove") totalPrice += (((order.price - order.expenses) * order.nights))
         })
-        console.log(totalPrice);
+
+        totalPrice = totalPrice.toFixed(0)
+        if (totalPrice > 999 && totalPrice < 9999) totalPrice = totalPrice.toString().charAt(0) + "," + totalPrice.toString().substring(1)
+        else if(totalPrice>9999)totalPrice= totalPrice.toString().substring(0,3) + "," +totalPrice.toString().substring(3)
+      
         return totalPrice
     }
 
+    function fixPriceComma(price) {
+        price = price.toFixed(0)
+        if (price > 999 && price < 9999) price = price.toString().charAt(0) + "," + price.toString().substring(1)
+        else if(price>9999)price= price.toString().substring(0,2) + "," +price.toString().substring(2)
 
-    if (!orders) return
-    else return (
+        return price
+    }
+
+
+    if (!orders) return 
+    if(orderService.getGrowth(orders) < 1) growthIcon = <FcBearish/>
+
+    return (
 
         <section className="my-trip-container">
 
             <div className="cards  flex space-between" >
 
-                <div className="flex-column" style={{ width: "100%" }} >
+                <div className="flex-columns " style={{ width: "100%" }} >
                     <div className="balance-conatiner">
-                        <p className='title'>Total revenue</p>
+                        <p className='title'>Overview</p>
 
                         <div className="balance-sector">
-                            <p className="info">This month</p>
-                            <p className="info">${getTotalPrice().toFixed(0)}</p>
+                            <p className="info">owned properties</p>
+                            <p className="info">{orderService.getNumOfStays(loggedInUser)}</p>
                         </div>
                         <div className="balance-sector">
-                            <p className="info">This year</p>
-                            <p className="info">${getTotalPrice().toFixed(0)}</p>
+                            <p className="info">Currently occupied</p>
+                            <p className="info">{orderService.getNumOfOccupied(orders)}</p>
+                        </div>
+                        <div className="balance-sector">
+                            <p className="info">Monthly growth</p>
+                            <p className="info">{orderService.getGrowth(orders)}% <span className='stock-icon'>{growthIcon}</span></p>
+                        </div>
+                        <div className="balance-sector">
+                            <p className="info">Monthly revenue</p>
+                            <p className="info">${orderService.getLastMonth(orders)}</p>
+                        </div>
+                        <div className="balance-sector">
+                            <p className="info">Yearly revenue</p>
+                            <p className="info">${orderService.getLastYear(orders)}</p>
                         </div>
                         <div className="balance-sector">
                             <p className="info">Total income</p>
@@ -85,13 +115,13 @@ export function Dashboard() {
                         </div>
                     </div>
 
-                    <div className="music-player">
-
+                    <div className="order-piechart-container">
+                        <OrderChart orders={orders}/>
                     </div>
                 </div>
 
-                <div className='chart'><LinesChart height={300} width={670} /></div>
-                <div className='chart-phone'><LinesChart height={300} width={300} /></div>
+                <div className='chart'><LinesChart orders={orders} height={300} width={670}  /></div>
+                <div className='chart-phone'><LinesChart orders={orders} height={300} width={300} /></div>
             </div>
 
             <div className='order-container'>
@@ -123,13 +153,13 @@ export function Dashboard() {
                             <p className="date-phone">{order.startDate}</p>
                         </div>
                         <div className='pok'><p>1</p></div>
-                        <div ><p>{order.nights.toFixed(0)}</p></div>
-                        <div className='total-price'><p>${(order.price * order.nights).toFixed(0)}</p></div>
+                        <div ><p>{order.nights}</p></div>
+                        <div className='total-price'><p>${fixPriceComma(order.price * order.nights)}</p></div>
                         {order.status === "pending" && <div><p>Pending</p></div>}
                         {order.status === "Aprove" && <div><img className='order-icon' src={doneIcon} /><p>Paid</p></div>}
                         {order.status === "Cancel" && <div><img className='order-icon' src={cancelIcon} /><p>Canceled</p></div>}
                         <div className="order-text">
-                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order._id, "Aprove")}>Approve</button>}
+                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order._id, "Aprove")}>Aprove</button>}
                             {order.status === "Aprove" && <button className="cancelBtn" style={{ backgroundColor: "#f0f2f5", color: "black" }} onClick={() => updateOrder(order._id, "Cancel")}>Cancel</button>}
                         </div>
                     </div>
