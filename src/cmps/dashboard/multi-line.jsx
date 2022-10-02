@@ -5,7 +5,6 @@ import { orderService } from '../../services/order.service';
 
 export function LinesChart({orders}) {
         const ordersData = orderService.calcRevenues(orders)
-        console.log(ordersData)
         const currentYearData = ordersData[0]
         const lastYearData = ordersData[1]
         
@@ -63,6 +62,7 @@ export function LinesChart({orders}) {
         const [barOptions, setBarOptions] = useState({
             options: {
                 scales: {
+                    position: 'bottom',
                     yAxes: [
                         {
                             ticks: {
@@ -74,17 +74,29 @@ export function LinesChart({orders}) {
                 title: {
                     display: true,
                     text: 'Data Orgranized In Bars',
-                    fontSize: 25
+                    fontSize: 25,
+                    position: 'bottom'
+
+                
                 },
-                legend: {
-                    display: true,
-                    position: 'top'
-                }
+                plugins: {
+                    legend: {
+                      position: "bottom",
+                      rtl: true,
+                      labels: {
+                          position: "bottom",
+                        usePointStyle: true,
+                        pointStyle: "square",
+                        
+                      }
+                    }
+                  }
+                
             }
         })
     
         return (
-            <div className="BarExample">
+            <div className="bar">
                 <Line
                     data={barData}
                     options={barOptions.options} />

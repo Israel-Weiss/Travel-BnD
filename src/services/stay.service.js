@@ -86,7 +86,6 @@ async function createStay(stayForm) {
     likedByUsers: [],
     host: user
   }
-  console.log(stay);
   const stays = await httpService.post(BASE_URL, stay)
   window.location.href = "index.html/#/";
 

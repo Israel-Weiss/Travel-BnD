@@ -19,33 +19,30 @@ export const StayPreview = ({ stay }) => {
     const [ isLiked, setLiked ] = useState(false)
     
     // const { stays } = wishlist
-    var heartPic = heartIcon
-    const { distance, date, price, likedByUsers,imgUrls } = stay
+    var heartPic
+    var { distance, date, price, likedByUsers,imgUrls } = stay
     var [idx, setIdx] = useState(0)
     var [modalFlag, setModalFlag] = useState(false)
 
-    if(likedByUsers && loggedInUser){
-        if (!likedByUsers.includes(loggedInUser._id)) heartPic = heartIcon  
-
-        else heartPic = heartIconRed
-    }
-
     const addWishList = (stay) => {
         if (heartPic !== heartIconRed) {
+            console.log(likedByUsers)
+            console.log(loggedInUser)
             setModalFlag(!modalFlag)
-            document.querySelector('.dark-screen').style.display = 'block'
             likedByUsers.push(loggedInUser._id)
             heartPic = heartIconRed
+            
         }
 
         else {            
+            console.log('hello')
             heartPic = heartIcon
             likedByUsers.splice(likedByUsers.indexOf(loggedInUser._id), 1)
             wishListService.removeStay(stay)
         }
 
         stayService.edit(stay)
-        setLiked(!isLiked)
+        setLiked(current => !current)
 }
 
     const moveIndex = (operator) => {
@@ -62,12 +59,16 @@ export const StayPreview = ({ stay }) => {
 
     const closeModal = () => {
         setModalFlag(false)
-        document.querySelector('.dark-screen').style.display = 'none'
     }
 
 
     
     if (!stay) return
+    if(likedByUsers && loggedInUser){
+        if (!likedByUsers.includes(loggedInUser._id)) heartPic = heartIcon  
+
+        else heartPic = heartIconRed
+    }
 
     return (
         
