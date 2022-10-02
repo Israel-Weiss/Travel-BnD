@@ -67,6 +67,14 @@ export function Dashboard() {
         return totalPrice
     }
 
+    function fixPriceComma(price) {
+        price = price.toFixed(0)
+        if (price > 999 && price < 9999) price = price.toString().charAt(0) + "," + price.toString().substring(1)
+        else if(price>9999)price= price.toString().substring(0,2) + "," +price.toString().substring(2)
+
+        return price
+    }
+
 
     if (!orders) return 
     if(orderService.getGrowth(orders) < 1) growthIcon = <FcBearish/>
@@ -146,7 +154,7 @@ export function Dashboard() {
                         </div>
                         <div className='pok'><p>1</p></div>
                         <div ><p>{order.nights}</p></div>
-                        <div className='total-price'><p>${order.price * order.nights}</p></div>
+                        <div className='total-price'><p>${fixPriceComma(order.price * order.nights)}</p></div>
                         {order.status === "pending" && <div><p>Pending</p></div>}
                         {order.status === "Aprove" && <div><img className='order-icon' src={doneIcon} /><p>Paid</p></div>}
                         {order.status === "Cancel" && <div><img className='order-icon' src={cancelIcon} /><p>Canceled</p></div>}
