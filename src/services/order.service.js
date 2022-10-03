@@ -76,7 +76,10 @@ async function getByLogedInUser() {
   orders.map(order => {
     if (order.userId === user._id) orderToDisplay.push(order)
   })
-  return orderToDisplay
+
+    const reversed = orderToDisplay.reverse()
+    return reversed
+
 
 }
 
@@ -91,17 +94,14 @@ async function getByHostName() {
     if (order.host.toLowerCase() === user.fullname.toLowerCase()) orderToDisplay.push(order)
   })
   if (!orderToDisplay) return null
-  else return orderToDisplay
+  else{
+    const reversed = orderToDisplay.reverse()
+    return reversed
+  }
 }
 
-async function aproveOrder(orderId, status) {
-  let orders = await httpService.get(BASE_URL)
-  let currOrder
-  orders.map(order => {
-    if (order._id === orderId) currOrder = order
-  })
-  currOrder.status = status
-  return await httpService.put(BASE_URL + orderId, currOrder)
+async function aproveOrder(order) {
+  return await httpService.put(BASE_URL + order._id,order)
 }
 
 function getLastMonth(orders){

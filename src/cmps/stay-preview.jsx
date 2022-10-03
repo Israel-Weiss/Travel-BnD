@@ -19,7 +19,7 @@ export const StayPreview = ({ stay }) => {
     const [ isLiked, setLiked ] = useState(false)
     
     // const { stays } = wishlist
-    var heartPic
+    var heartPic = heartIcon
     var { distance, date, price, likedByUsers,imgUrls } = stay
     var [idx, setIdx] = useState(0)
     var [modalFlag, setModalFlag] = useState(false)

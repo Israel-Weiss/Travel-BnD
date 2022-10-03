@@ -59,7 +59,7 @@
         border-radius: 12px;
         box-shadow: -1px 1px 10px -3px rgba(117, 117, 117, 0.79);
         width: 100%;
-        min-height: 600px;
+        min-height: 540px;
         align-items: flex-start;
         justify-self: flex-start;
         padding: 0px 10px 0px 10px;
@@ -246,16 +246,18 @@
 .order-piechart-container {
     width: 39%;
     min-height: 160px;
-    max-height:250px;
+    max-height: 250px;
     border-radius: 20px;
     padding-top: 8px;
     margin-top: 50px;
     float: left;
     display: none;
+
     @include for-small-layout {
         display: flex;
     }
-    .pieChart{
+
+    .pieChart {
         height: 100%;
     }
 }
@@ -271,11 +273,12 @@
     margin-right: 25px;
     margin-bottom: 20px;
     display: none;
+
     @include for-small-layout {
         display: block;
         background-color: $clr1;
     }
-    
+
 
     .title {
         @include for-small-layout {
@@ -296,6 +299,7 @@
         width: 100%;
         justify-content: space-between;
         padding: 0px 50px 0px 40px;
+
         .info {
             @include for-small-layout {
                 color: $clr5;
@@ -305,11 +309,19 @@
             font-size: 16px;
             font-weight: bold;
             text-align: center;
-            .stock-icon{
+
+            .stock-icon {
                 font-size: large;
                 vertical-align: sub;
             }
         }
     }
 
+}
+
+.total {
+    display: flex;
+    @include for-small-layout {
+        display: none;
+    }
 }

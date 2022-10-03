@@ -10,7 +10,7 @@
     border-bottom: 1px solid $clr6;
 
     @include for-small-layout {
-        padding: 45px 8px 0px 8px;
+        padding: 45px 0px 0px 0px;
         flex-wrap: wrap;
         flex-direction: row;
 
@@ -59,12 +59,13 @@
         margin-bottom: 30px;
         gap: 10px;
         text-overflow: ellipsis;
+        padding: 0px 60px 15px 8px;
         // max-height: 200px;
         // overflow-y: scroll;
 
         @include for-small-layout {
             width: 50%;
-            padding: 0px 60px 15px 8px;
+            padding: 0px 60px 15px 0px;
             // overflow-y: hidden;
         }
     }

@@ -20,7 +20,7 @@ export function MyTrip() {
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_ORDER_ADDED, ((order) => {
-            setOrders(prev => [...prev, order.ops[0]])
+            loadOrders()
         }
         ))
     }, [])
@@ -39,11 +39,13 @@ export function MyTrip() {
         })
     }
 
-    const updateOrder = (orderID, status) => {
-        orderService.aproveOrder(orderID, status).then(orders => {
+    const updateOrder = (order, status) => {
+        order.status = status
+        orderService.aproveOrder(order).then(orders => {
             loadOrders()
         })
     }
+
 
     if (!orders) return
     return (
@@ -75,23 +77,27 @@ export function MyTrip() {
                                 <p className='status-text bold phone--hidden' >Status</p>
 
                                 {order.status === "pending" && <div className="flex ">
-                                <p className='status-text bold phone--only' >Status</p>
+                                    <p className='status-text bold phone--only' >Status</p>
                                     <div className="blink"></div>
                                     <p >{order.status}</p>
                                 </div>}
                                 {order.status === "Aprove" && <div className="flex"  >
-                                <p className='status-text bold phone--only' >Status</p>
+                                    <p className='status-text bold phone--only' >Status</p>
                                     <img className='order-icon' src={doneIcon} /><p>Confirmed</p>
                                 </div>}
                                 {order.status === "Cancel" && <div className="flex "  >
-                                <p className='status-text bold phone--only' >Status</p>
+                                    <p className='status-text bold phone--only' >Status</p>
                                     <img className='order-icon' src={cancelIcon} /><p>Canceled</p>
                                 </div>}
 
                             </div>
 
-                            <p className='total'>Total: ${order.price * order.nights}</p>
+                            <div className="status-btn-section">
+                                <p className='total'>Total: ${order.price * order.nights}</p>
 
+                                {(order.status !== "Aprove" && order.status !== "pending") ? <button className="status-btn" onClick={() => updateOrder(order, "pending")}>Purchase</button>
+                                    : <button className="status-btn" style={{ backgroundColor: "#d70565", color: "white" }} onClick={() => updateOrder(order, "Cancel")}>Cancel</button>}
+                            </div>
                         </div>
 
                         <div className="flex-column align-self date ">

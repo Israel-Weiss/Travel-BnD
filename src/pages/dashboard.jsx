@@ -12,10 +12,15 @@ import { LinesChart } from '../cmps/dashboard/multi-line'
 import { OrderChart } from '../cmps/dashboard/pieChart'
 import { FcBullish } from 'react-icons/fc'
 import { FcBearish } from 'react-icons/fc'
- 
+import Pagination from '../cmps/pagination' 
+
+
 export function Dashboard() {
     const { loggedInUser } = useSelector(state => state.userModule)
     const [orders, setOrders] = useState(null)
+    const [coinsData, setCoinsData] = useState([]);
+    const [currentPage, setCurrentPage] = useState(1);
+    const [postsPerPage, setPostsPerPage] = useState(6);
     var growthIcon = <FcBullish/>
     
     useEffect(() => {
@@ -24,7 +29,7 @@ export function Dashboard() {
 
     useEffect(() => {
         socketService.on(SOCKET_EVENT_ORDER_ADDED, ((order) => {
-            setOrders(prev => [...prev, order.ops[0]])
+            loadOrders()
         }
         ))
     }, [])
@@ -38,8 +43,6 @@ export function Dashboard() {
         ))
     }, [])
 
-
-
     const loadOrders = () => {
         if (!loggedInUser) return
         orderService.getByHostName().then(orders => {
@@ -48,8 +51,9 @@ export function Dashboard() {
         })
     }
 
-    const updateOrder = (orderID, status) => {
-        orderService.aproveOrder(orderID, status).then(orders => {
+    const updateOrder = (order, status) => {
+        order.status=status
+        orderService.aproveOrder(order).then(orders => {
             loadOrders()
         })
     }
@@ -75,6 +79,10 @@ export function Dashboard() {
         return price
     }
 
+
+    const lastPostIndex = currentPage * postsPerPage;
+    const firstPostIndex = lastPostIndex - postsPerPage;
+    if(orders)var currentOrders = orders.slice(firstPostIndex, lastPostIndex);
 
     if (!orders) return 
     if(orderService.getGrowth(orders) < 1) growthIcon = <FcBearish/>
@@ -111,7 +119,7 @@ export function Dashboard() {
                         </div>
                         <div className="balance-sector">
                             <p className="info">Total income</p>
-                            <p className="info">${getTotalPrice().toFixed(0)}</p>
+                            <p className="info">${getTotalPrice()}</p>
                         </div>
                     </div>
 
@@ -137,7 +145,7 @@ export function Dashboard() {
                     <div className="title "><p className='last-type'>ACTION</p></div>
                 </div>
 
-                {orders.reverse().map(order => {
+                {currentOrders.map(order => {
                     const { startDate, endDate } = order
                     const dates = startDate.substring(9, 11) + "-" + endDate
                     return <div className="order-list">
@@ -159,11 +167,17 @@ export function Dashboard() {
                         {order.status === "Aprove" && <div><img className='order-icon' src={doneIcon} /><p>Paid</p></div>}
                         {order.status === "Cancel" && <div><img className='order-icon' src={cancelIcon} /><p>Canceled</p></div>}
                         <div className="order-text">
-                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order._id, "Aprove")}>Aprove</button>}
-                            {order.status === "Aprove" && <button className="cancelBtn" style={{ backgroundColor: "#f0f2f5", color: "black" }} onClick={() => updateOrder(order._id, "Cancel")}>Cancel</button>}
+                            {order.status !== "Aprove" && <button className="cancelBtn" onClick={() => updateOrder(order, "Aprove")}>Approve</button>}
+                            {order.status === "Aprove" && <button className="cancelBtn" style={{ backgroundColor: "#f0f2f5", color: "black" }} onClick={() => updateOrder(order, "Cancel")}>Cancel</button>}
                         </div>
                     </div>
                 })}
+                        <Pagination
+                totalPosts={orders.length}
+                postsPerPage={postsPerPage}
+                setCurrentPage={setCurrentPage}
+                currentPage={currentPage}
+            />
             </div>
         </section >
     )
